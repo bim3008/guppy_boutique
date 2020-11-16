@@ -22,7 +22,8 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
     $controllerName = 'dashboard';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
-        Route::get('/',                             [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
+        Route::get('/', [ 'as' => $controllerName,  'uses' => $controller . 'index' ]);
+        Route::get('change-status-{contact}/{id}',  [ 'as' => $controllerName . '/contact',     'uses' => $controller . 'contact'])->where('id', '[0-9]+');
     });
 
 // ============================== SLIDER =================================
@@ -112,7 +113,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('delete/{id}',                   [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
         Route::get('change-status-{contact}/{id}',  [ 'as' => $controllerName . '/contact',     'uses' => $controller . 'contact'])->where('id', '[0-9]+');
     });
-// ============================== SCRIPT ================================
+// ============================== SCRIPT =================================
     $prefix         = 'script';
     $controllerName = 'script';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {

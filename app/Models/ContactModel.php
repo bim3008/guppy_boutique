@@ -87,6 +87,9 @@ class ContactModel extends AdminModel
         if($options['task'] == 'get-item') {
             $result = self::select('id' ,'name')->where('id', $params['id'])->first();
         }
+        if($options['task'] == 'get-item-no-contact-yet') {
+            $result = self::select('id', 'name','phone','email', 'contact','created_date', 'contact_by')->where('contact','no')->get()->toArray();
+        }
 
         if($options['task'] == 'get-thumb') {
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();

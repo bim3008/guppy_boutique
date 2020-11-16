@@ -7,7 +7,7 @@
 
 @section('content')
     
-    @include ('admin.templates.page_header', ['pageIndex' => true])
+    @include ('admin.templates.page_header', ['pageIndex' => true , 'hidden' => false])
     @include ('admin.templates.zvn_notify')
 
     <div class="row">

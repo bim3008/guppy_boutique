@@ -1,10 +1,3 @@
-@php
-  
-    echo '<pre>';
-    print_r($arrTable);
-    echo '</pre>';
-
-@endphp
 @extends('admin.main')
 @section('content')
     <div class="page-header zvn-page-header clearfix">
@@ -25,40 +18,27 @@
                 </div>
                 <div class="x_content">
                     <div class="row top_tiles">
-                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                           <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                              <div class="count">179</div>
-                              <h3>New Sign ups</h3>
-                              <p>Lorem ipsum psdea itgum rixt.</p>
-                           </div>
-                        </div>
-                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                           <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-comments-o"></i></div>
-                              <div class="count">179</div>
-                              <h3>New Sign ups</h3>
-                              <p>Lorem ipsum psdea itgum rixt.</p>
-                           </div>
-                        </div>
-                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                           <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                              <div class="count">179</div>
-                              <h3>New Sign ups</h3>
-                              <p>Lorem ipsum psdea itgum rixt.</p>
-                           </div>
-                        </div>
-                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                           <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                              <div class="count">179</div>
-                              <h3>New Sign ups</h3>
-                              <p>Lorem ipsum psdea itgum rixt.</p>
-                           </div>
-                        </div>
+                        @foreach($arrTable as $key => $value)
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                <div class="icon"><i class="fa {!! $value['icon'] !!}"></i></div>
+                                <div class="count">{!! $value['total']->count !!}</div>
+                                <h3>{!! $value['name'] !!}</h3>
+                                <a href="{!! $value['link'] !!}"><p>Đi đến trang</p></a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                @include('admin.templates.x_title', ['title' => 'Yêu cầu liên hệ'])
+                @include('admin.pages.dashboard.list')
             </div>
         </div>
     </div>

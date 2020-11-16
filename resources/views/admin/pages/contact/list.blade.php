@@ -8,8 +8,8 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Name</th>
-                    <th class="column-title">Phone</th>
+                    <th class="column-title">Tên</th>
+                    <th class="column-title">Điện thoại</th>
                     <th class="column-title">Email</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Liên hệ bởi</th>

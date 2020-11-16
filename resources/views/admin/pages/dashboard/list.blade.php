@@ -1,23 +1,20 @@
 @php
     use App\Helpers\Template as Template;
     use App\Helpers\Hightlight as Hightlight;
-    use App\Models\ContactModel ;
-
-    $contactModel = new ContactModel() ;
-    $items        = $contactModel->getItem(null,['task' => 'get-item-no-contact-yet']) ;
 @endphp
+    <div class=
 <div class="x_content">
     <div class="table-responsive">
         <table class="table table-striped jambo_table bulk_action">
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Name</th>
-                    <th class="column-title">Phone</th>
+                    <th class="column-title">Tên</th>
+                    <th class="column-title">Điện thoại</th>
                     <th class="column-title">Email</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Liên hệ bởi</th>
-                    {{-- <th class="column-title">Hành động</th> --}}
+                 
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +27,8 @@
                             $name            = $val['name'];
                             $phone           = $val['phone'];
                             $email           = $val['email'];
-                            $status          = Template::showItemContact($controllerName, $id, $val['contact']); ;
+                            $status          = Template::showItemContactDisabled($controllerName, $id, $val['contact']); ;
                             $modifiedHistory = Template::showItemHistory($val['contact_by'], $val['created_date']);
-                            // $listBtnAction   = Template::showButtonAction($controllerName, $id);
                         @endphp
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
@@ -41,7 +37,6 @@
                             <td >{!! $email !!}</td>
                             <td>{!! $status !!}</td>
                             <td>{!! $modifiedHistory !!}</td>
-                            {{-- <td>{!! $listBtnAction !!}</td> --}}
                         </tr>
                     @endforeach
                 @else

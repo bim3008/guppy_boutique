@@ -148,4 +148,13 @@ class Template {
             '<a  data-url="%s" type="button"  name ="change-ajax-contact" class="btn btn-round %s  ">%s</a>', $link , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
         return $xhtml;
     }
+    public static function showItemContactDisabled($controllerName, $id, $statusValue) {
+        $tmplStatus = Config::get('zvn.template.contact');
+        $statusValue        = array_key_exists($statusValue, $tmplStatus ) ? $statusValue : 'default';
+        $currentTemplateStatus = $tmplStatus[$statusValue];
+        $link          = route($controllerName . '/contact', ['contact' => $statusValue, 'id' => $id]);
+        $xhtml = sprintf(
+            '<p   disabled class="btn btn-round %s  ">%s</p>' , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
+        return $xhtml;
+    }
 }

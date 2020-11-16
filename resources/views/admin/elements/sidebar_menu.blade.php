@@ -19,7 +19,7 @@
             <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>
             <li><a><i class="fa fa-video-camera"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{ route('video')}}"></i> Hình ảnh  </a></li>
+                    <li><a href="{{ route('image')}}"></i> Hình ảnh  </a></li>
                     <li><a href="{{ route('video')}}"></i> Video     </a></li>
                 </ul>
             </li>

@@ -1,5 +1,5 @@
 @php
-    $pageTitle = 'Quản lý ' . ucfirst($controllerName); 
+    $pageTitle = 'Quản lý ' . config('zvn-title.title.'.$controllerName.'') ; 
     $pageButton= sprintf('<a href="%s" class="btn btn-success"><i class="fa fa-arrow-left"></i> Quay về</a>', route($controllerName));
     if($pageIndex == true) {
         $pageButton= sprintf('<a href="%s" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm mới</a>', route($controllerName . '/form'));

@@ -34,7 +34,7 @@ return [
         ],
         'contact'       => [
             'yes'       => ['name' => 'Đã liên hệ', 'class'    => 'btn-success'],
-            'no'        => ['name' => 'Chưa liên hệ', 'class'  => 'btn-info'],
+            'no'        => ['name' => 'Chưa liên hệ', 'class'  => 'btn-danger'],
             'default'   => ['name' => 'Chưa xác định', 'class' => 'btn-success'],
         ],
         'is_home'       => [

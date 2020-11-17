@@ -50,7 +50,7 @@ class Form {
                 $xhtml .= sprintf(
                     '<div class="form-group">
                         %s
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                             %s
                             <p style="margin-top: 50px;">%s</p>
                         </div>

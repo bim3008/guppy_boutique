@@ -17,16 +17,21 @@
             <li><a href="{{ route('category')   }}"><i class="fa fa fa-building-o"> </i> Thư mục bài viết       </a></li>
             <li><a href="{{ route('article')    }}"><i class="fa fa-newspaper-o">   </i> Bài viết                </a></li>
             <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>
+            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ     </a></li>
+            <li><a href="{{ route('script')     }}"> <i class="fa fa-code">         </i> Thêm đoạn mã           </a></li>
+            <li><a href="{{ route('feedback')   }}"> <i class="fa fa-smile-o">      </i> Cảm nhận khách hàng    </a></li>
             <li><a><i class="fa fa-video-camera"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{ route('image')}}"></i> Hình ảnh  </a></li>
                     <li><a href="{{ route('video')}}"></i> Video     </a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">         </i> Khách hàng liên hệ     </a></li>
-            <li><a href="{{ route('script')     }}"> <i class="fa fa-code">          </i> Thêm đoạn mã           </a></li>
-            <li><a href="{{ route('feedback')   }}"> <i class="fa fa-smile-o">       </i> Cảm nhận khách hàng    </a></li>
-
+            <li><a><i class="fa fa-truck"></i> Giao hàng <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ route('shipping')}}"></i> Phí vận chuyển  </a></li>
+                    <li><a href="{{ route('shipping')}}"></i> Mã  giảm giá    </a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

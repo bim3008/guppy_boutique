@@ -151,6 +151,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::post('save',                         [ 'as' => $controllerName . '/save',        'uses' => $controller . 'save']);
         Route::get('delete/{id}',                   [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
         Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
+        Route::get('change-price-{price}/{id}',     [ 'as' => $controllerName . '/price',       'uses' => $controller . 'price'])->where('id', '[0-9]+');
     });
 
 

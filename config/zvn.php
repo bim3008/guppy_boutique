@@ -16,6 +16,9 @@ return [
         'form_label' => [
             'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
         ],
+        'form_label_article' => [
+            'class' => 'control-label col-md-2 col-sm-2 col-xs-12'
+        ],
         'form_label_edit' => [
             'class' => 'control-label col-md-4 col-sm-3 col-xs-12'
         ],
@@ -49,9 +52,16 @@ return [
             'featured'   => ['name'=> 'Nổi bật'],
             'normal'     => ['name'=> 'Bình thường'],
         ],
-        'level'       => [
+        'level'          => [
             'admin'      => ['name'=> 'Quản trị hệ thống'],
-            'member'      => ['name'=> 'Người dùng bình thường'],
+            'member'     => ['name'=> 'Người dùng bình thường'],
+        ],
+        'price' => [
+            '10000'         => ['name' => '10.000 VNĐ'],
+            '20000'         => ['name' => '20.000 VNĐ'],
+            '30000'         => ['name' => '30.000 VNĐ'],
+            '50000'         => ['name' => '50.000 VNĐ'],
+            '100000'        => ['name' => '100.000 VNĐ'],
         ],
         'search'       => [
             'all'           => ['name'=> 'Search by All'],
@@ -95,7 +105,8 @@ return [
             'question'  => ['edit','delete'],
             'video'     => ['edit','delete'],
             'contact'   => ['delete'],
-            'feedback'   => ['edit','delete'],
+            'feedback'  => ['edit','delete'],
+            'shipping'  => ['edit','delete'],
         ]
     ]
     

@@ -3,7 +3,7 @@
     use App\Helpers\Template;
 
     $formInputAttr = config('zvn.template.form_input');
-    $formLabelAttr = config('zvn.template.form_label');
+    $formLabelAttr = config('zvn.template.form_label_article');
     $formCkeditor  = config('zvn.template.form_ckeditor');
     $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
   
@@ -33,7 +33,7 @@
     ];
 @endphp
 
-<div class="col-md-6 col-xs-12">
+<div class="col-md-8 col-xs-12">
     <div class="x_panel">
         @include('admin.templates.x_title', ['title' => 'Bài viết'])
             {!! FormTemplate::show($elements)  !!}

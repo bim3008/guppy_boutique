@@ -17,7 +17,7 @@
     ];
 @endphp
  
-<div class="col-md-6 col-xs-12">
+<div class="col-md-4 col-xs-12">
     <div class="x_panel">
         @include('admin.templates.x_title', ['title' => 'SEO'])
             {!! FormTemplate::show($elements)  !!}

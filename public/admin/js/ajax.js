@@ -29,7 +29,6 @@ $(document).ready(function(){
         callAjax(url,element,'select');
     });
 
-
     
     function callAjax(url,element,type){
         $.ajax({

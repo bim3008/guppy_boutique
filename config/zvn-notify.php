@@ -20,5 +20,8 @@ return [
     ],
     'select' => [
         'message'       => 'Cập nhập hay quá chời !! ^-^ ',
-    ],    
+    ],
+    'price' => [
+        'message'       => 'Thay đổi giá thành công !! ^-^ ',
+    ]    
 ];

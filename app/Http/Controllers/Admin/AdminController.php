@@ -59,10 +59,12 @@ class AdminController extends Controller
         // return redirect()->route($this->controllerName)->with('zvn_notify', 'Cập nhật trạng thái thành công!');
     }
     public function type(Request $request) {
+       
         $params["currentType"]    = $request->type;
         $params["id"]             = $request->id;
-        $this->model->saveItem($params, ['task' => 'change-type']);
-        return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
+        $items = $this->model->saveItem($params, ['task' => 'change-type']);
+        echo json_encode($items) ;
+        // return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
     }
     public function delete(Request $request)
     {

@@ -24,8 +24,8 @@
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $ordering        = Template::showItemOrdering($controllerName,$id,$val['ordering']);
-                            $question        = Hightlight::show($val['question'], $params['search'], 'question');
-                            $answer          = Hightlight::show($val['answer'], $params['search'], 'answer');
+                            $question        = Hightlight::show($val['question'], $params['search'], 'question') ;
+                            $answer          = Template::showContent(Hightlight::show($val['answer'], $params['search'], 'answer'),300);
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); ;
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);

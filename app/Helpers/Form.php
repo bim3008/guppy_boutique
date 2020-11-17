@@ -26,6 +26,16 @@ class Form {
                     </div>', $element['label'], $element['element']
                 );
                 break;
+            case 'article':
+                $xhtml .= sprintf(
+                    '<div class="form-group">
+                        %s
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            %s
+                        </div>
+                    </div>', $element['label'], $element['element']
+                );
+                break;
             case 'selectbox':
                 $xhtml .= sprintf(
                     '<div class="form-group">

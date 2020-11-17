@@ -8,7 +8,7 @@ class SelectBox
 {
     public static function showItemSelect($controllerName, $id, $displayValue, $fieldName)
     {
-       $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'value_new', 'id' => $id]);
+       $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'new_value', 'id' => $id]);
         
        $tmplDisplay = Config::get('zvn.template.' . $fieldName);
        $xhtml = sprintf('<select name="select_change_attr" data-url="%s" class="form-control">', $link  );

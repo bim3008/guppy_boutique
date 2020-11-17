@@ -90,7 +90,7 @@ class FeedbackModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'description', 'status', 'thumb')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name', 'combostar','description', 'status', 'thumb')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -101,6 +101,7 @@ class FeedbackModel extends AdminModel
     }
 
     public function saveItem($params = null, $options = null) { 
+
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             $class  = ($params['currentStatus'] == "active") ? "info"     : "success";
@@ -114,7 +115,7 @@ class FeedbackModel extends AdminModel
         }
 
         if($options['task'] == 'add-item') {
-            $params['created_by'] = "hailan";
+            $params['created_by'] = "truongdinh";
             $params['created']    = date('Y-m-d');
             $params['thumb']      = $this->uploadThumb($params['thumb']);
             self::insert($this->prepareParams($params));        
@@ -125,7 +126,7 @@ class FeedbackModel extends AdminModel
                 $this->deleteThumb($params['thumb_current']);
                 $params['thumb'] = $this->uploadThumb($params['thumb']);
             }
-            $params['modified_by']   = "hailan";
+            $params['modified_by']   = "truongdinh";
             $params['modified']      = date('Y-m-d');
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }

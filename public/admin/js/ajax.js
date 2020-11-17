@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
-    let $ajaxStatus     = $("[name = change-ajax-status]");
-    let $ajaxContact    = $("[name = change-ajax-contact]");
-    let $ajaxOrdering   = $("input[name = change-ajax-ordering]");
+    let $ajaxStatus             = $("[name = change-ajax-status]");
+    let $ajaxContact            = $("[name = change-ajax-contact]");
+    let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
+    let $ajaxSelectArttribute   = $("[name = select_change_attr]");
 
     $ajaxStatus.click(function(){
         let url      = $(this).data("url") ;
@@ -21,7 +22,15 @@ $(document).ready(function(){
         let element  = $(this) ;
         callAjax(url,element,'ordering');
     });
+    $ajaxSelectArttribute.on("change" ,function(){
+   
+        let url   = $(this).data("url").replace("new_value",$(this).val()) ;
+        let element  = $(this) ;
+        callAjax(url,element,'select');
+    });
 
+
+    
     function callAjax(url,element,type){
         $.ajax({
             url : url ,
@@ -43,6 +52,8 @@ $(document).ready(function(){
                             element.data('url',result.link); //
                             notify(element, result.message);
                         case 'ordering' :
+                            notify(element, result.message);
+                        case 'select' :
                             notify(element, result.message);
                     }
                 }else{

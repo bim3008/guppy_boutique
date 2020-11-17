@@ -20,12 +20,10 @@ class ArticleController extends AdminController
 
         parent::__construct();
     }
-
     public function save(MainRequest $request)
     {
         if ($request->method() == 'POST') {
             $params = $request->all();
-            
             $task   = "add-item";
             $notify = "Thêm phần tử thành công!";
 

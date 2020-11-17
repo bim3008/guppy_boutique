@@ -17,5 +17,8 @@ return [
     ],  
     'ordering' => [
         'message'       => 'Cập nhập vị trí thành công !!',
-    ],  
+    ],
+    'select' => [
+        'message'       => 'Cập nhập hay quá chời !! ^-^ ',
+    ],    
 ];

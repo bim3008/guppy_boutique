@@ -9,7 +9,7 @@ use DB;
 class ArticleModel extends AdminModel
 {
     public function __construct() {
-        $this->table               = 'article as a';
+        $this->table               = 'article';
         $this->folderUpload        = 'article' ; 
         $this->fieldSearchAccepted = ['name', 'content']; 
         $this->crudNotAccepted     = ['_token','thumb_current'];
@@ -18,7 +18,7 @@ class ArticleModel extends AdminModel
     public function listItems($params = null, $options = null) {
      
         $result = null;
-
+        $this->table  = 'article as a';
         if($options['task'] == "admin-list-items") {
             $query = $this->select('a.id', 'a.name', 'a.status', 'a.content', 'a.thumb', 'a.type', 'c.name as category_name')
                           ->leftJoin('category as c', 'a.category_id', '=', 'c.id');
@@ -134,11 +134,11 @@ class ArticleModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'content', 'status', 'thumb', 'category_id')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name', 'content', 'status', 'thumb', 'category_id','title_seo','description_seo')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
-            $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
+            $result = self::select('id', 'thumb')->where('id', $params['id'])->first()->toArray();
         }
 
         if($options['task'] == 'news-get-item') {
@@ -153,6 +153,7 @@ class ArticleModel extends AdminModel
     }
 
     public function saveItem($params = null, $options = null) { 
+
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             $class  = ($params['currentStatus'] == "active") ? "info"     : "success";
@@ -167,8 +168,10 @@ class ArticleModel extends AdminModel
 
         if($options['task'] == 'change-type') {
             self::where('id', $params['id'])->update(['type' => $params['currentType']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
         }
         
+
 
         if($options['task'] == 'add-item') {
             $params['created_by'] = "hailan";
@@ -181,7 +184,6 @@ class ArticleModel extends AdminModel
             if(!empty($params['thumb'])){
                 // Xóa hình cũ
                 $this->deleteThumb($params['thumb_current']);
-
                 // Up hình mới
                 $params['thumb']      = $this->uploadThumb($params['thumb']);
             }

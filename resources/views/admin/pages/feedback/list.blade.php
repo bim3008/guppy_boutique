@@ -1,7 +1,6 @@
 @php
     use App\Helpers\Template as Template;
     use App\Helpers\Hightlight as Hightlight;
-   
 @endphp
 <div class="x_content">
     <div class="table-responsive">
@@ -37,8 +36,8 @@
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="40%">
-                                <p><strong>Name:</strong> {!! $name !!}</p>
-                                <p><strong>Description:</strong> {!! $description!!}</p>
+                                <p><strong>Tên:</strong> {!! $name !!}</p>
+                                <p><strong>Cảm nhận:</strong> {!! $description!!}</p>
                                 <p>{!! $thumb !!}</p>
                             </td>
                             <td>{!! $status !!}</td>

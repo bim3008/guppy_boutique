@@ -37,16 +37,20 @@ class ArticleRequest extends FormRequest
 
         return [
             'name'        => $condName,
-            'content' => 'bail|required|min:5',
+            'title_seo'       => 'bail|required|min:5',
+            'description_seo' => 'bail|required|min:5',
+            'content'     => 'bail|required|min:5',
             'status'      => 'bail|in:active,inactive',
             'thumb'       => $condThumb
         ];
     }
-
     public function messages()
     {
         return [
-            // 'name.required' => 'Name không được rỗng',
+            'title_seo.required'       => 'Tiêu đề không được rỗng',
+            'title_seo.min'            => 'Tiêu đề ít nhất 5 ký tự',
+            'description_seo.required' => 'Mô tả không được rỗng',
+            'description_seo.min'      => 'Mô tả ít nhất 5 ký tự',
             // 'name.min'      => 'Name :input chiều dài phải có ít nhất :min ký tứ',
         ];
     }

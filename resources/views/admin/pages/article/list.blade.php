@@ -2,7 +2,6 @@
     use App\Helpers\Template as Template;
     use App\Helpers\SelectBox as SelectBox;
     use App\Helpers\Hightlight as Hightlight;
-    
 @endphp
 <div class="x_content">
     <div class="table-responsive">
@@ -10,13 +9,11 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Article Info</th>
-                    <th class="column-title">Thumb</th>
-                    <th class="column-title">Category</th>
+                    <th class="column-title">Thông tin bài viết</th>
+                    <th class="column-title">Hình ảnh</th>
+                    <th class="column-title">Danh mục</th>
                     <th class="column-title">Kiểu bài viết</th>
                     <th class="column-title">Trạng thái</th>
-                    {{-- <th class="column-title">Tạo mới</th>
-                    <th class="column-title">Chỉnh sửa</th> --}}
                     <th class="column-title">Hành động</th>
                 </tr>
             </thead>
@@ -28,21 +25,19 @@
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $name            = Hightlight::show($val['name'], $params['search'], 'name');
-                            $content         = Hightlight::show($val['content'], $params['search'], 'content');
+                            $content         = Template::showContent(Hightlight::show($val['content'], $params['search'], 'content'),200) ;
                             $thumb           = Template::showItemThumb($controllerName, $val['thumb'], $val['name']);
                             $categoryName    = $val['category_name'];
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); 
                             $type            = SelectBox::showItemSelect($controllerName, $id, $val['type'], 'type');
-                            // $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
-                            // $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);
                             $listBtnAction   = Template::showButtonAction($controllerName, $id);
                         @endphp
 
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="30%">
-                                <p><strong>Name:</strong> {!! $name !!}</p>
-                                <p><strong>Content:</strong> {!! $content !!}</p>
+                                <p><strong>Tên :</strong> {!! $name !!}</p>
+                                <p><strong>Nội dung:</strong> {!! $content !!}</p>
                             </td>
                             <td width="14%">
                                 <p>{!! $thumb !!}</p>
@@ -50,8 +45,6 @@
                             <td >{!! $categoryName !!}</td>
                             <td>{!! $type   !!}</td>
                             <td>{!! $status !!}</td>
-                            {{-- <td>{!! $createdHistory !!}</td>
-                            <td>{!! $modifiedHistory !!}</td> --}}
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>
                     @endforeach

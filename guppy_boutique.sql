@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2020 at 01:27 PM
+-- Generation Time: Nov 17, 2020 at 11:23 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -66,7 +66,7 @@ INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`
 (20, 3, 'Tia cực tím tại Hà Nội ở mức \'nguy hiểm\'', '<p>Chỉ số tia UV tại H&agrave; Nội ng&agrave;y 18-19/5 l&ecirc;n tới 11, mức được đ&aacute;nh gi&aacute; l&agrave; &quot;nguy hiểm&quot; dễ khiến da, mắt bị bỏng nhiệt.</p>\r\n\r\n<p>H&agrave; Nội đang trải qua đợt nắng n&oacute;ng gay gắt. Theo Trung t&acirc;m Dự b&aacute;o Kh&iacute; tượng Thủy văn Quốc gia, nhiệt độ cao nhất ở H&agrave; Nội ng&agrave;y 18/5 dao động trong khoảng 37 đến 39 độ C, c&oacute; nơi tr&ecirc;n 39 độ.&nbsp;Trang&nbsp;<em>World Weather Online</em>&nbsp;của Anh dự b&aacute;o chỉ số tia cực t&iacute;m tại H&agrave; Nội hai ng&agrave;y 18-19/5 đạt mức 11.&nbsp;</p>', 'active', 'C4DtP4ico8.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'normal'),
 (21, 2, 'Blockchain và trí tuệ nhân tạo AI làm thay đổi giáo dục trực tuyến', '<p>Blockchain khiến dữ liệu trở n&ecirc;n c&ocirc;ng khai, minh bạch với người học, AI gi&uacute;p cải thiện khả năng tương t&aacute;c v&agrave; giảng dạy với từng c&aacute; nh&acirc;n.</p>\r\n\r\n<p>Sự b&ugrave;ng nổ của Internet v&agrave; những c&ocirc;ng nghệ mới như chuỗi khối (Blockchain) v&agrave; tr&iacute; tuệ nh&acirc;n tạo (AI) đ&atilde; g&oacute;p phần l&agrave;m thay đổi nền gi&aacute;o dục tr&ecirc;n to&agrave;n thế giới, h&igrave;nh th&agrave;nh những nền tảng Online Learning với nhiều ưu thế.</p>\r\n\r\n<p><strong>Mobile Learning dự b&aacute;o l&agrave; &quot;Cuộc c&aacute;ch mạng tiếp theo&quot; của gi&aacute;o dục trực tuyến</strong></p>\r\n\r\n<p>Theo nghi&ecirc;n cứu của Global Market Insights, thị trường gi&aacute;o dục trực tuyến to&agrave;n cầu đang c&oacute; tốc độ ph&aacute;t triển nhanh chưa từng thấy khi nền tảng hạ tầng Internet ng&agrave;y c&agrave;ng ho&agrave;n thiện v&agrave; phủ s&oacute;ng rộng khắp. Gi&aacute; trị c&aacute;c start-up về EdTech (C&ocirc;ng ty c&ocirc;ng nghệ chuy&ecirc;n về gi&aacute;o dục) to&agrave;n cầu được ước t&iacute;nh hơn 190 tỷ USD v&agrave;o năm 2018 v&agrave; dự kiến vượt hơn 300 tỷ USD v&agrave;o năm 2025.</p>', 'active', 'gCPGos7mhY.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'feature'),
 (22, 6, 'Huawei nói lệnh cấm sẽ khiến Mỹ tụt hậu về 5G', '<p>Huawei khẳng định sắc lệnh mới của Mỹ sẽ chỉ c&agrave;ng khiến qu&aacute; tr&igrave;nh triển khai c&ocirc;ng nghệ 5G ở nước n&agrave;y th&ecirc;m chậm chạp v&agrave; đắt đỏ.</p>\r\n\r\n<p>H&atilde;ng c&ocirc;ng nghệ Trung Quốc tự nhận l&agrave; &quot;người dẫn đầu kh&ocirc;ng ai s&aacute;nh kịp về c&ocirc;ng nghệ 5G&quot;, n&ecirc;n việc bị hạn chế kinh doanh ở Mỹ chỉ dẫn đến kết cục l&agrave; Mỹ sẽ bị &quot;tụt lại ph&iacute;a sau&quot; trong việc triển khai c&ocirc;ng nghệ kết nối di động thế hệ mới</p>', 'active', 'nt1QxhKUXM.jpeg', '2019-05-17 00:00:00', 'hailan', NULL, NULL, '2019-05-16', 'feature'),
-(23, 6, 'Asus ra mắt Zenfone 6 với camera lật tự động', '<p>Với thiết kế m&agrave;n h&igrave;nh tr&agrave;n viền ho&agrave;n to&agrave;n kh&ocirc;ng tai thỏ, camera ch&iacute;nh 48 megapixel tr&ecirc;n Zenfone 6 c&oacute; thể lật từ sau ra trước biến th&agrave;nh camera selfie.</p>\r\n\r\n<p>Zenfone 6 l&agrave; một trong những smartphone c&oacute; viền m&agrave;n h&igrave;nh mỏng nhất tr&ecirc;n thị trường với tỷ lệ m&agrave;n h&igrave;nh hiển thị chiếm tới 92% diện t&iacute;ch mặt trước. M&aacute;y c&oacute; m&agrave;n h&igrave;nh 6,4 inch tr&agrave;n viền ra cả bốn cạnh, kh&ocirc;ng tai thỏ như một số mẫu Zenfone trước v&agrave; cũng kh&ocirc;ng d&ugrave;ng thiết kế đục lỗ như Galaxy S10, S10+</p>', 'inactive', 'aiC6j6fWZY.png', '2019-05-17 00:00:00', 'hailan', NULL, NULL, '2019-05-16', 'normal');
+(23, 6, 'Asus ra mắt Zenfone 6 với camera lật tự động', '<p>Với thiết kế m&agrave;n h&igrave;nh tr&agrave;n viền ho&agrave;n to&agrave;n kh&ocirc;ng tai thỏ, camera ch&iacute;nh 48 megapixel tr&ecirc;n Zenfone 6 c&oacute; thể lật từ sau ra trước biến th&agrave;nh camera selfie.</p>\r\n\r\n<p>Zenfone 6 l&agrave; một trong những smartphone c&oacute; viền m&agrave;n h&igrave;nh mỏng nhất tr&ecirc;n thị trường với tỷ lệ m&agrave;n h&igrave;nh hiển thị chiếm tới 92% diện t&iacute;ch mặt trước. M&aacute;y c&oacute; m&agrave;n h&igrave;nh 6,4 inch tr&agrave;n viền ra cả bốn cạnh, kh&ocirc;ng tai thỏ như một số mẫu Zenfone trước v&agrave; cũng kh&ocirc;ng d&ugrave;ng thiết kế đục lỗ như Galaxy S10, S10+</p>', 'inactive', 'kHTnxchzx4.jpeg', '2019-05-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', '2019-05-16', 'normal');
 
 -- --------------------------------------------------------
 
@@ -121,8 +121,35 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `contact`, `created_date`, `contact_by`) VALUES
-(1, 'Lê Trương Định', '0364764002', 'admin@gmail.com', 'yes', '2020-11-16 00:00:00', 'truongdinh'),
-(2, 'Nguyễn Đình Duy', '0984623094', 'dinhduy@gmail.com', 'yes', '2020-11-16 00:00:00', '');
+(1, 'Lê Trương Định', '0364764002', 'admin@gmail.com', 'no', '2020-11-16 00:00:00', 'truongdinh'),
+(2, 'Nguyễn Đình Duy', '0984623094', 'dinhduy@gmail.com', 'yes', '2020-11-17 00:00:00', 'truongdinh');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `thumb` text NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` text DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` text DEFAULT NULL,
+  `status` varchar(255) NOT NULL,
+  `combostar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `name`, `description`, `thumb`, `created`, `created_by`, `modified`, `modified_by`, `status`, `combostar`) VALUES
+(1, 'Lê Trương Định', '<p><strong>C&aacute; c&oacute; nguồn gốc từ Jamaica, sống trong những vũng vịnh cạn, eo biển, mương r&atilde;nh v&agrave; dọc theo bờ biển. Năm 1866, Robert John Lechmere Guppy sống ở đảo Trinidad thuộc British West Indies gửi một v&agrave;i con c&aacute; n&agrave;y đến bảo t&agrave;ng Anh để nhận dạng. Albert C. L. G. Gunther của bảo t&agrave;ng n&agrave;y đặt t&ecirc;n khoa học cho n&oacute; l&agrave; Girardinus guppii để ghi c&ocirc;ng Guppy v&agrave;o cuối năm đ&oacute;.</strong></p>', '2bxGrDRkuO.jpeg', '2020-11-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', 'active', 5),
+(2, 'Nguyễn Văn Nam', '<p>Đ&acirc;y l&agrave; giống c&aacute; dễ nu&ocirc;i, sinh sản nhanh, đa dạng v&agrave; phong ph&uacute; nhất trong số c&aacute;c lo&agrave;i c&aacute; cảnh (về m&agrave;u sắc). C&aacute; bảy m&agrave;u nhập ngoại v&agrave;o Việt Nam c&oacute; 2 loại ch&iacute;nh: bảy m&agrave;u đu&ocirc;i rắn v&agrave; bảy m&agrave;u th&acirc;n xanh đen, đu&ocirc;i m&agrave;u xanh biếc, đỏ điểm vạch trắng. Ở c&aacute;c nước kh&aacute;c c&oacute; c&aacute; bảy m&agrave;u to&agrave;n th&acirc;n đen tuyền chưa thấy c&oacute; tại Việt Nam.</p>', 'AGfGJC2tA6.png', '2020-11-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', 'active', 5);
 
 -- --------------------------------------------------------
 
@@ -147,7 +174,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `question`, `answer`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
-(2, 'Tôi đã 60 tuổi có trồng răng implant được không?', '<p>B&aacute;c Chế th&acirc;n mến, cảm ơn b&aacute;c đ&atilde; tin tưởng gửi gắm c&acirc;u hỏi đến cho ch&uacute;ng t&ocirc;i. Nha khoa Nh&acirc;n T&acirc;m xin được giải đ&aacute;p c&acirc;u hỏi &ldquo;<strong>60 tuổi</strong>&nbsp;<strong>c&oacute; trồng răng implant được kh&ocirc;ng?&rdquo;</strong>&nbsp;như sau:</p>\r\n\r\n<p>Tuổi t&aacute;c kh&ocirc;ng ảnh hưởng g&igrave; đến việc trồng răng implant. Quan trọng l&agrave; sức khỏe của b&aacute;c phải được chuẩn bị tốt th&igrave; vẫn c&oacute; thể&nbsp;<strong>cấy gh&eacute;p implant</strong>&nbsp;b&igrave;nh thường v&agrave; cơ hội th&agrave;nh c&ocirc;ng rất cao. Cấy gh&eacute;p implant chỉ hạn chế ở những người c&oacute; bệnh tiểu đường, tim mạch, nghiện thuốc l&aacute; nặng, bệnh nha chu.</p>\r\n\r\n<p>- Trường hợp mắc bệnh tiểu đường: Cần kiểm so&aacute;t cho đường huyết ổn định trước rồi mới c&oacute; thể&nbsp;cấy gh&eacute;p implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh tim mạch: B&aacute;c sĩ nha khoa sẽ phối hợp với B&aacute;c sĩ tim mạch để c&oacute; thể l&agrave;m implant cho bệnh nh&acirc;n.</p>\r\n\r\n<p>- Trường hợp nghiện thuốc l&aacute;: Cần hạn chế h&uacute;t thuốc l&aacute; tối đa trong qu&aacute; tr&igrave;nh l&agrave;m implant v&igrave; h&uacute;t thuốc l&aacute; tr&ecirc;n 10 điếu/ng&agrave;y c&oacute; thể l&agrave;m hỏng implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh nha chu g&acirc;y mất xương: Cần phải gh&eacute;p xương v&agrave; chờ t&iacute;ch hợp. Bệnh nha chu cũng rất dễ t&aacute;i ph&aacute;t n&ecirc;n cần bệnh nh&acirc;n phải vệ sinh răng miệng thật cẩn thận để c&oacute; thể giữ được implant vững chắc.</p>\r\n\r\n<p>Nha khoa Nh&acirc;n T&acirc;m đ&atilde; thực hiện cấy gh&eacute;p implant th&agrave;nh c&ocirc;ng cho rất nhiều trường hợp bệnh nh&acirc;n lớn tuổi, mang lại một h&agrave;m răng đều đẹp, chắc khỏe.</p>\r\n\r\n<p>Nếu b&aacute;c đ&atilde; 60 tuổi nhưng kh&ocirc;ng c&oacute; c&aacute;c vấn đề cản trở tr&ecirc;n th&igrave; vẫn c&oacute; thể trồng răng implant với tỷ lệ th&agrave;nh c&ocirc;ng rất cao. V&agrave; nếu c&oacute; yếu tố n&agrave;o cản trở th&igrave; chỉ cần chuẩn bị tốt vẫn c&oacute; thể l&agrave;m được implant. Ch&uacute;c b&aacute;c sớm c&oacute; một h&agrave;m răng đẹp v&agrave; khỏe mạnh.</p>', '2020-11-14 00:00:00', 'truongdinh', NULL, NULL, 'active', 1),
+(2, 'Tôi đã 60 tuổi có trồng răng implant được không?', '<p>B&aacute;c Chế th&acirc;n mến, cảm ơn b&aacute;c đ&atilde; tin tưởng gửi gắm c&acirc;u hỏi đến cho ch&uacute;ng t&ocirc;i. Nha khoa Nh&acirc;n T&acirc;m xin được giải đ&aacute;p c&acirc;u hỏi &ldquo;60 tuổi&nbsp;c&oacute; trồng răng implant được kh&ocirc;ng?&rdquo;&nbsp;như sau:</p>\r\n\r\n<p><em>Tuổi t&aacute;c kh&ocirc;ng ảnh hưởng g&igrave; đến việc trồng răng implant. Quan trọng l&agrave; sức khỏe của b&aacute;c phải được chuẩn bị tốt th&igrave; vẫn c&oacute; thể&nbsp;<strong>cấy gh&eacute;p implant</strong>&nbsp;b&igrave;nh thường v&agrave; cơ hội th&agrave;nh c&ocirc;ng rất cao. Cấy gh&eacute;p implant chỉ hạn chế ở những người c&oacute; bệnh tiểu đường, tim mạch, nghiện thuốc l&aacute; nặng, bệnh nha chu.</em></p>\r\n\r\n<p>- Trường hợp mắc bệnh tiểu đường: Cần kiểm so&aacute;t cho đường huyết ổn định trước rồi mới c&oacute; thể&nbsp;cấy gh&eacute;p implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh tim mạch: <s>B&aacute;c sĩ nha khoa sẽ phối hợp với B&aacute;c sĩ tim mạch để c&oacute; thể l&agrave;m implant cho bệnh nh&acirc;n.</s></p>\r\n\r\n<p>- Trường hợp nghiện thuốc l&aacute;: Cần hạn chế h&uacute;t thuốc l&aacute; tối đa trong qu&aacute; tr&igrave;nh l&agrave;m implant v&igrave; h&uacute;t thuốc l&aacute; tr&ecirc;n 10 điếu/ng&agrave;y c&oacute; thể l&agrave;m hỏng implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh nha chu g&acirc;y mất xương: Cần phải gh&eacute;p xương v&agrave; chờ t&iacute;ch hợp. Bệnh nha chu cũng rất dễ t&aacute;i ph&aacute;t n&ecirc;n cần bệnh nh&acirc;n phải vệ sinh răng miệng thật cẩn thận để c&oacute; thể giữ được implant vững chắc.</p>\r\n\r\n<p><strong>Nha khoa Nh&acirc;n T&acirc;m đ&atilde; thực hiện cấy gh&eacute;p implant th&agrave;nh c&ocirc;ng cho rất nhiều trường hợp bệnh nh&acirc;n lớn tuổi, mang lại một h&agrave;m răng đều đẹp, chắc khỏe.</strong></p>\r\n\r\n<p>Nếu b&aacute;c đ&atilde; 60 tuổi nhưng kh&ocirc;ng c&oacute; c&aacute;c vấn đề cản trở tr&ecirc;n th&igrave; vẫn c&oacute; thể trồng răng implant với tỷ lệ th&agrave;nh c&ocirc;ng rất cao. V&agrave; nếu c&oacute; yếu tố n&agrave;o cản trở th&igrave; chỉ cần chuẩn bị tốt vẫn c&oacute; thể l&agrave;m được implant. Ch&uacute;c b&aacute;c sớm c&oacute; một h&agrave;m răng đẹp v&agrave; khỏe mạnh.</p>', '2020-11-14 00:00:00', 'truongdinh', '2020-11-16 00:00:00', 'hailan', 'active', 1),
 (3, 'LIST 17 QUÁN CAFE ĐẸP Ở SÀI GÒN CÓ KHÔNG GIAN ĐỘC, LẠ, MỚI NHẤT 2020', '<p><strong><em>Đ&ocirc;i khi, người ta t&igrave;m đến những qu&aacute;n c&agrave; ph&ecirc; chẳng phải để thưởng thức những m&oacute;n đồ uống th&ocirc;ng thường. Đ&oacute; đ&atilde; trở th&agrave;nh một nơi tr&uacute; ngụ y&ecirc;n b&igrave;nh cho t&acirc;m hồn, hay đơn giản chỉ l&agrave; d&agrave;nh thời gian b&ecirc;n những người th&acirc;n y&ecirc;u. M&igrave;nh sẽ giới thiệu cho c&aacute;c bạn list 17 <a href=\"http://travelgear.mozello.com/blog/params/post/2100020/quan-cafe-dep-o-sai-gon\" target=\"_self\">qu&aacute;n cafe đẹp ở S&agrave;i G&ograve;n</a> c&oacute; kh&ocirc;ng gian độc, lạ, mới nhất 2020.&nbsp;</em></strong></p>', '2020-11-14 00:00:00', 'truongdinh', NULL, NULL, 'active', 2),
 (4, 'AQ có thể nằm bất kỳ vị trí nào trên trang', '<p>AQ c&oacute; thể nằm bất kỳ vị tr&iacute; n&agrave;o tr&ecirc;n trangAQ c&oacute; thể nằm bất kỳ vị tr&iacute; n&agrave;o tr&ecirc;n trang</p>', '2020-11-14 00:00:00', 'truongdinh', NULL, NULL, 'active', 3);
 
@@ -172,8 +199,8 @@ CREATE TABLE `script` (
 --
 
 INSERT INTO `script` (`id`, `name`, `created`, `created_by`, `modified`, `modified_by`, `script`) VALUES
-(4, 'head', '2020-11-16 00:00:00', 'truongdinh', NULL, NULL, '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content Profile</div>\r\n        <div role=\"tabpanel\" class=\"tab-pane\" id=\"messages\">Content Messages</div>\r\n        <div role=\"tabpanel\" class=\"tab-pane\" id=\"settings\">Content Settings</div>\r\n    </div>'),
-(5, 'footer', '2020-11-16 00:00:00', 'truongdinh', '2020-11-16 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content Profile</div>');
+(4, 'head', '2020-11-16 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content Profile</div>'),
+(5, 'footer', '2020-11-16 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content');
 
 -- --------------------------------------------------------
 
@@ -281,6 +308,12 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `question`
 --
 ALTER TABLE `question`
@@ -330,6 +363,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --

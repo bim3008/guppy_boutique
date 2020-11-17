@@ -10,5 +10,6 @@ return [
         'question'      => 'câu hỏi thường gặp',
         'video'         => 'video',
         'script'        => 'mã nguồn',
+        'feedback'      => 'cảm nhận khách hàng',
     ]
 ];

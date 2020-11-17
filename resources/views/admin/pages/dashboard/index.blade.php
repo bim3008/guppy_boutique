@@ -11,6 +11,7 @@
             <h3>Trang quản lý</h3>
         </div>
     </div>
+    {{-- MANAGER TOTAL DASHBOARD  --}}
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -39,7 +40,7 @@
             </div>
         </div>
     </div>
-
+    {{-- MANAGER LIST REQUEST CONTACT --}}
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -47,7 +48,7 @@
                 @if(!empty($items))
                     @include('admin.pages.dashboard.list' , ['items' => $items])
                     <div style="text-align:center">
-                        <a class="btn btn-round btn-warning" href="{!! route('contact')!!}?filter_contact=no"> Xem danh sách</a>
+                        <a class="btn btn-round btn-primary" href="{!! route('contact')!!}?filter_contact=no"> Xem danh sách</a>
                     </div>
                 @else
                     <h3 style="text-align:center;color:red;padding: 2vw;"> Chưa có yêu cầu liên hệ mới</h3>

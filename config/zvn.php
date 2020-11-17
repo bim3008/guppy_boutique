@@ -95,6 +95,7 @@ return [
             'question'  => ['edit','delete'],
             'video'     => ['edit','delete'],
             'contact'   => ['delete'],
+            'feedback'   => ['edit','delete'],
         ]
     ]
     

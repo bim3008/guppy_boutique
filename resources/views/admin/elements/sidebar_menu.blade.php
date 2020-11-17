@@ -23,8 +23,10 @@
                     <li><a href="{{ route('video')}}"></i> Video     </a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('contact')    }}"><i class="fa fa-phone">         </i> Khách hàng liên hệ     </a></li>
-            <li><a href="{{ route('script')    }}"> <i class="fa fa-code">          </i> Thêm đoạn mã           </a></li>
+            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">         </i> Khách hàng liên hệ     </a></li>
+            <li><a href="{{ route('script')     }}"> <i class="fa fa-code">          </i> Thêm đoạn mã           </a></li>
+            <li><a href="{{ route('feedback')   }}"> <i class="fa fa-smile-o">       </i> Cảm nhận khách hàng    </a></li>
+
         </ul>
     </div>
 </div>

@@ -10,3 +10,5 @@
 <script src="{{ asset('admin/js/ajax.js') }}"></script>
 <script src="{{ asset('admin/js/notify.js') }}"></script>
 <script src="{{ asset('admin/js/notify.min.js') }}"></script>
+<script src="{{ asset('admin/js/my-custom.js') }}"></script>
+

@@ -154,7 +154,7 @@ class Template {
         $currentTemplateStatus = $tmplStatus[$statusValue];
         $link          = route($controllerName . '/contact', ['contact' => $statusValue, 'id' => $id]);
         $xhtml = sprintf(
-            '<p   disabled class="btn btn-round %s  ">%s</p>' , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
+            '<p   readonly="readonly" class="btn btn-round %s  ">%s</p>' , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
         return $xhtml;
     }
 }

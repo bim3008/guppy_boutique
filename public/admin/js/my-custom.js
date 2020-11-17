@@ -166,5 +166,19 @@
 //    let valueRandoom   = Math.random().toString(36).substr(2, 10);
 //    var name           = $("input[name=code]").val(valueRandoom);
 //  });
+$( document ).ready(function() {
+    
+    $('#combostar').combostars({
+        starUrl:'../../../admin/img/stars.png',
+        starWidth: 16,
+        starHeight: 15,
+        clickMiddle:true
+        
+     });
+        
+    $('#combostar').on('change',function () {
+        $('#starcount').text($(this).val());
+    });
+});
 
 

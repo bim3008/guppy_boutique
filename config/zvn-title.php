@@ -12,6 +12,7 @@ return [
         'script'        => 'mã nguồn',
         'feedback'      => 'cảm nhận khách hàng',
         'shipping'      => 'phí vận chuyển',
+        'coupon'        => 'mã giảm giá',
     ],
     
 ];

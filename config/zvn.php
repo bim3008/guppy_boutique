@@ -11,7 +11,11 @@ return [
     ],
     'template'         => [
         'form_input' => [
-            'class' => 'form-control col-md-6 col-xs-12'
+            'class' => 'form-control col-md-6 col-xs-12' ,
+        ],
+        'form_input_code' => [
+            'class' => 'form-control col-md-6 col-xs-12',
+            'style' => 'width:78%',
         ],
         'form_label' => [
             'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
@@ -52,11 +56,16 @@ return [
             'featured'   => ['name'=> 'Nổi bật'],
             'normal'     => ['name'=> 'Bình thường'],
         ],
+        'coupon' => [
+            'percent'   => ['name'=> 'Phần trăm'],
+            'direct'     => ['name'=> 'Trực tiếp'],
+        ],
         'level'          => [
             'admin'      => ['name'=> 'Quản trị hệ thống'],
             'member'     => ['name'=> 'Người dùng bình thường'],
         ],
         'price' => [
+            '0'             => ['name' => 'Miễn phí'],
             '10000'         => ['name' => '10.000 VNĐ'],
             '20000'         => ['name' => '20.000 VNĐ'],
             '30000'         => ['name' => '30.000 VNĐ'],
@@ -107,6 +116,7 @@ return [
             'contact'   => ['delete'],
             'feedback'  => ['edit','delete'],
             'shipping'  => ['edit','delete'],
+            'coupon'  => ['edit','delete'],
         ]
     ]
     

@@ -19,6 +19,8 @@
 <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet">
 <!-- Custom Theme Style -->
 <link href="{{ asset('admin/css/mycss.css') }}" rel="stylesheet">
-<link href="{{ asset('admin/css/mycss.css') }}" rel="stylesheet">
+<link href="{{ asset('admin/css/daterangepicker.css') }}" rel="stylesheet">
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="{{ asset('admin/js/jquery.combostars.js') }}"></script>

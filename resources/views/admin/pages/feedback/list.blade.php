@@ -8,7 +8,7 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Slider Info</th>
+                    <th class="column-title">Thông tin khách hàng</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Đánh giá</th>
                     <th class="column-title">Tạo mới</th>

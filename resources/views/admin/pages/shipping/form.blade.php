@@ -8,6 +8,7 @@
 
     $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
     $priceValue       = ['default' => 'Chọn giá tiền'  , 
+                          '0'      => config('zvn.template.price.0.name'),
                           '10000'  => config('zvn.template.price.10000.name'),
                           '20000'  => config('zvn.template.price.20000.name'),
                           '30000'  => config('zvn.template.price.30000.name'), 

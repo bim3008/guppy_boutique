@@ -157,4 +157,24 @@ class Template {
             '<p   readonly="readonly" class="btn btn-round %s  ">%s</p>' , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
         return $xhtml;
     }
+
+    public static function nameCoupon($name)
+    {
+        
+        if($name == 'percent'){
+            $xhtml = 'Phần trăm' ;
+        }else{
+            $xhtml = 'Tiền mặt';
+        }
+        return $xhtml ;
+    }
+    public static function valueCoupon($name , $value)
+    {
+        if($name == 'percent'){
+            $xhtml = $value . "%" ;
+        }else{
+            $xhtml = number_format($value) . " VNĐ" ;
+        }
+        return $xhtml ;
+    }
 }

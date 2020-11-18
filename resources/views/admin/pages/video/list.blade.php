@@ -2,7 +2,7 @@
     parse_str(parse_url($link,PHP_URL_QUERY), $list) ;
     $api_key = 'AIzaSyAyqc3D8pAtgBBPsnneddcd75xDcCWru-w';
     $playlist_id =  isset($list["list"]) ?  $list["list"] : $list["v"]; 
-    $api_url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId='.$playlist_id.'&key='. $api_key;
+    $api_url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=100&playlistId='.$playlist_id.'&key='. $api_key;
     $playlist = json_decode(file_get_contents($api_url));
 ?>
     <ul>

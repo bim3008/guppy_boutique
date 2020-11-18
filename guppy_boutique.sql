@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 11:23 AM
+-- Generation Time: Nov 18, 2020 at 03:13 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -39,34 +39,18 @@ CREATE TABLE `article` (
   `modified` datetime DEFAULT NULL,
   `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `publish_at` date DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_seo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description_seo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`, `created`, `created_by`, `modified`, `modified_by`, `publish_at`, `type`) VALUES
-(4, 1, 'Liverpool chỉ được nâng Cup phiên bản nếu vô địch hôm nay', '<p>Đội b&oacute;ng th&agrave;nh phố cảng sẽ kh&ocirc;ng n&acirc;ng Cup nguy&ecirc;n bản nếu vượt mặt Man City ở v&ograve;ng cuối Ngoại hạng Anh.</p>\r\n\r\n<p>Liverpool k&eacute;m Man City một điểm trước khi tiếp Wolverhampton tr&ecirc;n s&acirc;n nh&agrave; Anfield v&agrave;o ng&agrave;y Chủ Nhật. Ở trận đấu c&ugrave;ng giờ, Man City sẽ l&agrave;m kh&aacute;ch tới s&acirc;n Brighton v&agrave; biết một chiến thắng sẽ gi&uacute;p họ bảo vệ th&agrave;nh c&ocirc;ng ng&ocirc;i v&ocirc; địch. Kể từ khi c&aacute;c trận v&ograve;ng cuối Ngoại hạng Anh sẽ chơi đồng loạt c&ugrave;ng l&uacute;c, ban tổ chức phải đặt một chiếc cup phi&ecirc;n bản giống thật tại Anfield ph&ograve;ng trường hợp Liverpool v&ocirc; địch. Chiếc cup giả n&agrave;y thường được d&ugrave;ng trong c&aacute;c sự kiện quảng b&aacute; của Ngoại hạng Anh.&nbsp;</p>', 'active', 'L3Yuzln8II.png', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-04-29', 'feature'),
-(5, 1, 'Bottas giành pole chặng thứ ba liên tiếp', '<p>Tay đua Phần Lan đ&aacute;nh bại đồng đội Lewis Hamilton ở v&ograve;ng ph&acirc;n hạng GP T&acirc;y Ban Nha h&ocirc;m 11/5.</p>\r\n\r\n<p>Valtteri Bottas nhanh hơn Hamilton 0,634 gi&acirc;y v&agrave; nhanh hơn người về thứ ba&nbsp;Sebastian Vettel 0,866 gi&acirc;y. Tay đua của Red Bull&nbsp;Max Verstappen nhanh thứ tư, trong khi&nbsp;Charles Leclerc về thứ năm.</p>', 'active', 'iQ1RXPioFZ.jpeg', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-04-28', 'feature'),
-(6, 1, 'HLV Cardiff: \'Man Utd sẽ không vô địch trong 10 năm tới\'', '<p>Neil Warnock tỏ ra nghi ngờ về tương lai của Man Utd dưới thời HLV Solskjaer.</p>\r\n\r\n<p>&quot;Một số người nghĩ Man Utd cần từ hai đến ba kỳ chuyển nhượng nữa để gi&agrave;nh danh hiệu&quot;, HLV Neil Warnock chia sẻ. &quot;T&ocirc;i th&igrave; nghĩ c&oacute; thể l&agrave; 10 năm. T&ocirc;i kh&ocirc;ng thấy học&oacute; khả năng bắt kịp hai CLB h&agrave;ng đầu trong khoảng bốn hay năm năm tới&quot;.</p>\r\n\r\n<p>Lần cuối Man Utd v&ocirc; địch l&agrave; m&ugrave;a 2012-2013 dưới thời HLV Sir Alex Ferguson. Kể từ đ&oacute; đến nay, &quot;Quỷ đỏ&quot; kh&ocirc;ng c&ograve;n duy tr&igrave; được vị thế ứng cử vi&ecirc;n v&ocirc; địch h&agrave;ng đầu.&nbsp;</p>', 'active', 'ReChSfB95C.jpeg', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-30', 'feature'),
-(7, 2, 'Đại học Anh đưa khóa học hạnh phúc vào chương trình giảng dạy', '<p>Kh&oacute;a học diễn ra trong 12 tuần, sinh vi&ecirc;n năm nhất Đại học Bristol sẽ được kh&aacute;m ph&aacute; hạnh ph&uacute;c l&agrave; g&igrave; v&agrave; l&agrave;m thế n&agrave;o để đạt được n&oacute;.</p>\r\n\r\n<p>Đại học Bristol (Anh) quyết định đưa kh&oacute;a học hạnh ph&uacute;c v&agrave;o giảng dạy từ th&aacute;ng 9 năm nay nhằm giảm thiểu t&igrave;nh trạng tự tử ở sinh vi&ecirc;n, sau khi 12 sinh vi&ecirc;n ở một trường kh&aacute;c quy&ecirc;n sinh trong ba năm qua. Gi&aacute;o sư Bruce Hood, nh&agrave; t&acirc;m l&yacute; học chuy&ecirc;n nghi&ecirc;n cứu về c&aacute;ch thức hoạt động của bộ n&atilde;o v&agrave; con người, sẽ giảng dạy m&ocirc;n học mới n&agrave;y.</p>', 'active', 'hoyOyXJrzx.png', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-05', 'feature'),
-(8, 5, '11 cách đơn giản dạy trẻ quản lý thời gian', '<p>Phụ huynh h&atilde;y tạo cảm gi&aacute;c vui vẻ, hướng dẫn trẻ thiết lập những ưu ti&ecirc;n h&agrave;ng ng&agrave;y để ch&uacute;ng c&oacute; thể tự quản l&yacute; thời gian hiệu quả.</p>\r\n\r\n<p>&quot;Nhanh l&ecirc;n&quot;, &quot;Con c&oacute; biết mấy giờ rồi kh&ocirc;ng&quot;, &quot;Điều g&igrave; l&agrave;m con mất nhiều thời gian như vậy&quot;..., l&agrave; những c&acirc;u n&oacute;i quen thuộc của phụ huynh để nhắc nhở con về kh&aacute;i niệm thời gian. Thay v&igrave; n&oacute;i những c&acirc;u tr&ecirc;n, phụ huynh c&oacute; thể dạy con c&aacute;ch quản l&yacute; giờ giấc ngay từ khi ch&uacute;ng c&ograve;n nhỏ.</p>', 'active', 'Phe2pSOC5Q.jpeg', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-07-30', 'normal'),
-(9, 3, 'Vì sao không hút thuốc vẫn bị ung thư phổi?', '<p>D&ugrave; kh&ocirc;ng h&uacute;t thuốc, bạn vẫn c&oacute; nguy cơ ung thư phổi do h&iacute;t phải kh&oacute;i thuốc, tiếp x&uacute;c với kh&iacute; radon hoặc sống trong m&ocirc;i trường &ocirc; nhiễm.&nbsp;</p>\r\n\r\n<p>Người kh&ocirc;ng h&uacute;t thuốc vẫn c&oacute; thể bị ung thư phổi.&nbsp;Tr&ecirc;n&nbsp;<em>Journal of the Royal Society of Medicine</em>,&nbsp;c&aacute;c nh&agrave; khoa học từ&nbsp;Hiệp hội Ung thư Mỹ cho biết 20% bệnh nh&acirc;n ung thư phổi kh&ocirc;ng bao giờ h&uacute;t thuốc.&nbsp;Nghi&ecirc;n cứu 30 năm tr&ecirc;n 1,2 triệu người của tổ chức n&agrave;y cũng chỉ ra số người kh&ocirc;ng h&uacute;t thuốc bị ung thư phổi đang gia tăng. Hầu hết bệnh nh&acirc;n chỉ được chẩn đo&aacute;n khi đ&atilde; bước sang giai đoạn nghi&ecirc;m trọng kh&ocirc;ng thể điều trị.&nbsp;</p>', 'active', 'tPa7bgOesm.png', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-08-30', 'normal'),
-(10, 4, '10 hãng hàng không  tốt nhất thế giới năm 2019', '<p>Qatar l&agrave; quốc gia duy nhất tr&ecirc;n thế giới c&oacute; h&atilde;ng h&agrave;ng kh&ocirc;ng v&agrave; s&acirc;n bay tốt nhất năm 2019.</p>\r\n\r\n<p>C&aacute;c s&acirc;n bay được đ&aacute;nh gi&aacute; dựa tr&ecirc;n 3 yếu tố: hiệu suất đ&uacute;ng giờ, chất lượng dịch vụ, thực phẩm v&agrave; lựa chọn mua sắm. Yếu tố đầu ti&ecirc;n chiếm 60% số điểm, hai ti&ecirc;u ch&iacute; c&ograve;n lại chiếm 20%. Dữ liệu của AirHelp được dựa tr&ecirc;n thống k&ecirc; từ nhiều nh&agrave; cung cấp thương mại, c&ugrave;ng cơ sở dữ liệu đ&aacute;nh gi&aacute; ri&ecirc;ng v&agrave; 40.000 khảo s&aacute;t h&agrave;nh kh&aacute;ch được thu thập từ hơn 40 quốc gia trong năm 2018.</p>', 'active', '8GlYE3KYtZ.png', '2019-05-04 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-09-30', 'normal'),
-(11, 5, 'Phát hiện bụt mọc cổ thụ hơn 2.600 tuổi ở Mỹ', '<p>Ph&aacute;t hiện mới gi&uacute;p bụt mọc trở th&agrave;nh một trong những c&acirc;y sinh sản hữu t&iacute;nh gi&agrave; nhất thế giới, vượt xa ước t&iacute;nh trước đ&acirc;y của c&aacute;c chuy&ecirc;n gia.</p>\r\n\r\n<p>C&aacute;c nh&agrave; khoa học ph&aacute;t hiện một c&acirc;y bụt mọc &iacute;t nhất đ&atilde; 2.624 tuổi ở v&ugrave;ng đầm lầy s&ocirc;ng Black, bang Bắc Carolina, Mỹ, theo nghi&ecirc;n cứu đăng tr&ecirc;n tạp ch&iacute;&nbsp;<em>Environmental Research Communications</em>&nbsp;h&ocirc;m 9/5.&nbsp;</p>\r\n\r\n<p>Nh&oacute;m nghi&ecirc;n cứu bắt gặp bụt mọc cổ thụ n&agrave;y trong l&uacute;c nghi&ecirc;n cứu v&ograve;ng tuổi của c&acirc;y để t&igrave;m hiểu về lịch sử kh&iacute; hậu tại miền đ&ocirc;ng nước Mỹ. Ngo&agrave;i thể hiện tuổi thọ, độ rộng v&agrave; m&agrave;u sắc của v&ograve;ng tuổi tr&ecirc;n th&acirc;n c&acirc;y c&ograve;n cho biết mức độ ẩm ướt hay kh&ocirc; hạn của năm tương ứng.</p>', 'active', 'a09zB7BiwV.jpeg', '2019-05-12 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-12', 'normal'),
-(12, 6, 'Apple có thể không nâng cấp iOS 13 cho iPhone SE, 6', '<p>Những mẫu iPhone ra mắt từ 2014 v&agrave; iPhone SE c&oacute; thể kh&ocirc;ng được l&ecirc;n đời hệ điều h&agrave;nh iOS 13 ra mắt th&aacute;ng 6 tới.</p>\r\n\r\n<p>Theo&nbsp;<em>Phone Arena</em>, hệ điều h&agrave;nh iOS 13 sắp tr&igrave;nh l&agrave;ng tại hội nghị WWDC 2019 sẽ kh&ocirc;ng hỗ trợ một loạt iPhone đời cũ của Apple. Trong đ&oacute;, đ&aacute;ng ch&uacute; &yacute; l&agrave; c&aacute;c mẫu iPhone vẫn c&ograve;n được nhiều người d&ugrave;ng sử dụng như iPhone 6, 6s Plus hay SE.&nbsp;</p>', 'active', '9jOZGc7BJK.png', '2019-05-12 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'normal'),
-(13, 7, 'Hình dung về Honda Jazz thế hệ mới', '<p>Thế hệ thứ tư của mẫu hatchback Honda tiết chế bớt những đường n&eacute;t g&acirc;n guốc, thể thao để thay bằng n&eacute;t trung t&iacute;nh, hợp mắt người d&ugrave;ng hơn.&nbsp;</p>\r\n\r\n<p>Những h&igrave;nh ảnh đầu ti&ecirc;n về Honda Jazz (Fit tại Nhật Bản) thế hệ mới bắt đầu xuất hiện tr&ecirc;n đường thử. D&ugrave; chưa phải thiết kế ho&agrave;n chỉnh, thay đổi của mẫu hatchback cỡ B cho thấy những đường n&eacute;t trung t&iacute;nh m&agrave; xe sắp sở hữu. Điều n&agrave;y tr&aacute;i ngược với tạo h&igrave;nh g&acirc;n guốc, thể thao ở thế hệ thứ ba hiện tại của Jazz.&nbsp;</p>', 'active', 'g2c7mYXBPW.png', '2019-05-12 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-12', 'normal'),
-(14, 1, 'Hà Nội vào vòng knock-out AFC Cup', '<p>ĐKVĐ V-League đ&aacute;nh bại&nbsp;Tampines Rovers 2-0 v&agrave;o chiều 15/5 để đứng đầu bảng F.</p>\r\n\r\n<p>Tiếp đối thủ đến từ Singapore trong t&igrave;nh thế buộc phải thắng để tự quyết v&eacute; đi tiếp, H&agrave; Nội đ&atilde; c&oacute; trận đấu dễ d&agrave;ng. C&oacute; thể n&oacute;i, kết quả của trận đấu được định đoạt trong hiệp một khi Oseni v&agrave; Th&agrave;nh Chung lần lượt ghi b&agrave;n cho đội chủ nh&agrave;. Trong khi đ&oacute;, Tampines Rovers phải trả gi&aacute; cho lối chơi th&ocirc; bạo khi Yasir Hanapi nhận thẻ v&agrave;ng thứ hai rời s&acirc;n. Tiền vệ n&agrave;y bị trừng phạt bởi pha đ&aacute;nh nguội với Th&agrave;nh Chung ở đầu trận, sau đ&oacute; l&agrave; t&igrave;nh huống phạm lỗi &aacute;c &yacute; với Đ&igrave;nh Trọng.</p>', 'active', 'e7YyFZJCc8.jpeg', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'feature'),
-(15, 1, 'Man City vẫn dự Champions League mùa 2019-2020', '<p>Việc điều tra vi phạm luật c&ocirc;ng bằng t&agrave;i ch&iacute;nh của chủ s&acirc;n Etihad chưa thể ho&agrave;n th&agrave;nh trong v&ograve;ng một năm tới.</p>\r\n\r\n<p><em>Sports Mail</em>&nbsp;(Anh)&nbsp;cho biết, &aacute;n phạt cấm tham dự Champions League một m&ugrave;a với Man City, do vi phạm luật c&ocirc;ng bằng t&agrave;i ch&iacute;nh (FFP), chỉ được đưa ra sớm nhất v&agrave;o m&ugrave;a 2020-2021.</p>\r\n\r\n<p>Trong bức thư ngỏ gửi tới truyền th&ocirc;ng Anh, Man City viết: &quot;Ch&uacute;ng t&ocirc;i hợp t&aacute;c một c&aacute;ch thiện ch&iacute; với Tiểu ban kiểm so&aacute;t t&agrave;i ch&iacute;nh c&aacute;c CLB của UEFA (CFCB). CLB tin tưởng v&agrave;o sự độc lập v&agrave; cam kết của CFCB h&ocirc;m 7/3, rằng sẽ kh&ocirc;ng kết luận g&igrave; trong thời gian điều tra&quot;.</p>', 'active', 'exzJEG4WDU.jpeg', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'feature'),
-(16, 1, 'Những câu đố giúp rèn luyện trí não', '<p>Bạn cần quan s&aacute;t, suy luận logic v&agrave; c&oacute; vốn từ vựng tiếng Anh để giải quyết những c&acirc;u đố dưới đ&acirc;y.</p>\r\n\r\n<p>C&acirc;u 1:&nbsp;Mike đến một buổi phỏng vấn xin việc. Anh đ&atilde; g&acirc;y ấn tượng với gi&aacute;m đốc về những kỹ năng v&agrave; kinh nghiệm của m&igrave;nh. Tuy nhi&ecirc;n, để quyết định c&oacute; nhận Mike hay kh&ocirc;ng, nữ gi&aacute;m đốc đưa ra một c&acirc;u đố h&oacute;c b&uacute;a v&agrave; y&ecirc;u cầu Mike trả lời trong 30 gi&acirc;y.</p>\r\n\r\n<p>Nội dung c&acirc;u đố: H&atilde;y đưa ra 30 từ tiếng Anh kh&ocirc;ng c&oacute; chữ &quot;a&quot; xuất hiện trong đ&oacute;?&nbsp;</p>\r\n\r\n<p>Mike dễ d&agrave;ng giải quyết c&acirc;u đố. Theo bạn anh ấy n&oacute;i những từ tiếng Anh n&agrave;o để kịp trả lời trong 30 gi&acirc;y?</p>', 'active', 'TpcocqUjob.png', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'feature'),
-(17, 3, 'Cách nhận biết mật ong nguyên chất và pha trộn', '<p>Mật ong nguy&ecirc;n chất sẽ kh&ocirc;ng thấm qua tờ giấy, lắng xuống đ&aacute;y ly nước v&agrave; bị kiến ăn, kh&aacute;c với mật ong bị pha trộn tạp chất.</p>\r\n\r\n<p>Dược sĩ V&otilde; H&ugrave;ng Mạnh, Trưởng khoa Dược Bệnh viện Y học d&acirc;n tộc cổ truyền B&igrave;nh Định, cho biết thị trường c&oacute; nhiều loại mật ong bị pha trộn, chỉ nh&igrave;n bề ngo&agrave;i hay ngửi m&ugrave;i chưa chắc ph&acirc;n biệt được.</p>\r\n\r\n<p>Theo dược sĩ H&ugrave;ng, một c&aacute;ch ph&acirc;n biệt thật giả l&agrave; lấy cọng h&agrave;nh tươi nh&uacute;ng v&agrave;o lọ mật ong, lấy ra chừng v&agrave;i ph&uacute;t. Cọng l&aacute; h&agrave;nh sẽ chuyển từ m&agrave;u xanh l&aacute; sang sậm nếu mật ong thật. Ngo&agrave;i ra, c&oacute; thể nhỏ giọt mật v&agrave;o nơi c&oacute; kiến, nếu kiến kh&ocirc;ng bu giọt mật th&igrave; cũng l&agrave; mật ong thật.</p>\r\n\r\n<p>Ng&agrave;y nay, nhiều người đặt mật ong v&agrave;o ngăn đ&aacute; tủ lạnh, sau 24 giờ m&agrave; kh&ocirc;ng c&oacute; hiện tượng đ&ocirc;ng đ&aacute; th&igrave; l&agrave; mật thật.</p>', 'active', 'xvEqmF5uyJ.png', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'normal'),
-(18, 4, 'Nhiều tour mùa hè giảm giá hàng chục triệu đồng', '<p>C&aacute;c tour trong v&agrave; ngo&agrave;i nước đều được giảm gi&aacute; mạnh để k&iacute;ch cầu du lịch trong dịp h&egrave;, nhiều chương tr&igrave;nh khuyến m&atilde;i l&ecirc;n đến h&agrave;ng chục triệu đồng.</p>\r\n\r\n<p>Sau khi so s&aacute;nh tiền v&eacute; m&aacute;y bay, ph&ograve;ng kh&aacute;ch sạn ở Bali để chuẩn bị cho kỳ nghỉ h&egrave; của gia đ&igrave;nh, anh Sơn (ngụ quận 2, TP HCM) quyết định chuyển sang mua tour trọn g&oacute;i v&igrave; tiết kiệm hơn.</p>', 'active', 'd2ABCeBzoR.jpeg', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-15', 'feature'),
-(19, 7, 'BMW i8 Roadster - xe mui trần dẫn đường ở Formula E', '<p>Dịp cuối tuần qua, BMW giới thiệu chiếc xe dẫn đường, l&agrave;m nhiệm vụ đảm bảo an to&agrave;n tại giải đua xe Formula E. Giải đua tương tự giải F1, nhưng to&agrave;n bộ xe đua sử dụng động cơ điện.</p>\r\n\r\n<p>i8 Roadster Safety Car dựa tr&ecirc;n chiếc i8 Roadster ti&ecirc;u chuẩn, nhưng c&oacute; những thay đổi để trở th&agrave;nh chiếc xe dẫn đường chuy&ecirc;n dụng. Ngoại h&igrave;nh c&oacute; một số đặc điểm ấn tượng hơn so với nguy&ecirc;n bản. K&iacute;nh chắn gi&oacute; kiểu d&agrave;nh cho xe đua, trọng t&acirc;m hạ thấp 15 mm.</p>', 'active', '9fbeUKTBpU.png', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'normal'),
-(20, 3, 'Tia cực tím tại Hà Nội ở mức \'nguy hiểm\'', '<p>Chỉ số tia UV tại H&agrave; Nội ng&agrave;y 18-19/5 l&ecirc;n tới 11, mức được đ&aacute;nh gi&aacute; l&agrave; &quot;nguy hiểm&quot; dễ khiến da, mắt bị bỏng nhiệt.</p>\r\n\r\n<p>H&agrave; Nội đang trải qua đợt nắng n&oacute;ng gay gắt. Theo Trung t&acirc;m Dự b&aacute;o Kh&iacute; tượng Thủy văn Quốc gia, nhiệt độ cao nhất ở H&agrave; Nội ng&agrave;y 18/5 dao động trong khoảng 37 đến 39 độ C, c&oacute; nơi tr&ecirc;n 39 độ.&nbsp;Trang&nbsp;<em>World Weather Online</em>&nbsp;của Anh dự b&aacute;o chỉ số tia cực t&iacute;m tại H&agrave; Nội hai ng&agrave;y 18-19/5 đạt mức 11.&nbsp;</p>', 'active', 'C4DtP4ico8.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'normal'),
-(21, 2, 'Blockchain và trí tuệ nhân tạo AI làm thay đổi giáo dục trực tuyến', '<p>Blockchain khiến dữ liệu trở n&ecirc;n c&ocirc;ng khai, minh bạch với người học, AI gi&uacute;p cải thiện khả năng tương t&aacute;c v&agrave; giảng dạy với từng c&aacute; nh&acirc;n.</p>\r\n\r\n<p>Sự b&ugrave;ng nổ của Internet v&agrave; những c&ocirc;ng nghệ mới như chuỗi khối (Blockchain) v&agrave; tr&iacute; tuệ nh&acirc;n tạo (AI) đ&atilde; g&oacute;p phần l&agrave;m thay đổi nền gi&aacute;o dục tr&ecirc;n to&agrave;n thế giới, h&igrave;nh th&agrave;nh những nền tảng Online Learning với nhiều ưu thế.</p>\r\n\r\n<p><strong>Mobile Learning dự b&aacute;o l&agrave; &quot;Cuộc c&aacute;ch mạng tiếp theo&quot; của gi&aacute;o dục trực tuyến</strong></p>\r\n\r\n<p>Theo nghi&ecirc;n cứu của Global Market Insights, thị trường gi&aacute;o dục trực tuyến to&agrave;n cầu đang c&oacute; tốc độ ph&aacute;t triển nhanh chưa từng thấy khi nền tảng hạ tầng Internet ng&agrave;y c&agrave;ng ho&agrave;n thiện v&agrave; phủ s&oacute;ng rộng khắp. Gi&aacute; trị c&aacute;c start-up về EdTech (C&ocirc;ng ty c&ocirc;ng nghệ chuy&ecirc;n về gi&aacute;o dục) to&agrave;n cầu được ước t&iacute;nh hơn 190 tỷ USD v&agrave;o năm 2018 v&agrave; dự kiến vượt hơn 300 tỷ USD v&agrave;o năm 2025.</p>', 'active', 'gCPGos7mhY.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'feature'),
-(22, 6, 'Huawei nói lệnh cấm sẽ khiến Mỹ tụt hậu về 5G', '<p>Huawei khẳng định sắc lệnh mới của Mỹ sẽ chỉ c&agrave;ng khiến qu&aacute; tr&igrave;nh triển khai c&ocirc;ng nghệ 5G ở nước n&agrave;y th&ecirc;m chậm chạp v&agrave; đắt đỏ.</p>\r\n\r\n<p>H&atilde;ng c&ocirc;ng nghệ Trung Quốc tự nhận l&agrave; &quot;người dẫn đầu kh&ocirc;ng ai s&aacute;nh kịp về c&ocirc;ng nghệ 5G&quot;, n&ecirc;n việc bị hạn chế kinh doanh ở Mỹ chỉ dẫn đến kết cục l&agrave; Mỹ sẽ bị &quot;tụt lại ph&iacute;a sau&quot; trong việc triển khai c&ocirc;ng nghệ kết nối di động thế hệ mới</p>', 'active', 'nt1QxhKUXM.jpeg', '2019-05-17 00:00:00', 'hailan', NULL, NULL, '2019-05-16', 'feature'),
-(23, 6, 'Asus ra mắt Zenfone 6 với camera lật tự động', '<p>Với thiết kế m&agrave;n h&igrave;nh tr&agrave;n viền ho&agrave;n to&agrave;n kh&ocirc;ng tai thỏ, camera ch&iacute;nh 48 megapixel tr&ecirc;n Zenfone 6 c&oacute; thể lật từ sau ra trước biến th&agrave;nh camera selfie.</p>\r\n\r\n<p>Zenfone 6 l&agrave; một trong những smartphone c&oacute; viền m&agrave;n h&igrave;nh mỏng nhất tr&ecirc;n thị trường với tỷ lệ m&agrave;n h&igrave;nh hiển thị chiếm tới 92% diện t&iacute;ch mặt trước. M&aacute;y c&oacute; m&agrave;n h&igrave;nh 6,4 inch tr&agrave;n viền ra cả bốn cạnh, kh&ocirc;ng tai thỏ như một số mẫu Zenfone trước v&agrave; cũng kh&ocirc;ng d&ugrave;ng thiết kế đục lỗ như Galaxy S10, S10+</p>', 'inactive', 'kHTnxchzx4.jpeg', '2019-05-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', '2019-05-16', 'normal');
+INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`, `created`, `created_by`, `modified`, `modified_by`, `publish_at`, `type`, `title_seo`, `description_seo`) VALUES
+(23, 4, 'Thông tin và kỹ thuật nuôi cá bảy màu guppy', '<p>Chọn ra 2 con c&aacute; m&aacute;i đẹp nhất v&agrave; 1 con trống đẹp nhất cho v&agrave;o 1 bể 2 - 5 gallon. Việc sử dụng 1 con trống sẽ gi&uacute;p bạn dễ nhận biết được những đặc t&iacute;nh m&agrave; con trống truyền lại cho con của n&oacute;, nhờ đ&oacute; bạn c&oacute; thể t&igrave;m những con trống tốt nhất. Nếu những con m&aacute;i kh&ocirc;ng c&oacute; thai trong v&ograve;ng 2 th&aacute;ng, h&atilde;y th&ecirc;m v&agrave;o bể 1 con c&aacute; trống kh&aacute;c. Bể nhỏ sẽ gi&uacute;p c&aacute; trống dễ &quot;t&igrave;m thấy&quot; c&aacute; m&aacute;i hơn.</p>', 'active', '5fLUkQdtEO.jpeg', '2019-05-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', '2019-05-16', 'normal', '<meta name=\"author\" content=\"John Doe\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">', '<meta name=\"keywords\" content=\"HTML, CSS, JavaScript\">'),
+(32, 4, 'Mẹo Nuôi Cá 7 Màu Mau Lớn | Đẻ Nhiều | Lên Màu Đẹp | Không Cần Oxy', '<p><strong>C&aacute; 7 m&agrave;u</strong>&nbsp;l&agrave; một trong những loại c&aacute; cảnh đẹp dễ nu&ocirc;i được d&acirc;n chơi ở mọi lứa tuổi y&ecirc;u th&iacute;ch v&agrave; đặc biệt cũng l&agrave; c&aacute; cảnh dễ nu&ocirc;i kh&ocirc;ng cần oxy những vẫn đẻ nhiều, l&ecirc;n m&agrave;u đẹp.</p>\r\n\r\n<p>Tuy nhi&ecirc;n m&igrave;nh biết c&aacute;c bạn kh&aacute; kh&oacute; khăn cho thời gian đầu nu&ocirc;i c&aacute; bảy m&agrave;u v&igrave; đ&acirc;y l&agrave; loại c&aacute; rất mẫn cảm với sự biến đổi của m&ocirc;i trường nước v&agrave; c&aacute;c loại dịch bệnh n&ecirc;n nếu kh&ocirc;ng c&oacute; kỹ thuật trong c&aacute;ch nu&ocirc;i, c&aacute; c&oacute; thể bị chết nguy&ecirc;n bầy. Vậy n&ecirc;n, trước khi c&oacute; &yacute; định nu&ocirc;i c&aacute; 7 m&agrave;u d&ugrave; rằng bạn nu&ocirc;i c&aacute; trong th&ugrave;ng xốp, th&ugrave;ng nhựa nu&ocirc;i c&aacute;, bể thủy tinh hay xi măng đi nữa th&igrave; h&atilde;y khoan dừng lại v&agrave; c&ugrave;ng ch&uacute;ng t&ocirc;i t&igrave;m hiểu 1 số th&ocirc;ng tin về lo&agrave;i c&aacute; n&agrave;y v&agrave; c&aacute;ch nu&ocirc;i c&aacute; bảy m&agrave;u &iacute;t chị chết để c&oacute; th&ecirc;m kinh nghi&ecirc;m trong việc nu&ocirc;i c&aacute; cảnh nh&eacute;.</p>', 'active', 'VPOTIi7RaP.jpeg', '2020-11-17 00:00:00', 'hailan', NULL, NULL, NULL, 'featured', '<meta charset=\"UTF-8\">', '<meta name=\"description\" content=\"Free Web tutorials\">');
 
 -- --------------------------------------------------------
 
@@ -121,8 +105,39 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `contact`, `created_date`, `contact_by`) VALUES
-(1, 'Lê Trương Định', '0364764002', 'admin@gmail.com', 'no', '2020-11-16 00:00:00', 'truongdinh'),
-(2, 'Nguyễn Đình Duy', '0984623094', 'dinhduy@gmail.com', 'yes', '2020-11-17 00:00:00', 'truongdinh');
+(1, 'Lê Trương Định', '0364764002', 'admin@gmail.com', 'no', '2020-11-17 00:00:00', ''),
+(2, 'Nguyễn Đình Duy', '0984623094', 'dinhduy@gmail.com', 'yes', '2020-11-18 00:00:00', 'truongdinh');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coupon`
+--
+
+CREATE TABLE `coupon` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `type_coupon` varchar(255) NOT NULL,
+  `value` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `total_used` int(11) DEFAULT NULL,
+  `date_start` datetime NOT NULL,
+  `date_end` datetime NOT NULL,
+  `price_start` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `code`, `type_coupon`, `value`, `total`, `total_used`, `date_start`, `date_end`, `price_start`, `status`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(6, 'abc123', 'percent', 5, 10, NULL, '2020-11-27 00:00:00', '2020-12-09 00:00:00', 200000, 'active', '2020-11-18 00:00:00', 'truongdinh', NULL, NULL),
+(7, 'ttZynLO5JX', 'percent', 15, 10, NULL, '2020-11-19 00:00:00', '2020-11-26 00:00:00', 100000, 'active', '2020-11-18 00:00:00', 'truongdinh', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,8 +163,8 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `name`, `description`, `thumb`, `created`, `created_by`, `modified`, `modified_by`, `status`, `combostar`) VALUES
-(1, 'Lê Trương Định', '<p><strong>C&aacute; c&oacute; nguồn gốc từ Jamaica, sống trong những vũng vịnh cạn, eo biển, mương r&atilde;nh v&agrave; dọc theo bờ biển. Năm 1866, Robert John Lechmere Guppy sống ở đảo Trinidad thuộc British West Indies gửi một v&agrave;i con c&aacute; n&agrave;y đến bảo t&agrave;ng Anh để nhận dạng. Albert C. L. G. Gunther của bảo t&agrave;ng n&agrave;y đặt t&ecirc;n khoa học cho n&oacute; l&agrave; Girardinus guppii để ghi c&ocirc;ng Guppy v&agrave;o cuối năm đ&oacute;.</strong></p>', '2bxGrDRkuO.jpeg', '2020-11-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', 'active', 5),
-(2, 'Nguyễn Văn Nam', '<p>Đ&acirc;y l&agrave; giống c&aacute; dễ nu&ocirc;i, sinh sản nhanh, đa dạng v&agrave; phong ph&uacute; nhất trong số c&aacute;c lo&agrave;i c&aacute; cảnh (về m&agrave;u sắc). C&aacute; bảy m&agrave;u nhập ngoại v&agrave;o Việt Nam c&oacute; 2 loại ch&iacute;nh: bảy m&agrave;u đu&ocirc;i rắn v&agrave; bảy m&agrave;u th&acirc;n xanh đen, đu&ocirc;i m&agrave;u xanh biếc, đỏ điểm vạch trắng. Ở c&aacute;c nước kh&aacute;c c&oacute; c&aacute; bảy m&agrave;u to&agrave;n th&acirc;n đen tuyền chưa thấy c&oacute; tại Việt Nam.</p>', 'AGfGJC2tA6.png', '2020-11-17 00:00:00', 'hailan', '2020-11-17 00:00:00', 'hailan', 'active', 5);
+(1, 'Lê Trương Định', '<p><strong>C&aacute; c&oacute; nguồn gốc từ Jamaica, sống trong những vũng vịnh cạn, eo biển, mương r&atilde;nh v&agrave; dọc theo bờ biển. Năm 1866, Robert John Lechmere Guppy sống ở đảo Trinidad thuộc British West Indies gửi một v&agrave;i con c&aacute; n&agrave;y đến bảo t&agrave;ng Anh để nhận dạng. Albert C. L. G. Gunther của bảo t&agrave;ng n&agrave;y đặt t&ecirc;n khoa học cho n&oacute; l&agrave; Girardinus guppii để ghi c&ocirc;ng Guppy v&agrave;o cuối năm đ&oacute;.</strong></p>', '2bxGrDRkuO.jpeg', '2020-11-17 00:00:00', 'truongdinh', '2020-11-18 00:00:00', 'truongdinh', 'active', 5),
+(2, 'Nguyễn Văn Nam', '<p>Đ&acirc;y l&agrave; giống c&aacute; dễ nu&ocirc;i, sinh sản nhanh, đa dạng v&agrave; phong ph&uacute; nhất trong số c&aacute;c lo&agrave;i c&aacute; cảnh (về m&agrave;u sắc). C&aacute; bảy m&agrave;u nhập ngoại v&agrave;o Việt Nam c&oacute; 2 loại ch&iacute;nh: bảy m&agrave;u đu&ocirc;i rắn v&agrave; bảy m&agrave;u th&acirc;n xanh đen, đu&ocirc;i m&agrave;u xanh biếc, đỏ điểm vạch trắng. Ở c&aacute;c nước kh&aacute;c c&oacute; c&aacute; bảy m&agrave;u to&agrave;n th&acirc;n đen tuyền chưa thấy c&oacute; tại Việt Nam.</p>', 'AGfGJC2tA6.png', '2020-11-17 00:00:00', 'truongdinh', '2020-11-18 00:00:00', 'truongdinh', 'active', 2);
 
 -- --------------------------------------------------------
 
@@ -174,7 +189,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `question`, `answer`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
-(2, 'Tôi đã 60 tuổi có trồng răng implant được không?', '<p>B&aacute;c Chế th&acirc;n mến, cảm ơn b&aacute;c đ&atilde; tin tưởng gửi gắm c&acirc;u hỏi đến cho ch&uacute;ng t&ocirc;i. Nha khoa Nh&acirc;n T&acirc;m xin được giải đ&aacute;p c&acirc;u hỏi &ldquo;60 tuổi&nbsp;c&oacute; trồng răng implant được kh&ocirc;ng?&rdquo;&nbsp;như sau:</p>\r\n\r\n<p><em>Tuổi t&aacute;c kh&ocirc;ng ảnh hưởng g&igrave; đến việc trồng răng implant. Quan trọng l&agrave; sức khỏe của b&aacute;c phải được chuẩn bị tốt th&igrave; vẫn c&oacute; thể&nbsp;<strong>cấy gh&eacute;p implant</strong>&nbsp;b&igrave;nh thường v&agrave; cơ hội th&agrave;nh c&ocirc;ng rất cao. Cấy gh&eacute;p implant chỉ hạn chế ở những người c&oacute; bệnh tiểu đường, tim mạch, nghiện thuốc l&aacute; nặng, bệnh nha chu.</em></p>\r\n\r\n<p>- Trường hợp mắc bệnh tiểu đường: Cần kiểm so&aacute;t cho đường huyết ổn định trước rồi mới c&oacute; thể&nbsp;cấy gh&eacute;p implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh tim mạch: <s>B&aacute;c sĩ nha khoa sẽ phối hợp với B&aacute;c sĩ tim mạch để c&oacute; thể l&agrave;m implant cho bệnh nh&acirc;n.</s></p>\r\n\r\n<p>- Trường hợp nghiện thuốc l&aacute;: Cần hạn chế h&uacute;t thuốc l&aacute; tối đa trong qu&aacute; tr&igrave;nh l&agrave;m implant v&igrave; h&uacute;t thuốc l&aacute; tr&ecirc;n 10 điếu/ng&agrave;y c&oacute; thể l&agrave;m hỏng implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh nha chu g&acirc;y mất xương: Cần phải gh&eacute;p xương v&agrave; chờ t&iacute;ch hợp. Bệnh nha chu cũng rất dễ t&aacute;i ph&aacute;t n&ecirc;n cần bệnh nh&acirc;n phải vệ sinh răng miệng thật cẩn thận để c&oacute; thể giữ được implant vững chắc.</p>\r\n\r\n<p><strong>Nha khoa Nh&acirc;n T&acirc;m đ&atilde; thực hiện cấy gh&eacute;p implant th&agrave;nh c&ocirc;ng cho rất nhiều trường hợp bệnh nh&acirc;n lớn tuổi, mang lại một h&agrave;m răng đều đẹp, chắc khỏe.</strong></p>\r\n\r\n<p>Nếu b&aacute;c đ&atilde; 60 tuổi nhưng kh&ocirc;ng c&oacute; c&aacute;c vấn đề cản trở tr&ecirc;n th&igrave; vẫn c&oacute; thể trồng răng implant với tỷ lệ th&agrave;nh c&ocirc;ng rất cao. V&agrave; nếu c&oacute; yếu tố n&agrave;o cản trở th&igrave; chỉ cần chuẩn bị tốt vẫn c&oacute; thể l&agrave;m được implant. Ch&uacute;c b&aacute;c sớm c&oacute; một h&agrave;m răng đẹp v&agrave; khỏe mạnh.</p>', '2020-11-14 00:00:00', 'truongdinh', '2020-11-16 00:00:00', 'hailan', 'active', 1),
+(2, 'Tôi đã 60 tuổi có trồng răng implant được không?', '<p>B&aacute;c Chế th&acirc;n mến, cảm ơn b&aacute;c đ&atilde; tin tưởng gửi gắm c&acirc;u hỏi đến cho ch&uacute;ng t&ocirc;i. Nha khoa Nh&acirc;n T&acirc;m xin được giải đ&aacute;p c&acirc;u hỏi &ldquo;60 tuổi&nbsp;c&oacute; trồng răng implant được kh&ocirc;ng?&rdquo;&nbsp;như sau:</p>\r\n\r\n<p><em>Tuổi t&aacute;c kh&ocirc;ng ảnh hưởng g&igrave; đến việc trồng răng implant. Quan trọng l&agrave; sức khỏe của b&aacute;c phải được chuẩn bị tốt th&igrave; vẫn c&oacute; thể&nbsp;<strong>cấy gh&eacute;p implant</strong>&nbsp;b&igrave;nh thường v&agrave; cơ hội th&agrave;nh c&ocirc;ng rất cao. Cấy gh&eacute;p implant chỉ hạn chế ở những người c&oacute; bệnh tiểu đường, tim mạch, nghiện thuốc l&aacute; nặng, bệnh nha chu.</em></p>\r\n\r\n<p>- Trường hợp mắc bệnh tiểu đường: Cần kiểm so&aacute;t cho đường huyết ổn định trước rồi mới c&oacute; thể&nbsp;cấy gh&eacute;p implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh tim mạch: <s>B&aacute;c sĩ nha khoa sẽ phối hợp với B&aacute;c sĩ tim mạch để c&oacute; thể l&agrave;m implant cho bệnh nh&acirc;n.</s></p>\r\n\r\n<p>- Trường hợp nghiện thuốc l&aacute;: Cần hạn chế h&uacute;t thuốc l&aacute; tối đa trong qu&aacute; tr&igrave;nh l&agrave;m implant v&igrave; h&uacute;t thuốc l&aacute; tr&ecirc;n 10 điếu/ng&agrave;y c&oacute; thể l&agrave;m hỏng implant.</p>\r\n\r\n<p>- Trường hợp mắc bệnh nha chu g&acirc;y mất xương: Cần phải gh&eacute;p xương v&agrave; chờ t&iacute;ch hợp. Bệnh nha chu cũng rất dễ t&aacute;i ph&aacute;t n&ecirc;n cần bệnh nh&acirc;n phải vệ sinh răng miệng thật cẩn thận để c&oacute; thể giữ được implant vững chắc.</p>\r\n\r\n<p><strong>Nha khoa Nh&acirc;n T&acirc;m đ&atilde; thực hiện cấy gh&eacute;p implant th&agrave;nh c&ocirc;ng cho rất nhiều trường hợp bệnh nh&acirc;n lớn tuổi, mang lại một h&agrave;m răng đều đẹp, chắc khỏe.</strong></p>\r\n\r\n<p>Nếu b&aacute;c đ&atilde; 60 tuổi nhưng kh&ocirc;ng c&oacute; c&aacute;c vấn đề cản trở tr&ecirc;n th&igrave; vẫn c&oacute; thể trồng răng implant với tỷ lệ th&agrave;nh c&ocirc;ng rất cao. V&agrave; nếu c&oacute; yếu tố n&agrave;o cản trở th&igrave; chỉ cần chuẩn bị tốt vẫn c&oacute; thể l&agrave;m được implant. Ch&uacute;c b&aacute;c sớm c&oacute; một h&agrave;m răng đẹp v&agrave; khỏe mạnh.</p>', '2020-11-14 00:00:00', 'truongdinh', '2020-11-16 00:00:00', 'hailan', 'active', 6),
 (3, 'LIST 17 QUÁN CAFE ĐẸP Ở SÀI GÒN CÓ KHÔNG GIAN ĐỘC, LẠ, MỚI NHẤT 2020', '<p><strong><em>Đ&ocirc;i khi, người ta t&igrave;m đến những qu&aacute;n c&agrave; ph&ecirc; chẳng phải để thưởng thức những m&oacute;n đồ uống th&ocirc;ng thường. Đ&oacute; đ&atilde; trở th&agrave;nh một nơi tr&uacute; ngụ y&ecirc;n b&igrave;nh cho t&acirc;m hồn, hay đơn giản chỉ l&agrave; d&agrave;nh thời gian b&ecirc;n những người th&acirc;n y&ecirc;u. M&igrave;nh sẽ giới thiệu cho c&aacute;c bạn list 17 <a href=\"http://travelgear.mozello.com/blog/params/post/2100020/quan-cafe-dep-o-sai-gon\" target=\"_self\">qu&aacute;n cafe đẹp ở S&agrave;i G&ograve;n</a> c&oacute; kh&ocirc;ng gian độc, lạ, mới nhất 2020.&nbsp;</em></strong></p>', '2020-11-14 00:00:00', 'truongdinh', NULL, NULL, 'active', 2),
 (4, 'AQ có thể nằm bất kỳ vị trí nào trên trang', '<p>AQ c&oacute; thể nằm bất kỳ vị tr&iacute; n&agrave;o tr&ecirc;n trangAQ c&oacute; thể nằm bất kỳ vị tr&iacute; n&agrave;o tr&ecirc;n trang</p>', '2020-11-14 00:00:00', 'truongdinh', NULL, NULL, 'active', 3);
 
@@ -199,8 +214,35 @@ CREATE TABLE `script` (
 --
 
 INSERT INTO `script` (`id`, `name`, `created`, `created_by`, `modified`, `modified_by`, `script`) VALUES
-(4, 'head', '2020-11-16 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content Profile</div>'),
-(5, 'footer', '2020-11-16 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content');
+(4, 'head', '2020-11-16 00:00:00', 'truongdinh', '2020-11-18 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content Profile</div>'),
+(5, 'footer', '2020-11-16 00:00:00', 'truongdinh', '2020-11-18 00:00:00', 'truongdinh', '<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content\r\n<div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\">Content');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping`
+--
+
+CREATE TABLE `shipping` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `price` text NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` text DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shipping`
+--
+
+INSERT INTO `shipping` (`id`, `name`, `status`, `price`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(1, 'Bình Định', 'active', '10000', '2020-11-17 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'hailan'),
+(2, 'An Giang', 'active', '30000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL),
+(3, 'Hà Nội', 'active', '20000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL),
+(4, 'TP Hồ Chí Minh', 'active', '50000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,8 +270,7 @@ CREATE TABLE `slider` (
 INSERT INTO `slider` (`id`, `name`, `description`, `link`, `thumb`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
 (1, 'Khóa học lập trình Frontend Master', 'Khóa học sẽ giúp bạn trở thành một chuyên gia Frontend với đầy đủ các kiến thức về HTML, CSS, JavaScript, Bootstrap, jQuery, chuyển PSD thành HTML ...', 'https://zendvn.com/khoa-hoc-lap-trinh-frontend-master/', 'rEpDUQCxe4.jpeg', '2019-04-15 00:00:00', 'hailan', '2019-04-24 13:28:03', 'hailan', 'active'),
 (2, 'Học lập trình trực tuyến', 'Học trực tuyến giúp bạn tiết kiệm chi phí, thời gian, cập nhật được nhiều kiến thức mới nhanh nhất và hiệu quả nhất', 'https://zendvn.com/', 'K6B1O6UNCb.jpeg', '2019-04-18 00:00:00', 'hailan', '2019-04-24 13:28:06', 'hailan', 'active'),
-(3, 'Ưu đãi học phí', 'Tổng hợp các trương trình ưu đãi học phí hàng tuần, hàng tháng đến tất các các bạn với các mức giảm đặc biệt 50%, 70%,..', 'https://zendvn.com/uu-dai-hoc-phi-tai-zendvn/', 'LWi6hINpXz.jpeg', '2019-04-24 00:00:00', 'hailan', '2019-04-24 13:28:09', NULL, 'active'),
-(4, 'Ưu đãi học phí 123', 'Tổng hợp các trương trình ưu đãi học phí hàng tuần, hàng tháng đến tất các các bạn với các mức giảm đặc biệt 50%, 70%,..', 'https://zendvn.com/uu-dai-hoc-phi-tai-zendvn/', 'JDTZj3otlE.jpeg', '2020-11-14 00:00:00', 'hailan', '2020-11-14 00:00:00', 'hailan', 'inactive');
+(3, 'Ưu đãi học phí', 'Tổng hợp các trương trình ưu đãi học phí hàng tuần, hàng tháng đến tất các các bạn với các mức giảm đặc biệt 50%, 70%,..', 'https://zendvn.com/uu-dai-hoc-phi-tai-zendvn/', 'LWi6hINpXz.jpeg', '2019-04-24 00:00:00', 'hailan', '2019-04-24 13:28:09', NULL, 'active');
 
 -- --------------------------------------------------------
 
@@ -283,7 +324,7 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id`, `link`, `status`, `created`, `created_by`, `modified`, `modified_by`) VALUES
-(1, 'https://www.youtube.com/watch?v=Fpgg12zFzbs&list=PLv6GftO355Aue6eFwcf-GirTEzuD-99nu', 'active', '2020-11-14 00:00:00', 'truongdinh', '2020-11-16 00:00:00', 'hailan');
+(1, 'https://www.youtube.com/watch?v=tlei_DA6KLA&list=PLv6GftO355Atnyfxhr3O2RJ_xJEeDcRJg', 'active', '2020-11-14 00:00:00', 'truongdinh', '2020-11-18 00:00:00', 'hailan');
 
 --
 -- Indexes for dumped tables
@@ -308,6 +349,12 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `coupon`
+--
+ALTER TABLE `coupon`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -323,6 +370,12 @@ ALTER TABLE `question`
 -- Indexes for table `script`
 --
 ALTER TABLE `script`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipping`
+--
+ALTER TABLE `shipping`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -351,7 +404,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -364,6 +417,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `coupon`
+--
+ALTER TABLE `coupon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -382,6 +441,12 @@ ALTER TABLE `question`
 --
 ALTER TABLE `script`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `shipping`
+--
+ALTER TABLE `shipping`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `slider`

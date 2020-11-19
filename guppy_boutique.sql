@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2020 at 03:13 PM
+-- Generation Time: Nov 19, 2020 at 01:00 PM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,6 +55,48 @@ INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attribute`
+--
+
+CREATE TABLE `attribute` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `attribute_group_id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attribute`
+--
+
+INSERT INTO `attribute` (`id`, `name`, `attribute_group_id`, `status`) VALUES
+(15, 'Màu sắc', 4, 'active'),
+(16, 'Số tháng', 4, 'active'),
+(17, 'Cám thái 3/5', 5, 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attribute_group`
+--
+
+CREATE TABLE `attribute_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attribute_group`
+--
+
+INSERT INTO `attribute_group` (`id`, `name`, `status`) VALUES
+(4, 'Guppy', 'active'),
+(5, 'Cám cá ăn', 'active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -83,6 +125,38 @@ INSERT INTO `category` (`id`, `name`, `status`, `created`, `created_by`, `modifi
 (6, 'Số hóa', 'active', '2019-05-04 00:00:00', 'admin', '2019-05-15 15:04:38', 'hailan', 'no', 'grid'),
 (7, 'Xe - Ô tô', 'active', '2019-05-04 00:00:00', 'admin', '2019-05-15 15:04:36', 'hailan', 'no', 'list'),
 (8, 'Kinh doanh', 'active', '2019-05-12 00:00:00', 'hailan', NULL, NULL, 'no', 'list');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_product`
+--
+
+CREATE TABLE `category_product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `_lft` int(10) NOT NULL,
+  `_rgt` int(10) NOT NULL,
+  `parent_id` int(10) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `ordering` int(100) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(222) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category_product`
+--
+
+INSERT INTO `category_product` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `status`, `ordering`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(10, 'Guppy', 7, 12, NULL, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL),
+(11, 'Có ribbon', 8, 9, 10, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL),
+(12, 'Không ribbon', 10, 11, 10, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL),
+(13, 'Cám cho cá', 13, 18, NULL, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL),
+(14, 'Cám thái 3/5', 14, 15, 13, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL),
+(15, 'Cám thái 2/3', 16, 17, 13, 'active', NULL, '2020-11-19 00:00:00', 'duynguyen', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -169,6 +243,35 @@ INSERT INTO `feedback` (`id`, `name`, `description`, `thumb`, `created`, `create
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `thumb` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `category_product_id` int(11) NOT NULL,
+  `attribute` varchar(255) NOT NULL,
+  `attribute_group_id` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `thumb`, `price`, `link`, `category_product_id`, `attribute`, `attribute_group_id`, `status`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(20, 'Guppy fullgold', '[\"1-5fb65cdb68397_guppy_dragon_violet.jpg\",\"1-5fb65cdb74a09_guppy_dumbo_redtail.jpg\",\"1-5fb65cdba4bfb_guppy_full_gold_rb.jpg\",\"1-5fb65cdbae1d4_guppy_full_red.jpg\"]', 100000, 'https://www.youtube.com/watch?v=ePfZR3b52hs', 10, '[{\"name\":\"S\\u1ed1 th\\u00e1ng\",\"value\":[\"3 th\\u00e1ng\",\"4 th\\u00e1ng\"]},{\"name\":\"M\\u00e0u s\\u1eafc\",\"value\":[\"\\u0111\\u1ecf\",\"xanh\"]}]', 4, 'active', '2020-11-19 00:00:00', 'duy-nguyen', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `question`
 --
 
@@ -242,7 +345,7 @@ INSERT INTO `shipping` (`id`, `name`, `status`, `price`, `created`, `created_by`
 (1, 'Bình Định', 'active', '10000', '2020-11-17 00:00:00', 'truongdinh', '2020-11-17 00:00:00', 'hailan'),
 (2, 'An Giang', 'active', '30000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL),
 (3, 'Hà Nội', 'active', '20000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL),
-(4, 'TP Hồ Chí Minh', 'active', '50000', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL);
+(4, 'TP Hồ Chí Minh', 'active', '0', '2020-11-17 00:00:00', 'truongdinh', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -337,10 +440,28 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
+-- Indexes for table `attribute`
+--
+ALTER TABLE `attribute`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `attribute_group`
+--
+ALTER TABLE `attribute_group`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `category_product`
+--
+ALTER TABLE `category_product`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `contact`
@@ -358,6 +479,12 @@ ALTER TABLE `coupon`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -407,10 +534,28 @@ ALTER TABLE `article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
+-- AUTO_INCREMENT for table `attribute`
+--
+ALTER TABLE `attribute`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `attribute_group`
+--
+ALTER TABLE `attribute_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `category_product`
+--
+ALTER TABLE `category_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -429,6 +574,12 @@ ALTER TABLE `coupon`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `question`

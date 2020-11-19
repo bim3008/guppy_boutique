@@ -80,6 +80,19 @@ $(document).ready(function(){
            ''+message+'' , {className: "success", position: "top", autoHideDelay: 1000, }
         );
     }
-
+    
 }) ;
 
+//ADMIN - PRODUCT - ATTRIBUTE
+function showName(url){
+    let id = $('#attribute-group').val();
+    url = url.replace('attribute_new', id); // 
+    $.get(url, function(data) { 
+       $('.new').remove();
+       $.each(data, function(index, value) {
+          let name = value ;
+          $('.x_content_attribute').after('<div class="form-group new" id="attr"><label  class="control-label col-md-3 col-sm-3 col-xs-12"> '+ value +'</label><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-6 col-xs-12  input-tags-attr" name="attribute['+name+'][]" type="text" ></div></div>');
+          $('.input-tags-attr').tagsInput();
+        });
+   }, 'json');
+}

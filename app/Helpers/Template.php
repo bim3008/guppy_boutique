@@ -1,6 +1,7 @@
 <?php 
 namespace App\Helpers;
 use Config;
+use App\Models\CategoryProductModel;
 
 class Template {
     public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch) { // $currentFilterStatus active inactive all
@@ -105,6 +106,23 @@ class Template {
             '<img src="%s" alt="%s" class="zvn-thumb">', asset("images/$controllerName/$thumbName")  , $thumbAlt );
         return $xhtml;
     }
+    public static function showItemThumbUpload ($thumbName, $thumbAlt) {
+        $xhtml = null;
+        foreach ($thumbName as $value) {
+            $xhtml .= sprintf(
+                '<img src="%s" alt="%s" style="height: 100px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
+        }
+       
+        return $xhtml;
+    }
+    public static function showAttribute ($attribute) {
+        $xhtml = null;
+        foreach ($attribute as $key => $value) {
+            $tmp =  implode(',', $value['value']);
+            $xhtml .= $value['name'] .': ' . $tmp . '<br>';
+        }
+        return $xhtml;
+    }
     public static function showButtonAction ($controllerName, $id) {
         $tmplButton   = Config::get('zvn.template.button');
         $buttonInArea = Config::get('zvn.config.button');
@@ -176,5 +194,40 @@ class Template {
             $xhtml = number_format($value) . " VNĐ" ;
         }
         return $xhtml ;
+    }
+    public static function getName($items){
+        $level  = $items['depth'];
+        $name   = $items['name'];
+        $xhtml  = null;
+        for ($i=1; $i <= $level; $i++) { 
+            $xhtml .= '|---';
+        }
+        return  $xhtml . $name;
+    }
+    public static function showIconOrderingCategortyProduct($controllerName, $item, $prefix = ''){
+        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
+        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
+        $node = CategoryProductModel::find($item->id);
+        if(!$node->getPrevSibling()) $arrowUp = '';
+        if(!$node->getNextSibling()) $arrowDown = '';
+        return $ordering = $arrowUp.$arrowDown;
+       
+    }
+    public static function showSelectedParent($item, $itemsCategories){
+        $xhtml = '<select class="custom-select form-control col-md-6 col-xs-12" name="parent_id">';
+        $xhtml .= '<option  name="none" value="none">No parent</option>';
+        
+        foreach ($itemsCategories as $key => $items){
+            if(!empty($item['id']) && $item['id'] == $items['id']) continue;
+           $name       = Template::getName($items);
+           if($item['parent_id'] == $items['id']) {
+            //  continue;
+                $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
+           }else{
+                $xhtml .= sprintf('<option value="%s" >%s</option>', $items['id'], $name);
+           }
+        }
+        $xhtml .= '</select>';
+        return $xhtml;
     }
 }

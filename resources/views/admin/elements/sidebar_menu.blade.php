@@ -14,8 +14,20 @@
         <ul class="nav side-menu">
             <li><a href="{{ route('dashboard')  }}"><i class="fa fa-home">          </i> Trang quản lý          </a></li>
             <li><a href="{{ route('slider')     }}"><i class="fa fa-sliders">       </i> Silders                </a></li>
-            <li><a href="{{ route('category')   }}"><i class="fa fa fa-building-o"> </i> Thư mục bài viết       </a></li>
+            <li><a><i class="fa fa fa-building-o"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ route('category')}}"></i> Danh mục bài viết  </a></li>
+                    <li><a href="{{ route('categoryProduct')}}"></i> Danh mục sản phẩm     </a></li>
+                </ul>
+            </li>
             <li><a href="{{ route('article')    }}"><i class="fa fa-newspaper-o">   </i> Bài viết                </a></li>
+            <li><a><i class="fa fa-product-hunt"></i> Sản phẩm <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ route('product')}}"></i> Sản phẩm  </a></li>
+                    <li><a href="{{ route('attribute')}}"></i> Thuộc tính     </a></li>
+                    <li><a href="{{ route('attributeGroup')}}"></i> Nhóm thuộc tính     </a></li>
+                </ul>
+            </li>
             <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>
             <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ     </a></li>
             <li><a href="{{ route('script')     }}"> <i class="fa fa-code">         </i> Thêm đoạn mã           </a></li>

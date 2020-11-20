@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use App\Models\AdminModel;
-use App\Models\AttributeModel as AttributeModel;
+use App\Models\AttributeModel   as AttributeModel;
+use App\Models\TagModel         as TagModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB; 
+use DB;
+
+use function GuzzleHttp\json_decode;
+
 class ProductModel extends AdminModel
 {
     public function __construct() {
@@ -92,8 +96,9 @@ class ProductModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'status' ,'price','thumb','category_product_id', 'attribute','attribute_group_id', 'link')
-                        ->where('id', $params['id'])
+            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 't.name as tag_name')
+                        ->leftJoin('tag as t', 'product.tag', '=', 't.id')
+                        ->where('product.id', $params['id'])
                         ->first()
                         ->toArray();
             
@@ -132,6 +137,9 @@ class ProductModel extends AdminModel
 
 
         if($options['task'] == 'add-item') {
+            $idTag              = TagModel::select('id')->where('name', $params['tag'])->get();
+            $tag                = json_decode($idTag);
+            $params['tag']      = $tag[0]->id;
             if (isset($params['attribute'])) {
                 foreach($params['attribute'] as $key => $value){
                     $value = explode(',',$value[0]) ;

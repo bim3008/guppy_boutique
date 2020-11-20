@@ -13,6 +13,10 @@ return [
         'form_input' => [
             'class' => 'form-control col-md-6 col-xs-12' ,
         ],
+
+        'form_input_tag' => [
+            'class' => 'form-control col-md-6 col-xs-12 input-tags-attr' ,
+        ],
         'form_input_code' => [
             'class' => 'form-control col-md-6 col-xs-12',
             'style' => 'width:78%',
@@ -107,7 +111,8 @@ return [
             'attributeGroup'    => ['name'],
             'attribute'         => ['name'],
             'product'           => ['name'],
-            'categoryProduct'           => ['name'],
+            'tag'               => ['name'],
+            'categoryProduct'   => ['name'],
         ],
         'button' => [
             'default'           => ['edit', 'delete'],
@@ -124,7 +129,8 @@ return [
             'attributeGroup'    => ['edit','delete'],
             'attribute'         => ['edit','delete'],
             'product'           => ['edit','delete'],
-            'categoryProduct'           => ['edit','delete'],
+            'tag'               => ['edit','delete'],
+            'categoryProduct'   => ['edit','delete'],
         ]
     ]
     

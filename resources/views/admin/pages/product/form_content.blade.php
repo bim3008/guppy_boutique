@@ -5,6 +5,7 @@
     use App\Models\CategoryProductModel;
     
     $formInputAttr          = config('zvn.template.form_input');
+    $formInputTag           = config('zvn.template.form_input_tag');
     $formInputAttrDropzone  = config('zvn.template.form_input_dropzone');
     $formLabelAttr          = config('zvn.template.form_label');
 
@@ -35,6 +36,10 @@
         [
             'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
+        ],
+        [
+            'label'   => Form::label('tag', 'Tag', $formLabelAttr),
+            'element' => Form::text('tag', $item['tag_name'],  $formInputAttr )
         ],
     ];
 @endphp

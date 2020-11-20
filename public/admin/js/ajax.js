@@ -5,6 +5,8 @@ $(document).ready(function(){
     let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
     let $ajaxSelectArttribute   = $("[name = select_change_attr]");
     let $ajaxValueCoupon        = $("[name = type_coupon]");
+    let $ajaxTag                = $('#tag');
+    let sourceTag               = ['cá', 'guppy', 'bảy màu', 'ba đuôi'];
     // Change Ajax Status
     $ajaxStatus.click(function(){
         let url      = $(this).data("url") ;
@@ -36,7 +38,16 @@ $(document).ready(function(){
         let element  = $(this) ;
         callAjax(url,element,'coupon');
     });
-    
+    //AUTOCOMPLETE TAG
+    $ajaxTag.autocomplete({
+        source:'autocomplete',
+        // minLength: 3,
+        // select: function(event, ui) {
+        // console.log(ui);
+        // // $('#q').val(ui.item.value);
+        // },
+      
+    })
     function callAjax(url,element,type){
         $.ajax({
             url : url ,

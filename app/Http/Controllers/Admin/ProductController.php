@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\AdminController as AdminController;
 use Illuminate\Http\Request;
 use App\Models\ProductModel           as MainModel;
+use App\Models\TagModel;
 use App\Models\AttributeModel          as AttributeModel;
 use App\Http\Requests\ProductRequest   as MainRequest ;    
 use App\File;
@@ -69,6 +70,17 @@ class ProductController extends AdminController
       }
    }
 
+   public function autocomplete(Request $request)
+   {
+      $tag     = new TagModel();
+      $term    = $request->get('term');
+      $items   = $tag->listItems($term, ['task' => 'admin-product-tag']);
+      $names   = [];
+      foreach ($items as $item) {
+         array_push($names, $item['name']);
+      }
+      echo json_encode($names);
+   }
 
      
      

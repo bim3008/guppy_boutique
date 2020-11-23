@@ -26,7 +26,7 @@ class ProductModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('product.id', 'product.name', 'product.attribute', 'product.price', 'product.thumb', 'product.status','category_product_id', 'cp.name as category_product_name')
+            $query = $this->select('product.id', 'product.name', 'product.attribute', 'product.price', 'product.thumb', 'product.status','product.type','category_product_id', 'cp.name as category_product_name')
                         ->leftJoin('category_product as cp', 'product.category_product_id', '=', 'cp.id');
                
             if ($params['filter']['status'] !== "all")  {
@@ -96,7 +96,7 @@ class ProductModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
-            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 't.name as tag_name')
+            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 'product.content', 'product.tag','product.type','t.name as tag_name')
                         ->leftJoin('tag as t', 'product.tag', '=', 't.id')
                         ->where('product.id', $params['id'])
                         ->first()
@@ -134,7 +134,10 @@ class ProductModel extends AdminModel
                 'message'  =>   config('zvn-notify.status.message')  ,
             ];
         }
-
+        if($options['task'] == 'change-type') {
+            self::where('id', $params['id'])->update(['type' => $params['currentType']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
 
         if($options['task'] == 'add-item') {
             $idTag              = TagModel::select('id')->where('name', $params['tag'])->get();
@@ -161,13 +164,9 @@ class ProductModel extends AdminModel
                     $params['attribute']    = json_encode($valueAttribute) ;
                 }
             }
-            // if(!empty($params['thumb'])){
-            //     $this->deleteThumb($params['thumb_current']);
-            //     $params['thumb'] = $this->uploadThumb($params['thumb']);
-            // }
-            $params['thumb']        = json_encode($params['thumb']['name']); 
-            $params['modified_by']   = "duy-nguyen";
-            $params['modified']      = date('Y-m-d');
+                $params['thumb']        = json_encode($params['thumb']['name']); 
+                $params['modified_by']   = "duy-nguyen";
+                $params['modified']      = date('Y-m-d');
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }

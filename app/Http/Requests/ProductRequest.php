@@ -26,9 +26,12 @@ class ProductRequest extends FormRequest
     {
         $id = $this->id;
 
-        $condName  = "bail|required|between:1,100";
-        $condPrice  = "bail|required|between:1,100";
-        $condThumb  = "bail|required|between:1,100";
+        $condName       = "bail|required|between:1,100";
+        $condPrice      = "bail|required|between:1,100";
+        $condLink       = "bail|required|between:1,100";
+        $condTag        = "bail|required|between:1,100";
+        $condContent    = "bail|required|between:1,10000";
+        $condThumb      = "bail|required|between:1,100";
 
         if(!empty($id)){ // edit
             $condName  .= ",$id";
@@ -37,6 +40,9 @@ class ProductRequest extends FormRequest
             'name'              => $condName,
             'price'             => $condPrice,
             'thumb'             => $condThumb,
+            'link'              => $condLink,
+            'tag'               => $condTag,
+            'content'           => $condContent,
             'status'            => 'bail|in:active,inactive',
         ];
     }

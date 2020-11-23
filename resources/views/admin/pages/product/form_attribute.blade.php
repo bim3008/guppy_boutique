@@ -9,7 +9,7 @@
     $formLabelAttr  = config('zvn.template.form_label');
     $attributeGroup      = new AttributeGroupModel();
     $itemsAttributeGroup = $attributeGroup->listItems(null, ['task' => 'admin-list-items-in-selectbox']);
-    $itemsAttributeGroup['default'] = 'Select Attribute Group';
+    $itemsAttributeGroup['default'] = 'Chọn nhóm thuộc tính';
     ksort($itemsAttributeGroup);
     $link = route($controllerName . '/getAttribute', ['id' => 'attribute_new']);
     $xhtml = null;
@@ -17,7 +17,7 @@
     if (!isset($item['id'])) {
         $elements = [
             [
-                'label'   => Form::label('attribute_group', 'Attribute-Group', $formLabelAttr),
+                'label'   => Form::label('attribute_group', 'Nhóm thuộc tính', $formLabelAttr),
                 'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showName('$link')"])
             ],
         ];

@@ -85,9 +85,9 @@ class CategoryProductModel extends AdminModel
 
         if($options['task'] == 'admin-get-name-in-selectbox') {
             $query = $this->select('id', 'name', 'parent_id')
-                        ->where('status', '=', 'active' )
-                        ->where('parent_id', '=', null )
-                        ->limit(5);
+                        ->where('status', '=', 'active' );
+                        // ->where('parent_id', '=', null )
+                        // ->limit(5);
 
             $result = $query->pluck('name', 'id')->toArray();
         }

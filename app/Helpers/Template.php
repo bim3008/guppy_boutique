@@ -22,9 +22,9 @@ class Template {
                 $link = ($controllerName !== 'contact') ? route($controllerName) . "?filter_status=" .  $statusValue : route($controllerName) . "?filter_contact=" .  $statusValue ;
 
                 if($paramsSearch['value'] !== ''){
-                    $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" .  $paramsSearch['value'];
+                    $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" .  $paramsSearch['value'] . "&filter_category=" .  $currentFilterStatus['category'];
                 }
-
+               
                 $class  = ($currentFilterStatus == $statusValue) ? 'btn-danger' : 'btn-info';
                 $xhtml  .= sprintf('<a href="%s" type="button" class="btn %s">
                                     %s <span class="badge bg-white">%s</span>
@@ -34,7 +34,6 @@ class Template {
 
         return $xhtml;
     }
-
     public static function showAreaSearch ($controllerName, $paramsSearch) { 
         $xhtml = null;
         $tmplField         = Config::get('zvn.template.search');
@@ -129,12 +128,10 @@ class Template {
 
         return $xhtml;
     }
-    public static function showDatetimeFrontend($dateTime)
-    {
+    public static function showDatetimeFrontend($dateTime){
         return date_format(date_create($dateTime), Config::get('zvn.format.short_time'));
     }
-    public static function showContent($content, $length, $prefix = '...')
-    {
+    public static function showContent($content, $length, $prefix = '...'){
         $prefix = ($length == 0) ? '' : $prefix;
         $content = str_replace(['<p>', '</p>'], '', $content);
         return preg_replace('/\s+?(\S+)?$/', '', substr($content, 0, $length)) . $prefix;
@@ -157,10 +154,7 @@ class Template {
             '<p   readonly="readonly" class="btn btn-round %s  ">%s</p>' , $currentTemplateStatus['class'], $currentTemplateStatus['name']  );
         return $xhtml;
     }
-
-    public static function nameCoupon($name)
-    {
-        
+    public static function nameCoupon($name){ 
         if($name == 'percent'){
             $xhtml = 'Phần trăm' ;
         }else{
@@ -168,8 +162,7 @@ class Template {
         }
         return $xhtml ;
     }
-    public static function valueCoupon($name , $value)
-    {
+    public static function valueCoupon($name , $value){
         if($name == 'percent'){
             $xhtml = $value . "%" ;
         }else{

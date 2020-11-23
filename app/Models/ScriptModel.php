@@ -15,47 +15,7 @@ class ScriptModel extends AdminModel
         $this->fieldSearchAccepted = ['link',]; 
         $this->crudNotAccepted     = ['_token'];
     }
-
-    public function listItems($params = null, $options = null) {
-     
-        $result = null;
-
-        if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'created', 'created_by', 'modified', 'modified_by');
-               
-            if ($params['filter']['status'] !== "all")  {
-                $query->where('status', '=', $params['filter']['status'] );
-            }
-
-            if ($params['search']['value'] !== "")  {
-                if($params['search']['field'] == "all") {
-                    $query->where(function($query) use ($params){
-                        foreach($this->fieldSearchAccepted as $column){
-                            $query->orWhere($column, 'LIKE',  "%{$params['search']['value']}%" );
-                        }
-                    });
-                } else if(in_array($params['search']['field'], $this->fieldSearchAccepted)) { 
-                    $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
-                } 
-            }
-            $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerPage']);
-
-        }
-
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name')
-                        ->where('status', '=', 'active' )
-                        ->limit(5);
-
-            $result = $query->get()->toArray();
-        }
-        return $result;
-    }
-
-    public function countItems($params = null, $options  = null) {
-    }
-
+    
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {

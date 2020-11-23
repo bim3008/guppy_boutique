@@ -9,8 +9,9 @@ $(function() {
 	}
 });
 $(document).ready(function() {
+
 	let $btnSearch        = $("button#btn-search");
-	let $btnClearSearch	  = $("button#btn-clear");
+	let $btnClearSearch	  = $("button#btn-clear-search");
 
 	let $inputSearchField = $("input[name  = search_field]");
 	let $inputSearchValue = $("input[name  = search_value]");
@@ -26,8 +27,8 @@ $(document).ready(function() {
 
 		let field 		= $(this).data('field');
 		let fieldName 	= $(this).html();
-		$("button.btn-active-field").html(fieldName + ' <span class="caret"></span>');
-    $inputSearchField.val(field);
+		$("button.btn-active-field").html(fieldName + '<span class="caret"></span>');
+    	$inputSearchField.val(field);
 	});
 
 	$btnSearch.click(function() {
@@ -96,6 +97,7 @@ $(document).ready(function() {
 	$categoryFilter.on('change', function(e) {
 		var id = $(this).val();
 		var pathname	= window.location.pathname;
+		
 		let searchParams= new URLSearchParams(window.location.search);
 		params 			= ['page', 'filter_status', 'search_field', 'search_value'];
 		let link		= "";

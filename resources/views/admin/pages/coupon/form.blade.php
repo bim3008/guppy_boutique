@@ -14,24 +14,22 @@
     $changeCode         = '<a href="#" class="btn btn-primary" id="change-code" style="margin-left: 0.3vw"><span class="fa fa-undo"></span> Thay đổi</a>';
     $statusValue        = ['default' => 'Chọn trạng thái',    'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
     $typeValue          = ['default' => 'Chọn kiểu giảm giá', 'percent'=> config('zvn.template.coupon.percent.name'), 'direct' => config('zvn.template.coupon.direct.name')];
-    $shortPrice         = ['100000' => "100.000 VNĐ" , '200000' => "200.000 VNĐ" ,'500000' => "500.000 VNĐ" ]  ;
-    $priceValue         = ['default' => 'Chọn giá trị'];
     $inputHiddenID      = Form::hidden('id', $item['id']);
-    $dataURL            = route($controllerName .'/coupon', ['coupon' => 'new_value']) ;        ;  
-   
+    // $dataURL            = route($controllerName .'/coupon', ['coupon' => 'new_value']) ;        ;  
     $elements = [
         [
             'label'   => Form::label('code', 'Mã', $formLabelAttr),
             'element' => Form::text('code', $itemCode  , $formInputAttrCode) . $changeCode,
         ],[
             'label'   => Form::label('type', 'Kiểu giảm giá', $formLabelAttr),
-            'element' => Form::select('type_coupon', $typeValue ,$item['type_coupon'] , [ 'class' => 'form-control col-md-6 col-xs-12', 'data-url' => $dataURL ] )
+            // 'element' => Form::select('type_coupon', $typeValue ,$item['type_coupon'] , [ 'class' => 'form-control col-md-6 col-xs-12', 'data-url' => $dataURL ] )
+            'element' => Form::select('type_coupon', $typeValue ,$item['type_coupon'] , $formInputAttr )
         ],[
             'label'   => Form::label('value', 'Giá trị', $formLabelAttr),
-            'element' => Form::select('value', $priceValue ,$item['value'],$formInputAttr  )
+            'element' => Form::text('value' ,$item['value'],$formInputAttr  )
         ],[
             'label'   => Form::label('price_start', 'Giá thấp nhất', $formLabelAttr),
-            'element' => Form::select('price_start', $shortPrice , $item['price_start'], $formInputAttr) 
+            'element' => Form::text('price_start' , $item['price_start'], $formInputAttr) 
         ],[
             'label'   => Form::label('total_code', 'Tổng số mã', $formLabelAttr),
             'element' => Form::text('total', $item['total'], $formInputAttr) 

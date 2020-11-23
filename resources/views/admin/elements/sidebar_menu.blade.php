@@ -14,11 +14,12 @@
         <ul class="nav side-menu">
             <li><a href="{{ route('dashboard')  }}"><i class="fa fa-home">          </i> Trang quản lý          </a></li>
             <li><a href="{{ route('slider')     }}"><i class="fa fa-sliders">       </i> Silders                </a></li>
-            <li><a href="{{ route('category')   }}"><i class="fa fa fa-building-o"> </i> Thư mục bài viết       </a></li>
-            <li><a href="{{ route('article')    }}"><i class="fa fa-newspaper-o">   </i> Bài viết                </a></li>
+            <li><a href="{{ route('category')   }}"><i class="fa fa fa-building-o"> </i> Danh mục bài viết      </a></li>
+            <li><a href="{{ route('article')    }}"><i class="fa fa-newspaper-o">   </i> Bài viết               </a></li>
             <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>
-            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ     </a></li>
+            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ        </a></li>
             <li><a href="{{ route('script')     }}"> <i class="fa fa-code">         </i> Thêm đoạn mã           </a></li>
+            <li><a href="{{ route('setting')    }}"> <i class="fa fa-cogs">       </i> Cấu hình               </a></li>
             <li><a href="{{ route('feedback')   }}"> <i class="fa fa-smile-o">      </i> Cảm nhận khách hàng    </a></li>
             <li><a><i class="fa fa-video-camera"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">

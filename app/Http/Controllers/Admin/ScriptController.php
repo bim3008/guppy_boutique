@@ -17,6 +17,15 @@ class ScriptController extends AdminController
         $this->params["pagination"]["totalItemsPerPage"] = 5;
         parent::__construct();
     }
+    public function index(Request $request)
+    {   
+
+        $this->params['type']  = $request->input('type', '' ) ;
+        return view($this->pathViewController .  'index', [
+         
+            'params'        => $this->params,
+        ]);
+    }
     public function save(Request $request)
     {
         if ($request->method() == 'POST') {
@@ -31,7 +40,8 @@ class ScriptController extends AdminController
                 $notify = "Cập nhật phần tử thành công!";
             }
             $this->model->saveItem($params, ['task' => $task]);
-            return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
+ 
+            return back()->withInput()->with("zvn_notify", $notify);
         }
     }
    

@@ -90,7 +90,7 @@ class ShippingModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id','name','price','status')->first();
+            $result = self::select('id','name','price','status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -117,6 +117,7 @@ class ShippingModel extends AdminModel
             self::where('id', $params['id'])->update(['price' => $params['currentPrice']]);
             return [ 'message' => config('zvn-notify.price.message')] ;
         }
+
         if($options['task'] == 'add-item') {
             $params['created_by'] = "truongdinh";
             $params['created']    = date('Y-m-d');
@@ -125,9 +126,9 @@ class ShippingModel extends AdminModel
 
         if($options['task'] == 'edit-item') {
           
-            $params['modified_by']   = "hailan";
+            $params['modified_by']   = "truongdinh";
             $params['modified']      = date('Y-m-d');
-            self::where('id', 1)->update($this->prepareParams($params));
+            self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }
 

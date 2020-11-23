@@ -19,7 +19,7 @@ return [
         'message'       => 'Cập nhập vị trí thành công !!',
     ],
     'select' => [
-        'message'       => 'Cập nhập hay quá chời !! ^-^ ',
+        'message'       => 'Cập nhập thành công !! ^-^ ',
     ],
     'price' => [
         'message'       => 'Thay đổi giá thành công !! ^-^ ',

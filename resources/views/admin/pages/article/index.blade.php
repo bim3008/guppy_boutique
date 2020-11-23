@@ -1,8 +1,19 @@
 @extends('admin.main')
 @php
     use App\Helpers\Template as Template;
-    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search']);
+    use App\Helpers\SelectBox as SelectBox;
+    use App\Models\CategoryModel  ;
+
+    $categoryModel = new CategoryModel();
+    
+    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter'], $params['search']);
     $xhtmlAreaSeach    = Template::showAreaSearch($controllerName, $params['search']);
+
+    $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-items-in-selectbox']);
+
+    $xhtmlSelectBox = SelectBox::showItemSelectCategory($itemSelectBox,$params['filter']['category']);
+    
+
 @endphp
 @section('content')
     
@@ -15,8 +26,9 @@
             @include('admin.templates.x_title', ['title' => 'Bộ lọc'])
             <div class="x_content">
                 <div class="row">
-                    <div class="col-md-7">{!! $xhtmlButtonFilter !!}</div>
-                    <div class="col-md-5">{!! $xhtmlAreaSeach !!}</div>
+                    <div class="col-md-4">{!! $xhtmlButtonFilter !!}</div>
+                    {{-- <div class="col-md-3">{!! $xhtmlSelectBox !!}</div> --}}
+                    <div style="display:flex; class="col-md-8">{!! $xhtmlSelectBox . $xhtmlAreaSeach !!}</div>
                 </div>
             </div>
         </div>

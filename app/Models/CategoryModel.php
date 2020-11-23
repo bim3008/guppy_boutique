@@ -62,7 +62,7 @@ class CategoryModel extends AdminModel
 
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
-                        ->orderBy('name', 'asc')
+                        ->orderBy('id', 'asc')
                         ->where('status', '=', 'active' );
                         
             $result = $query->pluck('name', 'id')->toArray();

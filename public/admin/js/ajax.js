@@ -5,6 +5,8 @@ $(document).ready(function(){
     let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
     let $ajaxSelectArttribute   = $("[name = select_change_attr]");
     let $ajaxValueCoupon        = $("[name = type_coupon]");
+    let $ajaxTag                = $('#tag');
+    let sourceTag               = ['cá', 'guppy', 'bảy màu', 'ba đuôi'];
     // Change Ajax Status
     $ajaxStatus.click(function(){
         let url      = $(this).data("url") ;
@@ -30,8 +32,27 @@ $(document).ready(function(){
         let element  = $(this) ;
         callAjax(url,element,'select');
     });
+<<<<<<< HEAD
  
     
+=======
+    // Change Value Coupon in Route(coupon/form)
+    $ajaxValueCoupon.on("change" ,function(){
+        let url   = $(this).data("url").replace("new_value",$(this).val()) ;
+        let element  = $(this) ;
+        callAjax(url,element,'coupon');
+    });
+    //AUTOCOMPLETE TAG
+    $ajaxTag.autocomplete({
+        source:'autocomplete',
+        // minLength: 3,
+        // select: function(event, ui) {
+        // console.log(ui);
+        // // $('#q').val(ui.item.value);
+        // },
+      
+    })
+>>>>>>> 75540f3139bca19bb06122a04a4e3283b7e76915
     function callAjax(url,element,type){
         $.ajax({
             url : url ,
@@ -75,6 +96,19 @@ $(document).ready(function(){
            ''+message+'' , {className: "success", position: "top", autoHideDelay: 1000, }
         );
     }
-
+    
 }) ;
 
+//ADMIN - PRODUCT - ATTRIBUTE
+function showName(url){
+    let id = $('#attribute-group').val();
+    url = url.replace('attribute_new', id); // 
+    $.get(url, function(data) { 
+       $('.new').remove();
+       $.each(data, function(index, value) {
+          let name = value ;
+          $('.x_content_attribute').after('<div class="form-group new" id="attr"><label  class="control-label col-md-3 col-sm-3 col-xs-12"> '+ value +'</label><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-6 col-xs-12  input-tags-attr" name="attribute['+name+'][]" type="text" ></div></div>');
+          $('.input-tags-attr').tagsInput();
+        });
+   }, 'json');
+}

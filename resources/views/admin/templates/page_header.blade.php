@@ -7,9 +7,9 @@
         $pageButton = sprintf('<a href="%s" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm mới</a>', route($controllerName . '/form'));
     }
     if($pageIndex == true && $hidden == true ) {
-        $pageButton= "";
-    }if($pageIndex == false && $hidden == true ){
-        $buttonSave .= '<input class="btn btn-round btn-info"  type="submit" value="Lưu">';
+        $pageButton = "";
+    }if($pageIndex == false && $hidden == true  ){
+        $buttonSave .= '<input class="btn btn-round btn-info"  type="submit" value="Lưu sản phẩm">';
     }
     
 @endphp

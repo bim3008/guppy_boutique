@@ -21,7 +21,7 @@ class ProductController extends AdminController
       parent::__construct();
    }
 
-   public function save(Request $request)
+   public function save(MainRequest $request)
    {
       if ($request->method() == 'POST') {
             $params = $request->all();
@@ -29,6 +29,7 @@ class ProductController extends AdminController
             $notify = "Thêm phần tử thành công!";
 
             if(isset($params['id']) && $params['id'] !== null) {
+              
                $task   = "edit-item";
                $notify = "Cập nhật phần tử thành công!";
             }

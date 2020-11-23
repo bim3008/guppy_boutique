@@ -8,12 +8,18 @@
     $formInputTag           = config('zvn.template.form_input_tag');
     $formInputAttrDropzone  = config('zvn.template.form_input_dropzone');
     $formLabelAttr          = config('zvn.template.form_label');
+    $formCkeditor           = config('zvn.template.form_ckeditor');
 
+    //========= Danh mục sản phẩm =====================
     $categoryProductModel = new CategoryProductModel();
     $itemsCategoryProduct = $categoryProductModel->listItems(null, ['task' => 'admin-get-name-in-selectbox']);
-    $itemsCategoryProduct['default'] = 'Chọn danh mục';
     ksort($itemsCategoryProduct);
+
+    //============== Trạng thái=========================
     $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+
+    //==============Kiểu hiển thị===========================
+    $typeValue          = ['default' => 'Chọn kiểu hiển thị', 'normal' => config('zvn.template.type.normal.name'), 'featured' => config('zvn.template.type.featured.name')];
 
     $inputHiddenID    = Form::hidden('id', $item['id']);
     $elements = [
@@ -34,12 +40,21 @@
             'element' => Form::select('category_product_id', $itemsCategoryProduct, $item['category_product_id'], $formInputAttr)
         ],
         [
+            'label'   => Form::label('type', 'Kiểu hiển thị', $formLabelAttr),
+            'element' => Form::select('type', $typeValue, $item['type'], $formInputAttr)
+        ],
+        [
             'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [
             'label'   => Form::label('tag', 'Tag', $formLabelAttr),
-            'element' => Form::text('tag', $item['tag_name'],  $formInputAttr )
+            'element' => Form::text('tag', $item['tag'],  $formInputAttr )
+        ],
+        [
+            'label'   => Form::label('content', 'Nội dung', $formLabelAttr),
+            'element' => Form::textArea('content', $item['content'],  $formCkeditor ),
+            'type'    => "article"
         ],
     ];
 @endphp

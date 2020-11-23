@@ -101,6 +101,7 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
     Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',                  'uses' => $controller . 'status'])->where('id', '[0-9]+');
     Route::get('get-attribute/{id}',                [ 'as' => $controllerName . '/getAttribute',            'uses' => $controller . 'getAttribute'])->where('id', '[0-9]+');
     Route::get('autocomplete',                      [ 'as' => $controllerName . '/autocomplete',      'uses' => $controller . 'autocomplete']);
+    Route::get('change-type-{type}/{id}',           [ 'as' => $controllerName . '/type',        'uses' => $controller . 'type']);
 });
 // ============================== ARTICLE ================================
     $prefix         = 'article';

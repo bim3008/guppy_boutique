@@ -109,7 +109,7 @@ class Template {
         $xhtml = null;
         foreach ($thumbName as $value) {
             $xhtml .= sprintf(
-                '<img src="%s" alt="%s" style="height: 100px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
+                '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
         }
        
         return $xhtml;

@@ -1,0 +1,384 @@
+
+@media (max-width: 1200px) {
+    .container_main {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .mangxahoi span
+    {
+        display: none;
+    }
+    .owl-theme3 .owl-prev
+    {
+        left: 0px !important;
+    }
+    .owl-theme3 .owl-next
+    {
+        right: 0px !important;
+    }
+    #myModal .modal-dialog,#myModal1 .modal-dialog
+    {
+        width: calc(100% - 20px);
+    }
+    .items_pr-t-5
+    {
+        width: 25%;
+    }
+    .items_pr-t-5:nth-child(5n+1)
+    {
+        clear: none;
+    }
+    .items_pr-t-5:nth-child(4n+1)
+    {
+        clear: both;
+    }
+}
+@media (max-width: 1140px) {
+    .cart_top
+    {
+        padding: 0 15px;
+    }
+    .logo
+    {
+        width: 25%;
+    }
+    .right_top
+    {
+        width: 28%;
+    }
+}
+@media (max-width: 1084px) {
+   #left
+   {
+    width: 25%;
+}
+.content_right
+{
+    width: 75%;
+}
+}
+@media (max-width: 1024px) {
+
+}
+@media (max-width: 992px) {
+    #header .mangxahoi
+    {
+        display: none;   
+    }
+    .ddsmoothmenu ul {
+        display: none !important;
+    } 
+    .menu_mobile,.holine_mobile {
+        display: block;
+    }
+    .timkiem_top
+    {
+        width: 50%;
+    }
+    .right_top
+    {
+        width: 23%;
+    }
+    .footer6
+    {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .footer8
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .footer7,.footer8
+    {
+        width: 100%;
+    }
+    .footer8 img
+    {
+        margin: 5px 0;
+    }
+    #left
+    {
+        display: none;
+    }
+    .content_right
+    {
+        width: 100%;
+        padding-left: 0;
+    }
+    .items_pr-t:nth-child(4n+1)
+    {
+        clear: none;
+    }
+    .items_pr-t:nth-child(3n+1)
+    {
+        clear: both;
+    }
+    .thanhtoan
+    {
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-top: 20px;
+    }
+    .left_giohang
+    {
+        width: 100% !important;
+    }
+    .right_top .hotline_top
+    {
+        display: none;
+    }
+    .cart_top
+    {
+        padding-right: 0;
+    }
+    .cart_top:before
+    {
+        display: none;
+    }
+    .right_top
+    {
+        width: 105px;
+    }
+    #main_menu
+    {
+        width: calc(75% - 105px);
+        position: relative;
+    }
+    #main_menu .box_menu
+    {
+        height: auto;
+    }
+    .header .box_header
+    {
+        padding: 10px 0;
+    }
+    .items_pr-t-5
+    {
+        width: calc(100% / 3);
+    }
+    .items_pr-t-5:nth-child(4n+1)
+    {
+        clear: none;
+    }
+    .items_pr-t-5:nth-child(3n+1)
+    {
+        clear: both;
+    }
+    .frame_images1
+    {
+        max-height: auto;
+    }
+}
+@media (max-width: 767px) {
+    .left_donhang
+    {
+        width:100%;
+        border-right: 0px;
+    }
+    .right_donhang
+    {
+        width: 100%;
+    }
+    .menu_top
+    {
+        display: none;
+    }
+    
+    .items_chinhsach-l
+    {
+        border-right: 0;
+    }
+    .footer1,.footer2,.footer3
+    {
+        width: 100%;
+        float: left;
+        padding-right: 0;
+    }
+    .footer2,.footer3
+    {
+        padding-top: 20px;
+    }
+    #insta .insta  
+    {
+        width: 100%;
+        float: left;
+        padding-right: 0;
+    }
+    #insta .facebook  
+    {
+        width: 100%;
+        float: left;
+        padding-left: 0;
+        padding-top: 20px;
+    }
+    .left_contact {
+        width:100%;
+        float: left;
+        padding-top: 20px;
+        padding-right: 0;
+    }
+    .right_contact {
+        width: 100%;
+        float: left;
+        padding-left: 0;
+        padding-top: 20px;
+    }
+    .khung_thongtin 
+    {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+    .items_pr-t:nth-child(3n+1)
+    {
+        clear: none;
+    }
+    .items_pr-t:nth-child(2n+1)
+    {
+        clear: both;
+    }
+    .header .box_header
+    {
+        justify-content: space-between;
+    }
+    #main_menu
+    {
+        width: 100px;
+        position: relative;
+        order: 1;
+    }
+    .logo
+    {
+        width: 35%;
+        order: 2;
+    }
+    .right_top
+    {
+        order: 3;
+    }
+    .items_pr-t-5
+    {
+        width: calc(100% / 2);
+    }
+    .items_pr-t-5:nth-child(3n+1)
+    {
+        clear: none;
+    }
+    .items_pr-t-5:nth-child(2n+1)
+    {
+        clear: both;
+    }
+
+}
+@media (max-width: 675px) 
+{
+
+    .title_sanpham a
+    {
+        display: none;
+    }
+    .title_sanpham .tab_nav1
+    {
+        display: none;
+    }
+    #bottom .botom_left .mangxahoi
+    {
+        width: 100%;
+        text-align: center;
+    }
+    #bottom .botom_left .hotro
+    {
+        width: 100%;
+        padding-left: 0px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .banner
+    {
+        width: 100%;
+        order: 3;
+    }
+    .td_hidden
+    {
+        display: none;
+    }
+} 
+@media (max-width: 575px) {
+ .items_cat-l
+ {
+    width: 100% !important;
+}
+}
+@media (max-width: 500px) {
+    .items_tintuc4
+    {
+        width: 100% !important;
+    }
+
+    .items_dichvu {
+        width: 100% !important;
+    }
+
+}
+@media screen and (max-width: 475px) {
+    ul.tab_nav li a {
+        padding: 5px 25px !important;
+    }
+    .items_tintuc img {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .items_list1
+    {
+        width: 100%;
+    }
+    .item3 {
+        width: 100% !important;
+    }
+    .item1 .mota_sanpham .price
+    {
+        min-height: auto;
+    }
+    .tab_nav1
+    {
+        margin-left: -5px;
+    }
+    .tab_nav1 li
+    {
+        margin-left: 5px;
+    }
+}
+@media screen and (max-width: 400px) {
+    #product-support
+    {
+        width: 100%;
+        padding-top: 10px;
+    }
+    .price-info
+    {
+        flex-wrap: wrap;
+    }
+} 
+@media screen and (max-width: 375px) {
+
+    .items_dichvu1
+    {
+        width: 100% !important;
+    }
+    .item4
+    {
+        width: 100% !important;
+    }
+    .items_pr-t,.items_pr-t-5
+    {
+        width: 100% !important;
+    }
+
+}
+@media screen and (max-width: 325px) {
+
+}

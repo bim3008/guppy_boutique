@@ -1,0 +1,203 @@
+
+@import url("../css/fonts.css");
+.ddsmoothmenu {
+	float:left;
+	width: 100%;
+	float: left;
+	z-index: 10;
+}
+.ddsmoothmenu ul {
+	width: 100%;
+	float: left;
+	z-index:100;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	overflow: visible !important; 
+}
+/*Top level list items*/
+.ddsmoothmenu > ul > li  {
+	float: left;
+	position: relative;
+	z-index: 10 !important;
+	min-height: 100px;
+	display: flex;
+	align-items: center;
+}
+.ddsmoothmenu > ul > li.icon_sp
+{
+	position: static;
+}
+.ddsmoothmenu > ul 
+{
+	display: flex;
+}
+/*Top level menu link items style*/
+.ddsmoothmenu > ul > li > a {
+	text-align: center;
+	display: block;
+	font-family: 'OpenSansSemibold';
+	color: #161515;
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 15px;
+	transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition:all 0.5s;
+    position: relative;
+    padding: 8px 13px;
+}
+.ddsmoothmenu > ul > li > a span
+{
+	display: inline-block;
+}
+.ddsmoothmenu > ul > li:hover > a {
+	background: #d51a1a;
+	color: #fff;
+}
+
+.ddsmoothmenu > ul > .active > a {
+	background: #d51a1a;
+	color: #fff;
+}
+
+.ddsmoothmenu  .menu_drop 
+{
+	position: absolute;
+	left: 0;
+	top: 100%;
+	z-index: 999;
+	background: #231f20;
+	width: 100%;
+	padding: 20px 40px;
+	display: none;
+}
+.ddsmoothmenu > ul > li.icon_sp:hover > .menu_drop 
+{
+	display: block;
+}
+.menu_drop .items-menu_list ul
+{
+	position: relative;
+	width: 100% ;
+}
+.menu_drop .items-menu_list > ul > li
+{
+	width: 25%;
+	float: left;
+	padding: 5px 0 ;
+	padding-right: 40px;
+}
+.menu_drop .items-menu_list > ul > li:nth-child(4n+1)
+{
+	clear: both;
+}
+.ddsmoothmenu .menu_drop .items-menu_list > ul > li > a {
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 0;
+	display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.menu_drop .items-menu_item  li:hover
+{
+	background: none !important;
+}
+.menu_drop .items-menu_item  li:hover a
+{
+	text-decoration: underline;
+	
+}
+.menu_drop .items-menu_list > ul > li li
+{
+	border-bottom: 0 !important;
+}
+.ddsmoothmenu .menu_drop .items-menu_list > ul > li li a {
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 0;
+	display: block;
+    position: relative;
+    width: 100%;
+}
+/*1st sub level menu*/
+.ddsmoothmenu ul li ul.ul_d {
+	display: none; /*collapse all sub menus to begin with*/
+	background:#231f20;
+	width: 220px;
+	position: absolute;
+	top: 100% ;
+	z-index: 10;
+}
+.ddsmoothmenu > ul > li:hover > ul.ul_d
+{
+	display: block;
+}
+.ddsmoothmenu ul li ul.ul_d li {
+	display: list-item;
+	float: left;
+	width: 100%;
+	margin-right:0px;
+	padding-right:0px;
+	padding:10px 10px 10px 10px !important;
+	height: auto !important;
+	line-height: normal !important;
+	border-bottom: 1px solid #fff !important;
+	background:#231f20;
+	position: relative !important;
+}
+
+.ddsmoothmenu ul li ul.ul_d li:last-child
+{
+	border: 0px !important;
+}
+
+.ddsmoothmenu ul li ul.ul_d li:hover
+{
+	background:none !important;
+}
+
+.ddsmoothmenu ul > li > ul.ul_d > li:hover
+{
+	background: #d51a1a !important;
+}
+.ddsmoothmenu ul > li > ul > li:hover > a
+{
+	color: #fff !important;
+}
+
+.ddsmoothmenu ul li ul.ul_d li a {
+	padding:0px 0px 0px 0px;
+	width: 100%;
+	float: left;
+	
+	font-size: 15px;
+	border: 0px !important;
+	box-shadow: none !important;
+	text-transform: capitalize;
+	margin:0px !important;
+	
+	background: rgba(255,255,255,0) !important;
+	color: white !important;
+	text-align: left;	 
+}
+.ddsmoothmenu ul li ul.ul_d li:last-child a
+{
+	border: 0px !important;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.ddsmoothmenu ul li ul.ul_d li ul {
+	margin-left:2px;
+	top: 0px !important;
+}
+/* Sub level menu links style */
+
+.ddsmoothmenu ul li ul.ul_d li ul{
+margin:0px;
+}

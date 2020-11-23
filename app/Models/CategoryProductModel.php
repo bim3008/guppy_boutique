@@ -13,14 +13,9 @@ class CategoryProductModel extends AdminModel
     protected  $table                   = 'category_product';
     protected  $controllerName          = 'categoryProduct';
     protected  $fieldSearchAccepted     = ['id', 'name']; 
-    protected  $fillable                = ['name', 'status', 'ordering', 'created', 'created_by'];
+    protected  $fillable                = ['name', 'status', 'ordering','parent_id'];
     protected  $crudNotAccepted         = ['_token', 'id'];
-    // public function __construct() {
-    //     $this->table               = 'categories';
-    //     $this->fieldSearchAccepted = ['id', 'name']; 
-    //     $this->crudNotAccepted     = ['_token'];
-    // }
-
+  
 
     public function listItems($params = null, $options = null) {
      
@@ -156,13 +151,7 @@ class CategoryProductModel extends AdminModel
         }
 
         if($options['task'] == 'add-item') {
-            $categories = self::create([
-                'name'              => $params['name'],
-                'parent_id'         => $params['parent_id'],
-                'status'            => 'active',
-                'created'           => date('Y-m-d'),
-                'created_by'        => 'duynguyen',
-            ]);
+            $categories = self::create($params);
             if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
                 $node = self::find($params['parent_id']);
                 $node->appendNode($categories);
@@ -170,25 +159,11 @@ class CategoryProductModel extends AdminModel
         }
 
         if($options['task'] == 'edit-item') {
-            if(isset($params['id'])) {
-                $node = self::find($params['id']);
-                $node->delete();
-            }
-            $categories = self::create([
-                'name'              => $params['name'],
-                'parent_id'         => $params['parent_id'],
-                'status'            => 'active',
-                'created'           => date('Y-m-d'),
-                'created_by'        => 'duynguyen',
-            ]);
-            if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
-                $node = self::find($params['parent_id']);
-                $node->appendNode($categories);
-            }
-          
-            $params['modified_by']   = "duynguyen";
-            $params['modified']      = date('Y-m-d');
-            self::where('id', $params['id'])->update($this->prepareParams($params));
+
+            $node = self::findOrFail($params['id']); 
+            $node->update($params);
+            
+           
         }
     }
 

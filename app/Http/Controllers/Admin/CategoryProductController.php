@@ -36,7 +36,7 @@ class CategoryProductController extends AdminController
        ]);
     }
 
-    public function save(MainRequest $request) {
+    public function save(Request $request) {
       
         if ($request->method() == 'POST') {
          

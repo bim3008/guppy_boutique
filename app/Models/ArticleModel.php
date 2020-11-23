@@ -20,14 +20,18 @@ class ArticleModel extends AdminModel
         $result = null;
         $this->table  = 'article as a';
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('a.id', 'a.name', 'a.status', 'a.content', 'a.thumb', 'a.type', 'c.name as category_name')
+            $query = $this->select('a.id', 'a.name', 'a.status', 'a.category_id' , 'a.content', 'a.thumb', 'a.type', 'c.name as category_name' )
                           ->leftJoin('category as c', 'a.category_id', '=', 'c.id');
 
 
             if ($params['filter']['status'] !== "all")  {
                 $query->where('a.status', '=', $params['filter']['status'] );
             }
-
+        
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('a.category_id', '=', $params['filter']['category'] );
+            }
+     
             if ($params['search']['value'] !== "")  {
                 if($params['search']['field'] == "all") {
                     $query->where(function($query) use ($params){
@@ -121,6 +125,9 @@ class ArticleModel extends AdminModel
                     $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('a.category_id', '=', $params['filter']['category'] );
+            }
 
             $result = $query->get()->toArray();
            
@@ -168,6 +175,10 @@ class ArticleModel extends AdminModel
 
         if($options['task'] == 'change-type') {
             self::where('id', $params['id'])->update(['type' => $params['currentType']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
+        if($options['task'] == 'change-category') {
+            self::where('id', $params['id'])->update(['category_id' => $params['currentCategory']]);
             return [ 'message' => config('zvn-notify.select.message')] ;
         }
         

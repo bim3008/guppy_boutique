@@ -5,6 +5,16 @@
 
         $contactModel = new ContactModel() ;
         $items        = $contactModel->getItem(null,['task' => 'get-item-no-contact-yet']) ;
+
+        $arrTable =[ 
+            ['total' =>  $totalUser,     'name'  => 'Người dùng'      ,  'icon'      => 'fa-users'        , 'link'  => route('user'),],
+            ['total' =>  $totalSlider,   'name'  => 'Slider'          ,  'icon'      => 'fa-sliders'      , 'link'  => route('slider'),],
+            ['total' =>  $totalCategory, 'name'  => 'Thư mục'         ,  'icon'      => 'fa-folder-open'  , 'link'  => route('category'),],
+            ['total' =>  $totalArticle,  'name'  => 'Bài viết'        ,  'icon'      => 'fa-newspaper-o'  , 'link'  => route('article'),],  
+            ['total' =>  $totalQuestion, 'name'  => 'Câu hỏi'         ,  'icon'      => 'fa-question'     , 'link'  => route('question'),],
+            ['total' =>  $totalFeedback, 'name'  => 'Cảm nhận KH'     ,  'icon'      => 'fa-smile-o'      , 'link'  => route('feedback'),],
+            ['total' =>  $totalContact,  'name'  => 'Yêu cầu liên hệ' ,  'icon'      => 'fa-phone'        , 'link'  => route('contact'),],
+        ];
     @endphp
     <div class="page-header zvn-page-header clearfix">
         <div class="zvn-page-header-title">

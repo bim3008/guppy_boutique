@@ -90,7 +90,7 @@ class CouponModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id','code','value', 'type_coupon','price_start','status','date_start' ,'date_end')->first();
+            $result = self::select('id','code','value', 'type_coupon','price_start','status','date_start' ,'date_end')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {

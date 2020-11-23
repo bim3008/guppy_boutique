@@ -16,6 +16,7 @@
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Ngày bắt đầu </th>
                     <th class="column-title">Ngày kết thúc</th>
+                    <th class="column-title">Đã sử dụng</th>
                     <th class="column-title">Hành động</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@
                             <td>{!! $status !!}</td>
                             <td>{!! $date_start !!}</td>
                             <td>{!! $date_end !!}</td>
+                            <td>{!! $val['total_used'] !!}</td>
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>
                     @endforeach

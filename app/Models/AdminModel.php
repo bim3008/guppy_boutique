@@ -41,8 +41,8 @@ class AdminModel extends Model
         return array_diff_key($params, array_flip($this->crudNotAccepted));
     }
     
-    public function countItem(){
-       $result =  DB::table($this->table)
+    public static function countItem($table){
+       $result =  DB::table($table)
                     ->select(DB::raw('count(id) as count'))
                     ->get()->first();
        return  $result ;

@@ -7,14 +7,6 @@
     $formLabelAttr = config('zvn.template.form_label');
 
     $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
-    $priceValue       = ['default' => 'Chọn giá tiền'  , 
-                          '0'      => config('zvn.template.price.0.name'),
-                          '10000'  => config('zvn.template.price.10000.name'),
-                          '20000'  => config('zvn.template.price.20000.name'),
-                          '30000'  => config('zvn.template.price.30000.name'), 
-                          '50000'  => config('zvn.template.price.50000.name'), 
-                          '1000000'=> config('zvn.template.price.100000.name'), 
-                        ];
     $inputHiddenID    = Form::hidden('id', $item['id']);
                     
     $elements = [
@@ -23,7 +15,7 @@
             'element' => Form::text('name', $item['name'], $formInputAttr )
         ],[
             'label'   => Form::label('price', 'Giá tiền', $formLabelAttr),
-            'element' => Form::select('price' ,$priceValue , $item['price'],  $formInputAttr )
+            'element' => Form::text('price' , $item['price'],  $formInputAttr )
         ],[
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue ,$item['status'], $formInputAttr )

@@ -21,13 +21,16 @@
                 @if (count($items) > 0)
                     @foreach ($items as $key => $val)
                         @php
+                        
                             $index           = $key + 1;
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $name            = Hightlight::show($val['name'], $params['search'], 'name');
                             $content         = Template::showContent(Hightlight::show($val['content'], $params['search'], 'content'),200) ;
                             $thumb           = Template::showItemThumb($controllerName, $val['thumb'], $val['name']);
-                            $categoryName    = $val['category_name'];
+
+                            $categoryName    = SelectBox::showCategoryChangeAjax($controllerName, $id , $val['category_id'],'category');
+
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); 
                             $type            = SelectBox::showItemSelect($controllerName, $id, $val['type'], 'type');
                             $listBtnAction   = Template::showButtonAction($controllerName, $id);

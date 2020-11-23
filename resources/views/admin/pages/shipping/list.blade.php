@@ -24,7 +24,7 @@
                             $index           = $key + 1;
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
-                            $price           = SelectBox::showItemSelect($controllerName, $id, $val['price'], 'price');
+                            $price           =  number_format($val['price']) . " VNĐ";
                             $name            = Hightlight::show($val['name'], $params['search'], 'name') ;
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); ;
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);

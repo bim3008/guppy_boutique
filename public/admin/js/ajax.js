@@ -27,11 +27,15 @@ $(document).ready(function(){
     });
     // Change SelectBox
     $ajaxSelectArttribute.on("change" ,function(){
-   
         let url   = $(this).data("url").replace("new_value",$(this).val()) ;
+        console.log(url);
         let element  = $(this) ;
         callAjax(url,element,'select');
     });
+<<<<<<< HEAD
+ 
+    
+=======
     // Change Value Coupon in Route(coupon/form)
     $ajaxValueCoupon.on("change" ,function(){
         let url   = $(this).data("url").replace("new_value",$(this).val()) ;
@@ -48,6 +52,7 @@ $(document).ready(function(){
         // },
       
     })
+>>>>>>> 75540f3139bca19bb06122a04a4e3283b7e76915
     function callAjax(url,element,type){
         $.ajax({
             url : url ,

@@ -157,13 +157,13 @@ class CategoryProductModel extends AdminModel
                 $node->appendNode($categories);
             }
         }
-
+   
         if($options['task'] == 'edit-item') {
-
-            $node = self::findOrFail($params['id']); 
+            if ($params['parent_id'] == 'none') {
+                $params['parent_id'] = 'null';
+            }
+            $node = self::findOrFail($params['id']); //parent is null
             $node->update($params);
-            
-           
         }
     }
 

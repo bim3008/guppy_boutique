@@ -6,7 +6,14 @@
     <div class="container">
         <div class="header-left">
             <ul class="menu sf-arrows">
-                <li class="active"><a href="index.html">Home</a></li>
+                @php 
+                    $xhtml = null;
+                    foreach ($itemsMenu as $itemMenu) {
+                        $xhtml .= sprintf('<li class="active"><a href="#">%s</a></li>', $itemMenu['name']);
+                    }
+                @endphp
+                {!! $xhtml !!}
+                {{-- <li class="active"><a href="index.html">Home</a></li>
                 <li>
                     <a href="category.html" class="sf-with-ul">Categories</a>
                     <div class="megamenu megamenu-fixed-width">
@@ -137,7 +144,7 @@
                         <li><a href="#" class="login-link">Login</a></li>
                         <li><a href="forgot-password.html">Forgot Password</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="header-center">

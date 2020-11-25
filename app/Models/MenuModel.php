@@ -53,8 +53,8 @@ class MenuModel extends AdminModel
             return $categories = self::withDepth()->get()->toTree()->toArray();
          }
 
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name')
+        if($options['task'] == 'front-end-list-items') {
+            $query = $this->select('id', 'name', 'type_menu')
                         ->where('status', '=', 'active' )
                         ->limit(8);
             $result = $query->get()->toArray();
@@ -148,6 +148,11 @@ class MenuModel extends AdminModel
                 'link'     =>   route($this->controllerName .'/status',['id' => $params['id'],'status' => $status,])   ,
                 'message'  =>   config('zvn-notify.status.message')  ,
             ];
+        }
+
+        if($options['task'] == 'change-type-menu') {
+            self::where('id', $params['id'])->update(['type_menu' => $params['type_menu']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
         }
 
         if($options['task'] == 'add-item') {

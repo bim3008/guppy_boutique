@@ -4,10 +4,10 @@
 }
 
 .count-wrapper {
-  font: 800 3.2rem/1 $font-family;
-  text-transform: uppercase;
-  color: $primary-color;
   margin-bottom: .7rem;
+  color: $primary-color;
+  font: 800 3.2rem / 1 $font-family;
+  text-transform: uppercase;
 
   span + span {
     font-size: 1.9rem;
@@ -15,10 +15,7 @@
 }
 
 .count-title {
-  color: #7b858a;
-  font: 400 1.4rem/1 $font-family;
   margin-bottom: 0;
-}
-
-@include mq('lg') {
+  color: #7b858a;
+  font: 400 1.4rem / 1 $font-family;
 }

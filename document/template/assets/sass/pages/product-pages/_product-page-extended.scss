@@ -41,7 +41,7 @@
     margin-bottom: 0;
   }
 
-  .widget-area  {
+  .widget-area {
     .widget.widget-info {
       margin-bottom: 0;
     }
@@ -144,7 +144,7 @@
     margin-right: 1.3rem;
     margin-bottom: 0;
     color: #21293c;
-    font: 600 1.5rem/1.1 $font-family;
+    font: 600 1.5rem / 1.1 $font-family;
     letter-spacing: .005em;
     text-transform: uppercase;
   }
@@ -154,7 +154,7 @@
     max-height: 30px;
 
     .bootstrap-touchspin {
-      &.input-group{
+      &.input-group {
         max-height: 30px;
       }
 
@@ -376,7 +376,7 @@
       height: 50px;
     }
 
-    .paction.add-cart  {
+    .paction.add-cart {
       min-width: 156px;
       height: auto;
       margin-left: 1.8rem;
@@ -456,7 +456,6 @@
     }
 
     .product-single-filter {
-
       & + .product-single-filter,
       & + .product-action {
         margin-left: 1rem;

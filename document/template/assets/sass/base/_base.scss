@@ -20,12 +20,12 @@ body {
 }
 
 ::-moz-selection {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   color: #fff;
 }
 
 ::selection {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   color: #fff;
 }
 
@@ -51,10 +51,10 @@ i {
 }
 
 hr {
-  margin: 4rem 0;
-  background-image: linear-gradient(to right, transparent, #dbdbdb, transparent);
+  max-width: 1730px;
+  margin: 5.5rem auto 5.2rem;
   border: 0;
-  height: 1px;
+  border-top: 1px solid #dfdfdf;
 }
 
 sub,
@@ -80,14 +80,21 @@ img {
 }
 
 // Animation for lazyload
-@keyframes rotating {
+@-webkit-keyframes rotating {
   from {
     -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@keyframes rotating {
+  from {
     transform: rotate(0deg);
   }
 
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -117,27 +124,23 @@ img {
   80%,
   100% {
     -webkit-transform: scale(0);
-    transform: scale(0);
-	}
+  }
 
   40% {
     -webkit-transform: scale(1);
-    transform: scale(1);
-	}
+  }
 }
 
 @keyframes bouncedelay {
   0%,
   80%,
   100% {
-    -webkit-transform: scale(0);
     transform: scale(0);
-	}
+  }
 
   40% {
-    -webkit-transform: scale(1);
     transform: scale(1);
-	}
+  }
 }
 
 .loading-overlay {

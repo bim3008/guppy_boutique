@@ -21,7 +21,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 }
 
 h4, .h4 {
@@ -38,13 +38,13 @@ h6, .h6 {
 
 a {
   transition: all .3s;
-  color: $primary-color;
+  color: $secondary-color;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: $primary-color;
+  color: $secondary-color;
   text-decoration: underline;
 }
 
@@ -71,16 +71,17 @@ a:focus {
 
 .subtitle {
   margin-bottom: 2rem;
-  color: $headings-text;
-  font: 700 1.8rem / 1 $font-family;
+  color: #21293c;
+  font: 700 1.9rem / 1 $font-family;
   text-transform: uppercase;
 }
 
 .carousel-title {
-  margin-bottom: 2.2rem;
-  padding: 0;
-  color: $headings-text;
-  font: 700 1.7rem / 1 $font-family;
+  margin-bottom: 2.6rem;
+  padding: 0 0 1.2rem;
+  border-bottom: 1px solid #e1e1e1;
+  color: #302e2a;
+  font: 700 1.8rem / 1 $font-family;
   letter-spacing: -.01rem;
   text-transform: uppercase;
 }
@@ -95,25 +96,11 @@ a:focus {
 }
 
 .lead {
-  color: inherit;
+  margin-bottom: 2rem;
+  color: #21293c;
   font-size: 1.8rem;
-  font-weight: 300;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-}
-
-.fancy-text {
-  color: $primary-color;
-  font-family: $third-font-family;
-
-  p & {
-    display: inline-block;
-    font-size: 1.6em;
-    margin-bottom: -.6rem;
-    margin-top: -1.5rem;
-    position: relative;
-    top: .3rem;
-  }
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 @include mq('md') {
@@ -125,8 +112,8 @@ a:focus {
     font-size: 2.4rem;
   }
 
-  .lead {
-    font-size: 2.1rem;
+  h3, .h3 {
+    font-size: 2rem;
   }
 }
 

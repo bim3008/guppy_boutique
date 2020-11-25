@@ -2,7 +2,7 @@
 .banner {
   display: block;
   position: relative;
-  margin-bottom: 3.4rem;
+  margin-bottom: 0;
   background-color: #ccc;
 
   &.banner-cat {
@@ -11,11 +11,11 @@
     -ms-flex-align: center;
     align-items: center;
     height: 220px;
+    margin-bottom: 0;
     background-color: #ccc;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    margin-bottom: 0;
   }
 
   > a {
@@ -31,35 +31,33 @@
 
   .banner-content {
     display: inline-block;
-    padding-left: 1rem;
   }
 
   .banner-title {
-    color: $primary-color;
-    font: 700 3rem/1.1 $second-font-family;
-    margin-bottom: 2rem;
-    letter-spacing: 0;
+    margin-bottom: 3rem;
+    color: #010204;
+    font: 800 3rem / 1.1 $font-family;
+    letter-spacing: -.025rem;
     text-transform: uppercase;
   }
 
   .banner-subtitle {
-    color: $primary-color;
-    font: 300 1.5rem/1.1 $font-family;
+    margin-bottom: .2rem;
+    color: #010204;
+    font: 700 1.5rem / 1.1 $font-family;
     letter-spacing: 0;
     text-transform: uppercase;
-    margin-bottom: .2rem;
 
     span {
-      font-weight: 700;
       font-family: $second-font-family;
       font-size: 2.4rem;
     }
   }
 
   .btn {
-    padding: 1.2rem 1rem;
-    font-size: 1.3rem;
-    min-width: 119px;
+    min-width: 100px;
+    padding: 1.1rem 1rem;
+    border-radius: .2rem;
   }
 }
 
@@ -97,13 +95,9 @@
       height: 260px;
     }
 
-    .banner-content {
-      padding-left: 2rem;
-    }
-
     .banner-title {
-      font-size: 3.6rem;
       margin-bottom: 2.5rem;
+      font-size: 3.2rem;
     }
 
     .banner-subtitle {
@@ -122,13 +116,9 @@
       height: 300px;
     }
 
-    .banner-content {
-      padding-left: 4rem;
-    }
-
     .banner-title {
-      font-size: 4rem;
       margin-bottom: 3rem;
+      font-size: 3.6rem;
     }
 
     .banner-subtitle {

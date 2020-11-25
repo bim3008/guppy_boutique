@@ -90,9 +90,10 @@
 
 .mobile-menu {
   margin: 0;
-  padding:0;
+  padding: 0;
+  border-bottom: 1px solid #242527;
   list-style: none;
-  border-bottom:1px solid #242527;
+
   > li {
     > a {
       text-transform: uppercase;
@@ -107,21 +108,21 @@
     a {
       display: block;
       position: relative;
-      padding: 1.1rem 0 1.1rem 1.5rem;
       margin-right: 4.5rem;
+      padding: 1.1rem 0 1.1rem 1.5rem;
       color: #fff;
-      
+
       &:hover,
       &:focus {
-        color: #b7b7b7;
+        color: $primary-color;
         text-decoration: none;
       }
     }
-    
+
     &.open,
     &.active {
       > a {
-        color: #b7b7b7;
+        color: $primary-color;
       }
     }
 
@@ -139,12 +140,6 @@
           padding-left: 3.5rem;
         }
       }
-    }
-  }
-
-  > li {
-    > a {
-      text-transform: uppercase;
     }
   }
 }

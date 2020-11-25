@@ -1,6 +1,8 @@
 // Product Page 4
 .product-single-grid {
   margin-bottom: 6rem;
+  padding-top: 4rem;
+  border-top: .1rem solid #dae2e6;
 
   .product-single-gallery {
     padding: 0 .75rem;
@@ -55,7 +57,7 @@
     }
   }
 
-  .add-cart  {
+  .add-cart {
     min-width: 270px;
     margin-left: 0;
 
@@ -155,7 +157,7 @@
   }
 }
 
-@media screen and (max-width: 912px)  and (min-width: 768px) {
+@media screen and (max-width: 912px) and (min-width: 768px) {
   .product-single-grid .add-cart {
     min-width: 100%;
   }

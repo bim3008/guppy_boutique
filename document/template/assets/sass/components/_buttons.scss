@@ -1,36 +1,36 @@
 // Buttons
 .btn {
-  padding: 1.25rem 2rem;
-  font-size: $button-font-size;
-  line-height: 1.5;
-  font-family: $second-font-family;
-  letter-spacing: .075rem;
-  text-transform: uppercase;
-  border-radius: $border-radius;
   min-width: 124px;
+  padding: 1.25rem 2rem;
   transition: all .3s;
+  border-radius: $border-radius;
+  font-family: $second-font-family;
+  font-size: $button-font-size;
+  letter-spacing: .1rem;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 .btn-sm {
-  font-size: 1.3rem;
-  padding: 1rem 1.5rem;
-  letter-spacing: 1px;
   min-width: 90px;
+  padding: 1rem 1.5rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 
 .btn-link {
+  min-width: 0;
   padding-top: 0;
   padding-bottom: 0;
-  color: $primary-color;
-  text-transform: initial;
-  letter-spacing: 0;
-  font-size: 13px;
-  min-width: 0;
+  color: $secondary-color;
   font-family: $font-family;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: initial;
 
   &:hover,
   &:focus {
-    color: $primary-color;
+    color: $secondary-color;
     text-decoration: underline;
   }
 }
@@ -51,7 +51,7 @@
 }
 
 .btn-dark {
-  @include button-variant(#fff, #2b2b2c, #2b2b2c, #fff, #333, #333, #333, #333);
+  @include button-variant(#fff, #010204, #010204, #fff, #1a1a1a, #1a1a1a, #1a1a1a, #1a1a1a);
 }
 
 .btn-outline {
@@ -67,6 +67,7 @@
 }
 
 .btn-social-login {
+  display: -ms-flexbox;
   display: flex;
   margin-right: 10px;
   margin-left: 10px;
@@ -75,7 +76,8 @@
   text-decoration: none;
   text-transform: uppercase;
 
-  span, i {
+  span,
+  i {
     color: #fff;
   }
 
@@ -97,7 +99,9 @@
   background: #1aa9e1;
 }
 
-.owl-dots .owl-dot, .owl-nav .owl-prev, .owl-nav .owl-next {
+.owl-dots .owl-dot,
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
   outline: none;
 }
 

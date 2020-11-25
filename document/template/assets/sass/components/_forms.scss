@@ -42,10 +42,10 @@ form {
   line-height: 1.5;
 
   &:focus {
+    border-color: $secondary-color;
     background-color: #fff;
-    border-color: $primary-color;
-    box-shadow: none;
     color: $body-text;
+    box-shadow: none;
   }
 }
 
@@ -153,7 +153,6 @@ label {
     position: absolute;
     top: 50%;
     right: 1.9rem;
-    -webkit-transform: translateY(-51%);
     transform: translateY(-51%);
     color: #34373f;
     font-family: 'porto';
@@ -185,6 +184,13 @@ label {
     letter-spacing: 0;
     text-transform: initial;
   }
+}
+
+.custom-control {
+  position: relative;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding-left: 3rem;
 }
 
 .custom-control-label {

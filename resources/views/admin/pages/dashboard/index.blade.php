@@ -14,6 +14,7 @@
             ['total' =>  $totalQuestion, 'name'  => 'Câu hỏi'         ,  'icon'      => 'fa-question'     , 'link'  => route('question'),],
             ['total' =>  $totalFeedback, 'name'  => 'Cảm nhận KH'     ,  'icon'      => 'fa-smile-o'      , 'link'  => route('feedback'),],
             ['total' =>  $totalContact,  'name'  => 'Yêu cầu liên hệ' ,  'icon'      => 'fa-phone'        , 'link'  => route('contact'),],
+            ['total' =>  $totalProduct,  'name'  => 'Tổng sản phẩm'   ,  'icon'      => 'fa-product-hunt'      , 'link'  => route('product'),],
         ];
     @endphp
     <div class="page-header zvn-page-header clearfix">

@@ -23,8 +23,9 @@ class DashboardController extends Controller
         $totalQuestion = AdminModel::countItem('question');
         $totalFeedback = AdminModel::countItem('feedback');
         $totalContact  = AdminModel::countItem('contact');
-    
-        return view($this->pathViewController .  'index', compact('totalSlider','totalArticle','totalUser','totalCategory','totalQuestion','totalFeedback','totalContact')
+        $totalProduct  = AdminModel::countItem('product');
+     
+        return view($this->pathViewController .  'index', compact('totalSlider','totalArticle','totalUser','totalCategory','totalQuestion','totalFeedback','totalContact','totalProduct')
         );
     }
 

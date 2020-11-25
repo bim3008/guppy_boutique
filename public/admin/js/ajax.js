@@ -77,8 +77,13 @@ $(document).ready(function(){
            ''+message+'' , {className: "success", position: "top", autoHideDelay: 1000, }
         );
     }
+    //AUTOCOMPLETE TAG
+    $ajaxTag.autocomplete({
+        source:'autocomplete',
+    })
     
 }) ;
+
 
 //ADMIN - PRODUCT - ATTRIBUTE
 function showName(url){

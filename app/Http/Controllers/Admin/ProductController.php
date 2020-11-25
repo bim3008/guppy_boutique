@@ -38,8 +38,6 @@ class ProductController extends AdminController
             return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
       }
    }
-
-
    public function storeMedia(Request $request)
    {
       $path = public_path('uploads');
@@ -58,7 +56,6 @@ class ProductController extends AdminController
          'original_name' => $file->getClientOriginalName(),
       ]);
    }
-
    public function getAttribute(Request $request)
    {
       $params["id"]                 = $request->id;
@@ -70,7 +67,6 @@ class ProductController extends AdminController
          return $name;
       }
    }
-
    public function autocomplete(Request $request)
    {
       $tag     = new TagModel();

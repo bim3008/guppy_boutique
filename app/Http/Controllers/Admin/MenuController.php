@@ -46,13 +46,6 @@ class MenuController extends AdminController
                 $task   = "edit-item";
                 $notify = "Cập nhật phần tử thành công!";
             }
-            // echo '<pre>';
-            // print_r($params);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($this->controllerName);
-            // echo '</pre>';
-            // die();
             $this->model->saveItem($params, ['task' => $task]);
             return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
         }
@@ -68,6 +61,14 @@ class MenuController extends AdminController
         }
         return redirect()->route($this->controllerName)->with('success','Change Success!');
       }
+
+    public function type_menu(Request $request){
+        $params['id']         =  $request->id;
+        $params['type_menu']  =  $request->type_menu;
+        $items = $this->model->saveItem($params, ['task' => 'change-type-menu']);
+        echo json_encode($items) ;
+     
+    }
 
 
 

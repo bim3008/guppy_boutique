@@ -150,6 +150,11 @@ class MenuModel extends AdminModel
             ];
         }
 
+        if($options['task'] == 'change-type-menu') {
+            self::where('id', $params['id'])->update(['type_menu' => $params['type_menu']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
+
         if($options['task'] == 'add-item') {
             // $categories = self::create([
             //     'name'              => $params['name'],

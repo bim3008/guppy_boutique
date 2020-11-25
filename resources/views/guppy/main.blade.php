@@ -3,17 +3,13 @@
 <head>
     @include('guppy.html.head')
 </head>
-<body>
+<body> 
     <div class="page-wrapper">
         <header class="header">
-            @include('guppy.html.header-top')
+            @include('guppy.html.header-top.index')
             @include('guppy.html.header-menu')
         </header><!-- End .header -->
         <main class="main">
-                @include('guppy.elements.slider')
-               {{-- include 'elements/product-1.php';
-                 include 'elements/partners.php';
-                 include 'elements/product-2.php'; --}}
                 @yield('content')
         </main><!-- End .main -->
         @include('guppy.html.footer')

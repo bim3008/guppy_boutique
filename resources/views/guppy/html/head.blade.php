@@ -9,7 +9,7 @@
 <meta name="author" content="Guppy Boutique">
     
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon"   href="{{asset('guppy/assets/images/favicon.png')}}" >
+<link rel="icon" type="image/x-icon"   href="{{ asset('guppy/assets/images/favicon.png') }}" >
 <!-- Plugins CSS File -->
 <link rel="stylesheet" href="{{asset('guppy/assets/css/bootstrap.min.css')}}">
 

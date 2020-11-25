@@ -2,6 +2,7 @@
 namespace App\Helpers;
 use Config;
 use App\Models\CategoryProductModel;
+use App\Models\MenuModel;
 
 class Template {
     public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch) { // $currentFilterStatus active inactive all
@@ -197,18 +198,29 @@ class Template {
         }
         return  $xhtml . $name;
     }
-    public static function showIconOrderingCategortyProduct($controllerName, $item, $prefix = ''){
+    public static function showIconOrderingNestedProduct($controllerName, $item, $prefix = ''){
+
         $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
         $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
         $node = CategoryProductModel::find($item->id);
-        if(!$node->getPrevSibling()) $arrowUp = '';
-        if(!$node->getNextSibling()) $arrowDown = '';
+        if(!$node->getPrevSibling()) $arrowUp = null;
+        if(!$node->getNextSibling()) $arrowDown = null;
+        return $ordering = $arrowUp.$arrowDown;
+       
+    }
+    public static function showIconOrderingNestedMenu($controllerName, $item, $prefix = ''){
+
+        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
+        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
+        $node = MenuModel::find($item->id);
+        if(!$node->getPrevSibling()) $arrowUp = null;
+        if(!$node->getNextSibling()) $arrowDown = null;
         return $ordering = $arrowUp.$arrowDown;
        
     }
     public static function showSelectedParent($item, $itemsCategories){
         $xhtml = '<select class="custom-select form-control col-md-6 col-xs-12" name="parent_id">';
-        $xhtml .= '<option  name="none" value="none">No parent</option>';
+        $xhtml .= '<option  name="none" value="none">Root</option>';
         
         foreach ($itemsCategories as $key => $items){
             if(!empty($item['id']) && $item['id'] == $items['id']) continue;
@@ -223,4 +235,5 @@ class Template {
         $xhtml .= '</select>';
         return $xhtml;
     }
+  
 }

@@ -1,5 +1,3 @@
-
-
 @if ($paginator->hasPages())
 <nav aria-label="Page navigation example" class="zvn_pagination">
     <ul class="pagination zvn-pagination">

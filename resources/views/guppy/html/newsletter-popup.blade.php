@@ -1,4 +1,4 @@
-<div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background-image: url(assets/images/newsletter_popup_bg.jpg)">
+{{-- <div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background-image: url(assets/images/newsletter_popup_bg.jpg)">
     <div class="newsletter-popup-content">
         <img src="assets/images/logo-black.png" alt="Logo" class="logo-newsletter">
         <h2>BE THE FIRST TO KNOW</h2>
@@ -18,4 +18,4 @@
             </div>
         </div>
     </div><!-- End .newsletter-popup-content -->
-</div><!-- End .newsletter-popup -->
+</div><!-- End .newsletter-popup --> --}}

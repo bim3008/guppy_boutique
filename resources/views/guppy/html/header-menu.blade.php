@@ -1,3 +1,7 @@
+@php
+   $item = json_decode($itemsSetting['value']);
+   $logo = ("/images/setting") . '/' . $item->logo ;
+@endphp
 <div class="header-middle sticky-header">
     <div class="container">
         <div class="header-left">
@@ -44,7 +48,7 @@
                             <div class="col-lg-4">
                                 <div class="banner">
                                     <a href="#">
-                                        <img src="assets/images/menu-banner-2.jpg" alt="Menu banner">
+                                        <img src=" {{ asset('guppy/assets/images/menu-banner-2.jpg') }}" alt="Menu banner">
                                     </a>
                                 </div><!-- End .banner -->
                             </div><!-- End .col-lg-4 -->
@@ -97,7 +101,7 @@
                             <div class="col-lg-4">
                                 <div class="banner">
                                     <a href="#">
-                                        <img src="assets/images/menu-banner.jpg" alt="Menu banner" class="product-promo">
+                                        <img src=" {{ asset('guppy/assets/images/menu-banner.jpg') }}" alt="Menu banner" class="product-promo">
                                     </a>
                                 </div><!-- End .banner -->
                             </div><!-- End .col-lg-4 -->
@@ -135,13 +139,12 @@
                     </ul>
                 </li>
             </ul>
-        </div><!-- End .header-left -->
-
+        </div>
         <div class="header-center">
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Porto Logo">
+            <a href="{{ route('home') }}" class="logo">
+                <img style="withd:50px; height:50px" src="{{ $logo }}" alt="Porto Logo">
             </a>
-        </div><!-- End .headeer-center -->
+        </div>
 
         <div class="header-right">
             <ul class="menu sf-arrows">
@@ -161,6 +164,6 @@
             <button class="mobile-menu-toggler" type="button">
                 <i class="icon-menu"></i>
             </button>
-        </div><!-- End .header-right -->
-    </div><!-- End .container -->
-</div><!-- End .header-middle -->
+        </div>
+    </div>
+</div>

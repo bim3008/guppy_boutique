@@ -1,7 +1,7 @@
 @php
     use App\Helpers\Template as Template;
     use App\Helpers\Hightlight as Hightlight;
-    use App\Models\CategoryProductModel;
+    use App\Helpers\SelectBox as SelectBox;
 @endphp
 
 <div class="x_content">
@@ -10,8 +10,10 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Name</th>
-                    <th class="column-title">Ordering</th>
+                    <th class="column-title">Tên</th>
+                    <th class="column-title">Sắp xếp</th>
+                    <th class="column-title">Đường dẫn</th>
+                    <th class="column-title">Kiểu hiện thị</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Tạo mới</th>
                     <th class="column-title">Chỉnh sửa</th>
@@ -27,8 +29,9 @@
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             // $name            = Hightlight::show($val['name'], $params['search'], 'name');
-                            $ordering        = Template::showIconOrderingNestedProduct($controllerName,$val,$prefix = ''); 
-                            // $ordering        = '1';
+                            $link            = $val['link'];
+                            $typeMenu        =  SelectBox::showItemSelect($controllerName, $id, $val['type_menu'], 'type_menu');
+                            $ordering        = Template::showIconOrderingNestedMenu($controllerName,$val,$prefix = ''); 
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']);
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);
@@ -36,9 +39,11 @@
                         @endphp
 
                         <tr class="{{ $class }} pointer">
-                            <td >{{ $index }}</td>
-                            <td width="25%">{!! $name !!}</td>
-                            <td width="25%">{!! $ordering !!}</td>
+                            <td>{{ $index }}</td>
+                            <td> {!! $name !!}</td>
+                            <td> {!! $ordering !!}</td>
+                            <td>{!! $link !!}</td>
+                            <td>{!! $typeMenu !!}</td>
                             <td>{!! $status !!}</td>
                             <td>{!! $createdHistory !!}</td>
                             <td>{!! $modifiedHistory !!}</td>

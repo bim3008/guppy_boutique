@@ -1,14 +1,15 @@
 <?php
-$prefixNews  = config('zvn.url.prefix_news');
+   $prefixNews  = config('zvn.url.prefix_news');
 Route::group(['prefix' => '', 'namespace' => 'guppy'], function () {
-   // ============================== HOMEPAGE ==============================
+
+// ============================== HOMEPAGE ==============================
    $prefix         = '';
    $controllerName = 'home';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-       $controller = ucfirst($controllerName)  . 'Controller@';
-       Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
-       Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
-   });
+      $controller = ucfirst($controllerName)  . 'Controller@';
+      Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
+      Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
+});
 
    // ============================== CATEGORY - ARTICLE ==============================
 //    $prefix         = 'chuyen-muc';

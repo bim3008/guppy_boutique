@@ -1,4 +1,4 @@
 @extends('guppy.main')
 @section('content')
-    TRANG HOME O DAY NE, HIHI
+    @include('guppy.block.slider')
 @endsection

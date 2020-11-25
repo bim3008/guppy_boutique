@@ -37,7 +37,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('delete/{id}',                   [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
         Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
     });
-// ============================== CATEGORY PRODUCT ===============================
+// ============================== CATEGORY PRODUCT =======================
     $prefix         = 'CategoryProduct';    
     $controllerName = 'categoryProduct';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
@@ -87,22 +87,22 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('change-status-{status}/{id}',          [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
     });
 // ============================== PRODUCT ================================
-$prefix         = 'product';
-$controllerName = 'product';
-Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-    $controller = ucfirst($controllerName)  . 'Controller@';
-    Route::get('/',                                 [ 'as' => $controllerName,                              'uses' => $controller . 'index' ]);
-    Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',                    'uses' => $controller . 'form'])->where('id', '[0-9]+');
-    Route::post('save',                             [ 'as' => $controllerName . '/save',                    'uses' => $controller . 'save']);
-    Route::post('store',                            [ 'as' => $controllerName . '/store',                   'uses' => $controller . 'store']);
-    Route::post('storeMedia',                       [ 'as' => $controllerName . '/storeMedia',              'uses' => $controller . 'storeMedia']);
-    Route::post('document_upload',                  [ 'as' => $controllerName . '/document_upload',         'uses' => $controller . 'document_upload']);
-    Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',                  'uses' => $controller . 'delete'])->where('id', '[0-9]+');
-    Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',                  'uses' => $controller . 'status'])->where('id', '[0-9]+');
-    Route::get('get-attribute/{id}',                [ 'as' => $controllerName . '/getAttribute',            'uses' => $controller . 'getAttribute'])->where('id', '[0-9]+');
-    Route::get('autocomplete',                      [ 'as' => $controllerName . '/autocomplete',      'uses' => $controller . 'autocomplete']);
-    Route::get('change-type-{type}/{id}',           [ 'as' => $controllerName . '/type',        'uses' => $controller . 'type']);
-});
+    $prefix         = 'product';
+    $controllerName = 'product';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+        Route::get('/',                                 [ 'as' => $controllerName,                              'uses' => $controller . 'index' ]);
+        Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',                    'uses' => $controller . 'form'])->where('id', '[0-9]+');
+        Route::post('save',                             [ 'as' => $controllerName . '/save',                    'uses' => $controller . 'save']);
+        Route::post('store',                            [ 'as' => $controllerName . '/store',                   'uses' => $controller . 'store']);
+        Route::post('storeMedia',                       [ 'as' => $controllerName . '/storeMedia',              'uses' => $controller . 'storeMedia']);
+        Route::post('document_upload',                  [ 'as' => $controllerName . '/document_upload',         'uses' => $controller . 'document_upload']);
+        Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',                  'uses' => $controller . 'delete'])->where('id', '[0-9]+');
+        Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',                  'uses' => $controller . 'status'])->where('id', '[0-9]+');
+        Route::get('get-attribute/{id}',                [ 'as' => $controllerName . '/getAttribute',            'uses' => $controller . 'getAttribute'])->where('id', '[0-9]+');
+        Route::get('autocomplete',                      [ 'as' => $controllerName . '/autocomplete',      'uses' => $controller . 'autocomplete']);
+        Route::get('change-type-{type}/{id}',           [ 'as' => $controllerName . '/type',        'uses' => $controller . 'type']);
+    });
 // ============================== ARTICLE ================================
     $prefix         = 'article';
     $controllerName = 'article';
@@ -167,17 +167,17 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         Route::get('change-status-{contact}/{id}',  [ 'as' => $controllerName . '/contact',     'uses' => $controller . 'contact'])->where('id', '[0-9]+');
     });
 // ============================== TAG ================================
-$prefix         = 'tag';
-$controllerName = 'tag';
-Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-    $controller = ucfirst($controllerName)  . 'Controller@';
-    Route::get('/',                                 [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
-    Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',        'uses' => $controller . 'form'])->where('id', '[0-9]+');
-    Route::post('save',                             [ 'as' => $controllerName . '/save',        'uses' => $controller . 'save']);
-    Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
-    
-    Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
-});
+    $prefix         = 'tag';
+    $controllerName = 'tag';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+        Route::get('/',                                 [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
+        Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',        'uses' => $controller . 'form'])->where('id', '[0-9]+');
+        Route::post('save',                             [ 'as' => $controllerName . '/save',        'uses' => $controller . 'save']);
+        Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
+        
+        Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
+    });
 
 // ============================== SCRIPT =================================
     $prefix         = 'script';
@@ -241,7 +241,21 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         Route::get('change-price-{price}/{id}',     [ 'as' => $controllerName . '/price',       'uses' => $controller . 'price'])->where('id', '[0-9]+');
         Route::get('get-coupon-{coupon}',             [ 'as' => $controllerName . '/coupon',        'uses' => $controller.'coupon']);
     });
-
+// ============================== MENU =================================
+    $prefix         = 'menu';
+    $controllerName = 'menu';
+    Route::group(['prefix' =>  $prefix], function () use($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+        Route::get('/',                                 [ 'as' => $controllerName,                       'uses' => $controller . 'index' ]);
+        Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',             'uses' => $controller . 'form'])->where('id', '[0-9]+');
+        Route::post('save',                             [ 'as' => $controllerName . '/save',             'uses' => $controller . 'save']);
+        Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',           'uses' => $controller . 'delete'])->where('id', '[0-9]+');
+        Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',           'uses' => $controller . 'status']);
+        Route::get('change-ordering-{ordering}/{id}',   [ 'as' => $controllerName . '/ordering',      'uses' => $controller . 'ordering'])->where('id', '[0-9]+');
+        Route::get('change-type_menu-{type_menu}/{id}', [ 'as' => $controllerName . '/type_menu',     'uses' => $controller . 'type_menu']);
+        Route::get('change-type_open-{type_open}/{id}', [ 'as' => $controllerName . '/type_open',     'uses' => $controller . 'type_open']);
+        Route::get('change-node-{node}/{id}',           [ 'as' => $controllerName . '/node',         'uses' => $controller . 'node'])->where('id', '[0-9]+');
+    });
 
 }); /////// END
 

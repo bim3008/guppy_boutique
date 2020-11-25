@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Guppy;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;;    
+use App\Models\SettingModel ;
+use App\Models\SliderModel ;
 
 class HomeController extends Controller
 {
@@ -17,8 +19,12 @@ class HomeController extends Controller
     }
 
    public function index(Request $request)
-      {   
-         return view($this->pathViewController .  'index');
+      {  
+         $settingModel  = new SettingModel();
+         $sliderModel   = new SliderModel() ;
+         $itemsSetting  = $settingModel->getItem('general',[ 'task' => 'get-item']); 
+         $itemsSlider   = $sliderModel->listItems( null,[ 'task'     => 'news-list-items']); 
+         return view($this->pathViewController .  'index' , compact('itemsSetting','itemsSlider') );
       }
 
    public function notFound(Request $request)

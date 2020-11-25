@@ -3,7 +3,7 @@
     use App\Helpers\Form as FormTemplate;
     use App\Helpers\Template;
     use App\Models\SettingModel ;
-    
+
     $settingModel = new SettingModel();
     $itemGeneral         = $settingModel->getItem( 'general' , ['task' => 'get-item']); 
     if(!empty($itemGeneral )){
@@ -12,7 +12,7 @@
     }else{
        $item = NULL ;
     }
-   
+    $formCkeditor        = config('zvn.template.form_ckeditor');
     $formInputAttr       = config('zvn.template.form_input');
     $formLabelAttr       = config('zvn.template.form_label');
     $inputHiddenAvatar   = Form::hidden('logo_current', $item['logo']);
@@ -40,7 +40,7 @@
             'element' => Form::text('address', $item['address'], $formInputAttr)
         ],[
             'label'   => Form::label('introduce', 'Giới thiệu', $formLabelAttr),
-            'element' => Form::textarea('introduce', $item['introduce'], $formInputAttr)
+            'element' => Form::textarea('introduce', $item['introduce'], $formCkeditor)
         ],
         [
             'element' =>  $inputID.$inputKeyValue.$inputHiddenRequest.$inputHiddenAvatar. Form::submit('Save', ['class'=>'btn btn-success']),

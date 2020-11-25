@@ -13,7 +13,7 @@ class CategoryProductModel extends AdminModel
     protected  $table                   = 'category_product';
     protected  $controllerName          = 'categoryProduct';
     protected  $fieldSearchAccepted     = ['id', 'name']; 
-    protected  $fillable                = ['name', 'status', 'ordering','parent_id'];
+    protected  $fillable                = ['name', 'status', 'ordering'];
     protected  $crudNotAccepted         = ['_token', 'id'];
   
 
@@ -151,19 +151,32 @@ class CategoryProductModel extends AdminModel
         }
 
         if($options['task'] == 'add-item') {
+            // $categories = self::create([
+            //     'name'              => $params['name'],
+            //     'parent_id'         => $params['parent_id'],
+            //     'status'            => 'active',
+            //     'created'           => date('Y-m-d'),
+            //     'created_by'        => 'duynguyen',
+            // ]);
+            // if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
+            //     $node = self::find($params['parent_id']);
+            //     $node->appendNode($categories);
+            // }
+
+
             $categories = self::create($params);
             if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
                 $node = self::find($params['parent_id']);
                 $node->appendNode($categories);
             }
         }
-
+   
         if($options['task'] == 'edit-item') {
-
-            $node = self::findOrFail($params['id']); 
+            if ($params['parent_id'] == 'none') {
+                $params['parent_id'] = 'null';
+            }
+            $node = self::findOrFail($params['id']); //parent is null
             $node->update($params);
-            
-           
         }
     }
 

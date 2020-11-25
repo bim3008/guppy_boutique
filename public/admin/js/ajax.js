@@ -6,7 +6,6 @@ $(document).ready(function(){
     let $ajaxSelectArttribute   = $("[name = select_change_attr]");
     let $ajaxValueCoupon        = $("[name = type_coupon]");
     let $ajaxTag                = $('#tag');
-    let sourceTag               = ['cá', 'guppy', 'bảy màu', 'ba đuôi'];
     // Change Ajax Status
     $ajaxStatus.click(function(){
         let url      = $(this).data("url") ;
@@ -32,7 +31,11 @@ $(document).ready(function(){
         let element  = $(this) ;
         callAjax(url,element,'select');
     });
- 
+    
+    //AUTOCOMPLETE TAG
+    $ajaxTag.autocomplete({
+        source:'autocomplete',
+    })
     
     function callAjax(url,element,type){
         $.ajax({

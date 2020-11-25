@@ -4,7 +4,9 @@
     use App\Helpers\Template;
     use App\Models\CategoryProductModel;
     use App\Helpers\URL;
-   
+   echo '<pre>';
+   print_r($controllerName);
+   echo '</pre>';
     $categoriesModel = new CategoryProductModel();
     $itemsCategories = $categoriesModel->listItems(null, ['task' => 'admin-list-nested']);
    

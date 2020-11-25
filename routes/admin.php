@@ -38,7 +38,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
     });
 // ============================== CATEGORY PRODUCT ===============================
-    $prefix         = 'category-product';    
+    $prefix         = 'CategoryProduct';    
     $controllerName = 'categoryProduct';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';

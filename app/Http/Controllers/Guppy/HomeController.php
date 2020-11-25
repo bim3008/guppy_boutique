@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;;    
 use App\Models\SettingModel ;
 use App\Models\SliderModel ;
+use App\Models\MenuModel ;
 
 class HomeController extends Controller
 {
@@ -22,9 +23,11 @@ class HomeController extends Controller
       {  
          $settingModel  = new SettingModel();
          $sliderModel   = new SliderModel() ;
-         $itemsSetting  = $settingModel->getItem('general',[ 'task' => 'get-item']); 
-         $itemsSlider   = $sliderModel->listItems( null,[ 'task'     => 'news-list-items']); 
-         return view($this->pathViewController .  'index' , compact('itemsSetting','itemsSlider') );
+         $menuModel     = new MenuModel() ;
+         $itemsSetting  = $settingModel->getItem('general', [ 'task' => 'get-item']); 
+         $itemsSlider   = $sliderModel->listItems( null,    [ 'task'=> 'news-list-items']); 
+         $itemsMenu     = $menuModel->listItems( null,      [ 'task'=> 'front-end-list-items']); 
+         return view($this->pathViewController .  'index' , compact('itemsSetting','itemsSlider','itemsMenu') );
       }
 
    public function notFound(Request $request)

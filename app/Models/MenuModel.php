@@ -53,8 +53,8 @@ class MenuModel extends AdminModel
             return $categories = self::withDepth()->get()->toTree()->toArray();
          }
 
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name')
+        if($options['task'] == 'front-end-list-items') {
+            $query = $this->select('id', 'name', 'type_menu')
                         ->where('status', '=', 'active' )
                         ->limit(8);
             $result = $query->get()->toArray();

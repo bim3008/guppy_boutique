@@ -9,10 +9,11 @@
                 <tr class="headings">
                     <th class="column-title">#</th>
                     <th class="column-title">Thông tin khách hàng</th>
+                    <th class="column-title">Hình ảnh</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Đánh giá</th>
-                    <th class="column-title">Tạo mới</th>
-                    <th class="column-title">Chỉnh sửa</th>
+                    {{-- <th class="column-title">Tạo mới</th>
+                    <th class="column-title">Chỉnh sửa</th> --}}
                     <th class="column-title">Hành động</th>
                 </tr>
             </thead>
@@ -38,16 +39,17 @@
                             <td width="40%">
                                 <p><strong>Tên:</strong> {!! $name !!}</p>
                                 <p><strong>Cảm nhận:</strong> {!! $description!!}</p>
-                                <p>{!! $thumb !!}</p>
+                                
                             </td>
+                            <td>{!! $thumb !!}</td>
                             <td>{!! $status !!}</td>
                             <td> 
                                 @for($i = 1; $i <= $star ; $i++)
                                     <a href="#"><span class="fa fa-star"></span></a>                                   
                                 @endfor
                             </td>
-                            <td>{!! $createdHistory !!}</td>
-                            <td>{!! $modifiedHistory !!}</td>
+                            {{-- <td>{!! $createdHistory !!}</td> --}}
+                            {{-- <td>{!! $modifiedHistory !!}</td> --}}
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>
                     @endforeach

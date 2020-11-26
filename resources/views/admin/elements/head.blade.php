@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="img/favicon.ico" type="image/ico"/>
+<link rel="icon" href="{{ asset('admin/img/favicon.ico') }}" type="image/ico"/>
 <title>Admin | Index</title>
 <script src="{{ asset('admin/js/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{asset('admin/js/jquery-ui.min.js')}}"></script>

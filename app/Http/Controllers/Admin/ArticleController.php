@@ -61,4 +61,6 @@ class ArticleController extends AdminController
         echo json_encode($items) ;
         // return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
     }
+
+   
 }

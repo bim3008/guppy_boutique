@@ -42,7 +42,8 @@ return [
             'yes'      => ['name' => 'Đã liên hệ',   'class' => 'btn-success'],
             'no'       => ['name' => 'Chưa liên hệ', 'class' => 'btn-info'],
             'default'  => ['name' => 'Chưa xác định','class' => 'btn-success'],
-        ],'type_menu'       => [
+        ],
+        'type_menu'       => [
             'normal'                => ['name' => 'Hiển thị bình thường'],
             'category_article'      => ['name' => 'Hiển thị kiểu danh mục bài viết'],
             'category_product'      => ['name' => 'Hiển thị kiểu danh mục sản phẩm'],
@@ -135,6 +136,7 @@ return [
             'product'           => ['edit','delete'],
             'tag'               => ['edit','delete'],
             'categoryProduct'   => ['edit','delete'],
+            'categoryArticle'   => ['edit','delete'],
             'menu'              => ['edit','delete'],
         ]
     ]

@@ -2,16 +2,16 @@
 @php
     use App\Helpers\Form as FormTemplate;
     use App\Helpers\Template;
-    use App\Models\MenuModel;
+    use App\Models\CategoryArticleModel;
     use App\Helpers\URL;
     
-    $menuModel = new MenuModel();
-    $itemsMenu = $menuModel->getItem(null, ['task' => 'admin-get-nested']);
+    $category      = new CategoryArticleModel();
+    $itemsCategory = $category->getItem(null, ['task' => 'admin-get-nested']);
     $formInputAttr = config('zvn.template.form_input');
     $formLabelAttr = config('zvn.template.form_label');
 
-    $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
-    $typeMenuValue    = ['default' => 'Select type menu', 'normal' => config('zvn.template.type_menu.normal.name'), 'category_article' => config('zvn.template.type_menu.category_article.name'), 'category_product' => config('zvn.template.type_menu.category_product.name')];
+    $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+    $isHome           = ['default' => 'Chọn hiển thị'  , 'no'     => config('zvn.template.is_home.no.name'), 'yes' => config('zvn.template.is_home.yes.name')];
     $inputHiddenID    = Form::hidden('id', $item['id']);
 
     $elements = [
@@ -24,15 +24,15 @@
         ],
         [
             'label'   => Form::label('parent_id', 'Parent Category', $formLabelAttr),
-            'element' => Template::showSelectedParent($item, $itemsMenu),
+            'element' => Template::showSelectedParent($item, $itemsCategory),
         ],
         [
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [
-            'label'   => Form::label('type_menu', 'Kiểu danh mục', $formLabelAttr),
-            'element' => Form::select('type_menu', $typeMenuValue, $item['type_menu'], $formInputAttr)
+            'label'   => Form::label('is_home', 'Hiển thị trang chủ', $formLabelAttr),
+            'element' => Form::select('is_home', $isHome, $item['is_home'], $formInputAttr)
         ],
         [
             'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),

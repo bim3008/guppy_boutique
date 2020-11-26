@@ -32,12 +32,19 @@
         ]
     ];
 @endphp
-
 <div class="col-md-8 col-xs-12">
     <div class="x_panel">
         @include('admin.templates.x_title', ['title' => 'Bài viết'])
             {!! FormTemplate::show($elements)  !!}
     </div>
 </div>   
-  
-
+<script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+	<script>
+	  var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+	    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+	  };
+	  CKEDITOR.replace('content', options);
+</script>

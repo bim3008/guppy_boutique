@@ -10,7 +10,7 @@
                     <th class="column-title">#</th>
                     <th class="column-title">Câu hỏi và trả lời</th>
                     <th class="column-title">Trạng thái</th>
-                    <th class="column-title">Vị trí xuất hiện</th>
+                    <th class="column-title">Sắp xếp</th>
                     <th class="column-title">Tạo mới</th>
                     <th class="column-title">Chỉnh sửa</th>
                     <th class="column-title">Hành động</th>

@@ -7,19 +7,19 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Kalnoy\Nestedset\NodeTrait;
 use DB; 
-class MenuModel extends AdminModel
+class CategoryArticleModel extends AdminModel
 {
     use NodeTrait;
-    protected  $table                   = 'menu';
-    protected  $controllerName          = 'menu';
+    protected  $table                   = 'category_article';
+    protected  $controllerName          = 'categoryArticle';
     protected  $fieldSearchAccepted     = ['id', 'name']; 
-    protected  $fillable                = ['name', 'status', 'link','type_menu'];
+    protected  $fillable                = ['name', 'status','link','is_home'];
     protected  $crudNotAccepted         = ['_token', 'id'];
   
 
     public function listItems($params = null, $options = null) {
      
-        $result = null ;
+        $result = null;
 
         if($options['task'] == "admin-list-nested") {
            return $categories = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get()->toFlatTree();
@@ -28,20 +28,6 @@ class MenuModel extends AdminModel
         if($options['task'] == "news-list-nested") {
             return $categories = self::withDepth()->get()->toTree();
          }
-
-        if($options['task'] == 'front-end-list-items') {
-            $query = $this->select('id', 'name', 'type_menu')
-                        ->where('status', '=', 'active' )
-                        ->limit(8);
-            $result = $query->get()->toArray();
-        }
-
-        if($options['task'] == 'get-item-categories') {
-            $query = $this->select('id', 'name', 'parent_id')
-                        // ->where('status', '=', 'active' )
-                        ->limit(8);
-            $result = $query->get()->toArray();
-        }
 
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
@@ -102,7 +88,7 @@ class MenuModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'type_menu','status', 'link','parent_id')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name', 'is_home','status', 'link','parent_id')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == "admin-get-nested") {
@@ -112,6 +98,7 @@ class MenuModel extends AdminModel
     }
 
     public function saveItem($params = null, $options = null) { 
+
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             $class  = ($params['currentStatus'] == "active") ? "info"     : "success";
@@ -121,6 +108,18 @@ class MenuModel extends AdminModel
                 'class'    =>   config('zvn-notify.status.'.$class.'') ,
                 'link'     =>   route($this->controllerName .'/status',['id' => $params['id'],'status' => $status,])   ,
                 'message'  =>   config('zvn-notify.status.message')  ,
+            ];
+        }
+        if($options['task'] == 'change-is-home') {
+     
+            $isHome = ($params['currentIsHome'] == "yes") ? "no" : "yes";
+            $class  = ($params['currentIsHome'] == "yes") ? "warning"   : "primary";
+            self::where('id', $params['id'])->update(['is_home' => $isHome ]);
+            return [ 
+                'name'     =>   config('zvn-notify.is_home.'.$isHome.''),
+                'class'    =>   config('zvn-notify.is_home.'.$class.'') ,
+                'link'     =>   route($this->controllerName .'/isHome',['id' => $params['id'],'isHome' => $isHome,])   ,
+                'message'  =>   config('zvn-notify.is_home.message')  ,
             ];
         }
 

@@ -19,9 +19,15 @@ return [
         'message'       => 'Cập nhập vị trí thành công !!',
     ],
     'select' => [
-        'message'       => 'Cập nhập thành công !! ^-^ ',
+        'message'       => 'Cập nhập thành công !! ',
     ],
     'price' => [
-        'message'       => 'Thay đổi giá thành công !! ^-^ ',
+        'message'       => 'Thay đổi giá thành công !!',
+    ],'is_home'         => [
+        'yes'           => 'Hiển thị',
+        'no'            => 'Không hiển thị',
+        'warning'          => 'btn btn-round btn-warning',
+        'primary'       => 'btn btn-round btn-primary',
+        'message'       => 'Cập nhập thành công !!',
     ]    
 ];

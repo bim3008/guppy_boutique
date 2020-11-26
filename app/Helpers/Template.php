@@ -1,14 +1,11 @@
 <?php 
 namespace App\Helpers;
 use Config;
-use App\Models\CategoryProductModel;
-use App\Models\MenuModel;
 
 class Template {
-    public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch) { // $currentFilterStatus active inactive all
+    public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch , $currentFilterCategory = null) { // $currentFilterStatus active inactive all
         $xhtml = null;
         $tmplStatus = Config::get('zvn.template.status');
-
         if (count($itemsStatusCount) > 0) {
             array_unshift($itemsStatusCount , [
                 'count'   => array_sum(array_column($itemsStatusCount, 'count')),
@@ -21,10 +18,10 @@ class Template {
                 $statusValue = array_key_exists($statusValue, $tmplStatus ) ? $statusValue : 'default';
 
                 $currentTemplateStatus = $tmplStatus[$statusValue]; // $value['status'] inactive block active
-                $link = ($controllerName !== 'contact') ? route($controllerName) . "?filter_status=" .  $statusValue : route($controllerName) . "?filter_contact=" .  $statusValue ;
+                $link = ($controllerName !== 'contact') ? route($controllerName) . "?filter_status=" .  $statusValue . "&filter_category=" . $currentFilterCategory : route($controllerName) . "?filter_contact=" .  $statusValue ;
 
                 if($paramsSearch['value'] !== ''){
-                    $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" .  $paramsSearch['value'] . "&filter_category=" .  $currentFilterStatus['category'];
+                    $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" .  $paramsSearch['value'] . "&filter_category=" . $currentFilterCategory;
                 }
                
                 $class  = ($currentFilterStatus == $statusValue) ? 'btn-danger' : 'btn-info';
@@ -92,7 +89,7 @@ class Template {
         $link          = route($controllerName .  '/' . 'isHome', ['isHome' => $isHomeValue, 'id' => $id]);
   
         $xhtml = sprintf(
-            '<a href="%s" type="button" class="btn btn-round %s">%s</a>', $link , $currentTemplateIsHome['class'], $currentTemplateIsHome['name']  );
+            '<a  data-url="%s" type="button"  name ="change-ajax-isHome" class="btn btn-round %s">%s</a>', $link , $currentTemplateIsHome['class'], $currentTemplateIsHome['name']  );
         return $xhtml;
     }
     public static function showItemOrdering ($controllerName, $id, $orderingValue) {
@@ -190,38 +187,17 @@ class Template {
         return $xhtml ;
     }
     public static function getName($items){
-        $level  = $items['depth'];
+      
+        $level  = $items['depth'] ;
         $name   = $items['name'];
         $xhtml  = null;
-        for ($i=1; $i <= $level; $i++) { 
-            $xhtml .= '|---';
+        for ($i=2; $i <= $level; $i++) { 
+            $xhtml .= ' |--- ';
         }
-        return  $xhtml . $name;
-    }
-    public static function showIconOrderingNestedProduct($controllerName, $item, $prefix = ''){
-
-        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
-        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
-        $node = CategoryProductModel::find($item->id);
-        if(!$node->getPrevSibling()) $arrowUp = null;
-        if(!$node->getNextSibling()) $arrowDown = null;
-        return $ordering = $arrowUp.$arrowDown;
-       
-    }
-    public static function showIconOrderingNestedMenu($controllerName, $item, $prefix = ''){
-
-        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
-        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
-        $node = MenuModel::find($item->id);
-        if(!$node->getPrevSibling()) $arrowUp = null;
-        if(!$node->getNextSibling()) $arrowDown = null;
-        return $ordering = $arrowUp.$arrowDown;
-       
+        return  $xhtml .  $name;
     }
     public static function showSelectedParent($item, $itemsCategories){
         $xhtml = '<select class="custom-select form-control col-md-6 col-xs-12" name="parent_id">';
-        $xhtml .= '<option  name="none" value="none">Root</option>';
-        
         foreach ($itemsCategories as $key => $items){
             if(!empty($item['id']) && $item['id'] == $items['id']) continue;
            $name       = Template::getName($items);

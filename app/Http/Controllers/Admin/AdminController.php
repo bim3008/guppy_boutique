@@ -73,6 +73,21 @@ class AdminController extends Controller
         $this->model->deleteItem($params, ['task' => 'delete-item']);
         return redirect()->route($this->controllerName)->with('zvn_notify', 'Xóa phần tử thành công!');
     }
-    
-   
+    public function node(Request $request){
+        $node = $this->model->find($request->id);
+        if($request->node == 'up') {
+          $node->up();
+        } else {
+          $node->down();
+        }
+        return redirect()->route($this->controllerName)->with('success','Change Success!');
+    }
+    public function isHome(Request $request)
+    {
+        $params["currentIsHome"]  = $request->isHome;
+        $params["id"]             = $request->id;
+        $items = $this->model->saveItem($params, ['task' =>'change-is-home']);
+      
+        echo json_encode($items) ;
+    }
 }

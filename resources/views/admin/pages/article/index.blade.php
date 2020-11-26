@@ -5,14 +5,10 @@
     use App\Models\CategoryModel  ;
 
     $categoryModel = new CategoryModel();
-    
-    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter'], $params['search']);
+    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search'] ,$params['filter']['category']);
     $xhtmlAreaSeach    = Template::showAreaSearch($controllerName, $params['search']);
-
     $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-items-in-selectbox']);
-
     $xhtmlSelectBox = SelectBox::showItemSelectCategory($itemSelectBox,$params['filter']['category']);
-    
 
 @endphp
 @section('content')

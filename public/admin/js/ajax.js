@@ -4,10 +4,16 @@ $(document).ready(function(){
     let $ajaxContact            = $("[name = change-ajax-contact]");
     let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
     let $ajaxSelectArttribute   = $("[name = select_change_attr]");
-    let $ajaxValueCoupon        = $("[name = type_coupon]");
+    let $ajaxIsHome             = $("[name = change-ajax-isHome]");
     let $ajaxTag                = $('#tag');
     // Change Ajax Status
     $ajaxStatus.click(function(){
+        let url      = $(this).data("url") ;
+        let element  = $(this) ;
+        callAjax(url,element,'status');
+    });
+
+    $ajaxIsHome.click(function(){
         let url      = $(this).data("url") ;
         let element  = $(this) ;
         callAjax(url,element,'status');
@@ -86,7 +92,6 @@ $(document).ready(function(){
     })
     
 }) ;
-
 
 //ADMIN - PRODUCT - ATTRIBUTE
 function showName(url){

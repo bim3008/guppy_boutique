@@ -16,18 +16,18 @@
 
     $elements = [
         [
-            'label'   => Form::label('name', 'Name', $formLabelAttr),
+            'label'   => Form::label('name', 'Tên', $formLabelAttr),
             'element' => Form::text('name', $item['name'], $formInputAttr )
         ],[
-            'label'   => Form::label('link', 'Link', $formLabelAttr),
+            'label'   => Form::label('link', 'Đường dẫn', $formLabelAttr),
             'element' => Form::text('link', $item['link'],  $formInputAttr )
         ],
         [
-            'label'   => Form::label('parent_id', 'Parent Category', $formLabelAttr),
-            'element' => Template::showSelectedParent($item, $itemsCategory),
+            'label'   => Form::label('parent_id', 'Thư mục cha', $formLabelAttr),
+            'element' => Template::showSelectBoxCategoryNested($item, $itemsCategory),
         ],
         [
-            'label'   => Form::label('status', 'Status', $formLabelAttr),
+            'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [
@@ -35,7 +35,7 @@
             'element' => Form::select('is_home', $isHome, $item['is_home'], $formInputAttr)
         ],
         [
-            'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),
+            'element' => $inputHiddenID . Form::submit('Lưu', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]
     ];

@@ -2,13 +2,15 @@
 @php
     use App\Helpers\Template as Template;
     use App\Helpers\SelectBox as SelectBox;
-    use App\Models\CategoryModel  ;
+    use App\Models\CategoryArticleModel  ;
 
-    $categoryModel = new CategoryModel();
+    $categoryModel = new CategoryArticleModel();
     $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search'] ,$params['filter']['category']);
     $xhtmlAreaSeach    = Template::showAreaSearch($controllerName, $params['search']);
-    $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-items-in-selectbox']);
-    $xhtmlSelectBox = SelectBox::showItemSelectCategory($itemSelectBox,$params['filter']['category']);
+ 
+    $itemSelectBox      = $categoryModel->listItems(null,['task' => 'admin-list-nested']);
+
+    $xhtmlSelectBox  = Template::showSelectBoxProductNested($items,$itemSelectBox,'cat_filter',$params['filter']['category']);
 
 @endphp
 @section('content')
@@ -22,9 +24,12 @@
             @include('admin.templates.x_title', ['title' => 'Bộ lọc'])
             <div class="x_content">
                 <div class="row">
-                    <div class="col-md-4">{!! $xhtmlButtonFilter !!}</div>
+                    <div class="col-md-6">{!! $xhtmlButtonFilter !!}</div>
                     {{-- <div class="col-md-3">{!! $xhtmlSelectBox !!}</div> --}}
-                    <div style="display:flex; class="col-md-8">{!! $xhtmlSelectBox . $xhtmlAreaSeach !!}</div>
+                    <div style="display:flex; class="col-md-6">{!! $xhtmlAreaSeach !!}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">{!! $xhtmlSelectBox !!}</div>
                 </div>
             </div>
         </div>

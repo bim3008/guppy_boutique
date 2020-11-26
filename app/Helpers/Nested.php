@@ -29,7 +29,7 @@ class Nested
         return $ordering = $arrowUp.$arrowDown;
        
     }
-    public static function showIconOrderingNestedCategoryArticle($controllerName, $item, $prefix = ''){
+    public static function showIconOrderingNestedArticle($controllerName, $item, $prefix = ''){
     
         $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering btn btn-primary"><span class="docs-tooltip"><span class="fa fa-arrow-up"></span></span></a>';
         $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering btn btn-primary "><span class="docs-tooltip"><span class="fa fa-arrow-down"></span></span></i></a>';

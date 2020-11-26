@@ -28,6 +28,6 @@ return [
         'no'            => 'Không hiển thị',
         'warning'          => 'btn btn-round btn-warning',
         'primary'       => 'btn btn-round btn-primary',
-        'message'       => 'Cập nhập thành công !!',
+        'message'       => 'Cập nhập kiểu hiển thị !!',
     ]    
 ];

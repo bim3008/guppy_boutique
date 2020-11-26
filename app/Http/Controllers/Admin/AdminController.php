@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\NestedModel;
-use App\Models\CategoryModel;
+
 
 class AdminController extends Controller
 {
@@ -42,13 +41,10 @@ class AdminController extends Controller
             $params["id"] = $request->id;
             $item = $this->model->getItem( $params, ['task' => 'get-item']);
         }
-
-        $categoryModel  = new CategoryModel();
-        $itemsCategory  = $categoryModel->listItems(null, ['task' => 'admin-list-items-in-selectbox']);
-
+        
         return view($this->pathViewController .  'form', [
-            'item'        => $item,
-            'itemsCategory'=>$itemsCategory
+            'item'          => $item,
+           
         ]);
     }
     public function status(Request $request)

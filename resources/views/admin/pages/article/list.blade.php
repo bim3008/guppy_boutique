@@ -29,7 +29,7 @@
                             $content         = Template::showContent(Hightlight::show($val['content'], $params['search'], 'content'),200) ;
                             $thumb           = Template::showItemThumb($controllerName, $val['thumb'], $val['name']);
 
-                            $categoryName    = SelectBox::showCategoryChangeAjax($controllerName, $id , $val['category_id'],'category');
+                            $categoryName    = SelectBox::showCategoryArticleChangeAjax($controllerName, $val , $val['category_id'],'category');
 
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); 
                             $type            = SelectBox::showItemSelect($controllerName, $id, $val['type'], 'type');

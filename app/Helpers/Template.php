@@ -6,14 +6,16 @@ class Template {
     public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch , $currentFilterCategory = null) { // $currentFilterStatus active inactive all
         $xhtml = null;
         $tmplStatus = Config::get('zvn.template.status');
+   
         if (count($itemsStatusCount) > 0) {
             array_unshift($itemsStatusCount , [
                 'count'   => array_sum(array_column($itemsStatusCount, 'count')),
                 'status'  => 'all'
             ]);
-    
+           
             foreach ($itemsStatusCount as $item) {  // $item = [count,status]
-                $statusValue = isset($item['status']) ? $item['status'] : $item['contact']  ;  // active inactive block
+    
+                $statusValue = !empty($item['status']) ? $item['status'] : $item['contact']  ;  // active inactive block
 
                 $statusValue = array_key_exists($statusValue, $tmplStatus ) ? $statusValue : 'default';
 
@@ -192,19 +194,42 @@ class Template {
         $name   = $items['name'];
         $xhtml  = null;
         for ($i=2; $i <= $level; $i++) { 
-            $xhtml .= ' |--- ';
+            $xhtml .= '|---';
         }
         return  $xhtml .  $name;
     }
-    public static function showSelectedParent($item, $itemsCategories){
-        $xhtml = '<select class="custom-select form-control col-md-6 col-xs-12" name="parent_id">';
+    // DANH MỤC NESTED
+    public static function showSelectBoxCategoryNested($item, $itemsCategories , $value = null, $link = null){
+       
+        $value = ($value == null) ? 'parent_id' : $value ;
+        $xhtml = '<select data-url="'.$link.'" class="custom-select form-control col-md-6 col-xs-12" name="'.$value.'">';
         foreach ($itemsCategories as $key => $items){
-            if(!empty($item['id']) && $item['id'] == $items['id']) continue;
+           if(!empty($item['id']) && $item['id'] == $items['id']) continue;
            $name       = Template::getName($items);
-           if($item['parent_id'] == $items['id']) {
+           if($item['category_id'] == $items['id' ]  || $item['parent_id'] == $items['id' ]) {
             //  continue;
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
            }else{
+                $xhtml .= sprintf('<option value="%s" >%s</option>', $items['id'], $name);
+           }
+        }
+        $xhtml .= '</select>';
+        return $xhtml;
+    }
+    // SẢN PHẨM NESTED
+    public static function showSelectBoxProductNested($item, $itemsCategories, $value = null,$fillter_category = null){
+    
+        $xhtml = '<select  name="'.$value.'" class="custom-select form-control col-md-6 col-xs-12" name="'.$value.'"><option value="default">-- Chọn danh mục --</option>';
+        foreach ($itemsCategories as $key => $items){
+ 
+           if(!empty($item['id']) && $item['id'] == $items['id']) continue;
+           $name       = Template::getName($items);
+           if($item['category_id'] == $items['id']) {
+                $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
+           }elseif($items['id'] == $fillter_category){
+                $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
+           }
+           else{
                 $xhtml .= sprintf('<option value="%s" >%s</option>', $items['id'], $name);
            }
         }

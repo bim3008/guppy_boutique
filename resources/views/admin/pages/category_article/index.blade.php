@@ -1,8 +1,11 @@
 @extends('admin.main')
 @php
     use App\Helpers\Template as Template;
-    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search']);
+    use App\Helpers\SelectBox as SelectBox;
+    $xhtmlButtonFilter = Template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search'] , $params['filter']['ishome']  );
     $xhtmlAreaSeach    = Template::showAreaSearch($controllerName, $params['search']);
+    $isHome = ['no'=> config('zvn.template.is_home.no.name'), 'yes' => config('zvn.template.is_home.yes.name')];
+    $selectBoxIsHome = SelectBox::showItemSelectIsHome($isHome, $params['filter']['ishome']);
 @endphp
 
 @section('content')
@@ -18,6 +21,9 @@
                     <div class="row">
                         <div class="col-md-7">{!! $xhtmlButtonFilter !!}</div>
                         <div class="col-md-5">{!! $xhtmlAreaSeach !!}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">{!! $selectBoxIsHome !!}</div>
                     </div>
                 </div>
             </div>

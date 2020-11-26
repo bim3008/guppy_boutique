@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\AdminModel;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Kalnoy\Nestedset\NodeTrait;
@@ -15,25 +16,41 @@ class CategoryArticleModel extends AdminModel
     protected  $fieldSearchAccepted     = ['id', 'name']; 
     protected  $fillable                = ['name', 'status','link','is_home'];
     protected  $crudNotAccepted         = ['_token', 'id'];
-  
+    
+
 
     public function listItems($params = null, $options = null) {
-     
+        
         $result = null;
+        if($options['task'] == "admin-list-items") {
+            $query =  self::defaultOrder()->withDepth()->having('depth', '>', 0)->where('parent_id','<>',NULL);
+            if ($params['filter']['status'] !== "all")  {
+                $query->where('status', '=', $params['filter']['status'] );
+               
+            }
+            if ($params['filter']['ishome'] !== ""  && $params['filter']['ishome'] !== "default")  {
+              
+                $query->where('is_home', '=', $params['filter']['ishome'] );
+            }
+            return $query->get()->toFlatTree();
 
+        }
         if($options['task'] == "admin-list-nested") {
-           return $categories = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get()->toFlatTree();
+
+            $query =  self::defaultOrder()->withDepth()->having('depth', '>', 0);
+         
+            return $query->get()->toFlatTree();
         }
 
         if($options['task'] == "news-list-nested") {
-            return $categories = self::withDepth()->get()->toTree();
+            return  self::withDepth()->get()->toTree();
          }
 
         if($options['task'] == "admin-list-items-in-selectbox") {
-            $query = $this->select('id', 'name')
-                        ->orderBy('name', 'asc')
-                        ->where('status', '=', 'active' );
-                        
+            $query = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get();
+            // $query = $this->select('id', 'name')
+            //             ->where('status', '=', 'active' )
+            //             ->where('parent_id', '<>', NULL );
             $result = $query->pluck('name', 'id')->toArray();
         
         }
@@ -56,7 +73,7 @@ class CategoryArticleModel extends AdminModel
         if($options['task'] == 'admin-count-items-group-by-status') {
          
             $query = $this::groupBy('status')
-                        ->select( DB::raw('status , COUNT(id) as count') );
+                        ->select( DB::raw('status , COUNT(id) as count') )->where('parent_id' ,'<>', NULL);
 
             if ($params['search']['value'] !== "")  {
                 if($params['search']['field'] == "all") {
@@ -69,7 +86,15 @@ class CategoryArticleModel extends AdminModel
                     $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
+            
+            if ($params['filter']['status'] !== "all")  {
+                $query->where('status', '=', $params['filter']['status'] );
+            }
+            if ($params['filter']['ishome'] !== ""  && $params['filter']['ishome'] !== "default" )  {
+                $query->where('is_home', '=', $params['filter']['ishome'] );
+            }
 
+    
             $result = $query->get()->toArray();
            
 
@@ -149,7 +174,8 @@ class CategoryArticleModel extends AdminModel
     public function deleteItem($params = null, $options = null) 
     { 
         if($options['task'] == 'delete-item') {
-            self::where('id', $params['id'])->delete();
+            $node = self::find($params['id']);
+            $node->delete();
         }
     }
 

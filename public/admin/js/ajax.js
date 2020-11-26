@@ -4,6 +4,7 @@ $(document).ready(function(){
     let $ajaxContact            = $("[name = change-ajax-contact]");
     let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
     let $ajaxSelectArttribute   = $("[name = select_change_attr]");
+    let $ajaxChangeCategoryNested = $("[name = category_id]");
     let $ajaxIsHome             = $("[name = change-ajax-isHome]");
     let $ajaxTag                = $('#tag');
     // Change Ajax Status
@@ -33,7 +34,12 @@ $(document).ready(function(){
     // Change SelectBox
     $ajaxSelectArttribute.on("change" ,function(){
         let url   = $(this).data("url").replace("new_value",$(this).val()) ;
-        console.log(url);
+        let element  = $(this) ;
+        callAjax(url,element,'select');
+    });
+
+    $ajaxChangeCategoryNested.on("change" ,function(){
+        let url   = $(this).data("url").replace("new_value",$(this).val()) ;
         let element  = $(this) ;
         callAjax(url,element,'select');
     });

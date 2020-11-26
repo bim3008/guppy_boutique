@@ -17,13 +17,13 @@
             <li><a href="{{ route('slider')     }}"><i class="fa fa-sliders">       </i> Silders                </a></li>
             <li><a><i class="fa fa fa-building-o"></i> Danh mục bài viết <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{ route('category')}}"></i> Danh mục </a></li>
+                    <li><a href="{{ route('categoryArticle')}}"></i> Danh mục </a></li>
                     <li><a href="{{ route('article')}}"></i> Bài viết     </a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-product-hunt"></i> Danh mục sản phẩm <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{ route('product')}}"></i> Danh mục </a></li>
+                    <li><a href="{{ route('categoryProduct')}}"></i> Danh mục </a></li>
                     <li><a href="{{ route('product')}}"></i> Sản phẩm    </a></li>
                     <li><a href="{{ route('tag')}}">    </i> Tag    </a></li>
                 </ul>

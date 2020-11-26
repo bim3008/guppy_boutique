@@ -14,9 +14,8 @@ class ArticleModel extends AdminModel
         $this->fieldSearchAccepted = ['name', 'content']; 
         $this->crudNotAccepted     = ['_token','thumb_current'];
     }
-
     public function listItems($params = null, $options = null) {
-     
+      
         $result = null;
         $this->table  = 'article as a';
         if($options['task'] == "admin-list-items") {
@@ -43,7 +42,7 @@ class ArticleModel extends AdminModel
                     $query->where('a.' . $params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
-
+        
             $result =  $query->orderBy('a.id', 'desc')
                             ->paginate($params['pagination']['totalItemsPerPage']);
 
@@ -100,8 +99,6 @@ class ArticleModel extends AdminModel
             $result = $query->get()->toArray();
         }
         
-        
-
         return $result;
     }
 

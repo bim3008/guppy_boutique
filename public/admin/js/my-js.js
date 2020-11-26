@@ -17,8 +17,9 @@ $(document).ready(function() {
 	let $inputSearchValue = $("input[name  = search_value]");
 	let $categoryFilter   = $("select[name = cat_filter]");
 	let $selectFilter     = $("select[name = select_filter]");
+	let $selectIsHome     = $("select[name = isHome_filter]");
 
-	let $selectChangeAttr = $("select[name =  select_change_attr]");
+	let $selectChangeAttr 		= $("select[name =  select_change_attr]");
 	let $selectChangeAttrAjax = $("select[name =  select_change_attr_ajax]");
 
 
@@ -83,8 +84,9 @@ $(document).ready(function() {
 		let filter = $(this).data('filter');
 		let value = $(this).val();
 		window.location.href = pathname + "?" + link + 'filter_'+ filter + '=' + value;
- 	});
-
+	 });
+	 
+	
 	// Change attributes with selectbox
 
 	$("#thumb").change(function() {
@@ -99,20 +101,43 @@ $(document).ready(function() {
 		var pathname	= window.location.pathname;
 		
 		let searchParams= new URLSearchParams(window.location.search);
+	
 		params 			= ['page', 'filter_status', 'search_field', 'search_value'];
 		let link		= "";
 		$.each( params, function( key, value ) {
 			if (searchParams.has(value) ) {
 				link += value + "=" + searchParams.get(value) + "&";
 			}
+		
 		});
+	
 		window.location.href = pathname + "?" + link +'filter_category='+id;
 	});
+
+	$selectIsHome.on('change', function(e) {
+		var id = $(this).val();
+		var pathname	= window.location.pathname;
+		
+		let searchParams= new URLSearchParams(window.location.search);
+	
+		params 			= ['page', 'filter_status', 'search_field', 'search_value'];
+		let link		= "";
+		$.each( params, function( key, value ) {
+			if (searchParams.has(value) ) {
+				link += value + "=" + searchParams.get(value) + "&";
+			}
+		
+		});
+	
+		window.location.href = pathname + "?" + link +'filter_ishome='+id;
+	});
+
 	//Confirm button delete item
 	$('.btn-delete').on('click', function() {
 		if(!confirm('Bạn có chắc muốn xóa phần tử?'))
 			return false;
 	});
+	
 	$('input[name=ordering]').on('blur',function() {
 		var new_value = $(this).val();
 		var old_value = $(this).attr('value');

@@ -118,10 +118,12 @@ $(document).ready(function(){
 function showName(url){
     let id = $('#attribute-group').val();
     url = url.replace('attribute_new', id); // 
+    console.log(url);
     $.get(url, function(data) { 
        $('.new').remove();
        $.each(data, function(index, value) {
           let name = value ;
+          console.log(name);
           $('.x_content_attribute').after('<div class="form-group new" id="attr"><label  class="control-label col-md-3 col-sm-3 col-xs-12"> '+ value +'</label><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-6 col-xs-12  input-tags-attr" name="attribute['+name+'][]" type="text" ></div></div>');
           $('.input-tags-attr').tagsInput();
         });
@@ -137,13 +139,14 @@ function showNameChangePrice(url){
         $.each(data, function(index, value) {
             let name = value ;
             $('#attribute-group-change-price').after('<label   class="control-label col-md-6 col-sm-6 col-xs-12 new"> '+ value +'</label><input type="hidden" name="attribute_change_price[name_attribute][]" value="'+value+'">');
-            $('.x_content_attribute').after('<div class="form-group new"  id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123 " name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" id="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" id="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
-            $('#add-row').click(function(){
-                $('.x_content_attribute').after('<div class="form-group new" id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123" name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" id="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" id="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
+            $('.x_content_attribute').after('<div class="form-group new"  id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123 " name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" class="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" class="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
+            $('.add-row').click(function(){
+                $('.x_content_attribute').after('<div class="form-group new" id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123" name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" class="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" class="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
             });
-            $('#remove-row').click(function(){
-                alert('Chưa có làm nha, hihi');
-                // $(this).remove();
+            $('.remove-row').click(function(e){
+                //$(this).parent().parent().remove();
+                // console.log($(e.target).parent().parent().parent());
+                // $(e.target).parent().parent().parent().remove();
             });
         });
    }, 'json');

@@ -1,8 +1,12 @@
 // Banners
+.banners-group {
+  margin-bottom: 1.9rem;
+}
+
 .banner {
   display: block;
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
   background-color: #ccc;
 
   &.banner-cat {
@@ -11,11 +15,11 @@
     -ms-flex-align: center;
     align-items: center;
     height: 220px;
-    margin-bottom: 0;
     background-color: #ccc;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    margin-bottom: 0;
   }
 
   > a {
@@ -34,7 +38,7 @@
   }
 
   .banner-title {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: #010204;
     font: 800 3rem / 1.1 $font-family;
     letter-spacing: -.025rem;
@@ -73,7 +77,7 @@
       bottom: 0;
       left: 0;
       transition: all .3s ease;
-      background-color: rgba(0, 0, 0, .2);
+      background-color: rgba(0, 0, 0, 0.2);
       content: '';
       opacity: 0;
       visibility: hidden;

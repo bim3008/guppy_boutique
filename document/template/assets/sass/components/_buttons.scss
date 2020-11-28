@@ -6,7 +6,7 @@
   border-radius: $border-radius;
   font-family: $second-font-family;
   font-size: $button-font-size;
-  letter-spacing: .1rem;
+  letter-spacing: .075rem;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -51,7 +51,7 @@
 }
 
 .btn-dark {
-  @include button-variant(#fff, #010204, #010204, #fff, #1a1a1a, #1a1a1a, #1a1a1a, #1a1a1a);
+  @include button-variant(#fff, #2b2b2c, #2b2b2c, #fff, #333, #333, #333, #333);
 }
 
 .btn-outline {
@@ -109,26 +109,6 @@ a:focus {
   outline: none;
 }
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
 .mfp-container .mfp-preloader,
 .porto-loading-icon {
   display: inline-block;
@@ -138,9 +118,9 @@ a:focus {
   border: 2px solid transparent;
   border-radius: 50%;
   border-top-color: $primary-color;
+  border-image: none;
   content: '';
   z-index: 2;
-  border-image: none;
   -webkit-animation: spin .75s infinite linear;
   animation: spin .75s infinite linear;
 }

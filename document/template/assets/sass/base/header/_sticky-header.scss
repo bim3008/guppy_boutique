@@ -1,25 +1,25 @@
 // Sticky Header
 @-webkit-keyframes fixedHeader {
   0% {
-    -webkit-transform: translateY(-60px);
     opacity: 0;
+    -webkit-transform: translateY(-60px);
   }
 
   100% {
-    -webkit-transform: translateY(0);
     opacity: 1;
+    -webkit-transform: translateY(0);
   }
 }
 
 @keyframes fixedHeader {
   0% {
-    transform: translateY(-60px);
     opacity: 0;
+    transform: translateY(-60px);
   }
 
   100% {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -29,9 +29,9 @@
     top: 0;
     right: 0;
     left: 0;
-    padding-top: .6rem;
-    padding-bottom: .6rem;
-    background-color: $primary-color;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
     z-index: 1040;
     -webkit-animation-duration: .4s;
@@ -45,34 +45,10 @@
     }
 
     .menu {
-      > li.float-right {
-        > a {
-          padding: .55rem 1.5rem;
-
-          > span {
-            padding: 0;
-          }
-        }
-      }
-
       > li {
         > a {
           padding-top: .55rem;
           padding-bottom: .55rem;
-          color: #fff;
-
-          .tip {
-            top: -8px;
-          }
-        }
-      }
-
-      > li:hover,
-      > li.show,
-      > li.active {
-        > a {
-          background-color: #fff;
-          color: $primary-color;
         }
       }
     }

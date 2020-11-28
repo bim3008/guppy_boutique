@@ -14,10 +14,10 @@
                                             <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
                                         </div>
                                         <ul>
-                                            <li><a href="category-banner-full-width.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
+                                            <li><a href="category.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
                                             <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
                                             <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                            <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
+                                            <li><a href="category.html">Left Sidebar</a></li>
                                             <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
                                             <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
                                             <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a></li>
@@ -31,7 +31,7 @@
                                         <ul>
                                             <li><a href="#">Product List Item Types</a></li>
                                             <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a></li>
-                                            <li><a href="category-3col.html">3 Columns Products</a></li>
+                                            <li><a href="category.html">3 Columns Products</a></li>
                                             <li><a href="category-4col.html">4 Columns Products <span class="tip tip-new">New</span></a></li>
                                             <li><a href="category-5col.html">5 Columns Products</a></li>
                                             <li><a href="category-6col.html">6 Columns Products</a></li>
@@ -97,11 +97,11 @@
                             <div class="col-lg-4">
                                 <div class="banner">
                                     <a href="#">
-                                        <img src="assets/images/menu-banner.jpg" alt="Menu banner" class="product-promo">
+                                        <img class="product-promo" src="assets/images/menu-banner.jpg" alt="Menu banner">
                                     </a>
                                 </div><!-- End .banner -->
                             </div><!-- End .col-lg-4 -->
-                        </div><!-- End .row -->
+                        </div>
                     </div><!-- End .megamenu -->
                 </li>
                 <li>
@@ -144,5 +144,5 @@
                 <li class="float-right"><a href="#">Special Offer!</a></li>
             </ul>
         </nav>
-    </div>
+    </div><!-- End .header-bottom -->
 </div>

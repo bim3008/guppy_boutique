@@ -1,13 +1,22 @@
 // Breadcrumb
 .breadcrumb-nav {
   margin-bottom: 0;
+
+  .container {
+    padding: 0;
+  }
+}
+
+.top-nav.breadcrumb-nav {
+  margin-top: -1rem;
 }
 
 .breadcrumb {
+  margin-top: -1rem;
   margin-bottom: 0;
-  padding: 1.4rem 0 1.2rem;
+  padding: 1.4rem 1.5rem 1.2rem;
   border-radius: 0;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 .breadcrumb-item {
@@ -19,6 +28,10 @@
     margin-top: -.2rem;
     font-size: 1.3rem;
     vertical-align: top;
+
+    &::before {
+      margin: 0;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 // Header
 .header {
-  background-color: $primary-color;
+  border-top: .3rem solid $primary-color;
+  background-color: #fff;
 
   .container,
   .container-fluid {
@@ -36,10 +37,10 @@
 }
 
 .header-top {
-  margin-bottom: 1px;
   padding-top: .4rem;
   padding-bottom: .4rem;
-  color: #bde1f5;
+  background-color: #ececec;
+  color: #999;
   font-size: 1.1rem;
   letter-spacing: .025rem;
   line-height: 1.5;
@@ -48,21 +49,6 @@
     padding-top: .5rem;
     padding-bottom: .5rem;
     color: inherit;
-  }
-
-  .container {
-    position: relative;
-
-    &::before {
-      display: block;
-      position: absolute;
-      right: 15px;
-      bottom: -5px;
-      left: 15px;
-      height: 1px;
-      background-color: #0e95d8;
-      content: '';
-    }
   }
 }
 
@@ -121,7 +107,7 @@
       margin-left: .6rem;
       border-width: 4px 3px 0;
       border-style: solid;
-      border-color: #fff transparent transparent;
+      border-color: #999 transparent transparent;
       content: '';
     }
   }
@@ -187,7 +173,7 @@
   }
 
   a {
-    color: #777;
+    color: inherit;
 
     &:hover,
     &:focus {
@@ -224,6 +210,30 @@
   border-radius: 0;
   background-color: #fff;
   box-shadow: 0 29px 28px rgba(0, 0, 0, .1);
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    content: '';
+  }
+
+  &::before {
+    top: -12px;
+    left: 15px;
+    border-width: 0 13px 12px;
+    border-color: transparent transparent #f0f0f0;
+  }
+
+  &::after {
+    top: -10px;
+    left: 16px;
+    border-width: 0 12px 10px;
+    border-color: transparent transparent #fff;
+  }
 }
 
 .cart-dropdown,
@@ -234,7 +244,7 @@
     left: 0;
     width: 300px;
     margin: 0;
-    padding-top: 10px;
+    padding-top: 12px;
     transition: all .25s;
     border: 0;
     background-color: transparent;
@@ -370,18 +380,14 @@
   .dropdown-toggle {
     display: block;
     position: relative;
-    padding: .6rem 4.4rem .4rem 1.2rem;
-    border: 1px solid #0082c2;
-    border-radius: .2rem;
-    background-color: #0694db;
-    box-shadow: 0 7px 8px rgba(0, 0, 0, .05);
+    padding-right: 2.6rem;
 
     .cart-count {
       display: -ms-flexbox;
       display: flex;
       position: absolute;
-      top: .5rem;
-      right: 3.4rem;
+      top: -.2rem;
+      right: 1.9rem;
       -ms-flex-align: center;
       align-items: center;
       -ms-flex-pack: center;
@@ -390,7 +396,7 @@
       height: 1.6rem;
       padding-bottom: 1px;
       border-radius: 50%;
-      background-color: #f17734;
+      background-color: #ed5348;
       color: #fff;
       font-size: 1rem;
       font-weight: 600;
@@ -401,9 +407,9 @@
     &::before {
       display: inline-block;
       margin: 2px 0 0;
-      color: #fff;
+      color: $primary-color;
       font-family: 'porto';
-      font-size: 2.5rem;
+      font-size: 3.3rem;
       line-height: 1;
       content: '\e87f';
     }
@@ -411,16 +417,14 @@
     &::after {
       display: inline-block;
       position: absolute;
-      top: 50%;
-      right: 1.5rem;
+      top: 1rem;
+      right: 0;
       width: auto;
       height: auto;
       margin: 0;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
       transition: all .3s;
       border: 0;
-      color: #fff;
+      color: #606669;
       font-family: 'porto';
       font-size: 1.4rem;
       line-height: 1;
@@ -431,7 +435,6 @@
   .dropdown-menu {
     right: 0;
     left: auto;
-    padding-top: 0;
   }
 
   .dropdownmenu-wrapper {
@@ -465,11 +468,6 @@
     margin: 0;
     margin-left: auto;
     border: 1px solid #ededed;
-    box-shadow: none !important;
-
-    a::after {
-      display: none !important;
-    }
   }
 
   .product-title {
@@ -514,36 +512,21 @@
   }
 }
 
-.dropdown-cart-header,
 .dropdown-cart-total {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: end;
   align-items: flex-end;
+  margin-bottom: 1.1rem;
   padding: .7rem 1rem;
   color: #474747;
   font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.dropdown-cart-total {
-  margin-bottom: 1.1rem;
 
   .cart-total-price {
     margin-left: auto;
     font-size: 1.5rem;
-  }
-}
-
-.dropdown-cart-header {
-  margin-bottom: 0;
-  padding-top: 0;
-  border-bottom: 1px solid #e6ebee;
-
-  a {
-    margin-left: auto;
-    font-size: 1.2rem;
   }
 }
 
@@ -600,6 +583,7 @@
     overflow: visible;
 
     &.show {
+      display: -ms-flexbox;
       display: flex;
     }
   }
@@ -628,6 +612,7 @@
   }
 
   .form-control {
+    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     width: 100%;
     margin: 0;
@@ -675,7 +660,7 @@
     display: inline-block;
     min-width: 2.5rem;
     padding: 1rem 0;
-    color: #fff;
+    color: $primary-color;
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
@@ -722,47 +707,45 @@
 
 .header-contact {
   position: relative;
-  margin-right: 4rem;
-  padding-left: 4.5rem;
-  color: #bde1f5;
+  margin-right: 3.2rem;
+  padding-right: 3.6rem;
+  color: #606669;
   font-size: 1.8rem;
   letter-spacing: 0;
   line-height: 1.4;
 
-  &::before {
-    display: inline-block;
+  &::after {
+    display: block;
     position: absolute;
     top: 50%;
-    left: 0;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    color: lighten($primary-color, 10%);
-    font-family: 'porto';
-    font-size: 3rem;
-    line-height: 1;
-    content: '\e887';
+    right: 0;
+    width: 1px;
+    height: 43px;
+    margin-top: -21.5px;
+    background-color: #efefef;
+    content: '';
   }
 
   span {
     display: block;
+    color: #787d7f;
     font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
   }
 
   a {
-    color: #fff;
+    color: inherit;
 
     &:hover,
     &:focus {
+      color: $primary-color;
       text-decoration: none;
     }
   }
 }
 
 .header-bottom {
-  background-color: #f4f4f4;
-
   .container,
   .container-fluid {
     position: relative;
@@ -787,20 +770,23 @@
     margin-left: auto;
 
     .dropdown-toggle {
-      padding: .3rem 3.2rem .1rem 1rem;
+      padding-right: 1.6rem;
 
       &::before {
-        font-size: 2.2rem;
+        font-size: 2.6rem;
       }
 
       .cart-count {
-        top: .3rem;
-        right: 2.3rem;
+        right: .9rem;
       }
+    }
 
-      &::after {
-        right: 1.1rem;
-      }
+    .dropdownmenu-wrapper::before {
+      right: 15px;
+    }
+
+    .dropdownmenu-wrapper::after {
+      right: 16px;
     }
   }
 }
@@ -815,7 +801,7 @@
   padding: 1rem .5rem;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: $primary-color;
   font-size: 2.1rem;
   line-height: 1;
   cursor: pointer;
@@ -840,6 +826,10 @@
 }
 
 @include mq('lg') {
+  .header {
+    padding-bottom: 1rem;
+  }
+
   .dropdown-expanded {
     > a {
       display: none;
@@ -891,6 +881,7 @@
         &:hover,
         &:focus {
           background-color: transparent;
+          color: #999;
           text-decoration: underline;
         }
       }
@@ -907,6 +898,7 @@
     }
 
     .header-search-wrapper {
+      display: -ms-flexbox;
       display: flex;
     }
   }
@@ -915,12 +907,8 @@
 @include mq('xl') {
   .header-middle {
     .header-center {
-      padding-left: 150px;
+      padding-left: 90px;
     }
-  }
-
-  .header-contact {
-    margin-right: 8rem;
   }
 }
 
@@ -947,8 +935,24 @@
         width: 20px;
         height: 20px;
         border: 10px solid transparent;
-        border-bottom-color: #ccc;
+        border-bottom-color: #dbe0e2;
         content: '';
+      }
+    }
+  }
+
+  .cart-dropdown {
+    .dropdown-toggle::before {
+      font-size: 2.6rem;
+    }
+
+    .dropdownmenu-wrapper {
+      &::before {
+        right: 25px;
+      }
+
+      &::after {
+        right: 26px;
       }
     }
   }
@@ -965,7 +969,8 @@
   }
 
   .header-contact {
-    margin-right: 2rem;
+    margin-right: 1.8rem;
+    padding-right: 2rem;
   }
 
   .header-bottom {
@@ -1006,19 +1011,24 @@
 
   .cart-dropdown {
     .dropdown-toggle {
-      padding-right: 2.5rem;
-      padding-left: .8rem;
+      padding-right: 1.5rem;
 
       .cart-count {
-        right: 1.7rem;
+        right: .9rem;
       }
 
       &::before {
         font-size: 2.3rem;
       }
+    }
+
+    .dropdownmenu-wrapper {
+      &::before {
+        right: 12px;
+      }
 
       &::after {
-        right: .7rem;
+        right: 13px;
       }
     }
   }
@@ -1067,5 +1077,9 @@
     .dropdownmenu-wrapper {
       padding: 1rem 1.4rem;
     }
+  }
+
+  .dropdown-cart-action .btn {
+    min-width: 100px;
   }
 }

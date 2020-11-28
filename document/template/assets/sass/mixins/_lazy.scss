@@ -1,6 +1,6 @@
-@mixin lazy-anim {
+@mixin lazy-anim() {
   position: relative;
-  background-color: #ddd;
+  background-color: #bce3f2;
 
   &::after,
   &::before {

@@ -142,6 +142,16 @@
       }
     }
   }
+
+  > li {
+    > a {
+      text-transform: uppercase;
+    }
+  }
+
+  .tip {
+    font-size: .8rem;
+  }
 }
 
 .mmenu-btn {

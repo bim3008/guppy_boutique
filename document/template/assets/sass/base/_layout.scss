@@ -1,4 +1,10 @@
 // Layout
+.container-fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .page-wrapper {
   position: relative;
   transition: transform .35s;

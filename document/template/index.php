@@ -1,55 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php  require_once('elements/head.php'); ?>
+    <?php require_once('elements/head.php')  ;?>
 </head>
 <body>
     <div class="page-wrapper">
         <header class="header">
-            <!-- HEADER-TOP -->
-            <?php require_once('elements/header-top.php') ;?> 
-            <div class="header-middle">
-                <div class="container">
-                    <!-- LOGO -->
-                    <?php require_once('elements/logo.php') ;?>
-                    <!-- SEARCH -->
-                    <?php require_once('elements/search.php') ;?>                    
-
-                    <div class="header-right">
-                        <?php require_once('elements/phone.php') ;?>   
-                        <?php require_once('elements/cart.php') ;?>   
-                    </div>
-                </div>
-            </div>
-            <!-- MENU -->
-            <?php require_once('elements/menu.php') ;?>
+            <?php 
+                require_once('elements/menu-top.php') ; 
+                require_once('elements/menu-middle.php') ; 
+                require_once('elements/menu.php') ;      
+            ?>
         </header>
-
         <main class="main">
-            <div class="home-top-container">
-                <div class="container">
-                    <div class="row">
-                        <?php require_once('block/slider.php') ;?>
-                        <?php require_once('block/category.php') ;?>
-                    </div>
-                </div>
-            </div>
-            <!-- POLICY -->
-            <?php require_once('block/policy.php'); ?>
-            <!-- BANNER -->
-            <?php require_once('block/banner.php'); ?>
-            <div class="mb-4"></div><!-- margin -->
+            <?php
+                require_once('block/slider.php') ;
+                require_once('block/service.php') ;
+                require_once('block/banner-top.php') ;
+                require_once('block/featured.php') ;
+                require_once('block/new-arrivals.php') ;
+                require_once('block/feedback.php') ;
+                require_once('block/banner-bottom.php') ;
+                require_once('block/gallery.php') ;
+                require_once('block/blog.php') ;
+            ?>                               
+        </main><!-- End .main -->
+        <footer class="footer">
+                <?php require_once('elements/footer.php') ;?>
+        </footer>
 
-            <!-- PRODUCT FEATURES -->
-            <?php require_once('block/product-features.php'); ?>
-        </main>
-        <?php require_once('elements/footer.php') ; ?>
-    </div>
+    </div><!-- End .page-wrapper -->
 
-    <?php require_once('elements/mobile.php') ; ?>
-    <?php require_once('elements/newsletter.php') ; ?>
+    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+    <?php require_once('elements/mobile.php') ;?>
+    <?php require_once('elements/newsletter.php') ;?>
+
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
     <?php require_once('elements/script.php') ; ?>
-  
 </body>
 </html>

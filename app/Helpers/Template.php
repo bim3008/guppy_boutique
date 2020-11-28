@@ -12,7 +12,7 @@ class Template {
                 'count'   => array_sum(array_column($itemsStatusCount, 'count')),
                 'status'  => 'all'
             ]);
-           
+  
             foreach ($itemsStatusCount as $item) {  // $item = [count,status]
     
                 $statusValue = !empty($item['status']) ? $item['status'] : $item['contact']  ;  // active inactive block

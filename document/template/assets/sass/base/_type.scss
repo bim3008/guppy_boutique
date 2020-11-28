@@ -21,7 +21,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 h4, .h4 {
@@ -71,17 +71,16 @@ a:focus {
 
 .subtitle {
   margin-bottom: 2rem;
-  color: #21293c;
-  font: 700 1.9rem / 1 $font-family;
+  color: $headings-text;
+  font: 700 1.8rem / 1 $font-family;
   text-transform: uppercase;
 }
 
 .carousel-title {
-  margin-bottom: 2.6rem;
-  padding: 0 0 1.2rem;
-  border-bottom: 1px solid #e1e1e1;
-  color: #302e2a;
-  font: 700 1.8rem / 1 $font-family;
+  margin-bottom: 2.2rem;
+  padding: 0;
+  color: $headings-text;
+  font: 700 1.7rem / 1 $font-family;
   letter-spacing: -.01rem;
   text-transform: uppercase;
 }
@@ -110,10 +109,6 @@ a:focus {
 
   h2, .h2 {
     font-size: 2.4rem;
-  }
-
-  h3, .h3 {
-    font-size: 2rem;
   }
 }
 

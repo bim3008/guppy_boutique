@@ -9,7 +9,7 @@
 
     $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
     $inputHiddenID    = Form::hidden('id', $item['id']);
-                    
+             
     $elements = [
         [
             'label'   => Form::label('question', 'Question', $formLabelAttr),
@@ -20,6 +20,10 @@
         ],[
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue ,$item['status'], $formInputAttr )
+        ],[
+            'label'   => Form::label('question_id', 'Danh mục', $formLabelAttr),
+            'element' => Template::showSelectBoxProductNested($item,$itemsCategory) ,
+     
         ],[
             'label'   => Form::label('ordering', 'Ordering', $formLabelAttr),
             'element' => Form::text('ordering', $item['ordering'], $formInputAttr )

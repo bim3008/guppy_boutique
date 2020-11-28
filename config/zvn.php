@@ -137,6 +137,7 @@ return [
             'tag'               => ['edit','delete'],
             'categoryProduct'   => ['edit','delete'],
             'categoryArticle'   => ['edit','delete'],
+            'categoryQuestion'  => ['edit','delete'],
             'menu'              => ['edit','delete'],
         ]
     ]

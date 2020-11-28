@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Http\Request;
 use App\Models\QuestionModel as MainModel;
+use App\Models\CategoryQuestionModel as NestedModel ;
 use App\Http\Requests\QuestionRequest as MainRequest ;    
 
 class QuestionController extends AdminController
@@ -32,6 +33,21 @@ class QuestionController extends AdminController
             $this->model->saveItem($params, ['task' => $task]);
             return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
         }
+    }
+    public function form(Request $request)
+    {
+        $item = null;
+        if($request->id !== null ) {
+            $params["id"] = $request->id;
+            $item = $this->model->getItem( $params, ['task' => 'get-item']);
+        }
+        $modelCategory = new NestedModel();
+        $itemsCategory = $modelCategory->listItems(null, ['task' => 'admin-list-nested']);
+   
+        return view($this->pathViewController .  'form', [
+            'item'          => $item,
+            'itemsCategory' =>$itemsCategory
+        ]);
     }
     public function ordering(Request $request)
     {

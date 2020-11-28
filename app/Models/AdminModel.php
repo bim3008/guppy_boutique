@@ -47,6 +47,6 @@ class AdminModel extends Model
                     ->get()->first();
        return  $result ;
     }
-
+   
 }
 

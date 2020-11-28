@@ -62,8 +62,8 @@ class ArticleModel extends AdminModel
                 ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                 ->where('a.status', '=', 'active')
                 ->where('a.type', 'featured')
-                ->orderBy('a.id', 'desc')
-                ->take(3);
+                ->orderBy('a.id', 'desc');
+               
 
             $result = $query->get()->toArray();
         }

@@ -200,13 +200,13 @@ class Template {
     }
     // DANH MỤC NESTED
     public static function showSelectBoxCategoryNested($item, $itemsCategories , $value = null, $link = null){
-       
+   
         $value = ($value == null) ? 'parent_id' : $value ;
         $xhtml = '<select data-url="'.$link.'" class="custom-select form-control col-md-6 col-xs-12" name="'.$value.'">';
         foreach ($itemsCategories as $key => $items){
            if(!empty($item['id']) && $item['id'] == $items['id']) continue;
            $name       = Template::getName($items);
-           if($item['category_id'] == $items['id' ]  || $item['parent_id'] == $items['id' ]) {
+           if($item['category_id'] == $items['id' ]  || $item['parent_id'] == $items['id' ] || $item['question_id'] == $items['id' ]) {
             //  continue;
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
            }else{
@@ -217,14 +217,14 @@ class Template {
         return $xhtml;
     }
     // SẢN PHẨM NESTED
-    public static function showSelectBoxProductNested($item, $itemsCategories, $value = null,$fillter_category = null){
+    public static function showSelectBoxProductNested($item, $itemsCategories, $valueSelectBox = null, $fillter_category = null){
     
-        $xhtml = '<select  name="'.$value.'" class="custom-select form-control col-md-6 col-xs-12" name="'.$value.'"><option value="default">-- Chọn danh mục --</option>';
+        $xhtml = '<select  name="'.$valueSelectBox.'" class="custom-select form-control col-md-6 col-xs-12" "><option value="default">-- Chọn danh mục --</option>';
         foreach ($itemsCategories as $key => $items){
  
            if(!empty($item['id']) && $item['id'] == $items['id']) continue;
            $name       = Template::getName($items);
-           if($item['category_id'] == $items['id']) {
+           if($item['category_id'] == $items['id'] || $item['question_id'] == $items['id']) {
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
            }elseif($items['id'] == $fillter_category){
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);

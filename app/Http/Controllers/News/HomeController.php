@@ -7,6 +7,7 @@ use App\Models\SettingModel ;
 use App\Models\SliderModel ;
 use App\Models\MenuModel ;
 use App\Models\FeedbackModel ;
+use App\Models\ArticleModel ;
 
 class HomeController extends Controller
 {
@@ -22,19 +23,21 @@ class HomeController extends Controller
 
    public function index(Request $request)
       {  
-         $settingModel  = new SettingModel();
-         $sliderModel   = new SliderModel() ;
-         $menuModel     = new MenuModel() ;
-         $feedBackModel = new FeedBackModel() ;
+         $settingModel   = new SettingModel();
+         $sliderModel    = new SliderModel() ;
+         $menuModel      = new MenuModel() ;
+         $feedBackModel  = new FeedBackModel() ;
+         $articleModel   = new ArticleModel() ;
          
-         $itemsSetting  = $settingModel->getItem('general', [ 'task' => 'get-item']); 
+         $itemsSetting   = $settingModel->getItem('general', [ 'task' => 'get-item']); 
+         $itemsSetting   = json_decode($itemsSetting['value']);
         
-         $itemsSetting  = json_decode($itemsSetting['value']);
-        
-         $itemsSlider   = $sliderModel->listItems( null,    [ 'task'=> 'news-list-items']); 
-         $itemsFeedBack = $feedBackModel->listItems( null,  [ 'task'=> 'news-list-items']); 
-         $itemsMenu     = $menuModel->listItems( null,      [ 'task'=> 'front-end-list-items']); 
-         return view($this->pathViewController .  'index' , compact('itemsSetting','itemsSlider','itemsMenu','itemsFeedBack') );
+         $itemsSlider    = $sliderModel->listItems( null,    [ 'task'=> 'news-list-items']); 
+         $itemsFeedBack  = $feedBackModel->listItems( null,  [ 'task'=> 'news-list-items']); 
+         $itemsMenu      = $menuModel->listItems( null,      [ 'task'=> 'front-end-list-items']); 
+         $articleFeatured = $articleModel->listItems(null,    [ 'task'=> 'news-list-items-featured']) ;
+
+         return view($this->pathViewController .  'index' , compact('itemsSetting','itemsSlider','itemsMenu','itemsFeedBack','articleFeatured') );
       }
 
    public function notFound(Request $request)

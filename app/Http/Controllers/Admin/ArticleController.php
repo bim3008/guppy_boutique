@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Http\Request;
 use App\Models\ArticleModel as MainModel;
-use App\Models\CategoryArticleModel as CategoryNestedModel ;
+use App\Models\CategoryArticleModel as NestedModel ;
 use App\Http\Requests\ArticleRequest as MainRequest ;    
 
 class ArticleController extends AdminController
@@ -20,24 +20,7 @@ class ArticleController extends AdminController
 
         parent::__construct();
     }
-    public function index(Request $request)
-    {   
-
-        $this->params['filter']['status']   = $request->input('filter_status', 'all' ) ;
-        $this->params['filter']['category'] = $request->input('filter_category', 'default') ;
-        $this->params['search']['field']    = $request->input('search_field', '' ) ; // all id description
-        $this->params['search']['value']    = $request->input('search_value', '' ) ;
-
-        $items              = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
-        $itemsStatusCount   = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status']); // [ ['status', 'count']]
-
-        return view($this->pathViewController .  'index', [
-         
-            'params'        => $this->params,
-            'items'         => $items,
-            'itemsStatusCount' =>  $itemsStatusCount
-        ]);
-    }
+   
     public function form(Request $request)
     {
         $item = null;
@@ -45,7 +28,7 @@ class ArticleController extends AdminController
             $params["id"] = $request->id;
             $item = $this->model->getItem( $params, ['task' => 'get-item']);
         }
-        $modelCategory = new CategoryNestedModel();
+        $modelCategory = new NestedModel();
         $itemsCategory = $modelCategory->listItems(null, ['task' => 'admin-list-nested']);
    
         return view($this->pathViewController .  'form', [

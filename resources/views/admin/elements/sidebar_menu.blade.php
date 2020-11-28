@@ -30,7 +30,12 @@
                     <li><a href="{{ route('attributeGroup')}}">    </i> Nhóm thuộc tính    </a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>
+            <li><a><i class="fa fa-question"></i> Danh mục câu hỏi <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ route('categoryQuestion')}}"></i> Danh mục </a></li>
+                    <li><a href="{{ route('question') }}"></i>Câu hỏi</a></li>
+                </ul>
+            </li>
             <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ     </a></li>
             <li><a href="{{ route('script')     }}"> <i class="fa fa-code">         </i> Thêm đoạn mã           </a></li>
             <li><a href="{{ route('setting')    }}"> <i class="fa fa-cogs">       </i> Cấu hình               </a></li>

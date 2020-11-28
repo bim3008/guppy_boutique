@@ -5,7 +5,6 @@
     use App\Models\CategoryProductModel;
     
     $formInputAttr          = config('zvn.template.form_input');
-    $formInputTag           = config('zvn.template.form_input_tag');
     $formInputAttrDropzone  = config('zvn.template.form_input_dropzone');
     $formLabelAttr          = config('zvn.template.form_label');
     $formCkeditor           = config('zvn.template.form_ckeditor');
@@ -25,31 +24,38 @@
     $elements = [
         [
             'label'   => Form::label('name', 'Tên sản phẩm', $formLabelAttr),
-            'element' => Form::text('name', $item['name'], $formInputAttr )
+            'element' => Form::text('name', $item['name'], $formInputAttr ),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('price', 'Giá sản phẩm', $formLabelAttr),
-            'element' => Form::text('price', $item['price'],  $formInputAttr )
+            'element' => Form::text('price', $item['price'],  $formInputAttr ),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('link', 'Link Youtube', $formLabelAttr),
-            'element' => Form::text('link', $item['link'],  $formInputAttr )
+            'element' => Form::text('link', $item['link'],  $formInputAttr ),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('category_product_id', 'Danh mục', $formLabelAttr),
-            'element' => Form::select('category_product_id', $itemsCategoryProduct, $item['category_product_id'], $formInputAttr)
+            'element' => Form::select('category_product_id', $itemsCategoryProduct, $item['category_product_id'], $formInputAttr),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('type', 'Kiểu hiển thị', $formLabelAttr),
-            'element' => Form::select('type', $typeValue, $item['type'], $formInputAttr)
+            'element' => Form::select('type', $typeValue, $item['type'], $formInputAttr),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
-            'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
+            'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('tag', 'Tag', $formLabelAttr),
-            'element' => Form::text('tag', $item['tag'],  $formInputAttr )
+            'element' => Form::text('tag', $item['tag'],  $formInputAttr ),
+            'type'    => 'article',
         ],
         [
             'label'   => Form::label('content', 'Nội dung', $formLabelAttr),

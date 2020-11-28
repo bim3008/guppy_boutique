@@ -21,10 +21,14 @@ class QuestionModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'question', 'answer', 'ordering', 'status','created', 'created_by', 'modified', 'modified_by');
+            $query = $this->select('id', 'question', 'answer', 'question_id','ordering', 'status','created', 'created_by', 'modified', 'modified_by');
                
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
+            }
+
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('question_id', '=', $params['filter']['category'] );
             }
 
             if ($params['search']['value'] !== "")  {
@@ -77,7 +81,9 @@ class QuestionModel extends AdminModel
                     $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
-
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('question_id', '=', $params['filter']['category'] );
+            }
             $result = $query->get()->toArray();
            
 
@@ -90,7 +96,7 @@ class QuestionModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'question', 'answer' ,'status','ordering')->where('id', $params['id'])->first();
+            $result = self::select('id', 'question', 'answer' ,'status','ordering','question_id')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -121,7 +127,10 @@ class QuestionModel extends AdminModel
                         'message'  =>   config('zvn-notify.ordering.message')  ,
                    ];
         }
-
+        if($options['task'] == 'change-category') {
+            self::where('id', $params['id'])->update(['question_id' => $params['currentCategory']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
         if($options['task'] == 'add-item') {
             $params['created_by'] = "truongdinh";
             $params['created']    = date('Y-m-d');

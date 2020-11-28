@@ -4,6 +4,7 @@ namespace App\Helpers;
 use Illuminate\Support\Str;
 use Config;
 use App\Models\CategoryArticleModel  ;
+use App\Models\CategoryQuestionModel  ;
 use App\Helpers\Template as Template;
 class SelectBox
 {
@@ -56,7 +57,13 @@ class SelectBox
         $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'new_value', 'id' => $items['id'] ]);
         return $xhtml = Template::showSelectBoxCategoryNested($items ,$itemSelectBox,'category_id',$link);
     }
-
+    public static function showCategoryQuestionChangeAjax($controllerName, $items, $categoryID, $fieldName)
+    {
+        $categoryModel = new CategoryQuestionModel();
+        $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-nested']);
+        $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'new_value', 'id' => $items['id'] ]);
+        return $xhtml = Template::showSelectBoxCategoryNested($items ,$itemSelectBox,'category_id',$link);
+    }
     public static function showFormCategory($categoryName,$keySelect)
     {
        $xhtml = sprintf('<select  name="cat_filter" class="btn btn-default"><option value="default">Chọn danh mục</option>' );

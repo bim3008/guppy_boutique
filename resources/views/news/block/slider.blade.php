@@ -1,6 +1,4 @@
-@php
-        
-    @endphp
+
 @if (count($itemsSlider) > 0) 
     <div class="home-slider-container">
         <div class="home-slider owl-carousel owl-theme owl-theme-light">

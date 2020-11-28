@@ -6,5 +6,6 @@
         @include('news.block.service')       
         @include('news.block.gallery')       
         @include('news.block.feedback')       
+        @include('news.block.blog')       
     </main> 
 @endsection

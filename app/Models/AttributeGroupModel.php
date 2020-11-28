@@ -13,7 +13,7 @@ class AttributeGroupModel extends AdminModel
         $this->controllerName      = 'attributeGroup';
         $this->folderUpload        = 'attribute_group' ;
         $this->fieldSearchAccepted = ['id', 'name',];
-        $this->crudNotAccepted     = ['_token','created_by','created'];
+        $this->crudNotAccepted     = ['_token','created_by','created', 'id'];
     }
 
     public function listItems($params = null, $options = null) {
@@ -44,14 +44,21 @@ class AttributeGroupModel extends AdminModel
 
         }
 
-         if($options['task'] == "admin-list-items-in-selectbox") {
+        if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
                         ->orderBy('name', 'asc')
                         ->where('status', '=', 'active' );
-                        
             $result = $query->pluck('name', 'id')->toArray();
-        
         }
+
+        if($options['task'] == "admin-list-items-in-selectbox-change-price") {
+            $query = $this->select('id', 'name')
+                        ->orderBy('name', 'asc')
+                        ->where('change_price', '=', 'yes' )
+                        ->where('status', '=', 'active' );
+            $result = $query->pluck('name', 'id')->toArray();
+        }
+
 
         return $result;
     }
@@ -120,6 +127,7 @@ class AttributeGroupModel extends AdminModel
         }
 
         if($options['task'] == 'edit-item') {
+            $params['change_price'] = !isset($params['change_price']) ? 'no' : 'yes';
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }

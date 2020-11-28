@@ -18,7 +18,7 @@ class ProductModel extends AdminModel
         $this->controllerName      = 'product';
         $this->folderUpload        = 'product' ; 
         $this->fieldSearchAccepted = ['id', 'name', 'link']; 
-        $this->crudNotAccepted     = ['_token'];
+        $this->crudNotAccepted     = ['_token', 'attribute_change_price', 'attribute_group_change_price','id'];
     }
 
     public function listItems($params = null, $options = null) {
@@ -96,7 +96,7 @@ class ProductModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
-            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 'product.content', 'product.tag','product.type','t.name as tag_name')
+            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 'product.content', 'product.tag', 'product.price_custom','product.type','t.name as tag_name')
                         ->leftJoin('tag as t', 'product.tag', '=', 't.id')
                         ->where('product.id', $params['id'])
                         ->first()
@@ -116,8 +116,8 @@ class ProductModel extends AdminModel
            $result = self::select('price')->where('id', $params)->get() ->first()->toArray();
         }
 
-        if($options['task'] == 'admin-get-name-attribute-group') {
-            $result = AttributeModel::select('id', 'name', 'status')->where('attribute_group_id', $params['id'])->get()->toArray();
+        if($options['task'] == 'admin-get-name-attribute') {
+            $result = AttributeModel::select('id', 'name', 'status', 'change_price')->where('id', $params['id'])->get()->toArray();
         }
         return $result;
     }
@@ -138,7 +138,7 @@ class ProductModel extends AdminModel
             self::where('id', $params['id'])->update(['type' => $params['currentType']]);
             return [ 'message' => config('zvn-notify.select.message')] ;
         }
-
+        
         if($options['task'] == 'add-item') {
             $idTag              = TagModel::select('id')->where('name', $params['tag'])->get();
             $tag                = json_decode($idTag);
@@ -150,9 +150,24 @@ class ProductModel extends AdminModel
                     $params['attribute']    = json_encode($valueAttribute) ;
                 }
             }
+
+            $params['attribute_group_id']        = null;
+            if (isset($params['attribute_change_price'])) {
+                foreach ($params['attribute_change_price'] as $key => $value) {
+                    $valueAttributeChangePrice[] = (["name"  => $key ,"value" =>  json_encode($value)])  ; 
+                    $params['price_custom']      = json_encode($valueAttributeChangePrice) ;
+                }
+                // $params['attribute'] = 'null';
+                // $attrChangePrice    = $params['attributeChangePrice'];
+                // $nameChangePrice    = explode(',',$attrChangePrice['name']) ;
+                // $priceChangePrice   = explode(',',$attrChangePrice['price']) ;
+                // $valueAttributeChangePrice[] = (["name"  => $nameChangePrice ,"value" =>  $priceChangePrice])  ; 
+                // $params['attribute_group_change_price']    = json_encode($valueAttributeChangePrice) ;
+            }
             $params['thumb']        = json_encode($params['thumb']['name']); 
             $params['created_by']   = "duy-nguyen";
             $params['created']      = date('Y-m-d');
+         
             self::insert($this->prepareParams($params));        
         }
 

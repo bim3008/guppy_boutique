@@ -29,7 +29,6 @@
 
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
-                         
                             <td>{!! $name !!}</td>
                             <td>{!! $status !!}</td>
 

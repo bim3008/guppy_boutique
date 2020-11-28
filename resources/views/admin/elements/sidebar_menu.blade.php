@@ -26,6 +26,8 @@
                     <li><a href="{{ route('product')}}"></i> Danh mục </a></li>
                     <li><a href="{{ route('product')}}"></i> Sản phẩm    </a></li>
                     <li><a href="{{ route('tag')}}">    </i> Tag    </a></li>
+                    <li><a href="{{ route('attribute')}}">    </i> Thuộc tính    </a></li>
+                    <li><a href="{{ route('attributeGroup')}}">    </i> Nhóm thuộc tính    </a></li>
                 </ul>
             </li>
             <li><a href="{{ route('question')   }}"><i class="fa fa-question">      </i> Câu hỏi thường gặp     </a></li>

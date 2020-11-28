@@ -21,7 +21,7 @@ class ProductController extends AdminController
       parent::__construct();
    }
 
-   public function save(MainRequest $request)
+   public function save(Request $request)
    {
       if ($request->method() == 'POST') {
             $params = $request->all();
@@ -59,10 +59,10 @@ class ProductController extends AdminController
    public function getAttribute(Request $request)
    {
       $params["id"]                 = $request->id;
-      $items = $this->model->getItem($params, ['task' => 'admin-get-name-attribute-group']);
+      $items = $this->model->getItem($params, ['task' => 'admin-get-name-attribute']);
       if(count($items) > 0){
          foreach($items as $item){
-            $name = array_column($items, 'name');
+            $name       = array_column($items, 'name');
          }
          return $name;
       }

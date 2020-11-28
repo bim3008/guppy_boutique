@@ -9,22 +9,23 @@
     $inputHiddenID    = isset($inputHiddenID)    ? $inputHiddenID : '' ;
     $inputHiddenThumb = isset($inputHiddenThumb) ? $inputHiddenThumb : '' ;
 
-    $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+    $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
 
     $valueID             = isset($item['id'])           ? $item['id'] : '' ;
     $valueName           = isset($item['name'])         ? $item['name'] : '' ;
     $valueStatus         = isset($item['status'])       ? $item['status'] : '' ;
- 
-    $inputHiddenID    = Form::hidden('id',$valueID);
-
+    $inputHiddenID       = Form::hidden('id',$valueID);
+    $checked             = ($item['change_price'] == 'yes') ? true : false;
     $elements = [
         [
-            'label'   => Form::label('name', 'Name', $formLabelAttr),
+            'label'   => Form::label('name', 'Tên nhóm thuộc tính', $formLabelAttr),
             'element' => Form::text('name', $valueName, $formInputAttr )
-        ],[
-            'label'   => Form::label('status', 'Status', $formLabelAttr),
+        ],
+        [
+            'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $valueStatus, $formInputAttr)
-        ],[
+        ],
+        [
             'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]

@@ -20,7 +20,7 @@ class AttributeModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('attribute.id', 'attribute.name', 'attribute.status', 'ag.name as attribute_group_name')
+            $query = $this->select('attribute.id', 'attribute.name', 'attribute.status', 'attribute.change_price','ag.name as attribute_group_name')
                     ->leftJoin('attribute_group as ag', 'ag.id', '=', 'attribute.attribute_group_id');  
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
@@ -61,6 +61,14 @@ class AttributeModel extends AdminModel
             $result = $query->pluck('name', 'id')->toArray();
         
         }
+
+        if($options['task'] == "admin-list-items-in-selectbox-change-price") {
+            $query = $this->select('id', 'name')
+                        ->orderBy('name', 'asc')
+                        ->where('change_price', '=', 'yes' )
+                        ->where('status', '=', 'active' );
+            $result = $query->pluck('name', 'id')->toArray();
+        }
         return $result;
     }
 
@@ -97,7 +105,7 @@ class AttributeModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result =  self::select('attribute.id','attribute.name','attribute.status','ag.id as attribute_group_id')
+            $result =  self::select('attribute.id','attribute.name','attribute.change_price','attribute.status','ag.id as attribute_group_id')
                     ->leftJoin('attribute_group as ag', 'ag.id', '=', 'attribute.attribute_group_id')
                     ->where('attribute.id',$params['id'])
                     ->first() ;
@@ -124,6 +132,7 @@ class AttributeModel extends AdminModel
         }
 
         if($options['task'] == 'edit-item') {
+            $params['change_price'] = !isset($params['change_price']) ? 'no' : 'yes';
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }

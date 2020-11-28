@@ -10,18 +10,22 @@
     $attributeGroup         = new AttributeGroupModel();
     $itemsAttributeGroup    = $attributeGroup->listItems(null, ['task' => 'admin-list-items-in-selectbox']);
     $inputHiddenID          = Form::hidden('id', $item['id']);
-
+    $checked                = ($item['change_price'] == 'yes') ? true : false;
     $elements = [
         [
-            'label'   => Form::label('name', 'Name', $formLabelAttr),
+            'label'   => Form::label('name', 'Tên thuộc tính', $formLabelAttr),
             'element' => Form::text('name', $item['name'], $formInputAttr )
         ],
         [
-            'label'   => Form::label('attribute_group', 'Attribute-Group', $formLabelAttr),
+            'label'   => Form::label('attribute_group', 'Nhóm thuộc tính', $formLabelAttr),
             'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], $formInputAttr)
         ],
         [
-            'label'   => Form::label('status', 'Status', $formLabelAttr),
+            'label'   => Form::label('change_price', 'Thay đổi giá', $formLabelAttr),
+            'element' => Form::checkbox('change_price', 'yes', $checked)
+        ],
+        [
+            'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [

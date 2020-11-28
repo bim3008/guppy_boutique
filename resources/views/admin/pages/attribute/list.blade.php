@@ -8,8 +8,9 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">Name</th>
-                    <th class="column-title">Attribute Group</th>
+                    <th class="column-title">Tên</th>
+                    <th class="column-title">Nhóm thuộc tính</th>
+                    <th class="column-title">Thay đổi giá</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Hành động</th>
                 </tr>
@@ -23,6 +24,7 @@
                             $id              = $val['id'];
                             $name            = Hightlight::show($val['name'], $params['search'], 'name');
                             $attrGroup       = $val['attribute_group_name'];
+                            $changePrice     = $val['change_price'];
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']);
                             $listBtnAction   = Template::showButtonAction($controllerName, $id);
                         @endphp
@@ -31,6 +33,7 @@
                             <td >{{ $index }}</td>
                             <td width="25%">{!! $name !!}</td>
                             <td>{!! $attrGroup !!}</td>
+                            <td>{!! $changePrice  !!}</td>
                             <td>{!! $status !!}</td>
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>

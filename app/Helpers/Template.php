@@ -236,5 +236,15 @@ class Template {
         $xhtml .= '</select>';
         return $xhtml;
     }
+
+    public static function getStarFeedBack($params){
+        
+        $start = 100 ;
+        if($params == 4) $start = 80 ;
+        if($params == 3) $start = 60 ;
+        if($params == 2) $start = 40 ;
+        if($params == 1) $start = 10 ;
+        return   $start;
+    }
   
 }

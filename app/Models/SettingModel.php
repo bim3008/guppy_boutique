@@ -19,7 +19,7 @@ class SettingModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
-            $result = self::select('id','value')->where('key_value',$params)->first();
+            $result = self::select('id','value')->where('key_value',$params)->first()->toArray();
         }
 
         if($options['task'] == 'get-thumb') {

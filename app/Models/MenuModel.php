@@ -29,17 +29,10 @@ class MenuModel extends AdminModel
             return $categories = self::withDepth()->get()->toTree();
          }
 
-        if($options['task'] == 'front-end-list-items') {
-            $query = $this->select('id', 'name', 'type_menu')
-                        ->where('status', '=', 'active' )
-                        ->limit(8);
-            $result = $query->get()->toArray();
-        }
-
-        if($options['task'] == 'get-item-categories') {
-            $query = $this->select('id', 'name', 'parent_id')
-                        // ->where('status', '=', 'active' )
-                        ->limit(8);
+        if($options['task'] == 'list-item-menu') {
+            $query = $this->select('id', 'name', 'parent_id','type_menu','link')
+                        ->defaultOrder()
+                        ->where('status', '=', 'active' );
             $result = $query->get()->toArray();
         }
 

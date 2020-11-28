@@ -26,11 +26,11 @@ class SliderRequest extends FormRequest
     {
         $id = $this->id;
 
-        $condThumb = 'bail|required|image|max:500';
+        $condThumb = 'bail|required|image|max:1000';
         $condName  = "bail|required|between:5,100|unique:$this->table,name";
 
         if(!empty($id)){ // edit
-            $condThumb = 'bail|image|max:500';
+            $condThumb = 'bail|image|max:1000';
             $condName  .= ",$id";
         }
         return [

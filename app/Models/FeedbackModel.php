@@ -45,7 +45,7 @@ class FeedbackModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'description', 'thumb')
+            $query = $this->select('id', 'name', 'description', 'thumb','combostar')
                         ->where('status', '=', 'active' )
                         ->limit(5);
 

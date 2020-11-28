@@ -47,6 +47,7 @@ class SliderModel extends AdminModel
         if($options['task'] == 'news-list-items') {
             $query = $this->select('id', 'name', 'description', 'link', 'thumb')
                         ->where('status', '=', 'active' )
+                        ->orderBy('id','desc' )
                         ->limit(5);
 
             $result = $query->get()->toArray();

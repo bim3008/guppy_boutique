@@ -1,6 +1,6 @@
 <?php
    $prefixNews  = config('zvn.url.prefix_news');
-Route::group(['prefix' => '', 'namespace' => 'guppy'], function () {
+Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
 // ============================== HOMEPAGE ==============================
    $prefix         = '';

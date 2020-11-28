@@ -1,6 +1,6 @@
 @charset 'UTF-8';
 
-// Main Css File
+/* Main Css File */
 @import 'mixins/clearfix';
 @import 'mixins/breakpoints';
 @import 'mixins/lazy';
@@ -8,6 +8,7 @@
 
 @import 'config/fonts';
 @import 'config/variables';
+@import 'config/helpers';
 
 @import 'base/base';
 @import 'base/type';
@@ -53,12 +54,12 @@
 @import 'pages/contact';
 @import 'pages/dashboard';
 
-// Plugins
+/* Plugins */
 @import 'plugins/owl-carousel/owl.carousel';
 @import 'plugins/owl-carousel/owl.theme.default';
 @import 'plugins/magnific-popup/main';
 @import 'plugins/jquery.bootstrap-touchspin';
 @import 'plugins/nouislider';
 
-@import 'config/helpers';
+/* Spacing + Helpers */
 @import 'config/spacing';

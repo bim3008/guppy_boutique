@@ -5,29 +5,29 @@
     use App\Models\MenuModel;
     use App\Helpers\URL;
     
-    $menuModel = new MenuModel();
-    $itemsMenu = $menuModel->getItem(null, ['task' => 'admin-get-nested']);
+    $category      = new MenuModel();
+    $itemsCategory = $category->getItem(null, ['task' => 'admin-get-nested']);
     $formInputAttr = config('zvn.template.form_input');
     $formLabelAttr = config('zvn.template.form_label');
 
-    $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
-    $typeMenuValue    = ['default' => 'Select type menu', 'normal' => config('zvn.template.type_menu.normal.name'), 'category_article' => config('zvn.template.type_menu.category_article.name'), 'category_product' => config('zvn.template.type_menu.category_product.name')];
+    $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+    $typeMenuValue    = ['default' => 'Chọn kiểu Menu', 'normal' => config('zvn.template.type_menu.normal.name'), 'category_article' => config('zvn.template.type_menu.category_article.name'), 'category_product' => config('zvn.template.type_menu.category_product.name')];
     $inputHiddenID    = Form::hidden('id', $item['id']);
 
     $elements = [
         [
-            'label'   => Form::label('name', 'Name', $formLabelAttr),
+            'label'   => Form::label('name', 'Tên', $formLabelAttr),
             'element' => Form::text('name', $item['name'], $formInputAttr )
         ],[
-            'label'   => Form::label('link', 'Link', $formLabelAttr),
+            'label'   => Form::label('link', 'Đường dẫn', $formLabelAttr),
             'element' => Form::text('link', $item['link'],  $formInputAttr )
         ],
         [
-            'label'   => Form::label('parent_id', 'Parent Category', $formLabelAttr),
-            'element' => Template::showSelectedParent($item, $itemsMenu),
+            'label'   => Form::label('parent_id', 'Thư mục cha', $formLabelAttr),
+            'element' => Template::showSelectCategoryParent($item, $itemsCategory),
         ],
         [
-            'label'   => Form::label('status', 'Status', $formLabelAttr),
+            'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [
@@ -35,7 +35,7 @@
             'element' => Form::select('type_menu', $typeMenuValue, $item['type_menu'], $formInputAttr)
         ],
         [
-            'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),
+            'element' => $inputHiddenID . Form::submit('Lưu', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]
     ];

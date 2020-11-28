@@ -20,7 +20,6 @@
       this.mMenuIcons();
       this.mMenuToggle();
       this.mobileMenu();
-      this.productTabSroll();
       this.scrollToTop();
       this.quantityInputs();
       this.countTo();
@@ -37,7 +36,7 @@
       this.loginPopup();
       this.windowClick();
 
-      /* Manu via superfish plugin */
+      /* Menu via superfish plugin */
       if ($.fn.superfish) {
         this.menuInit();
       }
@@ -157,8 +156,12 @@
       // Mobile Menu Toggle
       $('.mmenu-btn').on('click', function (e) {
         var $parent = $(this).closest('li'),
-          $targetUl = $parent.find('ul').eq(0);
-
+          $targetUl = $parent.find('ul').eq(0),
+          $prevParent = $parent.siblings('.open'),
+          $prevUl = $prevParent.find('ul').eq(0);
+        $prevUl.slideUp(300, function () {
+          $prevParent.removeClass('open');
+        });
         if (!$parent.hasClass('open')) {
           $targetUl.slideDown(300, function () {
             $parent.addClass('open');
@@ -186,139 +189,258 @@
         items: 1,
       };
 
-      /* Hom Slider */
       var homeSlider = $('.home-slider');
 
-      homeSlider.owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        lazyLoad: true,
-        autoplayTimeout: 20000,
-        animateOut: 'fadeOut'
-      }));
-
+      /* Hom Slider */
+      homeSlider.owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            lazyLoad: true,
+            autoplayTimeout: 20000,
+            animateOut: 'fadeOut'
+          }
+        )
+      );
       homeSlider.on('loaded.owl.lazy', function (event) {
-        $(event.element).closest('.home-slider').addClass('loaded')
+        $(event.element).closest('.home-slide').addClass('loaded');
       });
 
-      /* Featured Products */
-      $('.featured-products').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        loop: false,
-        margin: 30,
-        autoplay: false,
-        responsive: {
-          0: {
-            items: 2
-          },
-          700: {
-            items: 3,
-            margin: 15
-          },
-          1200: {
-            items: 4
+      /* Home- Featured Products */
+      $('.featured-products').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            loop: false,
+            margin: 11,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 2
+              },
+              480: {
+                items: 2
+              },
+              768: {
+                items: 3
+              },
+              992: {
+                items: 4
+              },
+              1200: {
+                items: 5
+              }
+            }
+          })
+      );
+
+      /* Home- New Products */
+      $('.new-products').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            margin: 30,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 2
+              },
+              480: {
+                items: 2
+              },
+              768: {
+                items: 2
+              },
+              992: {
+                items: 3
+              },
+              1200: {
+                items: 4
+              }
+            }
+          })
+      );
+
+      // Home - Partners/Logos carousel
+      $('.partners-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            margin: 20,
+            nav: true,
+            dots: false,
+            autoHeight: true,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 1,
+                margin: 0
+              },
+              480: {
+                items: 2
+              },
+              768: {
+                items: 3
+              },
+              992: {
+                items: 4
+              },
+              1200: {
+                items: 5
+              }
+            }
           }
-        }
-      }));
+        ));
+
+      // Home - Blog Carousel
+      $('.blog-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            loop: false,
+            margin: 30,
+            navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+            dots: false,
+            autoHeight: true,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 1
+              },
+              992: {
+                items: 2
+              }
+            }
+          }
+        ));
 
       /* Widget Featurd Products*/
-      $('.widget-featured-products').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        lazyLoad: true,
-        nav: true,
-        navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
-        dots: false,
-        autoHeight: true
-      }));
+      $('.widget-featured-products').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            nav: true,
+            navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+            dots: false,
+            autoHeight: true
+          }
+        )
+      );
 
       /* About Testimonials carousel */
-      $('.testimonials-carousel').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        lazyLoad: true,
-        navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
-        autoHeight: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          992: {
-            items: 2
+      $('.testimonials-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+            autoHeight: true,
+            responsive: {
+              0: {
+                items: 1
+              },
+              992: {
+                items: 2
+              }
+            }
           }
-        }
-      }));
+        ));
 
       // Entry Slider - Blog page
       $('.entry-slider').each(function () {
-        $(this).owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-          margin: 2,
-          lazyLoad: true,
-        }));
+        $(this).owlCarousel(
+          $.extend(true, {}, sliderDefaultOptions,
+            {
+              margin: 2,
+            }
+          )
+        );
       });
 
       // Related posts
-      $('.related-posts-carousel').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        loop: false,
-        margin: 30,
-        autoplay: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 2
-          },
-          1200: {
-            items: 3
+      $('.related-posts-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            loop: false,
+            margin: 30,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 1
+              },
+              480: {
+                items: 2
+              },
+              1200: {
+                items: 3
+              }
+            }
           }
-        }
-      }));
+        ));
 
       //Category boxed slider
-      $('.boxed-slider').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        lazyLoad: true,
-        autoplayTimeout: 20000,
-      }));
+      $('.boxed-slider').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            animateOut: 'fadeOut',
+            lazyLoad: true
+          }
+        ));
       $('.boxed-slider').on('loaded.owl.lazy', function (event) {
-        $(event.element).closest('.boxed-slider').addClass('loaded')
+        $(event.element).closest('.category-slide').addClass('loaded');
       });
 
       /* Product single carousel - extenden product */
-      $('.product-single-default .product-single-carousel').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        nav: true,
-        navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
-        dotsContainer: '#carousel-custom-dots',
-        autoplay: false,
-        onInitialized: function () {
-          var $source = this.$element;
+      $('.product-single-default .product-single-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            nav: true,
+            navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+            dotsContainer: '#carousel-custom-dots',
+            autoplay: false,
+            onInitialized: function () {
+              var $source = this.$element;
 
-          if ($.fn.elevateZoom) {
-            $source.find('img').each(function () {
-              var $this = $(this),
-                zoomConfig = {
-                  responsive: true,
-                  zoomWindowFadeIn: 350,
-                  zoomWindowFadeOut: 200,
-                  borderSize: 0,
-                  zoomContainer: $this.parent(),
-                  zoomType: 'inner',
-                  cursor: 'grab'
-                };
-              $this.elevateZoom(zoomConfig);
-            });
+              if ($.fn.elevateZoom) {
+                $source.find('img').each(function () {
+                  var $this = $(this),
+                    zoomConfig = {
+                      responsive: true,
+                      zoomWindowFadeIn: 350,
+                      zoomWindowFadeOut: 200,
+                      borderSize: 0,
+                      zoomContainer: $this.parent(),
+                      zoomType: 'inner',
+                      cursor: 'grab'
+                    };
+                  $this.elevateZoom(zoomConfig);
+                });
+              }
+            },
+            onRefreshed: function () {
+              var $source = this.$element;
+              if ($.fn.elevateZoom) {
+                $source.find('img').each(function () {
+                  var zoom = $(this).data('elevateZoom');
+                  if (zoom) {
+                    zoom.startZoom();
+                  }
+                });
+              }
+            }
           }
-        },
-      }));
+        ));
 
-      $('.product-single-extended .product-single-carousel').owlCarousel($.extend(true, {}, sliderDefaultOptions, {
-        dots: false,
-        autoplay: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 2
-          },
-          1200: {
-            items: 3
+      $('.product-single-extended .product-single-carousel').owlCarousel(
+        $.extend(true, {}, sliderDefaultOptions,
+          {
+            dots: false,
+            autoplay: false,
+            responsive: {
+              0: {
+                items: 1
+              },
+              480: {
+                items: 2
+              },
+              1200: {
+                items: 3
+              }
+            }
           }
-        }
-      }));
+        ));
 
       $('#carousel-custom-dots .owl-dot').click(function () {
         $('.product-single-carousel').trigger('to.owl.carousel', [$(this).index(), 300]);
@@ -641,12 +763,11 @@
     },
     scrollToElement: function () {
       $('.scrolling-box a[href^="#"]').on('click', function (event) {
-        var target = $(this.getAttribute('href'));
-
-        if (target.length) {
+        var targetId = this.getAttribute('href');
+        if (targetId && targetId != '#' && $(targetId).length) {
           event.preventDefault();
           $('html, body').stop().animate({
-            scrollTop: target.offset().top - 90
+            scrollTop: $(targetId).offset().top - 90
           }, 700);
         }
       });

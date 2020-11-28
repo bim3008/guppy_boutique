@@ -38,7 +38,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
     });
 // ============================== CATEGORY PRODUCT =======================
-    $prefix         = 'CategoryProduct';    
+    $prefix         = 'categoryProduct';    
     $controllerName = 'categoryProduct';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
@@ -46,9 +46,9 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('form/{id?}',                        [ 'as' => $controllerName . '/form',        'uses' => $controller . 'form'])->where('id', '[0-9]+');
         Route::post('save',                             [ 'as' => $controllerName . '/save',        'uses' => $controller . 'save']);
         Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
-        Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
-        Route::get('change-ordering-{ordering}/{id}',   [ 'as' => $controllerName . '/ordering',     'uses' => $controller . 'ordering'])->where('id', '[0-9]+');
-        Route::get('change-node-{node}/{id}',           [ 'as' => $controllerName . '/node',         'uses' => $controller . 'node'])->where('id', '[0-9]+');
+        Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status']);
+        Route::get('change-is-home-{isHome}/{id}',      [ 'as' => $controllerName . '/isHome',     'uses' => $controller  . 'isHome']);
+        Route::get('change-node-{node}/{id}',           [ 'as' => $controllerName . '/node',        'uses' => $controller . 'node'])->where('id', '[0-9]+');
     });
 // ============================== CATEGORY ===============================
     $prefix         = 'category';
@@ -126,7 +126,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::post('save',                             [ 'as' => $controllerName . '/save',        'uses' => $controller . 'save']);
         Route::get('delete/{id}',                       [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
         Route::get('change-status-{status}/{id}',       [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status']);
-        Route::get('change-is-home-{isHome}/{id}',      [ 'as' => $controllerName . '/isHome',     'uses' => $controller  . 'isHome']);
+        Route::get('change-is-home-{isHome}/{id}',      [ 'as' => $controllerName . '/isHome',      'uses' => $controller  . 'isHome']);
         Route::get('change-node-{node}/{id}',           [ 'as' => $controllerName . '/node',        'uses' => $controller . 'node'])->where('id', '[0-9]+');
     });
 // ============================== USER ===================================

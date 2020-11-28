@@ -10,83 +10,75 @@
 .product {
   position: relative;
   margin-bottom: 2.5rem;
+  padding-bottom: 1.3rem;
+  transition: all .3s;
+  background-color: #fff;
 
   .add-wishlist {
-    right: -42px;
+    right: -45px;
   }
 
   .add-compare {
-    left: -42px;
+    left: -45px;
   }
 
-  .add-wishlist,
-  .add-compare {
+  .add-wishlist, .add-compare {
     opacity: 0;
     visibility: hidden;
     z-index: 1;
   }
 }
 
+.product:not(.product-sm):hover {
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .1);
+}
+
 .product-image-container {
   display: block;
   position: relative;
-  margin-bottom: 2rem;
-  transition: all .3s;
-  border: .1rem solid #e5e5e5;
+  margin-bottom: 1.6rem;
   background-color: #fafafa;
-}
-
-.product:not(.product-sm):hover .product-image-container {
-  box-shadow: 0 20px 43px rgba(0, 0, 0, .15);
 }
 
 .product-image {
   display: block;
-}
 
-.product-image::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: all .3s;
-  background-color: rgba(0, 0, 0, .1);
-  content: '';
-  opacity: 0;
-  visibility: hidden;
-}
-
-.product-image img {
-  display: block;
-  width: 100%;
-  height: auto;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .btn-quickview {
-  display: inline-block;
-  padding: 1.65rem 1.5rem;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.2rem 1.15rem;
   transition: all .25s;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, .8);
   color: #fff;
-  font: 400 1.3rem / 1 $second-font-family;
-  letter-spacing: .05rem;
+  font: 400 1.2rem / 1 $font-family;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
+
+  &::before {
+    margin: 0 .5rem 0 0;
+    font-family: 'porto';
+    content: '\e892';
+  }
 }
 
 .product-image-container .btn-quickview {
   position: absolute;
+  top: 0;
   right: 0;
-  bottom: 0;
-  left: 0;
 }
 
-.product:hover .product-image::after,
 .product:hover .btn-quickview {
   opacity: 1;
   visibility: visible;
@@ -107,8 +99,8 @@
 
 .product-title {
   margin-bottom: .8rem;
-  color: #7b858a;
-  font: 400 1.5rem / 1.25 $font-family;
+  color: #5b5b5f;
+  font: 400 1.4rem / 1.25 $font-family;
   letter-spacing: .01rem;
 }
 
@@ -117,9 +109,10 @@
 }
 
 .price-box {
-  margin-bottom: 2.3rem;
-  color: #465157;
-  font: 600 0 / 1 $font-family;
+  margin-bottom: 1.8rem;
+  color: #2b2b2d;
+  font: 400 0 / 1 $second-font-family;
+  font-size: 0;
 }
 
 .product-price {
@@ -127,16 +120,16 @@
 }
 
 .old-price {
-  color: #999;
-  font-size: 1.5rem;
+  color: #000;
+  font-size: 1.4rem;
   text-decoration: line-through;
 
   & + .product-price {
-    margin-left: .6rem;
+    margin-left: 1rem;
+    color: #ff0000;
   }
 }
 
-.product-grid-action,
 .product-action {
   display: -ms-flexbox;
   display: flex;
@@ -147,45 +140,45 @@
 }
 
 .paction {
-  display: -ms-flexbox;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   position: relative;
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-width: 42px;
-  height: 43px;
+  min-width: 40px;
+  height: 40px;
   transition: all .3s;
-  border: 1px solid #d8d8d6;
   background-color: #f4f4f4;
   color: #302e2a;
   font-family: 'porto';
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  text-align: center;
   text-decoration: none;
 
   span {
     display: none;
-    padding-right: .4rem;
-    padding-left: .7rem;
+    padding-right: .1rem;
+    padding-left: .4rem;
     font-size: 1.2rem;
     letter-spacing: .02rem;
   }
 
   & + .paction {
-    margin-left: .7rem;
+    margin-left: .5rem;
   }
 
   &:hover,
   &:focus {
-    border-color: #302e2a;
-    color: #302e2a;
+    background-color: $primary-color;
+    color: #fff;
     text-decoration: none;
   }
 }
 
 .add-cart {
-  min-width: 132px;
+  min-width: 115px;
   padding: .85rem .5rem;
   transition-duration: 0s;
   color: #6f6e6b;
@@ -195,35 +188,35 @@
   z-index: 2;
 
   &::before {
-    margin-top: 2px;
+    display: inline-block;
+    margin-top: 1px;
     font-family: 'porto';
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     line-height: 1;
     content: '\e87f';
   }
 
   span {
     display: inline;
-    font-size: 1.4rem;
   }
 
   &:hover,
   &:focus {
-    border-color: $primary-color;
-    background-color: $primary-color;
+    border-color: #2b2b2c;
+    background-color: #2b2b2c;
     color: #fff;
   }
 }
 
 .add-wishlist {
   &::before {
-    content: '\e889';
+    content: '\e88a';
   }
 }
 
 .add-compare {
   &::before {
-    content: '\e88f';
+    content: '\e810';
   }
 }
 
@@ -244,22 +237,23 @@
   }
 
   &.add-cart {
-    border-color: $primary-color;
-    background-color: $primary-color;
+    border-color: #2b2b2c;
+    background-color: #2b2b2c;
     color: #fff;
   }
 }
 
 .product-label {
   position: absolute;
-  top: .8em;
-  right: .8em;
-  min-width: 46px;
+  top: 1.2em;
+  left: 1.2em;
+  min-width: 47px;
   padding: .5rem;
+  border-radius: 1rem;
   background-color: $primary-color;
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
@@ -267,20 +261,20 @@
 
   &.label-hot,
   &.label-new {
-    background-color: #62b959;
+    background-color: #2ba968;
   }
 
   &.label-sale {
-    background-color: #e27c7c;
+    background-color: #da5555;
   }
 
   & + .product-label {
-    top: 3.6rem;
+    top: 3.8rem;
   }
 }
 
 .ratings-container {
-  margin-bottom: .8rem;
+  margin-bottom: 1.2rem;
   line-height: 1;
 
   .product-ratings,
@@ -288,16 +282,16 @@
     display: inline-block;
     position: relative;
     font-family: 'porto';
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     letter-spacing: .1em;
     line-height: 1;
   }
 
   .product-ratings {
-    height: 14px;
+    height: 12px;
 
     &::before {
-      color: #b3b3b3;
+      color: #b7b6b4;
       content: '\e852 ' '\e852 ' '\e852 ' '\e852 ' '\e852';
     }
   }
@@ -310,7 +304,7 @@
     overflow: hidden;
 
     &::before {
-      color: #706f6c;
+      color: #2b2b2c;
       content: '\e852 ' '\e852 ' '\e852 ' '\e852 ' '\e852';
     }
   }
@@ -319,6 +313,7 @@
 // Prouct small
 .product.product-sm {
   margin-bottom: 2rem;
+  padding-bottom: 0;
 }
 
 .product-quick-view {
@@ -387,7 +382,7 @@
   }
 
   .old-price {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 
     & + .product-price {
       margin-left: .5rem;
@@ -395,7 +390,7 @@
   }
 
   .product-price {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   &:hover {
@@ -435,7 +430,6 @@
   }
 
   .product-action {
-    -ms-flex-pack: start;
     justify-content: flex-start;
   }
 
@@ -470,10 +464,6 @@
 
   &:hover {
     padding: 1rem 0 4rem;
-  }
-
-  .product-image-container {
-    border: 0;
   }
 }
 
@@ -544,30 +534,15 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 800px) {
-  .product .add-wishlist, .product .add-compare {
-    min-width: 39px;
+@media screen and (min-width: 1200px) and (max-width: 1280px) {
+  .product .add-wishlist,
+  .product .add-compare {
+    min-width: 37px;
   }
 }
 
 @include mq('xl') {
-  .col-xl-5col {
-    .add-cart {
-      min-width: 118px;
-
-      span {
-        font-size: 1.2rem;
-      }
-    }
-
-    .paction {
-      min-width: 37px;
-      height: 39px;
-    }
-  }
-
-  .col-lg-9 .featured-section,
-  .col-xl-3 {
+  .col-xl-3 .product {
     .paction {
       min-width: 35px;
       height: 35px;
@@ -575,10 +550,10 @@
 
     .add-cart {
       min-width: 105px;
+    }
 
-      span {
-        font-size: 1.2rem;
-      }
+    .paction + .paction {
+      margin-left: .3rem;
     }
   }
 
@@ -591,28 +566,13 @@
     }
   }
 
-  .col-xl-2,
-  .col-xl-7col,
-  .col-xl-8col {
-    .add-wishlist,
-    .add-compare {
+  .col-xl-2 .product, .col-xl-7col .product, .col-xl-8col .product {
+    .add-wishlist, .add-compare {
       display: none;
     }
 
     .paction + .paction {
       margin-left: 0;
-    }
-  }
-}
-
-@include mq('lg') {
-  .col-lg-9 .featured-products {
-    .add-cart {
-      min-width: 115px;
-    }
-
-    .paction + .paction {
-      margin-left: .5rem;
     }
   }
 }

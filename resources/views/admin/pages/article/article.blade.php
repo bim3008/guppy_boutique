@@ -5,8 +5,8 @@
     $formInputAttr = config('zvn.template.form_input');
     $formLabelAttr = config('zvn.template.form_label_article');
     $formCkeditor  = config('zvn.template.form_ckeditor');
-    $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
-  
+    $statusValue          = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+
     $elements = [
         [
             'label'   => Form::label('name', 'Tên', $formLabelAttr),
@@ -22,7 +22,7 @@
             'type'    => "article"
         ],[
             'label'   => Form::label('category_id', 'Danh mục', $formLabelAttr),
-            'element' => Form::select('category_id', $itemsCategory, $item['category_id'],  $formInputAttr),
+            'element' => Template::showSelectBoxProductNested($item,$itemsCategory,'category_id') ,
             'type'    => "article"
         ],[
             'label'   => Form::label('thumb', 'Hình ảnh', $formLabelAttr),
@@ -37,7 +37,12 @@
         @include('admin.templates.x_title', ['title' => 'Bài viết'])
             {!! FormTemplate::show($elements)  !!}
     </div>
-</div>   
+</div>  
+
+
+
+
+
 <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 	<script>
 	  var options = {

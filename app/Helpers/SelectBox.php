@@ -3,8 +3,8 @@
 namespace App\Helpers;
 use Illuminate\Support\Str;
 use Config;
-use App\Models\CategoryModel  ;
-
+use App\Models\CategoryArticleModel  ;
+use App\Helpers\Template as Template;
 class SelectBox
 {
     public static function showItemSelect($controllerName, $id, $displayValue, $fieldName)
@@ -35,10 +35,9 @@ class SelectBox
                 </select>' ;
         return $xhtml;
     }
-    public static function showItemSelectCategory($categoryName,$keySelect)
+    public static function showItemSelectIsHome($categoryName,$keySelect)
     {
-       $xhtml = sprintf('<select  name="cat_filter" class="btn btn-default"><option value="default">Chọn danh mục</option>' );
-  
+       $xhtml = sprintf('<select  name="isHome_filter" data-field="type" class="btn btn-default"><option value="default">-- Hiển thị trang chủ --</option>' );
         foreach ($categoryName as $key => $value) {
             $xhtmlSelected = null ;
             if ($key == $keySelect)  $xhtmlSelected = 'selected="selected"';;
@@ -48,19 +47,22 @@ class SelectBox
 
         return $xhtml;
     }
-    public static function showCategoryChangeAjax($controllerName, $id, $categoryID, $fieldName)
+    // ARTICLE
+    public static function showCategoryArticleChangeAjax($controllerName, $items, $categoryID, $fieldName)
     {
 
-       $categoryModel = new CategoryModel();
-       $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'new_value', 'id' => $id]);
-        
-       $xhtml = sprintf('<select name="select_change_attr" data-url="%s" class="form-control">', $link  );
-    
-       $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-items-in-selectbox']);
-      
-        foreach ($itemSelectBox as $key => $value) {
-            $xhtmlSelected = null;
-            if($key == $categoryID) $xhtmlSelected = 'selected="selected"';
+        $categoryModel = new CategoryArticleModel();
+        $itemSelectBox  = $categoryModel->listItems(null,['task' => 'admin-list-nested']);
+        $link          = route($controllerName . '/' . $fieldName, [$fieldName => 'new_value', 'id' => $items['id'] ]);
+        return $xhtml = Template::showSelectBoxCategoryNested($items ,$itemSelectBox,'category_id',$link);
+    }
+
+    public static function showFormCategory($categoryName,$keySelect)
+    {
+       $xhtml = sprintf('<select  name="cat_filter" class="btn btn-default"><option value="default">Chọn danh mục</option>' );
+        foreach ($categoryName as $key => $value) {
+            $xhtmlSelected = null ;
+            if ($key == $keySelect)  $xhtmlSelected = 'selected="selected"';;
             $xhtml .= sprintf('<option %s value="%s">%s</option>', $xhtmlSelected , $key, $value);
         }
         $xhtml .= '</select>';

@@ -13,7 +13,7 @@ class CategoryProductModel extends AdminModel
     protected  $table                   = 'category_product';
     protected  $controllerName          = 'categoryProduct';
     protected  $fieldSearchAccepted     = ['id', 'name']; 
-    protected  $fillable                = ['name', 'status', 'ordering'];
+    protected  $fillable                = ['name', 'status', 'ordering' ,'link','is_home'];
     protected  $crudNotAccepted         = ['_token', 'id'];
   
 
@@ -21,53 +21,13 @@ class CategoryProductModel extends AdminModel
      
         $result = null;
 
-        if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name', 'status', 'ordering', 'parent_id', 'created', 'created_by', 'modified', 'modified_by');
-               
-            if ($params['filter']['status'] !== "all")  {
-                $query->where('status', '=', $params['filter']['status'] );
-            }
-
-            if ($params['search']['value'] !== "")  {
-                if($params['search']['field'] == "all") {
-                    $query->where(function($query) use ($params){
-                        foreach($this->fieldSearchAccepted as $column){
-                            $query->orWhere($column, 'LIKE',  "%{$params['search']['value']}%" );
-                        }
-                    });
-                } else if(in_array($params['search']['field'], $this->fieldSearchAccepted)) { 
-                    $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
-                } 
-            }
-
-            $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerPage']);
-
-        }
-
         if($options['task'] == "admin-list-nested") {
-           return $categories = self::defaultOrder()->withDepth()->get()->toFlatTree();
+           return $categories = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get()->toFlatTree();
         }
 
         if($options['task'] == "news-list-nested") {
-            return $categories = self::withDepth()->get()->toTree()->toArray();
+            return $categories = self::withDepth()->get()->toTree();
          }
-
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name')
-                        ->where('status', '=', 'active' )
-                        ->limit(8);
-            $result = $query->get()->toArray();
-        }
-
-        if($options['task'] == 'get-item-categories') {
-            $query = $this->select('id', 'name', 'parent_id')
-                        // ->where('status', '=', 'active' )
-                        ->limit(8);
-            $result = $query->get()->toArray();
-        }
-
- 
 
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
@@ -128,16 +88,17 @@ class CategoryProductModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'status', 'parent_id')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name', 'is_home','status', 'link','parent_id')->where('id', $params['id'])->first();
         }
 
-        if($options['task'] == 'front-end-get-name-category-product-in-breadcrumb') {
-            $result = self::select('id', 'name')->where('id', $params['id'])->first();
-        }
+        if($options['task'] == "admin-get-nested") {
+            return self::defaultOrder()->withDepth()->get()->toFlatTree();
+         }
         return $result;
     }
 
     public function saveItem($params = null, $options = null) { 
+
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             $class  = ($params['currentStatus'] == "active") ? "info"     : "success";
@@ -149,20 +110,25 @@ class CategoryProductModel extends AdminModel
                 'message'  =>   config('zvn-notify.status.message')  ,
             ];
         }
+        if($options['task'] == 'change-is-home') {
+     
+            $isHome = ($params['currentIsHome'] == "yes") ? "no" : "yes";
+            $class  = ($params['currentIsHome'] == "yes") ? "warning"   : "primary";
+            self::where('id', $params['id'])->update(['is_home' => $isHome ]);
+            return [ 
+                'name'     =>   config('zvn-notify.is_home.'.$isHome.''),
+                'class'    =>   config('zvn-notify.is_home.'.$class.'') ,
+                'link'     =>   route($this->controllerName .'/isHome',['id' => $params['id'],'isHome' => $isHome,])   ,
+                'message'  =>   config('zvn-notify.is_home.message')  ,
+            ];
+        }
+
+        if($options['task'] == 'change-type-menu') {
+            self::where('id', $params['id'])->update(['type_menu' => $params['type_menu']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
 
         if($options['task'] == 'add-item') {
-            // $categories = self::create([
-            //     'name'              => $params['name'],
-            //     'parent_id'         => $params['parent_id'],
-            //     'status'            => 'active',
-            //     'created'           => date('Y-m-d'),
-            //     'created_by'        => 'duynguyen',
-            // ]);
-            // if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
-            //     $node = self::find($params['parent_id']);
-            //     $node->appendNode($categories);
-            // }
-
 
             $categories = self::create($params);
             if (!empty($params['parent_id']) && $params['parent_id'] !== 'none') {
@@ -172,11 +138,11 @@ class CategoryProductModel extends AdminModel
         }
    
         if($options['task'] == 'edit-item') {
-            if ($params['parent_id'] == 'none') {
-                $params['parent_id'] = 'null';
-            }
-            $node = self::findOrFail($params['id']); //parent is null
-            $node->update($params);
+           
+            $parent = self::find($params['parent_id']);
+            $query = $current = self::find($params['id']);
+            $query->update($this->prepareParams($params));
+            if($current->parent_id != $params['parent_id']) $query->prependToNode($parent)->save();
         }
     }
 

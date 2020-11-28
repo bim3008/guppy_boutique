@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CategoryProductModel           as MainModel;
-use App\Http\Requests\CategoryProductRequest  as MainRequest ;    
+use App\Models\CategoryProductModel as MainModel;
+// use App\Http\Requests\Menu  as MainRequest ;    
 
 class CategoryProductController extends AdminController
 {
@@ -17,9 +17,7 @@ class CategoryProductController extends AdminController
         $this->model = new MainModel();
         $this->params["pagination"]["totalItemsPerPage"] = 5;
         parent::__construct();
-    }
-
-    
+    }  
     public function index(Request $request)
     {   
        $this->params['filter']['status'] = $request->input('filter_status', 'all' ) ;
@@ -35,8 +33,7 @@ class CategoryProductController extends AdminController
              'itemsStatusCount' =>  $itemsStatusCount,
        ]);
     }
-
-    public function save(MainRequest $request) {
+    public function save(Request $request) {
         if ($request->method() == 'POST') {
             $params = $request->all();
             $task   = "add-item";
@@ -46,29 +43,13 @@ class CategoryProductController extends AdminController
                 $task   = "edit-item";
                 $notify = "Cập nhật phần tử thành công!";
             }
-            // echo '<pre>';
-            // print_r($params);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($this->controllerName);
-            // echo '</pre>';
-            // die();
             $this->model->saveItem($params, ['task' => $task]);
             return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
         }
         
     }
-
-    public function node(Request $request){
-        $node = $this->model->find($request->id);
-        if($request->node == 'up') {
-          $node->up();
-        } else {
-          $node->down();
-        }
-        return redirect()->route($this->controllerName)->with('success','Change Success!');
-      }
-
+  
+ 
 
 
 }

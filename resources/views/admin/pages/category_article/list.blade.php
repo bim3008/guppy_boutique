@@ -13,9 +13,9 @@
                     <th class="column-title">#</th>
                     <th class="column-title">Tên</th>
                     <th class="column-title">Sắp xếp</th>
-                    <th class="column-title">Đường dẫn</th>
-                    <th class="column-title">Kiểu trang chủ</th>
+                    <th class="column-title">Hiển thị trang chủ</th>
                     <th class="column-title">Trạng thái</th>
+                    <th class="column-title">Đường dẫn</th>
                     <th class="column-title">Hành động</th>
                 </tr>
             </thead>
@@ -23,14 +23,13 @@
                 @if (count($items) > 0)
                     @foreach ($items as $key => $val)
                         @php
-                           
                             $name            = Template::getName($val); 
                             $index           = $key + 1;
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $link            = $val['link'];
                             $isHome          = Template::showItemIsHome($controllerName, $id, $val['is_home']);
-                            $ordering        =  Nested::showIconOrderingNestedCategoryArticle($controllerName,$val,$prefix = '' , 'CategoryArticleModel'); 
+                            $ordering        = Nested::showIconOrderingNestedArticle($controllerName,$val,$prefix = '' , 'CategoryArticleModel'); 
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']);
                             $listBtnAction   = Template::showButtonAction($controllerName, $id);
                         @endphp
@@ -39,9 +38,9 @@
                             <td>{{ $index }}</td>
                             <td> {!! $name !!}</td>
                             <td> {!! $ordering !!}</td>
-                            <td>{!! $link !!}</td>
                             <td>{!! $isHome !!}</td>
                             <td>{!! $status !!}</td>
+                            <td>{!! $link !!}</td>
                    
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>

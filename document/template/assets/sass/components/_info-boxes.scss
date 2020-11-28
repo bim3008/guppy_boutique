@@ -1,7 +1,8 @@
 // Info Boxes
 .info-boxes-container {
-  margin-bottom: 2.7rem;
-  background-color: #f4f4f4;
+  margin-bottom: 3.4rem;
+  border-bottom: .1rem solid #e5e8e8;
+  background-color: #fff;
 
   .container,
   .container-fluid {
@@ -21,14 +22,14 @@
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: .3rem 1.5rem;
   color: #839199;
 
   i {
     min-width: 3.5rem;
-    margin-right: 2.9rem;
+    margin-right: 1.9rem;
     color: #465157;
-    font-size: 3.5rem;
+    font-size: 3.7rem;
     text-align: center;
 
     &::before {
@@ -38,7 +39,8 @@
   }
 
   h4 {
-    margin-bottom: 0.2rem;
+    margin-bottom: .1rem;
+    padding-top: .1rem;
     color: #465157;
     font: 600 1.4rem / 1.1 $font-family;
     letter-spacing: .05rem;
@@ -51,10 +53,6 @@
     font-weight: 300;
     letter-spacing: .01rem;
     line-height: 1.6;
-  }
-
-  & + .info-box {
-    border-top: 1px solid #fff;
   }
 }
 
@@ -77,15 +75,12 @@
     -ms-flex-pack: center;
     justify-content: center;
     max-width: 33.33%;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
 
     &:first-child {
       -ms-flex-pack: start;
       justify-content: flex-start;
-    }
-
-    & + .info-box {
-      border-top: 0;
-      border-left: 1px solid #fff;
     }
   }
 }

@@ -19,7 +19,7 @@
 			background: $nav-background;
 			display: inline-block;
 			cursor: pointer;
-			border-radius: 3px;
+			border-radius: 0;
 
 			i::before {
 				margin: 0;
@@ -49,7 +49,7 @@
 
 	// Styling dots
 	.owl-nav.disabled + .owl-dots {
-		margin-top: 2.5rem;
+		margin-top: 3.2rem;
 	}
 
 	.owl-dots {
@@ -71,27 +71,8 @@
 				display: block;
 				-webkit-backface-visibility: visible;
 				transition: all .3s ease;
-				border: .2rem solid $dot-border;
+				border: 0 solid $dot-border;
 				border-radius: $dot-rounded;
-
-				&::before {
-					content: '';
-					display: block;
-					width: .7rem;
-					height: .7rem;
-					background-color: transparent;
-					position: absolute;
-					left: 50%;
-					top: 50%;
-					margin-top: -.35rem;
-					margin-left: -.35rem;
-					background-color: $primary-color;
-					opacity: 0;
-					visibility: hidden;
-					transform: scale(0);
-					transition: all .3s;
-					border-radius: 50%;
-				}
 			}
 
 			&.active,
@@ -99,16 +80,6 @@
 				span {
 					border-color: $dot-border-active;
 					background: $dot-background-active;
-				}
-			}
-
-			&.active {
-				span {
-					&::before {
-						opacity: 1;
-						visibility: visible;
-						transform: scale(1);
-					}
 				}
 			}
 		}
@@ -132,14 +103,6 @@
 					span {
 						border-color: $dot-border-light-active;
 						background: $dot-background-light-active;
-					}
-				}
-
-				&.active {
-					span {
-						&::before {
-							border-color: $dot-border-light-active;
-						}
 					}
 				}
 			}

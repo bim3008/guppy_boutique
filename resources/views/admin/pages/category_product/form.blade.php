@@ -4,32 +4,38 @@
     use App\Helpers\Template;
     use App\Models\CategoryProductModel;
     use App\Helpers\URL;
-
-    $categoriesModel = new CategoryProductModel();
-    $itemsCategories = $categoriesModel->listItems(null, ['task' => 'admin-list-nested']);
-   
+    
+    $category      = new CategoryProductModel();
+    $itemsCategory = $category->getItem(null, ['task' => 'admin-get-nested']);
     $formInputAttr = config('zvn.template.form_input');
     $formLabelAttr = config('zvn.template.form_label');
 
-    $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
-
+    $statusValue      = ['default' => 'Chọn trạng thái', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
+    $isHome           = ['default' => 'Chọn hiển thị'  , 'no'     => config('zvn.template.is_home.no.name'), 'yes' => config('zvn.template.is_home.yes.name')];
     $inputHiddenID    = Form::hidden('id', $item['id']);
 
     $elements = [
         [
-            'label'   => Form::label('name', 'Name', $formLabelAttr),
+            'label'   => Form::label('name', 'Tên', $formLabelAttr),
             'element' => Form::text('name', $item['name'], $formInputAttr )
+        ],[
+            'label'   => Form::label('link', 'Đường dẫn', $formLabelAttr),
+            'element' => Form::text('link', $item['link'],  $formInputAttr )
         ],
         [
-            'label'   => Form::label('parent_id', 'Parent Category', $formLabelAttr),
-            'element' => Template::showSelectedParent($item, $itemsCategories),
+            'label'   => Form::label('parent_id', 'Thư mục cha', $formLabelAttr),
+            'element' => Template::showSelectBoxCategoryNested($item, $itemsCategory),
         ],
         [
-            'label'   => Form::label('status', 'Status', $formLabelAttr),
+            'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],
         [
-            'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),
+            'label'   => Form::label('is_home', 'Hiển thị trang chủ', $formLabelAttr),
+            'element' => Form::select('is_home', $isHome, $item['is_home'], $formInputAttr)
+        ],
+        [
+            'element' => $inputHiddenID . Form::submit('Lưu', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]
     ];

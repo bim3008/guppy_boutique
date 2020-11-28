@@ -19,10 +19,10 @@
    
     if (!isset($item['id'])) {
         $elements = [
-            [
-                'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
-                'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showName('$link')"])
-            ],
+            // [
+            //     'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
+            //     'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showName('$link')"])
+            // ],
             [
                 'label'   => Form::label('attribute_group', 'Thuộc tính thay đổi giá', $formLabelAttr),
                 'element' => Form::select('attribute_group_change_price', $itemsAttributeChangePrice, $item['attribute_group_id'], ['id' => 'attribute-group-change-price' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showNameChangePrice('$link')"])

@@ -21,6 +21,7 @@ class AdminController extends Controller
 
         $this->params['filter']['status']   = $request->input('filter_status', 'all' ) ;
         $this->params['filter']['category'] = $request->input('filter_category', 'default') ;
+        $this->params['filter']['contact']  = $request->input('filter_contact', 'default') ;
         $this->params['search']['field']    = $request->input('search_field', '' ) ; // all id description
         $this->params['search']['value']    = $request->input('search_value', '' ) ;
 

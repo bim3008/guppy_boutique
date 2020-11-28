@@ -14,15 +14,8 @@
                     <div class="slide-bg owl-lazy"  data-src="{{ $thumb }}"></div><!-- End .slide-bg -->
                     <div class="container">
                         <div class="home-slide-content">
-                            {{-- <div class="slide-border-top">
-                                <img src="assets/images/slider/border-top.png" alt="Border" width="290" height="38">
-                            </div> --}}
-                            {{-- <h3>{{ $name }}</h3>
-                            <h1>fashion mega sale</h1> --}}
-                            {{-- <a href="{{ $link }}" class="btn btn-primary">Shop Now</a> --}}
-                            {{-- <div class="slide-border-bottom">
-                                <img src="" alt="Border" width="290" height="111">
-                            </div> --}}
+                            {{-- <h3>{!! $name !!}</h3> --}}
+                          
                         </div>
                     </div>
                 </div>

@@ -164,12 +164,8 @@ class ProductModel extends AdminModel
         if($options['task'] == 'edit-item') {
             if (isset($params['attribute'])) {
                 foreach($params['attribute'] as $key => $value){
-                    echo '<pre>';
-                    print_r($value);
-                    echo '</pre>';
-                    // $value = explode(',',$value) ;
-                    // $valueAttribute[]       = (["name"  => $key ,"value" =>  $value])  ; 
-                    // $params['attribute']    = json_encode($valueAttribute) ;
+                    $valueAttribute[]       = (["name"  => $key ,"value" =>  json_encode($value)])  ; 
+                    $params['attribute']    = json_encode($valueAttribute) ;
                     
                 }
             }
@@ -177,10 +173,11 @@ class ProductModel extends AdminModel
             $params['thumb']                = isset($params['thumb']) ? json_encode($params['thumb']['name']): null;
             $params['price_custom_name']    = isset($params['price_custom_name']) ? json_encode($params['price_custom_name']): null;
             $params['price_custom_value']   = isset($params['price_custom_value']) ? json_encode($params['price_custom_value']): null;
-            $params['price_custom']         = isset($params['price_custom_name']) ? json_encode((["name"  => $params['price_custom_name'] ,"value" =>  $params['price_custom_value']])): null;
+            $params['price_custom']         =  json_encode((["name"  => $params['price_custom_name'] ,"value" =>  $params['price_custom_value']]));
             $params['modified_by']          = "duy-nguyen";
             $params['modified']             = date('Y-m-d');
-            // self::where('id', $params['id'])->update($this->prepareParams($params));
+           
+            self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }
 

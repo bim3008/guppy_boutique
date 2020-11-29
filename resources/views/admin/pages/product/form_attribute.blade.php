@@ -56,17 +56,17 @@
 
         if (isset($item['attribute'])) {
             $attributeModel = new AttributeModel();
-            $attributes = (json_decode($item['attribute'], true));
+            $attributes = json_decode($item['attribute'], true);
+            
             foreach ($attributes as $key => $value) {   
-                $attribute      = $attributeModel->getItem($value['name'], ['task' => 'admin-get-name-attribute']);
-                $valueV = implode(',', $value['value']);
+                $itemAttribute      = $attributeModel->getItem($value['name'], ['task' => 'admin-get-name-attribute']);
+                $valueV = implode(',', json_decode($value['value']));
                 $xhtml .= sprintf('<div class="form-group" id="attr">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">%s</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control input-tags-attr col-md-6 col-xs-12" name="attribute[name][]" type="text" value="%s">
-                                        <input type="hidden"  name="attribute[%s][]>
+                                        <input class="form-control input-tags-attr col-md-6 col-xs-12" name="attribute[%s][]" type="text" value="%s">
                                     </div>
-                                    </div>',$attribute[0]['name'], $valueV, $attribute[0]['id']
+                                    </div>',$itemAttribute[0]['name'], $itemAttribute[0]['id'], $valueV, $itemAttribute[0]['id']
                         );
             }
         }

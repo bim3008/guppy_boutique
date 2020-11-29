@@ -34,7 +34,7 @@ class ProductController extends AdminController
             }
    
             $this->model->saveItem($params, ['task' => $task]);
-            // return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
+            return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
       }
    }
    public function storeMedia(Request $request)

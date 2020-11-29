@@ -24,7 +24,7 @@
         </span> --}}
     </div>
 
-    <div class="entry-content" style="margin-left:-60px">
+    <div class="entry-content" >
         {!! $content  !!}
     </div>
 

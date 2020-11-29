@@ -139,6 +139,7 @@ return [
             'categoryArticle'   => ['edit','delete'],
             'categoryQuestion'  => ['edit','delete'],
             'menu'              => ['edit','delete'],
+            'agencies'          => ['edit','delete'],
         ]
     ]
     

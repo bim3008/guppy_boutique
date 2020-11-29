@@ -21,7 +21,7 @@ class ProductController extends AdminController
       parent::__construct();
    }
 
-   public function save(Request $request)
+   public function save(MainRequest $request)
    {
       if ($request->method() == 'POST') {
             $params = $request->all();

@@ -49,7 +49,7 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'thumb')
+            $query = $this->select('id', 'name', 'thumb','content')
                         ->where('status', '=', 'active' )
                         ->limit(5);
 
@@ -67,7 +67,6 @@ class ArticleModel extends AdminModel
 
             $result = $query->get()->toArray();
         }
-
         
         if($options['task'] == 'news-list-items-latest') {
             
@@ -136,9 +135,9 @@ class ArticleModel extends AdminModel
 
     public function getItem($params = null, $options = null) { 
         $result = null;
-        
+        $this->table  = 'article as a';
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'content', 'status', 'thumb', 'category_id','title_seo','description_seo')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name', 'content', 'status', 'thumb', 'created','created_by' ,'category_id','title_seo','description_seo')->where('id', $params['id'])->first()->toArray();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -146,9 +145,9 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('a.id', 'a.name', 'content', 'a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
+            $result = self::select('a.id', 'a.name', 'content', 'a.created_by','a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
                          ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
-                         ->where('a.id', '=', $params['article_id'])
+                         ->where('a.id', '=', $params['id'])
                          ->where('a.status', '=', 'active')->first();
             if($result) $result = $result->toArray();
         }

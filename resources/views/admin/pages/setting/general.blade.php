@@ -4,14 +4,15 @@
     use App\Helpers\Template;
     use App\Models\SettingModel ;
 
-    $settingModel = new SettingModel();
+    $settingModel        = new SettingModel();
     $itemGeneral         = $settingModel->getItem( 'general' , ['task' => 'get-item']); 
-    if(!empty($itemGeneral )){
-        $item                = json_decode(json_encode(json_decode($itemGeneral['value'])), true); 
-        $item['id']          = !empty($itemGeneral['id']) ? $itemGeneral['id'] : null;
+    if(!empty($itemGeneral)){
+        $item            = json_decode(json_encode(json_decode($itemGeneral['value'])), true); 
+        $item['id']      = !empty($itemGeneral['id']) ? $itemGeneral['id'] : null;
     }else{
        $item = NULL ;
     }
+ 
     $formCkeditor        = config('zvn.template.form_ckeditor');
     $formInputAttr       = config('zvn.template.form_input');
     $formLabelAttr       = config('zvn.template.form_label');
@@ -29,6 +30,9 @@
         ],[
             'label'   => Form::label('hotline','Hotline', $formLabelAttr),
             'element' => Form::text('hotline', $item['hotline'], $formInputAttr ),
+        ],[
+            'label'   => Form::label('email','Email', $formLabelAttr),
+            'element' => Form::text('email', $item['email'], $formInputAttr ),
         ],[
             'label'   => Form::label('copyright', 'Copyright', $formLabelAttr),
             'element' => Form::text('copyright', $item['copyright'],  $formInputAttr )

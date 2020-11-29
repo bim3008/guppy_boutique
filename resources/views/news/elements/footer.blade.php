@@ -1,3 +1,16 @@
+@php
+    use App\Helpers\Template;  
+    use App\Models\AgenciesModel ;
+    use App\Models\SettingModel ;
+
+    $agenciesModel  = new AgenciesModel() ;
+    $settingModel   = new SettingModel();
+    
+    $itemsSetting   = $settingModel->getItem('general', [ 'task' => 'get-item']); 
+    $itemsSetting   = json_decode($itemsSetting['value']);
+    $listAgencies   = $agenciesModel->listItems(null,   [ 'task'=> 'news-list-items']) ;
+    $index =1 ;
+@endphp
 <footer class="footer">
     <div class="container">
         <div class="footer-top">
@@ -46,36 +59,43 @@
                                 <span class="contact-info-label">Điện thoại:</span>Tư vấn : <a href="tel:">{{ $itemsSetting->hotline }}</a>
                             </li>
                             <li>
-                                <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">mail@example.com</a>
+                                <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">{{ $itemsSetting->email }}</a>
                             </li>
                         </ul>
                     </div><!-- End .widget -->
                 </div><!-- End .col-lg-3 -->
-
+              
                 <div class="col-lg-8">
+                    {{-- DANH SÁCH CÁC CỬA HÀNG  --}}
                     <div class="row">
-                        <div class="col-md-5">
+                         <div class="col-md-5">
                             <div class="widget">
-                                <h4 class="widget-title">My Account</h4>
-
+                                <h4 class="widget-title">Hệ thống cửa hàng</h4>
+                            
                                 <div class="row">
-                                    <div class="col-sm-6 col-md-5">
-                                        <ul class="links">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                        </ul>
-                                    </div><!-- End .col-sm-6 -->
-                                    <div class="col-sm-6 col-md-5">
-                                        <ul class="links">
-                                            <li><a href="#">Orders History</a></li>
-                                            <li><a href="#">Advanced Search</a></li>
-                                            <li><a href="#" class="login-link">Login</a></li>
-                                        </ul>
-                                    </div><!-- End .col-sm-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .widget -->
-                        </div><!-- End .col-md-5 -->
+                                    <div class="col-sm-12 col-md-12">
+                                        @if(count($listAgencies) > 0)
+                                     
+                                            @foreach($listAgencies as $key => $value)
+                                                @php
+                                                    
+                                                    $numberShowroom = Template::numberShowroom($index) ;
+                                                    $address        = $value['address'] ;
+                                                    $hotline        = $value['hotline'] ;
+                                                    $index ++;
+                                                @endphp
+                                                <h4 class="title title-showroom text-white">Showroom {{  $numberShowroom }}</h4>
+                                                <ul class="contact-info">
+                                                    <li><div class="mb-1">{{ $address }}</div>
+                                                        <div><a href="tel:{{$hotline}}">{{$hotline}}</a> </div>
+                                                    </li>
+                                                </ul>  
+                                            @endforeach
+                                        @endif    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-md-7">
                             <div class="widget">
@@ -97,8 +117,8 @@
                                     </div><!-- End .col-sm-6 -->
                                 </div><!-- End .row -->
                             </div><!-- End .widget -->
-                        </div><!-- End .col-md-7 -->
-                    </div><!-- End .row -->
+                        </div>
+                    </div>
 
                     <div class="footer-bottom">
                         <p class="footer-copyright">{{ $itemsSetting->copyright }}</p>
@@ -110,9 +130,9 @@
                             </li>
                         </ul>
                         <img src=" {{ asset('news/assets/images/payments.png') }}" alt="payment methods" class="footer-payments">
-                    </div><!-- End .footer-bottom -->
-                </div><!-- End .col-lg-9 -->
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .footer-middle -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>

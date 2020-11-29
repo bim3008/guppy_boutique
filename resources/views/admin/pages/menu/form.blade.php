@@ -24,7 +24,7 @@
         ],
         [
             'label'   => Form::label('parent_id', 'Thư mục cha', $formLabelAttr),
-            'element' => Template::showSelectCategoryParent($item, $itemsCategory),
+            'element' => Template::showSelectBoxCategoryNested($item, $itemsCategory),
         ],
         [
             'label'   => Form::label('status', 'Trạng thái', $formLabelAttr),

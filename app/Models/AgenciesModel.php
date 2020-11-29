@@ -21,7 +21,7 @@ class AgenciesModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name', 'description', 'status', 'hotline', 'address', 'map','thumb','created', 'created_by', 'modified', 'modified_by');
+            $query = $this->select('id', 'name', 'description', 'ordering','status', 'hotline', 'address', 'map','thumb','created', 'created_by', 'modified', 'modified_by');
                
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
@@ -45,15 +45,13 @@ class AgenciesModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'description', 'link', 'thumb')
+            $query = $this->select('id', 'name', 'address', 'hotline')
                         ->where('status', '=', 'active' )
-                        ->orderBy('id','desc' )
+                        ->orderBy('ordering','asc' )
                         ->limit(5);
 
             $result = $query->get()->toArray();
         }
-
-
 
         return $result;
     }
@@ -91,7 +89,7 @@ class AgenciesModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name' ,'description', 'status', 'hotline', 'address', 'map','thumb')->where('id', $params['id'])->first();
+            $result = self::select('id', 'name' ,'description', 'ordering','status', 'hotline', 'address', 'map','thumb')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -113,7 +111,13 @@ class AgenciesModel extends AdminModel
                         'message'  =>   config('zvn-notify.status.message')  ,
                     ];
         }
-
+        if($options['task'] == 'change-ordering') {
+            $ordering = $params['currentOrdering'] ;
+            self::where('id', $params['id'])->update(['ordering' => $ordering ]);
+            return [ 
+                        'message'  =>   config('zvn-notify.ordering.message')  ,
+                   ];
+        }
         if($options['task'] == 'add-item') {
             $params['created_by'] = "truongdinh";
             $params['created']    = date('Y-m-d');

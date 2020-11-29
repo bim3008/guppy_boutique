@@ -1,5 +1,11 @@
 @php
-      $thumb    = url("/images/setting") . '/' . $itemsSetting->logo;
+    use App\Models\SettingModel ;
+
+    $settingModel   = new SettingModel();
+    $itemsSetting   = $settingModel->getItem('general', [ 'task' => 'get-item']); 
+    $itemsSetting   = json_decode($itemsSetting['value']);
+
+    $thumb    = url("/images/setting") . '/' . $itemsSetting->logo;
 @endphp
 <div class="header-middle">
     <div class="container">

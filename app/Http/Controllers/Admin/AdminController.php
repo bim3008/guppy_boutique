@@ -21,7 +21,7 @@ class AdminController extends Controller
 
         $this->params['filter']['status']   = $request->input('filter_status', 'all' ) ;
         $this->params['filter']['category'] = $request->input('filter_category', 'default') ;
-        $this->params['filter']['contact']  = $request->input('filter_contact', 'default') ;
+        $this->params['filter']['contact']  = $request->input('filter_contact', 'all') ;
         $this->params['search']['field']    = $request->input('search_field', '' ) ; // all id description
         $this->params['search']['value']    = $request->input('search_value', '' ) ;
 
@@ -94,5 +94,13 @@ class AdminController extends Controller
         $items = $this->model->saveItem($params, ['task' => 'change-category']);
         echo json_encode($items) ;
         // return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
+    }
+    public function ordering(Request $request)
+    {
+        $params["currentOrdering"]  = $request->ordering;
+        $params["id"]               = $request->id;
+        $result = $this->model->saveItem($params, ['task' => 'change-ordering']);
+        echo json_encode($result);
+        // return redirect()->route($this->controllerName)->with('zvn_notify', 'Cập nhật trạng thái thành công!');
     }
 }

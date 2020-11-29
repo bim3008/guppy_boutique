@@ -10,6 +10,7 @@
                     <th class="column-title">#</th>
                     <th class="column-title">Thông tin cửa hàng</th>
                     <th class="column-title">Hình ảnh</th>
+                    <th class="column-title">Sắp xếp</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Hành động</th>
                 </tr>
@@ -22,6 +23,7 @@
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $address         = $val['address'];
+                            $ordering        = Template::showItemOrdering($controllerName,$id,$val['ordering']);
                             $name            = Hightlight::show($val['name'], $params['search'], 'name');
                             $description     = Hightlight::show($val['description'], $params['search'], 'description');
                             $thumb           = Template::showItemThumb($controllerName, $val['thumb'], $val['name']);;
@@ -39,6 +41,8 @@
                                 <p><strong>Địa chỉ:</strong> {!! $address !!}</p>
                             </td>
                             <td style="width:20em">{!! $thumb !!}</td>
+                           
+                            <td>{!! $ordering !!}</td>
                             <td>{!! $status !!}</td>
                  
                             <td class="last">{!! $listBtnAction !!}</td>

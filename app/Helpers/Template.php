@@ -218,20 +218,20 @@ class Template {
     }
     // SẢN PHẨM NESTED
     public static function showSelectBoxProductNested($item, $itemsCategories, $valueSelectBox = null, $fillter_category = null){
-    
+       
         $xhtml = '<select  name="'.$valueSelectBox.'" class="custom-select form-control col-md-6 col-xs-12" "><option value="default">-- Chọn danh mục --</option>';
         foreach ($itemsCategories as $key => $items){
- 
-           if(!empty($item['id']) && $item['id'] == $items['id']) continue;
-           $name       = Template::getName($items);
-           if($item['category_id'] == $items['id'] || $item['question_id'] == $items['id']) {
+        
+            if(!empty($item['id']) && $item['id'] == $items['id']) continue;
+            $name       = Template::getName($items);
+            if($item['category_id'] == $items['id']) {
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
-           }elseif($items['id'] == $fillter_category){
+            }elseif($items['id'] == $fillter_category){
                 $xhtml .= sprintf('<option selected value="%s" >%s</option>', $items['id'], $name);
-           }
-           else{
+            }
+            else{
                 $xhtml .= sprintf('<option value="%s" >%s</option>', $items['id'], $name);
-           }
+            }
         }
         $xhtml .= '</select>';
         return $xhtml;
@@ -245,6 +245,21 @@ class Template {
         if($params == 2) $start = 40 ;
         if($params == 1) $start = 10 ;
         return   $start;
+    }
+
+    public static function numberShowroom($number) {
+        $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
+        $returnValue = '';
+        while ($number > 0) {
+            foreach ($map as $roman => $int) {
+                if($number >= $int) {
+                    $number -= $int;
+                    $returnValue .= $roman;
+                    break;
+                }
+            }
+        }
+        return $returnValue;
     }
   
 }

@@ -25,10 +25,11 @@ class CategoryProductModel extends AdminModel
            return $categories = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get()->toFlatTree();
         }
 
+      
+        // GET MENU CHILREN IN FRONT END
         if($options['task'] == "news-list-nested") {
-            return $categories = self::withDepth()->get()->toTree();
-         }
-
+            return  self::withDepth()->get()->where('parent_id','<>',NULL)->toTree()->toArray();
+        }
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
                         ->orderBy('name', 'asc')

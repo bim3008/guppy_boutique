@@ -33,6 +33,9 @@
             'label'   => Form::label('description', 'Mô tả', $formLabelAttr),
             'element' => Form::textarea('description', $item['description'],  $formInputAttr )
         ],[
+            'label'   => Form::label('ordering', 'Ordering', $formLabelAttr),
+            'element' => Form::text('ordering', $item['ordering'],  $formInputAttr )
+        ],[
             'label'   => Form::label('thumb', 'Thumb', $formLabelAttr),
             'element' => Form::file('thumb', $formInputAttr ),
             'thumb'   => (!empty($item['id'])) ? Template::showItemThumb($controllerName, $item['thumb'], $item['name']) : null ,

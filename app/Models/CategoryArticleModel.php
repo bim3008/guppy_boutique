@@ -35,16 +35,18 @@ class CategoryArticleModel extends AdminModel
             return $query->get()->toFlatTree();
 
         }
+       
         if($options['task'] == "admin-list-nested") {
 
             $query =  self::defaultOrder()->withDepth()->having('depth', '>', 0);
          
-            return $query->get()->toFlatTree();
+            return $query->get()->toFlatTree()->toArray();
         }
 
+        // GET MENU CHILREN IN FRONT END
         if($options['task'] == "news-list-nested") {
-            return  self::withDepth()->get()->toTree();
-         }
+            return  self::withDepth()->get()->where('parent_id','<>',NULL)->toTree()->toArray();
+        }
 
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = self::defaultOrder()->withDepth()->having('depth', '>', 0)->get();

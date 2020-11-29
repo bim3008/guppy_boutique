@@ -46,6 +46,11 @@ class TagModel extends AdminModel
         if($options['task'] == "admin-product-tag") {
             $result = $this->where('name', 'LIKE',  '%'.$params.'%')->get();
         }
+
+        if($options['task'] == "admin-get-name") {
+            $result = $this->select('id', 'name')->pluck('name', 'id')->toArray();
+            //  $result = $query->pluck('name', 'id')->toArray();
+        }
         return $result;
     }
 

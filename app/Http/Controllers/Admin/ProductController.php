@@ -24,7 +24,8 @@ class ProductController extends AdminController
    public function save(Request $request)
    {
       if ($request->method() == 'POST') {
-            $params = $request->all();
+            $params = $request->all();\
+            dd($params);
             $task   = "add-item";
             $notify = "Thêm phần tử thành công!";
 
@@ -60,6 +61,7 @@ class ProductController extends AdminController
    {
       $params["id"]                 = $request->id;
       $items = $this->model->getItem($params, ['task' => 'admin-get-name-attribute']);
+      // return $items;
       if(count($items) > 0){
          foreach($items as $item){
             $name       = array_column($items, 'name');
@@ -77,6 +79,10 @@ class ProductController extends AdminController
          array_push($names, $item['name']);
       }
       echo json_encode($names);
+   }
+
+   public function addPriceRow() {
+      return view($this->pathViewController .  'childs.product_price_row');
    }
 
      

@@ -117,7 +117,7 @@ class ProductModel extends AdminModel
         }
 
         if($options['task'] == 'admin-get-name-attribute') {
-            $result = AttributeModel::select('id', 'name', 'status', 'change_price')->where('id', $params['id'])->get()->toArray();
+            $result = AttributeModel::select('id', 'name', 'status', 'change_price')->where('attribute_group_id', $params['id'])->get()->toArray();
         }
         return $result;
     }

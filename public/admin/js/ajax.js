@@ -1,151 +1,191 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    let $ajaxStatus             = $("[name = change-ajax-status]");
-    let $ajaxContact            = $("[name = change-ajax-contact]");
-    let $ajaxOrdering           = $("input[name = change-ajax-ordering]");
-    let $ajaxSelectArttribute   = $("[name = select_change_attr]");
+    let $ajaxStatus = $("[name = change-ajax-status]");
+    let $ajaxContact = $("[name = change-ajax-contact]");
+    let $ajaxOrdering = $("input[name = change-ajax-ordering]");
+    let $ajaxSelectArttribute = $("[name = select_change_attr]");
     let $ajaxChangeCategoryNested = $("[name = category_id]");
-    let $ajaxIsHome             = $("[name = change-ajax-isHome]");
-    let $ajaxTag                = $('#tag');
-    let $ajaxAttrChangePrice    = $('#attribute-group-change-price');
-    let $removeRow              = $("[name = remove-row]");
+    let $ajaxIsHome = $("[name = change-ajax-isHome]");
+    let $ajaxTag = $('#tag');
+    let $ajaxAttrChangePrice = $('#attribute-group-change-price');
+    let $removeRow = $("[name = remove-row]");
     // Change Ajax Status
-    $ajaxStatus.click(function(){
-        let url      = $(this).data("url") ;
-        let element  = $(this) ;
-        callAjax(url,element,'status');
+    $ajaxStatus.click(function () {
+        let url = $(this).data("url");
+        let element = $(this);
+        callAjax(url, element, 'status');
     });
 
-    $ajaxIsHome.click(function(){
-        let url      = $(this).data("url") ;
-        let element  = $(this) ;
-        callAjax(url,element,'status');
+    $ajaxIsHome.click(function () {
+        let url = $(this).data("url");
+        let element = $(this);
+        callAjax(url, element, 'status');
     });
     // Change Ajax Contact in route contact
-    $ajaxContact.click(function(){
-        let url      = $(this).data("url") ;
-        let element  = $(this) ;
-        callAjax(url,element,'contact');
+    $ajaxContact.click(function () {
+        let url = $(this).data("url");
+        let element = $(this);
+        callAjax(url, element, 'contact');
     });
     // Change Ordering 
-    $ajaxOrdering.on("change" ,function(){
-        let url      = $(this).data("url").replace("new_value",$(this).val()) ;
-        let element  = $(this) ;
-        callAjax(url,element,'ordering');
+    $ajaxOrdering.on("change", function () {
+        let url = $(this).data("url").replace("new_value", $(this).val());
+        let element = $(this);
+        callAjax(url, element, 'ordering');
     });
     // Change SelectBox
-    $ajaxSelectArttribute.on("change" ,function(){
-        let url   = $(this).data("url").replace("new_value",$(this).val()) ;
-        let element  = $(this) ;
-        callAjax(url,element,'select');
+    $ajaxSelectArttribute.on("change", function () {
+        let url = $(this).data("url").replace("new_value", $(this).val());
+        let element = $(this);
+        callAjax(url, element, 'select');
     });
 
-    $ajaxChangeCategoryNested.on("change" ,function(){
-        let url   = $(this).data("url").replace("new_value",$(this).val()) ;
-        let element  = $(this) ;
-        callAjax(url,element,'select');
+    $ajaxChangeCategoryNested.on("change", function () {
+        let url = $(this).data("url").replace("new_value", $(this).val());
+        let element = $(this);
+        callAjax(url, element, 'select');
     });
-    // Change Attribute change-price
-    // $ajaxAttrChangePrice.on("change" ,function(){
-    //     alert(123);
-    //     // $('.new').remove();
-    //     // $('.x_content_at tribute').after('<div class="form-group new"  id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123 " name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" id="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" id="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
-    //     // $('#add-row').click(function(){
-    //     //     $('.x_content_attribute').after('<div class="form-group new" id="attr"><div class="col-md-10 col-sm-6 col-xs-12 row-123" name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" id="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" id="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
-    //     // });
-    //     // $removeRow.click(function(){
-    //     //     alert('Chưa có làm nha, hihi');
-    //     //     // $(this).remove();
-    //     // });
-    // });
+
     
-    //AUTOCOMPLETE TAG
-    $ajaxTag.autocomplete({
-        source:'autocomplete',
-    })
-    
-    function callAjax(url,element,type){
+    function callAjax(url, element, type) {
         $.ajax({
-            url : url ,
+            url: url,
             type: "GET",
             dataType: "json",
             success: function (result) {
-                if(result){
-                    switch(type){
-                        case 'status' :
-                            element.text(result.name) ;
+                if (result) {
+                    switch (type) {
+                        case 'status':
+                            element.text(result.name);
                             element.removeClass();
-                            element.addClass(result.class) ;
-                            element.data('url',result.link); //
+                            element.addClass(result.class);
+                            element.data('url', result.link); //
                             notify(element, result.message);
-                        case 'contact' :
-                            element.text(result.name) ;
-                            element.removeClass();
-                            element.addClass(result.class) ;
-                            element.data('url',result.link); //
-                            notify(element, result.message);
-                        case 'ordering' :
-                            notify(element, result.message);
-                        case 'select' :
-                            notify(element, result.message);
-                        case 'coupon' :
-                            $("#value").find('option').remove();
-                            $.each(result,function(key, value)
-                            {
-                                $("#value").append('<option value=' + key + '>' + value + '</option>') ; 
+                            case 'contact':
+                                element.text(result.name);
+                                element.removeClass();
+                                element.addClass(result.class);
+                                element.data('url', result.link); //
+                                notify(element, result.message);
+                                case 'ordering':
+                                    notify(element, result.message);
+                                    case 'select':
+                                        notify(element, result.message);
+                                        case 'coupon':
+                                            $("#value").find('option').remove();
+                                            $.each(result, function (key, value) {
+                                                $("#value").append('<option value=' + key + '>' + value + '</option>');
+                                            });
+                                            
+                                        }
+                                    } else {
+                                        console.log(result);
+                                    }
+                                }
                             });
-
-                    }
-                }else{
-                    console.log(result);
-                }    
-            }
-        });
-    }
-    function notify(element,message){
+                        }
+    function notify(element, message) {
         $(element).notify(
-           ''+message+'' , {className: "success", position: "top", autoHideDelay: 1000, }
-        );
+            '' + message + '', { className: "success", position: "top", autoHideDelay: 1000, }
+            );
     }
+
+    // SELECT2 TAG
+    $('.tag-select').select2();
+        
     //AUTOCOMPLETE TAG
-    $ajaxTag.autocomplete({
-        source:'autocomplete',
+    // $ajaxTag.autocomplete({
+    //     source: 'autocomplete',
+    // })
+        
+
+    // KÉO THẢ INPUT THAY ĐỔI GIÁ
+    $('.list-draggable').sortable();
+
+    $('#attribute-group-change-price').on('change', function () {
+        if ($(this).val() != 'default') {
+            let text = $("#attribute-group-change-price option:selected").text();
+            $('#attribute_name_label').html(text);
+            $('.btn-add-attribute-price').css('display', 'unset');
+            $.ajax({
+                url: $(this).data('link'),
+                type: "GET",
+                dataType: "html",
+                success: function (result) {
+                    $('.price-list').html(result);
+                    $('.btn-delete-price-row').on('click', function () {
+                        let ele = $(this).parents('.price-row')
+                        $(ele).hide('slow', function () { $(ele).remove(); });
+                    })
+                }
+            })
+        }
     })
-    
-}) ;
+
+    $('.btn-add-attribute-price').on('click', function () {
+        $.ajax({
+            url: $('#attribute-group-change-price').data('link'),
+            type: "GET",
+            dataType: "html",
+            success: function (result) {
+                $('.price-list').append(result);
+                $('.btn-delete-price-row').on('click', function () {
+                    let ele = $(this).parents('.price-row')
+                    $(ele).hide('slow', function () { $(ele).remove(); });
+                })
+            }
+        })
+    })
+
+    $('.btn-delete-price-row').on('click', function () {
+        // $(this).parents('.price-row').remove();
+        let ele = $(this).parents('.price-row')
+        $(ele).hide('slow', function () { $(ele).remove(); });
+    })
+
+    // THUỘC TÍNH KHÔNG THAY ĐỔI GIÁ
+    $('.attribute_group').on('change', function () {
+        if ($(this).val() != 'default') {
+            let url = $(this).data("link").replace("attribute_new", $(this).val());
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    if (result.length > 1 ) {
+                        $.each( result, function( key, value ) {
+                            name = value;
+                            xhtml = '<label id="attribute_name_label" class="label label-success attribute_name_label" style="font-size: 16px">'+name+'</label></br>';
+                            $('.x_content_attribute').append(xhtml);
+                        });
+                    }else{
+                        name = result[0];
+                        $('.attribute_name_label').html(name);
+                    }
+                    // $('.price-list').html(result);
+                    // $('.btn-delete-price-row').on('click', function () {
+                    //     let ele = $(this).parents('.price-row')
+                    //     $(ele).hide('slow', function () { $(ele).remove(); });
+                    // })
+                }
+            })
+        }
+    })
+});
 
 //ADMIN - PRODUCT - ATTRIBUTE
-function showName(url){
-    let id  = $('#attribute-group').val();
-    url     = url.replace('attribute_new', id); // 
-    $.get(url, function(data) { 
-       $('.new').remove();
-       $.each(data, function(index, value) {
-          let name = value ;
-          $('.x_content_attribute').after('<div class="form-group new" id="attr"><label  class="control-label col-md-3 col-sm-3 col-xs-12"> '+ value +'</label><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-6 col-xs-12  input-tags-attr" name="attribute['+name+'][]" type="text" ></div></div>');
-          $('.input-tags-attr').tagsInput();
+function showName(url) {
+    let id = $('#attribute-group').val();
+    url = url.replace('attribute_new', id); // 
+    $.get(url, function (data) {
+        $('.new').remove();
+        $.each(data, function (index, value) {
+            let name = value;
+            $('.x_content_attribute').after('<div class="form-group new" id="attr"><label  class="control-label col-md-3 col-sm-3 col-xs-12"> ' + value + '</label><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-6 col-xs-12  input-tags-attr" name="attribute[' + name + '][]" type="text" ></div></div>');
+            $('.input-tags-attr').tagsInput();
         });
-   }, 'json');
+    }, 'json');
 }
 
-//ADMIN - PRODUCT - ATTRIBUTE - CHANGE PRICE
-function showNameChangePrice(url){
-    let id  = $('#attribute-group-change-price').val();
-    url     = url.replace('attribute_new', id); 
-    $.get(url, function(data) { 
-       $('.new').remove();
-        $.each(data, function(index, value) {
-            let name = value ;
-            $('#attribute-group-change-price').after('<label class="control-label col-md-6 col-sm-6 col-xs-12 new"> '+ value +'</label><input type="hidden" name="attribute_change_price[name_attribute][]" value="'+value+'">');
-            $('.x_content_attribute').after('<div class="form-group new"  ><div class="col-md-10 col-sm-6 col-xs-12 row-123 " name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" class="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" class="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
-            $('.add-row').click(function(){
-                $('.x_content_attribute').after('<div class="form-group new"><div class="col-md-10 col-sm-6 col-xs-12 row-123" name="remove-row"><input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên"><input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px"><input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px"><a href="#" class="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px"><i class="fa fa-minus"></i></a></div><a href="#" class="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>');
-            });
-            $('.remove-row').click(function(e){
-                //$(this).parent().parent().remove();
-                // console.log($(e.target).parent().parent().parent());
-                $(e.target).parent().parent().remove();
-            });
-        });
-   }, 'json');
-}
+

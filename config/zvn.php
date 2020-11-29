@@ -17,6 +17,11 @@ return [
         'form_input_tag' => [
             'class' => 'form-control col-md-6 col-xs-12 input-tags-attr' ,
         ],
+        'form_input_tag_select2' => [
+            'class'     => 'form-control col-md-6 col-xs-12 tag-select' ,
+            'name'      => 'tags[]',
+            'multiple'  => 'multiple',
+        ],
         'form_input_code' => [
             'class' => 'form-control col-md-6 col-xs-12',
             'style' => 'width:78%',

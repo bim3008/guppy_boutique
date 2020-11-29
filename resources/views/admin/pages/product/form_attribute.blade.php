@@ -19,13 +19,13 @@
    
     if (!isset($item['id'])) {
         $elements = [
-            // [
-            //     'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
-            //     'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showName('$link')"])
-            // ],
+            [
+                'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
+                'element' => Form::select('attribute_group', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12 attribute_group', 'data-link' => $link])
+            ],
             [
                 'label'   => Form::label('attribute_group', 'Thuộc tính thay đổi giá', $formLabelAttr),
-                'element' => Form::select('attribute_group_change_price', $itemsAttributeChangePrice, $item['attribute_group_id'], ['id' => 'attribute-group-change-price' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showNameChangePrice('$link')"])
+                'element' => Form::select('attribute_group_change_price', $itemsAttributeChangePrice, $item['attribute_group_id'], ['id' => 'attribute-group-change-price' , 'class' => 'form-control col-md-6 col-xs-12', 'data-link' => route("$controllerName/add-price-row")])
             ],
         ];
     }else{
@@ -70,6 +70,10 @@
     @if (!isset($item['id']))
         <div class="x_content_attribute" id="sortable">
             {!! FormTemplate::show($elements)  !!}
+            <label id="attribute_name_label" class="label label-success attribute_name_label" style="font-size: 16px"></label>
+            <div class="price-list list-draggable" style="margin-top: 10px">
+            </div>
+            <button type="button" class="btn btn-success btn-add-attribute-price" style="margin-top: 10px; display: none">Thêm thuộc tính</button>
         </div>
     @else
         <div class="x_content_attribute" id="sortable">

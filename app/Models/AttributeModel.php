@@ -103,12 +103,17 @@ class AttributeModel extends AdminModel
 
     public function getItem($params = null, $options = null) { 
         $result = null;
-        
         if($options['task'] == 'get-item') {
             $result =  self::select('attribute.id','attribute.name','attribute.change_price','attribute.status','ag.id as attribute_group_id')
                     ->leftJoin('attribute_group as ag', 'ag.id', '=', 'attribute.attribute_group_id')
                     ->where('attribute.id',$params['id'])
                     ->first() ;
+        }
+
+        if ($options['task'] == 'admin-get-name-attribute') {
+            $result =  self::select('id','name')
+                        ->where('id',$params)
+                        ->get()->toArray() ;
         }
         
         return $result;
@@ -128,6 +133,7 @@ class AttributeModel extends AdminModel
         }
 
         if($options['task'] == 'add-item') {
+            $params['change_price'] = !isset($params['change_price']) ? 'no' : 'yes';
             self::insert($this->prepareParams($params));        
         }
 

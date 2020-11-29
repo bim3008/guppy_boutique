@@ -26,7 +26,6 @@
     $tagModel = new TagModel();
     $itemsTag = $tagModel->listItems(null, ['task' => 'admin-get-name']);
     
-
     $inputHiddenID    = Form::hidden('id', $item['id']);
     $elements = [
         [
@@ -59,14 +58,9 @@
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr),
             'type'    => 'article',
         ],
-        // [
-        //     'label'   => Form::label('tag', 'Tag', $formLabelAttr),
-        //     'element' => Form::text('tag', $item['tag'],  $formInputAttr ),
-        //     'type'    => 'article',
-        // ],
         [
             'label'   => Form::label('tag', 'Tag', $formLabelAttr),
-            'element' => Form::select('tag', $itemsTag, $item['tag'],  $formInputTagSelect2 ),
+            'element' => Form::select('tag', $itemsTag, json_decode($item['tags']),  $formInputTagSelect2 ),
         ],
         [
             'label'   => Form::label('content', 'Nội dung', $formLabelAttr),
@@ -82,10 +76,6 @@
         @include('admin.templates.x_title', ['title' => 'Quản lý sản phẩm'])
         <div class="x_content">
             {!! FormTemplate::show($elements)  !!}
-            {{-- <select class="tag-select" name="states[]" multiple="multiple">
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-            </select> --}}
         </div>
     </div>
 </div>

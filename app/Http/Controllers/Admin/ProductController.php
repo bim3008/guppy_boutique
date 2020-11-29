@@ -24,19 +24,17 @@ class ProductController extends AdminController
    public function save(Request $request)
    {
       if ($request->method() == 'POST') {
-            $params = $request->all();\
-            dd($params);
+            $params = $request->all();
             $task   = "add-item";
             $notify = "Thêm phần tử thành công!";
 
             if(isset($params['id']) && $params['id'] !== null) {
-              
                $task   = "edit-item";
                $notify = "Cập nhật phần tử thành công!";
             }
    
             $this->model->saveItem($params, ['task' => $task]);
-            return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
+            // return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
       }
    }
    public function storeMedia(Request $request)
@@ -65,8 +63,10 @@ class ProductController extends AdminController
       if(count($items) > 0){
          foreach($items as $item){
             $name       = array_column($items, 'name');
+            $id         = array_column($items, 'id');
+            $arr        = array_combine($id, $name);
          }
-         return $name;
+         return $arr;
       }
    }
    public function autocomplete(Request $request)

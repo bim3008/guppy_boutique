@@ -122,6 +122,8 @@ class Template {
         }
         return $xhtml;
     }
+
+
     public static function showButtonAction ($controllerName, $id) {
         $tmplButton   = Config::get('zvn.template.button');
         $buttonInArea = Config::get('zvn.config.button');

@@ -3,8 +3,10 @@
     use App\Helpers\Form as FormTemplate;
     use App\Helpers\Template;
     use App\Models\CategoryProductModel;
+    use App\Models\TagModel;
     
     $formInputAttr          = config('zvn.template.form_input');
+    $formInputTagSelect2    = config('zvn.template.form_input_tag_select2');
     $formInputAttrDropzone  = config('zvn.template.form_input_dropzone');
     $formLabelAttr          = config('zvn.template.form_label');
     $formCkeditor           = config('zvn.template.form_ckeditor');
@@ -20,6 +22,10 @@
     //==============Kiểu hiển thị===========================
     $typeValue          = ['default' => 'Chọn kiểu hiển thị', 'normal' => config('zvn.template.type.normal.name'), 'featured' => config('zvn.template.type.featured.name')];
 
+    //==============TAG===========================
+    $tagModel = new TagModel();
+    $itemsTag = $tagModel->listItems(null, ['task' => 'admin-get-name']);
+    
     $inputHiddenID    = Form::hidden('id', $item['id']);
     $elements = [
         [
@@ -54,8 +60,7 @@
         ],
         [
             'label'   => Form::label('tag', 'Tag', $formLabelAttr),
-            'element' => Form::text('tag', $item['tag'],  $formInputAttr ),
-            'type'    => 'article',
+            'element' => Form::select('tag', $itemsTag, json_decode($item['tags']),  $formInputTagSelect2 ),
         ],
         [
             'label'   => Form::label('content', 'Nội dung', $formLabelAttr),

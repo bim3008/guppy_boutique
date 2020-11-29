@@ -18,7 +18,7 @@ class ProductModel extends AdminModel
         $this->controllerName      = 'product';
         $this->folderUpload        = 'product' ; 
         $this->fieldSearchAccepted = ['id', 'name', 'link']; 
-        $this->crudNotAccepted     = ['_token', 'attribute_change_price', 'attribute_group_change_price','id'];
+        $this->crudNotAccepted     = ['_token', 'attribute_group_change_price', 'price_custom_name','price_custom_value','id', 'attribute_group'];
     }
 
     public function listItems($params = null, $options = null) {
@@ -96,8 +96,8 @@ class ProductModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
-            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'attribute','attribute_group_id', 'product.link', 'product.content', 'product.tag', 'product.price_custom','product.type','t.name as tag_name')
-                        ->leftJoin('tag as t', 'product.tag', '=', 't.id')
+            $result = self::select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'product.attribute','product.attribute_group_id', 'product.link', 'product.content', 'product.tags', 'product.price_custom','product.attribute_name_price_custom','product.type','t.name as tag_name')
+                        ->leftJoin('tag as t', 'product.tags', '=', 't.id')
                         ->where('product.id', $params['id'])
                         ->first()
                         ->toArray();
@@ -117,7 +117,10 @@ class ProductModel extends AdminModel
         }
 
         if($options['task'] == 'admin-get-name-attribute') {
-            $result = AttributeModel::select('id', 'name', 'status', 'change_price')->where('id', $params['id'])->get()->toArray();
+            $result = AttributeModel::select('id', 'name', 'status', 'change_price')
+                    ->where('attribute_group_id', $params['id'])
+                    ->where('change_price', 'no')
+                    ->get()->toArray();
         }
         return $result;
     }
@@ -140,48 +143,40 @@ class ProductModel extends AdminModel
         }
         
         if($options['task'] == 'add-item') {
-            $idTag              = TagModel::select('id')->where('name', $params['tag'])->get();
-            $tag                = json_decode($idTag);
-            $params['tag']      = $tag[0]->id;
-            if (isset($params['attribute'])) {
-                foreach($params['attribute'] as $key => $value){
+            if (isset($params['attribute']) && count($params['attribute']) > 1) {
+                foreach ($params['attribute'] as $key => $value) {
                     $value = explode(',',$value[0]) ;
                     $valueAttribute[] = (["name"  => $key ,"value" =>  $value])  ; 
                     $params['attribute']    = json_encode($valueAttribute) ;
                 }
             }
-
-            $params['attribute_group_id']        = null;
-            if (isset($params['attribute_change_price'])) {
-                foreach ($params['attribute_change_price'] as $key => $value) {
-                    $valueAttributeChangePrice[] = (["name"  => $key ,"value" =>  json_encode($value)])  ; 
-                    $params['price_custom']      = json_encode($valueAttributeChangePrice) ;
-                }
-                // $params['attribute'] = 'null';
-                // $attrChangePrice    = $params['attributeChangePrice'];
-                // $nameChangePrice    = explode(',',$attrChangePrice['name']) ;
-                // $priceChangePrice   = explode(',',$attrChangePrice['price']) ;
-                // $valueAttributeChangePrice[] = (["name"  => $nameChangePrice ,"value" =>  $priceChangePrice])  ; 
-                // $params['attribute_group_change_price']    = json_encode($valueAttributeChangePrice) ;
-            }
-            $params['thumb']        = json_encode($params['thumb']['name']); 
-            $params['created_by']   = "duy-nguyen";
-            $params['created']      = date('Y-m-d');
-         
+            
+            $params['tags']                     = isset($params['tags']) ? json_encode($params['tags']) : null;
+            $params['thumb']                    = isset($params['thumb']) ? json_encode($params['thumb']['name']) : null; 
+            $params['created_by']               = "duy-nguyen";
+            $params['created']                  = date('Y-m-d');
+            $params['price_custom_name']        = isset($params['price_custom_name']) ? json_encode($params['price_custom_name']): null;
+            $params['price_custom_value']       = isset($params['price_custom_value']) ? json_encode($params['price_custom_value']): null;
+            $params['price_custom']             = json_encode((["name"  => $params['price_custom_name'] ,"value" =>  $params['price_custom_value']]));
             self::insert($this->prepareParams($params));        
         }
 
         if($options['task'] == 'edit-item') {
             if (isset($params['attribute'])) {
                 foreach($params['attribute'] as $key => $value){
-                    $value = explode(',',$value) ;
-                    $valueAttribute[]       = (["name"  => $key ,"value" =>  $value])  ; 
+                    $valueAttribute[]       = (["name"  => $key ,"value" =>  json_encode($value)])  ; 
                     $params['attribute']    = json_encode($valueAttribute) ;
+                    
                 }
             }
-                $params['thumb']        = json_encode($params['thumb']['name']); 
-                $params['modified_by']   = "duy-nguyen";
-                $params['modified']      = date('Y-m-d');
+            $params['tags']                 = isset($params['tags']) ? json_encode($params['tags']): null;
+            $params['thumb']                = isset($params['thumb']) ? json_encode($params['thumb']['name']): null;
+            $params['price_custom_name']    = isset($params['price_custom_name']) ? json_encode($params['price_custom_name']): null;
+            $params['price_custom_value']   = isset($params['price_custom_value']) ? json_encode($params['price_custom_value']): null;
+            $params['price_custom']         =  json_encode((["name"  => $params['price_custom_name'] ,"value" =>  $params['price_custom_value']]));
+            $params['modified_by']          = "duy-nguyen";
+            $params['modified']             = date('Y-m-d');
+           
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }
@@ -189,7 +184,7 @@ class ProductModel extends AdminModel
     public function deleteItem($params = null, $options = null) 
     { 
         if($options['task'] == 'delete-item') {
-            $item   = self::getItem($params, ['task'=>'get-thumb']); // 
+            $item   = self::getItem($params, ['task'=>'get-thumb']); 
             $this->deleteThumb($item['thumb']);
             self::where('id', $params['id'])->delete();
         }

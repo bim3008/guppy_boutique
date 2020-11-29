@@ -9,7 +9,6 @@
                 <tr class="headings">
                     <th class="column-title">#</th>
                     <th class="column-title">Name</th>
-                    <th class="column-title">Attribute Group</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Hành động</th>
                 </tr>
@@ -30,7 +29,6 @@
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="25%">{!! $name !!}</td>
-                            <td>{!! $attrGroup !!}</td>
                             <td>{!! $status !!}</td>
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>

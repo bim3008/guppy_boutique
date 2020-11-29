@@ -17,3 +17,4 @@
 <link href="{{ asset('admin/css/dropzone.css') }}" rel="stylesheet">
 <link href="{{ asset('admin/css/drag.css') }}" rel="stylesheet">
 <link href="{{ asset('admin/css/jquery.tagsinput.min.css') }}" rel="stylesheet">
+<link href="{{ asset('admin/css/select2.min.css') }}" rel="stylesheet">

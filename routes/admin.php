@@ -102,6 +102,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', ], function () {
         Route::get('get-attribute/{id}',                [ 'as' => $controllerName . '/getAttribute',            'uses' => $controller . 'getAttribute'])->where('id', '[0-9]+');
         Route::get('autocomplete',                      [ 'as' => $controllerName . '/autocomplete',      'uses' => $controller . 'autocomplete']);
         Route::get('change-type-{type}/{id}',           [ 'as' => $controllerName . '/type',        'uses' => $controller . 'type']);
+        Route::get('add-price-row',           [ 'as' => $controllerName . '/add-price-row',        'uses' => $controller . 'addPriceRow']);
     });
 // ============================== ARTICLE ================================
     $prefix         = 'article';

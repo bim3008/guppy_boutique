@@ -10,55 +10,66 @@
     $attributeGroup                 = new AttributeGroupModel();
     $itemsAttributeGroup            = $attributeGroup->listItems(null, ['task' => 'admin-list-items-in-selectbox']);
     $itemsAttributeChangePrice      = $attributeModel->listItems(null, ['task' => 'admin-list-items-in-selectbox-change-price']);
-    $itemsAttributeGroup['default']             = 'Chọn nhóm thuộc tính';
-    $itemsAttributeChangePrice['default']  = 'Chọn nhóm thuộc tính';
+    $itemsAttributeGroup['default']              = 'Chọn nhóm thuộc tính';
+    $itemsAttributeChangePrice['default']        = 'Chọn nhóm thuộc tính';
     ksort($itemsAttributeGroup);
     ksort($itemsAttributeChangePrice);
-    $link = route($controllerName . '/getAttribute', ['id' => 'attribute_new']);
+    $link       = route($controllerName . '/getAttribute', ['id' => 'attribute_new']);
+    $linkAddRow = route("$controllerName/add-price-row");
     $xhtml = null;
    
     if (!isset($item['id'])) {
         $elements = [
-            // [
-            //     'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
-            //     'element' => Form::select('attribute_group_id', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showName('$link')"])
-            // ],
+            [
+                'label'   => Form::label('attribute_group_id', 'Nhóm thuộc tính', $formLabelAttr),
+                'element' => Form::select('attribute_group', $itemsAttributeGroup, $item['attribute_group_id'], ['id' => 'attribute-group' , 'class' => 'form-control col-md-6 col-xs-12 attribute_group', 'onchange' => "showName('$link')"])
+            ],
             [
                 'label'   => Form::label('attribute_group', 'Thuộc tính thay đổi giá', $formLabelAttr),
-                'element' => Form::select('attribute_group_change_price', $itemsAttributeChangePrice, $item['attribute_group_id'], ['id' => 'attribute-group-change-price' , 'class' => 'form-control col-md-6 col-xs-12', 'onchange' => "showNameChangePrice('$link')"])
+                'element' => Form::select('attribute_group_change_price', $itemsAttributeChangePrice, $item['attribute_group_id'], ['id' => 'attribute-group-change-price' , 'class' => 'form-control col-md-6 col-xs-12', 'data-link' => route("$controllerName/add-price-row")])
             ],
         ];
     }else{
-        $priceCustom = json_decode($item['price_custom'], true);
-        $xhtml = null;
-        foreach ($priceCustom as $key => $value) {
-            echo '<pre>';
-            print_r($value);
-            echo '</pre>';
-            // $xhtml .= sprintf('<div class="form-group new"  id="attr">
-            //     <div class="col-md-10 col-sm-6 col-xs-12 row-123 " name="remove-row">
-            //         <input class="col-md-4 col-xs-12" name="attribute_change_price[name][]" type="text" placeholder="Tên" value="%s">
-            //         <input class=" col-md-4 col-xs-12" name="attribute_change_price[price][]" type="text" placeholder="Giá" style="margin-left:2px">
-            //         <input class=" col-md-2 col-xs-12" name="attribute_change_price[ordering][]" type="text" placeholder="Thứ tự" style="margin-left:2px">
-            //             <a href="#" id="remove-row" style="margin: 15px;  border: 2px solid red; border-radius: 12px; color: red; padding: 2px">
-            //                 <i class="fa fa-minus"></i>
-            //             </a>
-            //     </div>
-            //     <a href="#" id="add-row" style="margin: 15px;  border: 2px solid aqua; border-radius: 12px; color: aqua; padding: 2px"><i class="fa fa-plus"></i></a></div>',
-
-            // );
+        if (isset($item['attribute_name_price_custom'])) {
+            $priceCustom                = json_decode($item['price_custom'], true);
+            $xhtml = null;
+            $xhtml .= sprintf('<label id="attribute_name_label" class="label label-success" style="font-size: 16px">%s</label>', $item['attribute_name_price_custom']);
+            $nameAttr   = json_decode($priceCustom['name']);
+            $valueAttr  = json_decode($priceCustom['value']);
+            $arr[]      = array_combine($nameAttr, $valueAttr);
+            foreach ($arr[0] as $key => $value) {
+                $xhtml .= sprintf('
+                        <div class="form-group price-row">
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="price_custom_name[]" value="%s" placeholder="Tên">
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="price_custom_value[]" value="%s" placeholder="Giá">
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-sm btn-danger btn-rounded btn-delete-price-row">X</button>
+                            </div>
+                        </div>
+                ', $key, $value);
+            }
         }
-        // $attributes = (json_decode($item['attribute'], true));
-        // foreach ($attributes as $key => $value) {//mausac [den,do]
-        //         $valueV = implode(',', $value['value']);
-        //         $xhtml .= sprintf('<div class="form-group" id="attr">
-        //                 <label  class="control-label col-md-3 col-sm-3 col-xs-12">%s</label>
-        //                 <div class="col-md-6 col-sm-6 col-xs-12">
-        //                     <input class="form-control input-tags-attr col-md-6 col-xs-12" name="attribute[]" type="text" value="%s">
-        //                 </div>
-        //                 </div>',$value['name'], $valueV
-        //                 );
-        // }
+
+        if (isset($item['attribute'])) {
+            $attributeModel = new AttributeModel();
+            $attributes = json_decode($item['attribute'], true);
+            
+            foreach ($attributes as $key => $value) {   
+                $itemAttribute      = $attributeModel->getItem($value['name'], ['task' => 'admin-get-name-attribute']);
+                $valueV = implode(',', json_decode($value['value']));
+                $xhtml .= sprintf('<div class="form-group" id="attr">
+                                    <label  class="control-label col-md-3 col-sm-3 col-xs-12">%s</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control input-tags-attr col-md-6 col-xs-12" name="attribute[%s][]" type="text" value="%s">
+                                    </div>
+                                    </div>',$itemAttribute[0]['name'], $itemAttribute[0]['id'], $valueV, $itemAttribute[0]['id']
+                        );
+            }
+        }
         
     }
                 
@@ -70,10 +81,19 @@
     @if (!isset($item['id']))
         <div class="x_content_attribute" id="sortable">
             {!! FormTemplate::show($elements)  !!}
+            <label id="attribute_name_label" class="label label-success" style="font-size: 16px"></label>
+            <div class="price-list list-draggable" style="margin-top: 10px">
+
+            </div>
+            <button type="button" class="btn btn-success btn-add-attribute-price" style="margin-top: 10px; display: none">Thêm thuộc tính</button>
         </div>
     @else
-        <div class="x_content_attribute" id="sortable">
+        <div class="x_content_attribute attribute-group-change-price" id="sortable" data-link = "{{$linkAddRow}}">
             {!! $xhtml !!}
+            <div class="price-list list-draggable" style="margin-top: 10px">
+
+            </div>
+            <button type="button" class="btn btn-success btn-add-attribute-price-edit" style="margin-top: 10px; ">Thêm thuộc tính</button>
         </div>
     @endif
     

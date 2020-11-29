@@ -21,7 +21,7 @@ class ProductController extends AdminController
       parent::__construct();
    }
 
-   public function save(Request $request)
+   public function save(MainRequest $request)
    {
       if ($request->method() == 'POST') {
             $params = $request->all();
@@ -29,7 +29,6 @@ class ProductController extends AdminController
             $notify = "Thêm phần tử thành công!";
 
             if(isset($params['id']) && $params['id'] !== null) {
-              
                $task   = "edit-item";
                $notify = "Cập nhật phần tử thành công!";
             }
@@ -60,11 +59,14 @@ class ProductController extends AdminController
    {
       $params["id"]                 = $request->id;
       $items = $this->model->getItem($params, ['task' => 'admin-get-name-attribute']);
+      // return $items;
       if(count($items) > 0){
          foreach($items as $item){
             $name       = array_column($items, 'name');
+            $id         = array_column($items, 'id');
+            $arr        = array_combine($id, $name);
          }
-         return $name;
+         return $arr;
       }
    }
    public function autocomplete(Request $request)
@@ -77,6 +79,10 @@ class ProductController extends AdminController
          array_push($names, $item['name']);
       }
       echo json_encode($names);
+   }
+
+   public function addPriceRow() {
+      return view($this->pathViewController .  'childs.product_price_row');
    }
 
      

@@ -30,11 +30,11 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
            ->where('category_id', '[0-9]+');
    }); 
 //============================== INTRO ==============================
-   $prefix         = 'intro';
+   $prefix         = 'gioi-thieu';
    $controllerName = 'intro';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
       $controller = ucfirst($controllerName)  . 'Controller@';
-      Route::get('/',   [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
+      Route::get('/',   [ 'as' => $controllerName.'news',                'uses' => $controller . 'index' ]);
    }); 
 
    

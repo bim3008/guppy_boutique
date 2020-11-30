@@ -11,24 +11,31 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
       Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
 });
 // ====================== ARTICLE ========================
-   $prefix         = 'bai-viet';
+   $prefix         = '';
    $controllerName = 'article';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
        $controller = ucfirst($controllerName)  . 'Controller@';
-       Route::get('/{article_name}-{article_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+       Route::get('/{article_name}-a-{article_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
                ->where('article_name', '[0-9a-zA-Z_-]+')
                ->where('article_id', '[0-9]+');
    });
 
-// ============================== CATEGORY - ARTICLE ==============================
-//    $prefix         = 'chuyen-muc';
-//    $controllerName = 'category';
-//    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-//        $controller = ucfirst($controllerName)  . 'Controller@';
-//        Route::get('/{category_name}-{category_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-//            ->where('category_name', '[0-9a-zA-Z_-]+')
-//            ->where('category_id', '[0-9]+');
-//    });
+//============================== CATEGORY - ARTICLE ==============================
+   $prefix         = '';
+   $controllerName = 'category';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+       $controller = ucfirst($controllerName)  . 'Controller@';
+       Route::get('/{category_name}-c-{category_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+           ->where('category_name', '[0-9a-zA-Z_-]+')
+           ->where('category_id', '[0-9]+');
+   }); 
+//============================== INTRO ==============================
+   $prefix         = 'intro';
+   $controllerName = 'intro';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+      $controller = ucfirst($controllerName)  . 'Controller@';
+      Route::get('/',   [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
+   }); 
 
    
    // ============================== CATEGORY - PRODUCT ==============================

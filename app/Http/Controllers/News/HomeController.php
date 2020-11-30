@@ -29,8 +29,6 @@ class HomeController extends Controller
          $menuModel      = new MenuModel() ;
          $feedBackModel  = new FeedBackModel() ;
          $articleModel   = new ArticleModel() ;
-       
-        
         
          $itemsSlider     = $sliderModel->listItems( null,    [ 'task'=> 'news-list-items']); 
          $itemsFeedBack   = $feedBackModel->listItems( null,  [ 'task'=> 'news-list-items']); 

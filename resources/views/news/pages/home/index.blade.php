@@ -1,3 +1,4 @@
+@section('title', 'Trang chủ')
 @extends('news.main')
 @section('content')
     

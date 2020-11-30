@@ -1,16 +1,21 @@
+@section('title', $itemsArticle['name'])
 @extends('news.main')
 @section('content')
 <main class="main">
+   @php
+         use  App\Helpers\Template  as Template ;
+         $breadcrumArticle = Template::showBreadcrumArticle($itemsArticle) ;
+   @endphp
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
        <div class="container">
           <ol class="breadcrumb">
              <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-             <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+             <li class="breadcrumb-item active" aria-current="page">{{ $breadcrumArticle . " " .  $itemsArticle['category_name'] ." / " . $itemsArticle['name'] }}</li>
           </ol>
        </div>
        <!-- End .container -->
     </nav>
-    <div class="container">
+    <div class="container">   
        <div class="row">
           <div class="col-lg-9">
             <article class="entry single">
@@ -18,120 +23,10 @@
                     @include('news.pages.article.child-index.article', [ 'items' => $itemsArticle ]  )
                 @endif
             </article>
-            <div class="related-posts">
-            <h4 class="light-title">Related <strong>Posts</strong></h4>
-            <div class="owl-carousel owl-theme related-posts-carousel owl-loaded owl-drag">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1200px;">
-                        <div class="owl-item active" style="width: 270px; margin-right: 30px;">
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.html">
-                                <img src="assets/images/blog/related/post-1.jpg" alt="Post">
-                                </a>
-                            </div>
-                            <!-- End .entry-media -->
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">29</span>
-                                    <span class="month">Jun</span>
-                                </div>
-                                <!-- End .entry-date -->
-                                <h2 class="entry-title">
-                                    <a href="single.html">Post Format - Image</a>
-                                </h2>
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
-                                    <a href="single.html" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div>
-                                <!-- End .entry-content -->
-                            </div>
-                            <!-- End .entry-body -->
-                        </article>
-                        </div>
-                        <div class="owl-item active" style="width: 270px; margin-right: 30px;">
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.html">
-                                <img src="assets/images/blog/related/post-2.jpg" alt="Post">
-                                </a>
-                            </div>
-                            <!-- End .entry-media -->
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">23</span>
-                                    <span class="month">Mar</span>
-                                </div>
-                                <!-- End .entry-date -->
-                                <h2 class="entry-title">
-                                    <a href="single.html">Post Format - Image</a>
-                                </h2>
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
-                                    <a href="single.html" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div>
-                                <!-- End .entry-content -->
-                            </div>
-                            <!-- End .entry-body -->
-                        </article>
-                        </div>
-                        <div class="owl-item active" style="width: 270px; margin-right: 30px;">
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.html">
-                                <img src="assets/images/blog/related/post-3.jpg" alt="Post">
-                                </a>
-                            </div>
-                            <!-- End .entry-media -->
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">14</span>
-                                    <span class="month">May</span>
-                                </div>
-                                <!-- End .entry-date -->
-                                <h2 class="entry-title">
-                                    <a href="single.html">Post Format - Image</a>
-                                </h2>
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
-                                    <a href="single.html" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div>
-                                <!-- End .entry-content -->
-                            </div>
-                            <!-- End .entry-body -->
-                        </article>
-                        </div>
-                        <div class="owl-item" style="width: 270px; margin-right: 30px;">
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.html">
-                                <img src="assets/images/blog/related/post-1.jpg" alt="Post">
-                                </a>
-                            </div>
-                            <!-- End .entry-media -->
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">11</span>
-                                    <span class="month">Apr</span>
-                                </div>
-                                <!-- End .entry-date -->
-                                <h2 class="entry-title">
-                                    <a href="single.html">Post Format - Image</a>
-                                </h2>
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
-                                    <a href="single.html" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div>
-                                <!-- End .entry-content -->
-                            </div>
-                            <!-- End .entry-body -->
-                        </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="icon-left-open-big"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-right-open-big"></i></button></div>
-            </div>
-            </div>
+            @if(count($itemsArticle) > 0)
+                @include('news.pages.article.child-index.related',     [ 'items' => $itemsArticle ] )
+            @endif
+                    
           </div>
 
           <aside class="sidebar col-lg-3">

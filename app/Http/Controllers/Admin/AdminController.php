@@ -26,10 +26,10 @@ class AdminController extends Controller
         $this->params['search']['value']    = $request->input('search_value', '' ) ;
 
         $items              = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
+
         $itemsStatusCount   = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status']); // [ ['status', 'count']]
 
         return view($this->pathViewController .  'index', [
-         
             'params'        => $this->params,
             'items'         => $items,
             'itemsStatusCount' =>  $itemsStatusCount

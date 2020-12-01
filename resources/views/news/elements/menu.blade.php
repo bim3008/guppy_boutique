@@ -24,7 +24,9 @@
             $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="#" class="sf-with-ul">'.$value['name'].'</a>'.$childArticle.'</li>';  
         }
         if($value['type_menu'] == 'category_product'){
-            $childProduct = MenuNested::recursiveMenuArticle($productMenu) ;
+            $classActive =  (request()->routeIs('catProduct/index')  )  ? 'active' : '' ;    
+            
+            $childProduct = MenuNested::recursiveMenuProduct($productMenu) ;
             $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="'.$link.'" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
         }
     }    

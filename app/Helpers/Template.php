@@ -1,6 +1,7 @@
 <?php 
 namespace App\Helpers;
 use App\Models\CategoryArticleModel ;
+use App\Models\CategoryProductModel ;
 use Config;
 use Illuminate\Support\Arr;
 
@@ -271,7 +272,7 @@ class Template {
            $xhtml =  null ;
            foreach($names as $key => $value){
                $arr = json_decode($value);
-               $link = URL::linkCategory($arr->id,$arr->name);
+               $link = URL::linkCategoryArticle($arr->id,$arr->name);
                $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
            }
            return $xhtml;
@@ -280,11 +281,43 @@ class Template {
     }
     public static function newsGetNameArticle($parent_id , &$nameParent = null) {
         
-        $categoryArticle = new CategoryArticleModel();
-        $nameParentId    =  $categoryArticle->getItem($parent_id, ['task' => 'news-get-breadcrumb-article']) ;
+        $items               = new CategoryArticleModel(); 
+        $nameParentId    =  $items->getItem($parent_id, ['task' => 'news-get-breadcrumb-article']) ;
+
         $nameParent[]    .= $nameParentId  ;
+
         if($nameParentId->parent_id != 1){
             self::newsGetNameArticle($nameParentId->parent_id , $nameParent);
+        }
+        return array_reverse($nameParent) ;
+    }
+    public static function showBreadcrumProduct($items) {
+        
+        if($items['parent_id'] == 1){
+            return null ;
+        }else{
+           $names = self::newsGetNameProduct($items['parent_id']);
+
+           $xhtml =  null ;
+           foreach($names as $key => $value){
+               $arr = json_decode($value);
+               $link = URL::linkCategoryArticle($arr->id,$arr->name);
+               $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
+           }
+           return $xhtml;
+        }  
+       
+    }
+    public static function newsGetNameProduct($parent_id , &$nameParent = null) {
+        
+
+        $items            = new CategoryProductModel(); 
+        $nameParentId     =  $items->getItem($parent_id, ['task' => 'news-get-breadcrumb-article']) ;
+      
+        $nameParent[]    .= $nameParentId  ;
+     
+        if($nameParentId->parent_id != 1){
+            self::newsGetNameProduct($nameParentId->parent_id , $nameParent);
         }
         return array_reverse($nameParent) ;
     }

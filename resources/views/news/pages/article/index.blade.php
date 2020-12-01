@@ -6,7 +6,7 @@
          use  App\Helpers\Template  as Template ;
          use  App\Helpers\URL      as URL ;
          $breadcrumArticle = Template::showBreadcrumArticle(['parent_id' => $itemsArticle['parent_id']]) ;
-         $link = URL::linkCategory($itemsArticle['category_id'],$itemsArticle['name']);
+         $link = URL::linkCategoryArticle($itemsArticle['category_id'],$itemsArticle['name']);
    @endphp
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
        <div class="container">

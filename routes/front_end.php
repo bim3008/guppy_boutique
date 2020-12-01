@@ -1,5 +1,5 @@
 <?php
-   $prefixNews  = config('zvn.url.prefix_news');
+$prefixNews  = config('zvn.url.prefix_news');
 Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
 // ============================= HOMEPAGE ==============================
@@ -37,7 +37,7 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
            ->where('category_id', '[0-9]+');
    }); 
 
-//============================== CATEGORY - PRODUCT =====================
+//============================== CATEGORY - PRODUCT ====================
    $prefix         = '';
    $controllerName = 'catProduct';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {

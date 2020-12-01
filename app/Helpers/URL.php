@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 
 class URL
 {
-    public static function linkCategory($id, $name) 
+    public static function linkCategoryArticle($id, $name) 
     {
         return route('category/index', [
             'category_id'   => $id, 
@@ -13,6 +13,16 @@ class URL
         ]);
 
     }
+
+    public static function linkCategoryProduct($id, $name) 
+    {
+        return route('catProduct/index', [
+            'cat_pro_id'   => $id, 
+            'cat_pro_name' => Str::slug($name) 
+        ]);
+
+    }
+    
     public static function linkArticle($id, $name) 
     {
         return route('article/index', [

@@ -449,7 +449,7 @@ a:focus {
 }
 .logo img {
   display: block;
-  max-width: 30%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -2335,7 +2335,6 @@ a:focus {
   display: inline-block;
   position: relative;
   font-family: 'porto';
-  font-size: 1.2rem;
   letter-spacing: .1em;
   line-height: 1;
 }
@@ -2354,9 +2353,10 @@ a:focus {
   overflow: hidden;
 }
 .ratings-container .ratings::before {
-  color: #2b2b2c;
+  color: greenyellow;
   content: '\e852 ' '\e852 ' '\e852 ' '\e852 ' '\e852';
 }
+
 
 .product.product-sm {
   margin-bottom: 2rem;
@@ -5085,7 +5085,7 @@ a:focus {
 }
 .home-slide-content h1 {
   margin-bottom: 3.9rem;
-  color: #0e2f40;
+  color: beige;
   font: 800 3.6rem/1.1 "Open Sans", sans-serif;
   letter-spacing: -.04rem;
   text-transform: uppercase;

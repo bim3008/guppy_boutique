@@ -1,13 +1,14 @@
-
 @if(count($productAccessory) > 0)
     <div class="featured-products-section carousel-section">
         <div class="container">
-        <h2 class="h3 title mb-4 text-center">Phụ kiện bán chạy</h2>
+        <h2 class="h3 title mb-4 text-center">Dòng thủy sinh nổi bật</h2>
         <div class="featured-products owl-carousel owl-theme owl-loaded owl-drag">
                 <div class="owl-stage-outer">
                     <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1418px;">
                         @foreach($productAccessory as $key => $value)
-                            @php
+                            @php    
+                                    $arrThumb = json_decode($value["thumb"]) ;
+                                    $thumb  = url("/uploads") . '/' .  $arrThumb[0];
                                     $name   = $value['name'] ;
                                     $price  = number_format($value['price'])." VNĐ" ;
                             @endphp
@@ -15,7 +16,7 @@
                                 <div class="product">
                                     <figure class="product-image-container">
                                         <a href="product.html" class="product-image">
-                                            <img src="assets/images/products/product-10-white.jpg" alt="product">
+                                            <img src="{{ $thumb }}" alt="product">
                                         </a>
                                         {{-- <a href="ajax/product-quick-view.html" class="btn-quickview">Quickview</a> --}}
                                     </figure>

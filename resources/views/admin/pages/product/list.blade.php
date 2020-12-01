@@ -35,6 +35,7 @@
                             $createdHistory         = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory        = Template::showItemHistory($val['modified_by'], $val['modified']);
                             $listBtnAction          = Template::showButtonAction($controllerName, $id);
+                            
                         @endphp
 
                         <tr class="{{ $class }} pointer">

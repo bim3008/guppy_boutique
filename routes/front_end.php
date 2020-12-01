@@ -10,6 +10,20 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
       Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
       Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
 });
+
+// ============================== PRODUCT ==============================
+$prefix         = 'tat-ca-san-pham';
+$controllerName = 'productf';
+Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+   $controller = ucfirst($controllerName)  . 'Controller@';
+   Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
+   Route::get('/{product_name}-{product_id}.html', [ 'as' => $controllerName . '/detail',  'uses' => $controller . 'detail' ])
+            ->where('product_name', '[0-9a-zA-Z_-]+')
+            ->where('product_id', '[0-9]+');
+   Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
+});
+
+
 // ====================== ARTICLE ========================
    $prefix         = 'bai-viet';
    $controllerName = 'article';
@@ -32,14 +46,14 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
    
    // ============================== CATEGORY - PRODUCT ==============================
-//    $prefix         = 'san-pham';
-//    $controllerName = 'frontEndCategoryProduct';
-//    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-//        $controller = ucfirst($controllerName)  . 'Controller@';
-//        Route::get('/{category_product_name}-{category_product_id}.html',  [ 'as' => $controllerName , 'uses' => $controller . 'index' ])
-//            ->where('category_product_name', '[0-9a-zA-Z_-]+')
-//            ->where('category_product_id', '[0-9]+');
-//    });
+   $prefix         = 'san-pham';
+   $controllerName = 'frontEndCategoryProduct';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+       $controller = ucfirst($controllerName)  . 'Controller@';
+       Route::get('/{category_product_name}-{category_product_id}.html',  [ 'as' => $controllerName , 'uses' => $controller . 'index' ])
+           ->where('category_product_name', '[0-9a-zA-Z_-]+')
+           ->where('category_product_id', '[0-9]+');
+   });
 
 
 

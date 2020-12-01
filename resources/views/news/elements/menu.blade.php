@@ -26,7 +26,8 @@
         }
         if($value['type_menu'] == 'category_product'){
             $childProduct = MenuNested::recursiveMenuArticle($productMenu) ;
-            $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="#" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
+            $linkProduct  = route('productf');
+            $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="'.$linkProduct.'" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
         }
     }    
     $xhtmlMenu .= '<ul><nav>' ; 

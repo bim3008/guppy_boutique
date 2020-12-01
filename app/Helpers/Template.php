@@ -1,6 +1,7 @@
 <?php 
 namespace App\Helpers;
 use Config;
+use App\Models\AttributeModel;
 
 class Template {
     public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch , $currentFilterCategory = null) { // $currentFilterStatus active inactive all
@@ -107,10 +108,12 @@ class Template {
     }
     public static function showItemThumbUpload ($thumbName, $thumbAlt) {
         $xhtml = null;
-        foreach ($thumbName as $value) {
-            $xhtml .= sprintf(
-                '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
-        }
+        $xhtml .= sprintf(
+            '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$thumbName[0]")  , $thumbAlt );
+        // foreach ($thumbName as $value) {
+        //     $xhtml .= sprintf(
+        //         '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
+        // }
        
         return $xhtml;
     }
@@ -121,6 +124,12 @@ class Template {
             $xhtml .= $value['name'] .': ' . $tmp . '<br>';
         }
         return $xhtml;
+    }
+
+    public static function showNameAttribute ($attribute) {
+        $attributeModel = new AttributeModel();
+        $nameAttribute = $attributeModel->listItems($attribute, ['task' => 'front-end-get-name-detail-product']);
+        return $nameAttribute[0]['name'];
     }
 
 

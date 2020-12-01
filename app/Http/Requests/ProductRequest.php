@@ -41,7 +41,6 @@ class ProductRequest extends FormRequest
             'price'             => $condPrice,
             'thumb'             => $condThumb,
             'link'              => $condLink,
-            'tag'               => $condTag,
             'content'           => $condContent,
             'status'            => 'bail|in:active,inactive',
         ];

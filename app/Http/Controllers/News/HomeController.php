@@ -12,7 +12,7 @@ use App\Models\ArticleModel ;
 
 class HomeController extends Controller
 {
-    private $pathViewController = 'news.pages.home.';  // slider
+    private $pathViewController = 'news.pages.home.';  
     private $controllerName     = 'home';
     private $params             = [];
     private $model;

@@ -57,14 +57,13 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items-featured') {
-	
+ 
             $query = $this->select('a.id', 'a.name', 'a.content', 'a.created', 'a.category_id', 'c.name as category_name', 'a.thumb')
                 ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                 ->where('a.status', '=', 'active')
                 ->where('a.type', 'featured')
                 ->orderBy('a.id', 'desc');
                
-
             $result = $query->get()->toArray();
         }
         
@@ -80,12 +79,13 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items-in-category') {
-            $query = $this->select('id', 'name', 'content', 'thumb', 'created')
-                ->where('status', '=', 'active')
-                ->where('category_id', '=', $params['category_id'])
-                ->take(4)
+            $result = $this->select('a.id', 'a.name', 'a.content', 'a.thumb', 'a.created' , 'parent_id','a.created_by')
+                ->leftJoin('category_article as c', 'a.category_id', '=', 'c.id')
+                ->where('a.status', '=', 'active')
+                ->where('a.category_id', '=', $params['category_id'])
             ;
-            $result = $query->get()->toArray();
+            
+            if($result) $result = $result->get()->toArray();
         }
         
         if($options['task'] == 'news-list-items-related-in-category') {
@@ -126,8 +126,6 @@ class ArticleModel extends AdminModel
             }
 
             $result = $query->get()->toArray();
-           
-
         }
 
         return $result;
@@ -141,16 +139,18 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'get-thumb') {
-            $result = self::select('id', 'thumb')->where('id', $params['id'])->first()->toArray();
+            $result = self::select('id', 'thumb')->where('id', $params['article_id'])->first()->toArray();
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('a.id', 'a.name', 'content', 'a.created_by','a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
-                         ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
-                         ->where('a.id', '=', $params['id'])
+            $result = self::select('a.id', 'a.name', 'content', 'a.created_by','a.category_id', 'c.name as category_name', 'a.thumb', 'a.created' , 'parent_id')
+                         ->leftJoin('category_article as c', 'a.category_id', '=', 'c.id')
+                         ->where('a.id', '=', $params['article_id'])
                          ->where('a.status', '=', 'active')->first();
             if($result) $result = $result->toArray();
         }
+
+      
 
         return $result;
     }

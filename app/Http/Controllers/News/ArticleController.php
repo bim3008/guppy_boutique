@@ -4,6 +4,7 @@ namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;;    
 use App\Models\ArticleModel ;
+use App\Models\CategoryArticleModel ;
 
 
 class ArticleController extends Controller
@@ -20,12 +21,14 @@ class ArticleController extends Controller
 
    public function index(Request $request)
    {  
-      $params['id']  = $request->article_id ;  
-      $articleModel  = new ArticleModel() ;   
+      $params['article_id']   = $request->article_id ;   
+      $articleModel           = new ArticleModel() ;   
+      $categoryArticleModel   = new CategoryArticleModel() ;   
 
-      $itemsArticle  = $articleModel->getItem($params ,[ 'task'=> 'news-get-item']) ;
+      $itemsArticle           = $articleModel->getItem($params ,[ 'task'=> 'news-get-item']) ;
+      $params["category_id"]  = $itemsArticle['category_id'];
       if(empty($itemsArticle))  return redirect()->route('home');
-    
+      $itemsArticle['related_articles']   = $articleModel->listItems($params, ['task'  => 'news-list-items-related-in-category']);
       return view($this->pathViewController .  'index' , compact('itemsSetting','itemsArticle') );
    }
 

@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 use Illuminate\Support\Str;
+use App\Helpers\URL;
 
 class MenuNested
 {
@@ -10,8 +11,7 @@ class MenuNested
         $xhtmlMenu .= '<ul>';
         foreach ($items as $key => $value) {
             if($value['status'] == 'active') {
-                // $link = URL::linkCategory($value['id'],$value['name']);   
-                $link = '';   
+                $link = URL::linkCategory($value['id'],$value['name']);   
                 $xhtmlMenu .= '<li><a href="'.$link.'">'.$value['name'].'</a>';
                 if($value['children']) {
                     self::recursiveMenuArticle($value['children'],$xhtmlMenu);

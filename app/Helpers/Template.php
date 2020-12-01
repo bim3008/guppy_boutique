@@ -1,7 +1,9 @@
 <?php 
 namespace App\Helpers;
+use App\Models\CategoryArticleModel ;
 use Config;
 use App\Models\AttributeModel;
+use Illuminate\Support\Arr;
 
 class Template {
     public static function showButtonFilter ($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch , $currentFilterCategory = null) { // $currentFilterStatus active inactive all
@@ -247,9 +249,8 @@ class Template {
         $xhtml .= '</select>';
         return $xhtml;
     }
-
     public static function getStarFeedBack($params){
-        
+
         $start = 100 ;
         if($params == 4) $start = 80 ;
         if($params == 3) $start = 60 ;
@@ -257,7 +258,6 @@ class Template {
         if($params == 1) $start = 10 ;
         return   $start;
     }
-
     public static function numberShowroom($number) {
         $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
         $returnValue = '';
@@ -272,5 +272,31 @@ class Template {
         }
         return $returnValue;
     }
-  
+    public static function showBreadcrumArticle($items) {
+        
+        if($items['parent_id'] == 1){
+            return null ;
+        }else{
+           $names = self::newsGetNameArticle($items['parent_id']);
+
+           $xhtml =  null ;
+           foreach($names as $key => $value){
+               $arr = json_decode($value);
+               $link = URL::linkCategory($arr->id,$arr->name);
+               $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
+           }
+           return $xhtml;
+        }  
+       
+    }
+    public static function newsGetNameArticle($parent_id , &$nameParent = null) {
+        
+        $categoryArticle = new CategoryArticleModel();
+        $nameParentId    =  $categoryArticle->getItem($parent_id, ['task' => 'news-get-breadcrumb-article']) ;
+        $nameParent[]    .= $nameParentId  ;
+        if($nameParentId->parent_id != 1){
+            self::newsGetNameArticle($nameParentId->parent_id , $nameParent);
+        }
+        return array_reverse($nameParent) ;
+    }
 }

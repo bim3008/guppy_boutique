@@ -13,6 +13,7 @@
         <h3>Menu</h3>
         <ul class="nav side-menu">
             <li><a href="{{ route('dashboard')  }}"><i class="fa fa-home">          </i> Trang quản lý          </a></li>
+            <li><a href="{{ route('intro')      }}"><i class="fa fa-info">          </i> Giới thiệu             </a></li>
             <li><a href="{{ route('menu')       }}"><i class="fa fa-th-list">       </i> Menu    </a></li>
             <li><a href="{{ route('slider')     }}"><i class="fa fa-sliders">       </i> Silders                </a></li>
             <li><a><i class="fa fa fa-building-o"></i> Danh mục bài viết <span class="fa fa-chevron-down"></span></a>
@@ -36,11 +37,12 @@
                     <li><a href="{{ route('question') }}"></i>Câu hỏi</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ     </a></li>
+            <li><a href="{{ route('contact')    }}"> <i class="fa fa-phone">        </i> Yêu cầu liên hệ        </a></li>
             <li><a href="{{ route('script')     }}"> <i class="fa fa-code">         </i> Thêm đoạn mã           </a></li>
-            <li><a href="{{ route('setting')    }}"> <i class="fa fa-cogs">       </i> Cấu hình               </a></li>
-            <li><a href="{{ route('feedback')   }}"> <i class="fa fa-commenting">      </i> Cảm nhận khách hàng    </a></li>
-            <li><a><i class="fa fa-video-camera"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
+            <li><a href="{{ route('setting')    }}"> <i class="fa fa-cogs">         </i> Cấu hình               </a></li>
+            <li><a href="{{ route('feedback')   }}"> <i class="fa fa-commenting">   </i> Cảm nhận khách hàng    </a></li>
+            <li><a href="{{ route('agencies')   }}"> <i class="fa fa-university">   </i> Chi nhánh              </a></li>
+            <li><a><i class="fa fa-video-camera"></i> Thư viện <span class="fa fa-chevron-down"></span>         </a>
                 <ul class="nav child_menu">
                     <li><a href="{{ route('image')}}"></i> Hình ảnh  </a></li>
                     <li><a href="{{ route('video')}}"></i> Video     </a></li>

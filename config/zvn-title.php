@@ -17,6 +17,10 @@ return [
         'categoryArticle'   => 'danh mục bài viết',
         'categoryProduct'   => 'danh mục sản phẩm',
         'tag'               => 'tag sản phẩm',
+        'menu'              => 'menu',
+        'agencies'          => 'chi nhánh',
+        'intro'             => 'giới  thiệu',
+        'setting'           => 'cài đặt',
     ],
     
 ];

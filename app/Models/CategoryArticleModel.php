@@ -120,7 +120,11 @@ class CategoryArticleModel extends AdminModel
 
         if($options['task'] == "admin-get-nested") {
             return self::defaultOrder()->withDepth()->get()->toFlatTree();
-         }
+        }
+        if($options['task'] == 'news-get-breadcrumb-article') {
+            $result = self::select('id', 'name', 'parent_id')->where('id', $params)->first();
+        }
+
         return $result;
     }
 

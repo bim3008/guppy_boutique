@@ -30,7 +30,7 @@
                         <div class="entry-content">
                             <p>{!! $content !!}</p>
 
-                            <a href="single.html" class="btn btn-dark">Đọc ngay</a>
+                            <a href="{{ $link  }}" class="btn btn-dark">Đọc ngay</a>
                         </div>
                     </div>
                 </article>

@@ -11,7 +11,7 @@
     <div class="container">
         <div class="header-left">
             <a href="{{ route('home') }}" class="logo">
-                <img src="{{  $thumb  }}" alt="guppy-logo" style="width: 150px">
+                <img src="{{  $thumb  }}" alt="guppy-logo" style="width: 150px; ">
             </a>
         </div><!-- End .header-left -->
 

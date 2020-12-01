@@ -50,5 +50,10 @@ class HomeController extends Controller
       ]);
    }
 
+   public function success(Request $request)
+   {   
+      return view($this->pathViewController .  'success');
+   }
+
  
 }

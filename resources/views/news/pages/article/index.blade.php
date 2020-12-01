@@ -4,13 +4,15 @@
 <main class="main">
    @php
          use  App\Helpers\Template  as Template ;
-         $breadcrumArticle = Template::showBreadcrumArticle($itemsArticle) ;
+         use  App\Helpers\URL      as URL ;
+         $breadcrumArticle = Template::showBreadcrumArticle(['parent_id' => $itemsArticle['parent_id']]) ;
+         $link = URL::linkCategory($itemsArticle['category_id'],$itemsArticle['name']);
    @endphp
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
        <div class="container">
           <ol class="breadcrumb">
              <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-             <li class="breadcrumb-item active" aria-current="page">{{ $breadcrumArticle . " " .  $itemsArticle['category_name'] ." / " . $itemsArticle['name'] }}</li>
+             {!! $breadcrumArticle !!}<li class="breadcrumb-item"><a href="{{ $link }}">{{ $itemsArticle['category_name'] }}</a></li><li class="breadcrumb-item">{{ $itemsArticle['name'] }}</li>
           </ol>
        </div>
        <!-- End .container -->

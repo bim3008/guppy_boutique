@@ -22,7 +22,8 @@ class ProductModel extends AdminModel
     }
 
     public function listItems($params = null, $options = null) {
-     
+        
+        
         $result = null;
 
         if($options['task'] == "admin-list-items") {
@@ -56,8 +57,30 @@ class ProductModel extends AdminModel
                     ->get()
                     ->toArray();
         }
-      
-
+        $this->table   = 'product as p' ; 
+        if($options['task'] == "news-get-items-featured") {
+            $result = $this->select('p.id', 'p.name', 'p.price', 'p.thumb', 'p.category_product_id')
+                    ->leftJoin('category_product as c', 'p.category_product_id', '=', 'c.id')
+                    ->where('p.type',   '=' , 'featured')    
+                    ->where('p.status', '=' , 'active')    
+                    ->where('c.parent_id',   '=' , 49)    
+                    ->get()
+                    ->toArray();
+        }
+        if($options['task'] == "news-get-items-accessory") {
+            $result = $this->select('p.id', 'p.name', 'p.price', 'p.thumb', 'p.category_product_id')
+                    ->leftJoin('category_product as c', 'p.category_product_id', '=', 'c.id')   
+                    ->where('p.status', '=' , 'active')    
+                    ->where('c.parent_id',   '=' , 50)    
+                    ->get()
+                    ->toArray();
+        }
+        if($options['task'] == "news-get-items-in-category") {
+            $result = $this->select('id', 'name', 'price', 'thumb', 'category_product_id')
+                ->where('category_product_id', '=' , $params['id'])    
+                ->get()
+                ->toArray();
+        }
         return $result;
     }
 

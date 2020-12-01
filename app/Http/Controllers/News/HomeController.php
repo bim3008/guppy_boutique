@@ -8,6 +8,7 @@ use App\Models\SliderModel ;
 use App\Models\MenuModel ;
 use App\Models\FeedbackModel ;
 use App\Models\ArticleModel ;
+use App\Models\ProductModel ;
 
 
 class HomeController extends Controller
@@ -25,17 +26,21 @@ class HomeController extends Controller
    public function index(Request $request)
       {  
        
-         $sliderModel    = new SliderModel() ;
-         $menuModel      = new MenuModel() ;
-         $feedBackModel  = new FeedBackModel() ;
-         $articleModel   = new ArticleModel() ;
+         $sliderModel       = new SliderModel() ;
+         $menuModel         = new MenuModel() ;
+         $feedBackModel     = new FeedBackModel() ;
+         $articleModel      = new ArticleModel() ;
+         $productModel      = new ProductModel() ;
         
-         $itemsSlider     = $sliderModel->listItems( null,    [ 'task'=> 'news-list-items']); 
-         $itemsFeedBack   = $feedBackModel->listItems( null,  [ 'task'=> 'news-list-items']); 
-         $itemsMenu       = $menuModel->listItems( null,      [ 'task'=> 'front-end-list-items']); 
-         $articleFeatured = $articleModel->listItems(null,    [ 'task'=> 'news-list-items-featured']) ;
-        
-         return view($this->pathViewController .  'index' , compact('itemsSlider','itemsMenu','itemsFeedBack','articleFeatured') );
+         $itemsSlider       = $sliderModel->listItems(   null,  [ 'task'=> 'news-list-items']); 
+         $itemsFeedBack     = $feedBackModel->listItems( null,  [ 'task'=> 'news-list-items']); 
+         $itemsMenu         = $menuModel->listItems(     null,  [ 'task'=> 'front-end-list-items']); 
+         $articleFeatured   = $articleModel->listItems(  null,  [ 'task'=> 'news-list-items-featured']) ;
+         $productFeatured   = $productModel->listItems(  null,  [ 'task'=>  'news-get-items-featured' ]);
+         $productAccessory = $productModel->listItems(  null,  [ 'task'=>  'news-get-items-accessory']);
+  
+
+         return view($this->pathViewController .  'index' , compact('itemsSlider','itemsMenu','itemsFeedBack','articleFeatured','productFeatured','productAccessory') );
       }
 
    public function notFound(Request $request)

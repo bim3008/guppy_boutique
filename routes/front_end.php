@@ -2,15 +2,22 @@
    $prefixNews  = config('zvn.url.prefix_news');
 Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
-// ============================== HOMEPAGE ==============================
+// ============================= HOMEPAGE ==============================
    $prefix         = '';
    $controllerName = 'home';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
       $controller = ucfirst($controllerName)  . 'Controller@';
       Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
       Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
-});
-// ====================== ARTICLE ========================
+   });
+//============================== INTRO    ==============================
+   $prefix         = 'gioi-thieu';
+   $controllerName = 'intro';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+      $controller = ucfirst($controllerName)  . 'Controller@';
+      Route::get('/',   [ 'as' => $controllerName.'news',                'uses' => $controller . 'index' ]);
+   }); 
+// ============================= ARTICLE ===============================
    $prefix         = '';
    $controllerName = 'article';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
@@ -20,24 +27,30 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
                ->where('article_id', '[0-9]+');
    });
 
-//============================== CATEGORY - ARTICLE ==============================
+//============================== CATEGORY - ARTICLE ====================
    $prefix         = '';
    $controllerName = 'category';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
        $controller = ucfirst($controllerName)  . 'Controller@';
-       Route::get('/{category_name}-c-{category_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+       Route::get('/{category_name}-ca-{category_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
            ->where('category_name', '[0-9a-zA-Z_-]+')
            ->where('category_id', '[0-9]+');
    }); 
-//============================== INTRO ==============================
-   $prefix         = 'gioi-thieu';
-   $controllerName = 'intro';
+
+//============================== CATEGORY - PRODUCT =====================
+   $prefix         = '';
+   $controllerName = 'catProduct';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
       $controller = ucfirst($controllerName)  . 'Controller@';
-      Route::get('/',   [ 'as' => $controllerName.'news',                'uses' => $controller . 'index' ]);
-   }); 
+      Route::get('/{cat_pro_name}-cp-{cat_pro_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+         ->where('cat_pro_name', '[0-9a-zA-Z_-]+')
+         ->where('cat_pro_id', '[0-9]+');
+}); 
+  
 
-   
+
+
+
    // ============================== CATEGORY - PRODUCT ==============================
 //    $prefix         = 'san-pham';
 //    $controllerName = 'frontEndCategoryProduct';

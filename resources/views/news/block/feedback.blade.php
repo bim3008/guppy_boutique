@@ -16,7 +16,7 @@
                     <div class="col-md-4">
                         <div class="feature-box feature-box-simple text-center">
                             <div>
-                                <img style="display: initial; height:38em" src=" {{ $thumb }}" alt="">
+                                <img style="display: initial; height:25em" src=" {{ $thumb }}" alt="">
                             </div>
                             <div class="feature-box-content">
                                 <p style="font-family: cursive;color: #0a0a0a;line-height: 2em,;margin-top: 1em;"><span> {!! $name !!}</span> </p>

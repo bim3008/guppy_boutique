@@ -267,10 +267,12 @@ class Template {
             return null ;
         }else{
            $names = self::newsGetNameArticle($items['parent_id']);
-          
-           $xhtml =  "" ;
-           foreach($names as $name){
-            $xhtml .=  $name;
+
+           $xhtml =  null ;
+           foreach($names as $key => $value){
+               $arr = json_decode($value);
+               $link = URL::linkCategory($arr->id,$arr->name);
+               $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
            }
            return $xhtml;
         }  
@@ -280,7 +282,7 @@ class Template {
         
         $categoryArticle = new CategoryArticleModel();
         $nameParentId    =  $categoryArticle->getItem($parent_id, ['task' => 'news-get-breadcrumb-article']) ;
-        $nameParent[]    .= " " .$nameParentId->name . "  /";
+        $nameParent[]    .= $nameParentId  ;
         if($nameParentId->parent_id != 1){
             self::newsGetNameArticle($nameParentId->parent_id , $nameParent);
         }

@@ -1,5 +1,4 @@
 @php
-
     use App\Helpers\MenuNested ;
     use App\Models\MenuModel ;
     use App\Models\CategoryArticleModel;
@@ -13,18 +12,20 @@
     $productMenu        = $productCategoryeModel->listItems(null, ['task'  => 'news-list-nested']);
     $xhtmlMenu          =  '<nav class="main-nav"> <ul class="menu sf-arrows"> ' ;
     foreach ($menuNested as $key => $value) {
-        $classActive = null ;
+
+        $classActive = request()->routeIs($value['link']) ? 'active' : '' ;
         $link        = route($value['link']) ;
         if($value['type_menu'] == 'normal'){
             $xhtmlMenu .= '<li class="'.$classActive .'"><a href="'.$link.'">'.$value['name'].'</a></li>';
         }
         if($value['type_menu'] == 'category_article'){
+            $classActive =  (request()->routeIs('article/index') || request()->routeIs('category/index') )  ? 'active' : '' ;
             $childArticle = MenuNested::recursiveMenuArticle($articleMenu) ;
             $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="#" class="sf-with-ul">'.$value['name'].'</a>'.$childArticle.'</li>';  
         }
         if($value['type_menu'] == 'category_product'){
             $childProduct = MenuNested::recursiveMenuArticle($productMenu) ;
-            $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="#" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
+            $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="'.$link.'" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
         }
     }    
     $xhtmlMenu .= '<ul><nav>' ; 

@@ -62,9 +62,16 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
          ->where('cat_pro_name', '[0-9a-zA-Z_-]+')
          ->where('cat_pro_id', '[0-9]+');
 }); 
+
+//==============================  SUBSCRIBE =====================
+$prefix         = 'subscribe';
+$controllerName = 'subscribef';
+Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+   $controller = ucfirst($controllerName)  . 'Controller@';
+   // Route::post('/{subscribe}',  [ 'as' => $controllerName . '/postSubscribe', 'uses' => $controller . 'postSubscribe' ]);
+   Route::get('/{subscribe}',  [ 'as' => $controllerName . '/getSubscribe', 'uses' => $controller . 'getSubscribe' ]);
+}); 
   
-
-
 
 
    // ============================== CATEGORY - PRODUCT ==============================

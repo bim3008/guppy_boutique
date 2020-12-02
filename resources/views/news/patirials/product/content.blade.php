@@ -1,6 +1,16 @@
 @php       
+<<<<<<< HEAD
         $name     = $value['name'] ;
         $price     = number_format($value['price'])." VNĐ" ;
+=======
+        // $name     = $value['name'] ;
+        // $price     = number_format($value['price'])." VNĐ" ;
+    use App\Helpers\URL;
+    $id             = $item['id'];
+    $name           = $item['name'];
+    $price          = number_format($item['price']);
+    $linkProduct    = URL::linkProduct($id, $name);
+>>>>>>> cbffd38f53b50c3b7e547da4d463df25735abef9
 @endphp
 <div class="product-details">
     <div class="ratings-container">

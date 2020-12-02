@@ -57,23 +57,6 @@ class ProductModel extends AdminModel
                     ->get()
                     ->toArray();
         }
-
-        if($options['task'] == "front-end-list-product") {
-            $result = $this->select('id', 'name', 'price', 'thumb')
-                    ->get()
-                    ->toArray();
-        }
-
-        if($options['task'] == "front-end-get-product-featured") {
-            $result = $this->select('id', 'name', 'price', 'thumb')
-                    ->where('type', 'featured')
-                    ->get()
-                    ->toArray();
-        }
-
-       
-      
-
         $this->table   = 'product as p' ; 
         if($options['task'] == "news-get-items-featured") {
             $result = $this->select('p.id', 'p.name', 'p.price', 'p.thumb', 'p.category_product_id')
@@ -164,14 +147,6 @@ class ProductModel extends AdminModel
                     ->where('attribute_group_id', $params['id'])
                     ->where('change_price', 'no')
                     ->get()->toArray();
-        }
-
-         if($options['task'] == "front-end-product-detail") {
-            $result = $this->select('product.id', 'product.name', 'product.status' ,'product.price','product.thumb','category_product_id', 'product.attribute','product.attribute_group_id', 'product.link', 'product.content', 'product.tags', 'product.price_custom','product.attribute_name_price_custom','product.type','t.name as tag_name')
-                    ->leftJoin('tag as t', 'product.tags', '=', 't.id')
-                    ->where('product.id', $params)
-                    ->first()
-                    ->toArray();
         }
         return $result;
     }

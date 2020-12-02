@@ -2380,7 +2380,7 @@ a:focus {
   content: '';
 }
 .product-sm .product-image-container {
-  max-width: 100%;
+  max-width: 80px;
   margin-bottom: 0;
   float: left;
 }

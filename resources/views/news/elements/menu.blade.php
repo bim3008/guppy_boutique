@@ -12,6 +12,7 @@
     $productMenu        = $productCategoryeModel->listItems(null, ['task'  => 'news-list-nested']);
     $xhtmlMenu          =  '<nav class="main-nav"> <ul class="menu sf-arrows"> ' ;
     foreach ($menuNested as $key => $value) {
+
         $classActive = request()->routeIs($value['link']) ? 'active' : '' ;
         $link        = route($value['link']) ;
         if($value['type_menu'] == 'normal'){

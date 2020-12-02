@@ -7,24 +7,29 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use DB; 
 use Config;
-class ContactModel extends AdminModel
+class SubscribeModel extends AdminModel
 {
     public function __construct() {
-        $this->table               = 'contact';
-        $this->folderUpload        = 'contact' ; 
-        $this->fieldSearchAccepted = ['name','email','phone']; 
-        $this->crudNotAccepted     = ['_token','thumb_current'];
+        $this->table               = 'subscribe';
+        $this->fieldSearchAccepted = ['id',  'email']; 
+        $this->crudNotAccepted     = ['_token'];
     }
 
     public function listItems($params = null, $options = null) {
      
         $result = null;
+
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name','phone','email', 'contact','created_date', 'contact_by');
-    
-            if ($params['filter']['contact'] !== "all")  {
-                $query->where('contact', '=', $params['filter']['contact'] );
+            $query = $this->select('id', 'email',  'status','created', 'created_by');
+               
+            if ($params['filter']['status'] !== "all")  {
+                $query->where('status', '=', $params['filter']['status'] );
             }
+
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('question_id', '=', $params['filter']['category'] );
+            }
+
             if ($params['search']['value'] !== "")  {
                 if($params['search']['field'] == "all") {
                     $query->where(function($query) use ($params){
@@ -42,13 +47,6 @@ class ContactModel extends AdminModel
 
         }
 
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name')
-                        ->where('status', '=', 'active' )
-                        ->limit(5);
-
-            $result = $query->get()->toArray();
-        }
         return $result;
     }
 
@@ -58,8 +56,8 @@ class ContactModel extends AdminModel
 
         if($options['task'] == 'admin-count-items-group-by-status') {
          
-            $query = $this::groupBy('contact')
-                        ->select( DB::raw('contact , COUNT(id) as count') );
+            $query = $this::groupBy('status')
+                        ->select( DB::raw('status , COUNT(id) as count') );
 
             if ($params['search']['value'] !== "")  {
                 if($params['search']['field'] == "all") {
@@ -72,7 +70,9 @@ class ContactModel extends AdminModel
                     $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
-
+            if ( $params['filter']['category'] !== "default" )  {
+                $query->where('question_id', '=', $params['filter']['category'] );
+            }
             $result = $query->get()->toArray();
            
 
@@ -85,38 +85,42 @@ class ContactModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id' ,'name')->where('id', $params['id'])->first();
+            $result = self::select('id', 'email',  'status','created', 'created_by')->where('id', $params['id'])->first();
         }
-        if($options['task'] == 'get-item-no-contact-yet') {
-            $result = self::select('id', 'name','phone','email', 'contact','created_date', 'contact_by')->where('contact','no')->get()->toArray();
-        }
-
-        if($options['task'] == 'get-thumb') {
-            $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
-        }
-
         return $result;
     }
 
     public function saveItem($params = null, $options = null) { 
-
+        
         if($options['task'] == 'change-status') {
-            $message = ($params['currentStatus'] == "no") ? "message" : "yes";
-            $status  = ($params['currentStatus'] == "no") ? "yes"     : "yes";
-            $class   = ($params['currentStatus'] == "no") ? "success" : "success";
-            ($params['currentStatus'] == "yes")  ? null : self::where('id', $params['id'])->update(['contact' => $status,'contact_by' => 'truongdinh', 'created_date' => date('Y-m-d')] );
+            $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
+            $class  = ($params['currentStatus'] == "active") ? "info"     : "success";
+            self::where('id', $params['id'])->update(['status' => $status ]);
             return [ 
-                        'name'     =>   config('zvn-notify.contact.'.$status.''),
-                        'class'    =>   config('zvn-notify.contact.'.$class.'') ,
-                        'link'     =>   route($this->table .'/contact',['id' => $params['id'],'contact' => $status,]),
-                        'message'  =>   config('zvn-notify.contact.'.$message.'')  ,
+                        'name'     =>   config('zvn-notify.status.'.$status.''),
+                        'class'    =>   config('zvn-notify.status.'.$class.'') ,
+                        'link'     =>   route($this->table .'/status',['id' => $params['id'],'status' => $status,])   ,
+                        'message'  =>   config('zvn-notify.status.message')  ,
                     ];
         }
 
+        if($options['task'] == 'change-ordering') {
+            $ordering = $params['currentOrdering'] ;
+            self::where('id', $params['id'])->update(['ordering' => $ordering ]);
+            return [ 
+                        'message'  =>   config('zvn-notify.ordering.message')  ,
+                   ];
+        }
+        if($options['task'] == 'change-category') {
+            self::where('id', $params['id'])->update(['question_id' => $params['currentCategory']]);
+            return [ 'message' => config('zvn-notify.select.message')] ;
+        }
         if($options['task'] == 'add-item') {
-            $params['created_by'] = "truongdinh";
+           
+            $params['created_by'] = "duy-nguyen";
             $params['created']    = date('Y-m-d');
-            self::insert($this->prepareParams($params));        
+            self::insert($params);   
+            return [ 'message' => config('zvn-notify.subscribe.message')] ;     
         }
 
         if($options['task'] == 'edit-item') {

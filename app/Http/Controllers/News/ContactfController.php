@@ -32,7 +32,6 @@ class ContactfController extends Controller
 
     public function postContact(Request $request)
     {   
-   
         if ($request->method() == 'POST') {
             $params         = $request->all();
             $task           = "add-item";

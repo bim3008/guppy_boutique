@@ -69,6 +69,15 @@ class AttributeModel extends AdminModel
                         ->where('status', '=', 'active' );
             $result = $query->pluck('name', 'id')->toArray();
         }
+
+        if($options['task'] == "front-end-get-name-detail-product") {
+            $result = $this->select('id', 'name')
+                        ->orderBy('name', 'asc')
+                        ->where('id', '=', $params )
+                        ->where('status', '=', 'active' )
+                        ->get()
+                        ->toArray();
+        }
         return $result;
     }
 

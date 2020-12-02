@@ -3,6 +3,7 @@ namespace App\Helpers;
 use App\Models\CategoryArticleModel ;
 use App\Models\CategoryProductModel ;
 use Config;
+use App\Models\AttributeModel;
 use Illuminate\Support\Arr;
 
 class Template {
@@ -110,10 +111,12 @@ class Template {
     }
     public static function showItemThumbUpload ($thumbName, $thumbAlt) {
         $xhtml = null;
-        foreach ($thumbName as $value) {
-            $xhtml .= sprintf(
-                '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
-        }
+        $xhtml .= sprintf(
+            '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$thumbName[0]")  , $thumbAlt );
+        // foreach ($thumbName as $value) {
+        //     $xhtml .= sprintf(
+        //         '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
+        // }
        
         return $xhtml;
     }
@@ -125,6 +128,14 @@ class Template {
         }
         return $xhtml;
     }
+
+    public static function showNameAttribute ($attribute) {
+        $attributeModel = new AttributeModel();
+        $nameAttribute = $attributeModel->listItems($attribute, ['task' => 'front-end-get-name-detail-product']);
+        return $nameAttribute[0]['name'];
+    }
+
+
     public static function showButtonAction ($controllerName, $id) {
         $tmplButton   = Config::get('zvn.template.button');
         $buttonInArea = Config::get('zvn.config.button');

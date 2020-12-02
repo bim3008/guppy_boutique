@@ -9,6 +9,7 @@
                 <tr class="headings">
                     <th class="column-title">#</th>
                     <th class="column-title">Slider Info</th>
+                    <th class="column-title">Hình ảnh</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Tạo mới</th>
                     <th class="column-title">Chỉnh sửa</th>
@@ -35,11 +36,11 @@
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="40%">
-                                <p><strong>Name:</strong> {!! $name !!}</p>
-                                <p><strong>Description:</strong> {!! $description!!}</p>
+                                <p><strong>Tên:</strong> {!! $name !!}</p>
+                                <p><strong>Mô tả:</strong> {!! $description!!}</p>
                                 <p><strong>Link:</strong> {!! $link !!}</p>
-                                <p>{!! $thumb !!}</p>
                             </td>
+                            <td width="200px">{!! $thumb !!}</td>
                             <td>{!! $status !!}</td>
                             <td>{!! $createdHistory !!}</td>
                             <td>{!! $modifiedHistory !!}</td>

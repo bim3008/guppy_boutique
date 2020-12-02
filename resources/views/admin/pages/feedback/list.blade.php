@@ -41,7 +41,7 @@
                                 <p><strong>Cảm nhận:</strong> {!! $description!!}</p>
                                 
                             </td>
-                            <td style="width:250px; height:250px">{!! $thumb !!}</td>
+                            <td style="width:150px; height:150px">{!! $thumb !!}</td>
                             <td>{!! $status !!}</td>
                             <td> 
                                 @for($i = 1; $i <= $star ; $i++)

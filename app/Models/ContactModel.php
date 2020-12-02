@@ -114,8 +114,11 @@ class ContactModel extends AdminModel
         }
 
         if($options['task'] == 'add-item') {
-            $params['created_by'] = "truongdinh";
-            $params['created']    = date('Y-m-d');
+            // $params['created_by'] = "duynguyen";
+            $params['created_date']     = date('Y-m-d');
+            $params['contact_by']       = null;
+            $params['contact']          = 'no';
+            
             self::insert($this->prepareParams($params));        
         }
 

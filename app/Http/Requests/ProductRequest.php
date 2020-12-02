@@ -37,6 +37,7 @@ class ProductRequest extends FormRequest
         //     $condName  .= ",$id";
         // }
         return [
+<<<<<<< HEAD
             // 'name'              => $condName,
             // 'price'             => $condPrice,
             // 'thumb'             => $condThumb,
@@ -44,6 +45,14 @@ class ProductRequest extends FormRequest
             // // 'tag'               => $condTag,
             // 'content'           => $condContent,
             // 'status'            => 'bail|in:active,inactive',
+=======
+            'name'              => $condName,
+            'price'             => $condPrice,
+            'thumb'             => $condThumb,
+            'link'              => $condLink,
+            'content'           => $condContent,
+            'status'            => 'bail|in:active,inactive',
+>>>>>>> 1765a36cacd283a92f26f7284d1c9171cea8965d
         ];
     }
 

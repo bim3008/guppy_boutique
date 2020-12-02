@@ -9,7 +9,23 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
       $controller = ucfirst($controllerName)  . 'Controller@';
       Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
       Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
-   });
+      Route::get('/success', [ 'as' => $controllerName . '/success',  'uses' => $controller . 'success' ]);
+
+});
+
+// ============================== PRODUCT ==============================
+$prefix         = 'tat-ca-san-pham';
+$controllerName = 'productf';
+Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+   $controller = ucfirst($controllerName)  . 'Controller@';
+   Route::get('/',          [ 'as' => $controllerName,                'uses' => $controller . 'index' ]);
+   Route::get('/{product_name}-{product_id}.html', [ 'as' => $controllerName . '/detail',  'uses' => $controller . 'detail' ])
+            ->where('product_name', '[0-9a-zA-Z_-]+')
+            ->where('product_id', '[0-9]+');
+   Route::get('/not-found', [ 'as' => $controllerName . '/notFound',  'uses' => $controller . 'notFound' ]);
+});
+
+
 //============================== INTRO    ==============================
    $prefix         = 'gioi-thieu';
    $controllerName = 'intro';
@@ -58,14 +74,14 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
 
    // ============================== CATEGORY - PRODUCT ==============================
-//    $prefix         = 'san-pham';
-//    $controllerName = 'frontEndCategoryProduct';
-//    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-//        $controller = ucfirst($controllerName)  . 'Controller@';
-//        Route::get('/{category_product_name}-{category_product_id}.html',  [ 'as' => $controllerName , 'uses' => $controller . 'index' ])
-//            ->where('category_product_name', '[0-9a-zA-Z_-]+')
-//            ->where('category_product_id', '[0-9]+');
-//    });
+   $prefix         = 'san-pham';
+   $controllerName = 'frontEndCategoryProduct';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+       $controller = ucfirst($controllerName)  . 'Controller@';
+       Route::get('/{category_product_name}-{category_product_id}.html',  [ 'as' => $controllerName , 'uses' => $controller . 'index' ])
+           ->where('category_product_name', '[0-9a-zA-Z_-]+')
+           ->where('category_product_id', '[0-9]+');
+   });
 
 
 
@@ -103,14 +119,14 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 //     Route::get('/logout',       ['as' => $controllerName.'/logout',     'uses' => $controller . 'logout']);
 //    });
 
-   // ============================== CONTACT ==============================
-//    $prefix         = 'lien-he';
-//    $controllerName = 'contact';
-//    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-//        $controller = ucfirst($controllerName)  . 'Controller@';
-//        Route::get('/contact',           [ 'as' => $controllerName ,                     'uses' => $controller . 'index' ]);
-//        Route::post('/postContact',      [ 'as' => $controllerName . '/postContact',     'uses' => $controller . 'postContact' ]);
-//    });
+  // ============================== CONTACT ==============================
+   $prefix         = 'lien-he';
+   $controllerName = 'contactf';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+       $controller = ucfirst($controllerName)  . 'Controller@';
+       Route::get('/',           [ 'as' => $controllerName ,                     'uses' => $controller . 'index' ]);
+       Route::post('/postContact',      [ 'as' => $controllerName . '/postContact',     'uses' => $controller . 'postContact' ]);
+   });
 
    //==========================PRODUCT DETAIL==========================
 //     $prefix         = '';

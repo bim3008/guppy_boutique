@@ -13,7 +13,7 @@ use App\Models\ProductModel ;
 
 class HomeController extends Controller
 {
-    private $pathViewController = 'news.pages.home.';  // slider
+    private $pathViewController = 'news.pages.home.';  
     private $controllerName     = 'home';
     private $params             = [];
     private $model;
@@ -48,6 +48,11 @@ class HomeController extends Controller
       return view($this->pathViewController .  'not_found', [
             'params'        => $this->params,
       ]);
+   }
+
+   public function success(Request $request)
+   {   
+      return view($this->pathViewController .  'success');
    }
 
  

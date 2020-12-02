@@ -7,7 +7,7 @@
         @php
         use  App\Helpers\Template  as Template ;
             $breadcrumCategory = Template::showBreadcrumArticle(['parent_id' => $params['category_id']]) ;
-          
+            
         @endphp
        <div class="container">
            <ol class="breadcrumb">

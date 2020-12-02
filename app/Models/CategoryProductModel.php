@@ -80,7 +80,8 @@ class CategoryProductModel extends AdminModel
             $result =  DB::table($this->table)
                         ->select(DB::raw('count(id) as count'))
                         ->get()->first();
-         }
+        }
+      
 
         return $result;
     }
@@ -95,6 +96,10 @@ class CategoryProductModel extends AdminModel
         if($options['task'] == "admin-get-nested") {
             return self::defaultOrder()->withDepth()->get()->toFlatTree();
          }
+
+        if($options['task'] == 'news-get-breadcrumb-article') {
+            $result = self::select('id', 'name', 'parent_id')->where('id', $params)->first();
+        }
         return $result;
     }
 

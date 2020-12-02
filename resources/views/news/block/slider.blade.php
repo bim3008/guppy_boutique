@@ -12,10 +12,16 @@
                 @endphp
                 <div class="home-slide">
                     <div class="slide-bg owl-lazy"  data-src="{{ $thumb }}"></div><!-- End .slide-bg -->
+            
                     <div class="container">
-                        <div class="home-slide-content">
-                            {{-- <h3>{!! $name !!}</h3> --}}
-                          
+                        <div class="row justify-content-end">
+                            <div class="col-8 col-md-6 text-center slide-content-right">
+                                <div class="home-slide-content">
+                                    {{-- <h3>up to 70% off</h3> --}}
+                                    {{-- <h1>{{ $name }}</h1> --}}
+                                    <a href="category.html" class="btn btn-primary">Shop Now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

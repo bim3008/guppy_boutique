@@ -28,10 +28,10 @@ class ProductModel extends AdminModel
 
         if($options['task'] == "admin-list-items") {
             $query = $this->select('product.id', 'product.name', 'product.attribute', 'product.price', 'product.thumb', 'product.status','product.type','category_product_id', 'cp.name as category_product_name')
-                        ->leftJoin('category_product as cp', 'product.category_product_id', '=', 'cp.id');
+                          ->leftJoin('category_product as cp', 'product.category_product_id', '=', 'cp.id');
                
             if ($params['filter']['status'] !== "all")  {
-                $query->where('status', '=', $params['filter']['status'] );
+                        $query->where('status', '=', $params['filter']['status'] );
             }
 
             if ($params['search']['value'] !== "")  {
@@ -47,7 +47,7 @@ class ProductModel extends AdminModel
             }
 
             $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerPage']);
+                             ->paginate($params['pagination']['totalItemsPerPage']);
 
         }
 
@@ -80,23 +80,27 @@ class ProductModel extends AdminModel
                     ->leftJoin('category_product as c', 'p.category_product_id', '=', 'c.id')
                     ->where('p.type',   '=' , 'featured')    
                     ->where('p.status', '=' , 'active')    
-                    ->where('c.parent_id',   '=' , 49)    
+                    ->where('p.category_product_id',   '=' , 49)    
                     ->get()
                     ->toArray();
         }
         if($options['task'] == "news-get-items-accessory") {
             $result = $this->select('p.id', 'p.name', 'p.price', 'p.thumb', 'p.category_product_id')
                     ->leftJoin('category_product as c', 'p.category_product_id', '=', 'c.id')   
-                    ->where('p.status', '=' , 'active')    
-                    ->where('c.parent_id',   '=' , 50)    
+                    ->where('p.type',   '=' , 'featured')  
+                    ->where('p.category_product_id',   '=' , 63)     
                     ->get()
                     ->toArray();
         }
-        if($options['task'] == "news-get-items-in-category") {
-            $result = $this->select('id', 'name', 'price', 'thumb', 'category_product_id')
-                ->where('category_product_id', '=' , $params['id'])    
-                ->get()
-                ->toArray();
+        if($options['task'] == "news-get-items-in-category"){
+         
+            $result = $this->select('p.id', 'p.name', 'p.price', 'p.thumb', 'p.category_product_id' ,'c.name as cate_pro_name')
+                ->leftJoin('category_product as c', 'p.category_product_id', '=', 'c.id')   
+                ->where('p.category_product_id', '=' , $params['id'])    
+                // ->get()
+                // ->toArray()
+                ->paginate($params['pagination']['totalItemsPerPage']);
+            if($result) $result ;
         }
         return $result;
     }
@@ -132,7 +136,6 @@ class ProductModel extends AdminModel
 
         return $result;
     }
-
     public function getItem($params = null, $options = null) { 
         $result = null;
         if($options['task'] == 'get-item') {
@@ -172,7 +175,6 @@ class ProductModel extends AdminModel
         }
         return $result;
     }
-
     public function saveItem($params = null, $options = null) { 
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
@@ -228,7 +230,6 @@ class ProductModel extends AdminModel
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }
-
     public function deleteItem($params = null, $options = null) 
     { 
         if($options['task'] == 'delete-item') {

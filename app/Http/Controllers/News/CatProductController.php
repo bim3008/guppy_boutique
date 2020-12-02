@@ -17,18 +17,19 @@ class CatProductController extends Controller
     public function __construct()
     {
         view()->share('controllerName', $this->controllerName);
+       
     }
 
    public function index(Request $request)
    {  
       $params['id']    = $request->cat_pro_id  ;   
       $params['name']  = $request->cat_pro_name ;   
-       
+      $params["pagination"]["totalItemsPerPage"] = 20; 
       $productModel                 = new ProductModel();
-      $productInCat                 = $productModel->listItems($params,['task' => 'news-get-items-in-category']) ;
-      dd($productInCat );
-
-      return view($this->pathViewController .  'index'  );
+      $items                = $productModel->listItems($params,['task' => 'news-get-items-in-category']) ;
+      if(empty($items))     return redirect()->route('home');
+      
+      return view($this->pathViewController .  'index' , compact('items' , 'params') );
    }
 
    public function notFound(Request $request)

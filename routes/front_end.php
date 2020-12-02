@@ -1,5 +1,5 @@
 <?php
-   $prefixNews  = config('zvn.url.prefix_news');
+$prefixNews  = config('zvn.url.prefix_news');
 Route::group(['prefix' => '', 'namespace' => 'news'], function () {
 
 // ============================= HOMEPAGE ==============================
@@ -53,7 +53,7 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
            ->where('category_id', '[0-9]+');
    }); 
 
-//============================== CATEGORY - PRODUCT =====================
+//============================== CATEGORY - PRODUCT ====================
    $prefix         = '';
    $controllerName = 'catProduct';
    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
@@ -62,6 +62,17 @@ Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
          ->where('cat_pro_name', '[0-9a-zA-Z_-]+')
          ->where('cat_pro_id', '[0-9]+');
 }); 
+<<<<<<< HEAD
+=======
+//============================== INTRO    ==============================
+   $prefix         = 'tuyen-dung';
+   $controllerName = 'nrecruitment';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+      $controller = ucfirst($controllerName)  . 'Controller@';
+      Route::get('/',   [ 'as' => $controllerName.'news',                'uses' => $controller . 'index' ]);
+   }); 
+
+>>>>>>> 4e8fc388a0d97d121db749a1de8531cb35ab3d71
 
 //==============================  SUBSCRIBE =====================
 $prefix         = 'subscribe';

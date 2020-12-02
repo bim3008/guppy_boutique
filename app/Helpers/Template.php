@@ -301,7 +301,7 @@ class Template {
            $xhtml =  null ;
            foreach($names as $key => $value){
                $arr = json_decode($value);
-               $link = URL::linkCategoryArticle($arr->id,$arr->name);
+               $link = URL::linkCategoryProduct($arr->id,$arr->name);
                $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
            }
            return $xhtml;
@@ -321,4 +321,10 @@ class Template {
         }
         return array_reverse($nameParent) ;
     }
+    public static function showProductThumb ($thumbName , $folder) {
+        $xhtml = sprintf(
+            '<img src="%s" alt="product">', asset("uploads/$thumbName")  );
+        return $xhtml;
+    }
+    
 }

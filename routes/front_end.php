@@ -46,7 +46,13 @@ Route::group(['prefix' => '', 'namespace' => 'news'], function () {
          ->where('cat_pro_name', '[0-9a-zA-Z_-]+')
          ->where('cat_pro_id', '[0-9]+');
 }); 
-  
+//============================== INTRO    ==============================
+   $prefix         = 'tuyen-dung';
+   $controllerName = 'nrecruitment';
+   Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+      $controller = ucfirst($controllerName)  . 'Controller@';
+      Route::get('/',   [ 'as' => $controllerName.'news',                'uses' => $controller . 'index' ]);
+   }); 
 
 
 

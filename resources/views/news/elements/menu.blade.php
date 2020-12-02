@@ -12,6 +12,7 @@
     $productMenu        = $productCategoryeModel->listItems(null, ['task'  => 'news-list-nested']);
     $xhtmlMenu          =  '<nav class="main-nav"> <ul class="menu sf-arrows"> ' ;
     foreach ($menuNested as $key => $value) {
+
         $classActive = request()->routeIs($value['link']) ? 'active' : '' ;
         $link        = route($value['link']) ;
         if($value['type_menu'] == 'normal'){
@@ -23,17 +24,10 @@
             $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="#" class="sf-with-ul">'.$value['name'].'</a>'.$childArticle.'</li>';  
         }
         if($value['type_menu'] == 'category_product'){
-<<<<<<< HEAD
             $classActive =  (request()->routeIs('catProduct/index')  )  ? 'active' : '' ;    
             
             $childProduct = MenuNested::recursiveMenuProduct($productMenu) ;
             $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="'.$link.'" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
-=======
-            $classActive  =  (request()->routeIs('tat-ca-san-pham'))  ? 'active' : '' ;
-            $childProduct = MenuNested::recursiveMenuArticle($productMenu) ;
-            $linkProduct  = route('productf');
-            $xhtmlMenu   .= '<li class="'.$classActive .'"><a href="'.$linkProduct.'" class="sf-with-ul">'.$value['name'].'</a>'.$childProduct.'</li>';  
->>>>>>> 1765a36cacd283a92f26f7284d1c9171cea8965d
         }
     }    
     $xhtmlMenu .= '<ul><nav>' ; 

@@ -21,9 +21,6 @@ return [
     'select' => [
         'message'       => 'Cập nhập thành công !! ',
     ],
-    'subscribe' => [
-        'message'       => 'Bạn đã theo dõi thành công !! ',
-    ],
     'price' => [
         'message'       => 'Thay đổi giá thành công !!',
     ],'is_home'         => [

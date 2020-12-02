@@ -31,13 +31,4 @@ class URL
         ]);
 
     }
-
-    public static function linkProduct($id, $name) 
-    {
-        return route('productf/detail', [
-                'product_id'   => $id, 
-                'product_name' => Str::slug($name) 
-        ]);
-
-    }
 }

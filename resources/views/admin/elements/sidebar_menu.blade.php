@@ -1,10 +1,10 @@
 <div class="profile clearfix">
     <div class="profile_pic">
-        <img src="{{ asset('admin/img/avartar.jpg') }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset('admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
         <span>Xin chào,</span>
-        <h2>Duy Nguyễn</h2>
+        <h2>Admin</h2>
     </div>
 </div>
 <br/>

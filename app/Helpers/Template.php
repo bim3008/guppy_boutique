@@ -3,7 +3,6 @@ namespace App\Helpers;
 use App\Models\CategoryArticleModel ;
 use App\Models\CategoryProductModel ;
 use Config;
-use App\Models\AttributeModel;
 use Illuminate\Support\Arr;
 
 class Template {
@@ -111,12 +110,10 @@ class Template {
     }
     public static function showItemThumbUpload ($thumbName, $thumbAlt) {
         $xhtml = null;
-        $xhtml .= sprintf(
-            '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$thumbName[0]")  , $thumbAlt );
-        // foreach ($thumbName as $value) {
-        //     $xhtml .= sprintf(
-        //         '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
-        // }
+        foreach ($thumbName as $value) {
+            $xhtml .= sprintf(
+                '<img src="%s" alt="%s" style="height: 50px" class="zvn-thumb">', asset("uploads/$value")  , $thumbAlt );
+        }
        
         return $xhtml;
     }
@@ -128,14 +125,6 @@ class Template {
         }
         return $xhtml;
     }
-
-    public static function showNameAttribute ($attribute) {
-        $attributeModel = new AttributeModel();
-        $nameAttribute = $attributeModel->listItems($attribute, ['task' => 'front-end-get-name-detail-product']);
-        return $nameAttribute[0]['name'];
-    }
-
-
     public static function showButtonAction ($controllerName, $id) {
         $tmplButton   = Config::get('zvn.template.button');
         $buttonInArea = Config::get('zvn.config.button');
@@ -312,7 +301,7 @@ class Template {
            $xhtml =  null ;
            foreach($names as $key => $value){
                $arr = json_decode($value);
-               $link = URL::linkCategoryProduct($arr->id,$arr->name);
+               $link = URL::linkCategoryArticle($arr->id,$arr->name);
                $xhtml .= '<li class="breadcrumb-item"><a href="'.$link.'">'.$arr->name.'</a></li>';
            }
            return $xhtml;
@@ -332,10 +321,4 @@ class Template {
         }
         return array_reverse($nameParent) ;
     }
-    public static function showProductThumb ($thumbName , $folder) {
-        $xhtml = sprintf(
-            '<img src="%s" alt="product">', asset("uploads/$thumbName")  );
-        return $xhtml;
-    }
-    
 }

@@ -127,7 +127,8 @@ class AttributeGroupModel extends AdminModel
         }
 
         if($options['task'] == 'edit-item') {
-                self::where('id', $params['id'])->update($this->prepareParams($params));
+            $params['change_price'] = !isset($params['change_price']) ? 'no' : 'yes';
+            self::where('id', $params['id'])->update($this->prepareParams($params));
         }
     }
 

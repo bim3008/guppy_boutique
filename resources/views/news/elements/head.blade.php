@@ -10,11 +10,5 @@
     
 <link rel="icon" type="image/x-icon" href=" {{ asset('news/assets/images/icons/favicon.ico') }}">
 <link rel="stylesheet" href=" {{ asset('news/assets/css/bootstrap.min.css') }} ">
-<<<<<<< HEAD
 <link rel="stylesheet" href=" {{ asset('news/assets/css/style.css') }}">
 <link rel="stylesheet" href=" {{ asset('news/assets/css/custom.css') }}">
-=======
-<link rel="stylesheet" href=" {{ asset('news/assets/css/style.min.css') }}">
-<link rel="stylesheet" href=" {{ asset('news/assets/css/style.css') }}">
-<link rel="stylesheet" href=" {{ asset('news/assets/css/custom.css') }}">
->>>>>>> cbffd38f53b50c3b7e547da4d463df25735abef9
